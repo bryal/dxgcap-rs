@@ -1,0 +1,9 @@
+[package]
+
+name = "dxgcap"
+version = "0.0.1"
+authors = ["bryal <96.bryal@gmail.com>"]
+
+[dependencies.dxgi]
+# git = "https://github.com/bryal/dxgi-rs"
+path = "../dxgi-rs"
