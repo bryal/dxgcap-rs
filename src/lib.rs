@@ -22,23 +22,47 @@
 
 //! Capture the screen with DXGI in rust
 
-#![feature(unique, libc)]
+#![feature(libc)]
+#![feature(unsafe_destructor)]
 
 extern crate libc;
 extern crate winapi;
 #[macro_use(c_mtdcall)]
 extern crate dxgi;
 
-use std::ptr::Unique;
+use dxgi::{ IUnknownT };
 
 /// A unique pointer to a COM object. Handles refcounting.
-pub struct UniqueCOMPtr<T> {
-	ptr: Unique<T>,
+pub struct UniqueCOMPtr<T: IUnknownT> {
+	ptr: *mut T,
 }
-impl<T> UniqueCOMPtr<T> {
-	/// Create a new 
-	pub unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
-		UniqueCOMPtr{ ptr: Unique::new(ptr) }
+
+impl<T: IUnknownT> UniqueCOMPtr<T> {
+	/// Construct a new unique COM pointer from a pointer to a COM object.
+	/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand 
+	pub unsafe fn from_ptr(ptr: *mut T) -> UniqueCOMPtr<T> {
+		UniqueCOMPtr{ ptr: ptr }
+	}
+}
+
+impl<T: IUnknownT> std::ops::Deref for UniqueCOMPtr<T> {
+	type Target = T;
+
+	fn deref(&self) -> &T {
+		unsafe { &*self.ptr }
+	}
+}
+
+impl<T: IUnknownT> std::ops::DerefMut for UniqueCOMPtr<T> {
+	fn deref_mut(&mut self) -> &mut T {
+		unsafe { &mut*self.ptr }
+	}
+}
+
+#[unsafe_destructor]
+impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
+	fn drop(&mut self) {
+		self.Release();
 	}
 }
 
@@ -46,16 +70,30 @@ impl<T> UniqueCOMPtr<T> {
 fn test() {
 	use std::ptr;
 	use libc::{ c_void };
-	use dxgi::{ CreateDXGIFactory1, IID_IDXGIFactory1, IDXGIFactory1 };
+	use dxgi::interfaces::*;
+	use dxgi::{ CreateDXGIFactory1, IID_IDXGIFactory1, DXGI_ERROR_NOT_FOUND };
 
-	let factory = {
+	let mut factory = unsafe {
 		let mut factory: *mut c_void = ptr::null_mut();
-		assert_eq!(0, unsafe { CreateDXGIFactory1(&IID_IDXGIFactory1, &mut factory) });
-		factory as *mut IDXGIFactory1 };
+		assert_eq!(0, CreateDXGIFactory1(&IID_IDXGIFactory1, &mut factory));
+		UniqueCOMPtr::from_ptr(factory as *mut IDXGIFactory1) };
 
-	assert!(factory as usize != 0);
+	assert!(&factory as *const _ as usize != 0);
 
-	println!("IsCurrent: {}", unsafe { c_mtdcall!(factory->IsCurrent()) } != 0);
-	assert_eq!(unsafe { c_mtdcall!(factory->AddRef()) }, 2);
-	assert_eq!(unsafe { c_mtdcall!(factory->Release()) }, 1);
+	println!("IsCurrent: {}", factory.IsCurrent() != 0);
+	assert_eq!(factory.AddRef(), 2);
+	assert_eq!(factory.Release(), 1);
+
+	let adapters: Vec<_> = (0..).map(|i| {
+			let mut adapter = ptr::null_mut();
+			if factory.EnumAdapters1(i, &mut adapter) != DXGI_ERROR_NOT_FOUND {
+				println!("{}", i);
+				Some(unsafe { UniqueCOMPtr::from_ptr(adapter) })
+			} else { None }
+		})
+		.take_while(|v| if let &None = v { false } else { true })
+		.map(|v| v.unwrap())
+		.collect();
+
+		
 }
