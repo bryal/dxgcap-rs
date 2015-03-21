@@ -22,7 +22,26 @@
 
 //! Capture the screen with DXGI in rust
 
+#![feature(unique)]
+
+extern crate winapi;
+extern crate dxgi;
+
+use std::ptr::{ Unique };
+use dxgi::{ CreateDXGIFactory1, IID_IDXGIFactory1, IDXGIFactory1 };
+
+/// A unique pointer to a COM object. Handles refcounting.
+struct UniqueCOMPtr<T> {
+	ptr: Unique<T>,
+}
+impl<T> UniqueCOMPtr<T> {
+	/// Create a new 
+	unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
+		UniqueCOMPtr{ ptr: Unique::new(ptr) }
+	}
+}
+
 #[test]
 fn test() {
-
+	
 }

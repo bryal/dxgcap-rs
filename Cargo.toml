@@ -1,8 +1,15 @@
 [package]
-
 name = "dxgcap"
 version = "0.0.1"
 authors = ["bryal <96.bryal@gmail.com>"]
+description = "Screen capture with DXGI in rust"
+repository = "https://github.com/bryal/dxgcap-rs"
+readme = "README.md"
+keywords = ["Windows", "DXGI", "Direct3D", "screen capture", "capture"]
+license = "MIT"
+
+[dependencies]
+winapi = "*"
 
 [dependencies.dxgi]
 # git = "https://github.com/bryal/dxgi-rs"
