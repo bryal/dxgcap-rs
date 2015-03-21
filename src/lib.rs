@@ -22,26 +22,40 @@
 
 //! Capture the screen with DXGI in rust
 
-#![feature(unique)]
+#![feature(unique, libc)]
 
+extern crate libc;
 extern crate winapi;
+#[macro_use(c_mtdcall)]
 extern crate dxgi;
 
-use std::ptr::{ Unique };
-use dxgi::{ CreateDXGIFactory1, IID_IDXGIFactory1, IDXGIFactory1 };
+use std::ptr::Unique;
 
 /// A unique pointer to a COM object. Handles refcounting.
-struct UniqueCOMPtr<T> {
+pub struct UniqueCOMPtr<T> {
 	ptr: Unique<T>,
 }
 impl<T> UniqueCOMPtr<T> {
 	/// Create a new 
-	unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
+	pub unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
 		UniqueCOMPtr{ ptr: Unique::new(ptr) }
 	}
 }
 
 #[test]
 fn test() {
-	
+	use std::ptr;
+	use libc::{ c_void };
+	use dxgi::{ CreateDXGIFactory1, IID_IDXGIFactory1, IDXGIFactory1 };
+
+	let factory = {
+		let mut factory: *mut c_void = ptr::null_mut();
+		assert_eq!(0, unsafe { CreateDXGIFactory1(&IID_IDXGIFactory1, &mut factory) });
+		factory as *mut IDXGIFactory1 };
+
+	assert!(factory as usize != 0);
+
+	println!("IsCurrent: {}", unsafe { c_mtdcall!(factory->IsCurrent()) } != 0);
+	assert_eq!(unsafe { c_mtdcall!(factory->AddRef()) }, 2);
+	assert_eq!(unsafe { c_mtdcall!(factory->Release()) }, 1);
 }
