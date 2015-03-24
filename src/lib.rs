@@ -48,12 +48,16 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 		UniqueCOMPtr{ ptr: ptr }
 	}
 
-	pub unsafe fn query_interface<U>(&mut self, interface_identifier: &IID) -> UniqueCOMPtr<U>
-		where U: IUnknownT
+	pub unsafe fn query_interface<U>(&mut self, interface_identifier: &IID)
+		-> Result<UniqueCOMPtr<U>, HRESULT> where U: IUnknownT
 	{
 		let mut interface: *mut c_void = ptr::null_mut();
-		assert_eq!(0, self.QueryInterface(interface_identifier, &mut interface));
-		UniqueCOMPtr::from_ptr(interface as *mut U)
+		let hr = self.QueryInterface(interface_identifier, &mut interface);
+		if hr_failed(hr) {
+			Err(hr)
+		} else {
+			Ok(UniqueCOMPtr::from_ptr(interface as *mut U))
+		}
 	}
 }
 impl<T: IUnknownT> std::ops::Deref for UniqueCOMPtr<T> {
@@ -142,10 +146,10 @@ fn test() {
 				UniqueCOMPtr::from_ptr(device_context)) };
 
 		for mut output in outputs.into_iter()
-			.map(|mut o| unsafe { o.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1) })
+			.map(|mut o| unsafe { o.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap() })
 		{
 			let mut dxgi_device = unsafe {
-				d3d11_device.query_interface::<IDXGIDevice1>(&IID_IDXGIDevice1) };
+				d3d11_device.query_interface::<IDXGIDevice1>(&IID_IDXGIDevice1).unwrap() };
 
 			let duplicated_output = unsafe {
 				let mut duplicated_output: *mut IDXGIOutputDuplication = ptr::null_mut();
