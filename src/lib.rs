@@ -23,6 +23,7 @@
 //! Capture the screen with DXGI in rust
 
 #![feature(libc, unique, unsafe_destructor, std_misc)]
+#![allow(dead_code, non_snake_case)]
 
 extern crate libc;
 extern crate winapi;
@@ -35,7 +36,7 @@ use std::mem;
 use std::ptr::{ self, Unique };
 use std::time::duration::Duration;
 use libc::c_void;
-use winapi::{ HRESULT, IID };
+use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL };
 use dxgi::constants::*;
 use dxgi::interfaces::*;
 use dxgi::{ DXGI_OUTPUT_DESC };
@@ -43,6 +44,18 @@ use d3d11::constants::*;
 use d3d11::core::interfaces::*;
 use d3d11::resource::interfaces::*;
 use d3d11::{ D3D11_USAGE, D3D11_CPU_ACCESS_FLAG };
+
+#[repr(C)] struct MONITORINFO {
+	cbSize: DWORD,
+	rcMonitor: RECT,
+	rcWork: RECT,
+	dwFlags: DWORD,
+}
+
+#[link(name = "user32")]
+extern "C" {
+	fn GetMonitorInfoW(monitor: HMONITOR, monitor_info: *mut MONITORINFO) -> BOOL;
+}
 
 /// A unique pointer to a COM object. Handles refcounting.
 pub struct UniqueCOMPtr<T: IUnknownT> {
@@ -85,6 +98,8 @@ impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
 		self.Release();
 	}
 }
+/// This is not actually necessarily thread safe. It's up to the user to guarantee that all
+/// pointers are uniquely owned.
 unsafe impl<T> Send for UniqueCOMPtr<T> { }
 
 pub fn hr_failed(hr: HRESULT) -> bool { hr < 0 }
@@ -162,6 +177,23 @@ impl DuplicatedOutput {
 				&mut *unsafe { frame_texture.query_interface(&IID_ID3D11Resource).unwrap() });
 
 		unsafe { readable_surface.query_interface(&IID_IDXGISurface1) }
+	}
+
+	fn release_frame(&mut self) -> Result<(), HRESULT> {
+		let hr = self.dxgi_output_dup.ReleaseFrame();
+		if hr_failed(hr) { Err(hr) } else { Ok(()) }
+	}
+
+	fn is_primary(&mut self) -> bool {
+		unsafe {
+			let mut output_desc = mem::zeroed();
+			self.output.GetDesc(&mut output_desc);
+			let mut monitor_info: MONITORINFO = mem::zeroed();
+			monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
+			 GetMonitorInfoW(output_desc.Monitor, &mut monitor_info);
+
+			(monitor_info.dwFlags & 1) != 0
+		}
 	}
 }
 
