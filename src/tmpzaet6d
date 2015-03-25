@@ -22,7 +22,7 @@
 
 //! Capture the screen with DXGI in rust
 
-#![feature(libc, unique, unsafe_destructor, std_misc)]
+#![feature(libc, unique, unsafe_destructor)]
 
 extern crate libc;
 extern crate winapi;
@@ -130,38 +130,31 @@ impl DuplicatedOutput {
 			}
 			UniqueCOMPtr::from_ptr(frame_resource) };
 
-		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> = unsafe {
-			frame_resource.query_interface(&IID_ID3D11Texture2D).unwrap() };
+		let mut frame_texture =
+			frame_resource.query_interface::<ID3D11Texture2D>(&IID_ID3D11Texture2D).unwrap();
 
-		let mut texture_desc = unsafe { mem::zeroed() };
+		let texture_desc = unsafe { mem::zeroed() };
 		frame_texture.GetDesc(&mut texture_desc);
 
 		// Configure the description to make the texture readable
 		texture_desc.Usage = D3D11_USAGE::D3D11_USAGE_STAGING;
 		texture_desc.BindFlags = 0;
-		texture_desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_READ as u32;
+		texture_desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_READ a;
 		texture_desc.MiscFlags = 0;
 
-		let mut readable_texture = unsafe {
-			let mut readable_texture = ptr::null_mut();
-			let hr = self.device.lock().unwrap()
-				.CreateTexture2D(&mut texture_desc, ptr::null(), &mut readable_texture);
-			if hr_failed(hr) {
-				return Err(hr);
-			}
-			UniqueCOMPtr::from_ptr(readable_texture) };
+		let mut readable_texture = UniqueCOMPtr::from_ptr(ptr::null_mut());
+		let hr = self.device.CreateTexture2D(&mut texture_desc, ptr::null(), &mut readable_texture);
+		if hr_failed(hr) {
+			return Err(hr);
+		}
 
 		// Lower priorities causes stuff to be needlessly copied from gpu to ram, causing huge
 		// fluxuations on some systems.
 		readable_texture.SetEvictionPriority(DXGI_RESOURCE_PRIORITY_MAXIMUM);
 
-		let mut readable_surface = unsafe {
-			readable_texture.query_interface(&IID_ID3D11Resource).unwrap() };
-		self.device_context.lock().unwrap()
-			.CopyResource(&mut *readable_surface,
-				&mut *unsafe { frame_texture.query_interface(&IID_ID3D11Resource).unwrap() });
+		self.device_context.CopyResource(readable_texture, frame_texture);
 
-		unsafe { readable_surface.query_interface(&IID_IDXGISurface1) }
+		readable_texture.QueryInterface(&IID_IDXGISurface1)
 	}
 }
 
