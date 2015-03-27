@@ -32,11 +32,12 @@ extern crate dxgi;
 extern crate d3d11;
 
 use std::sync::{Arc, Mutex};
-use std::mem;
+use std::{ mem, slice };
+use std::mem::{ transmute, zeroed };
 use std::ptr::{ self, Unique };
 use std::time::duration::Duration;
 use libc::c_void;
-use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL };
+use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL, E_ACCESSDENIED };
 use dxgi::constants::*;
 use dxgi::interfaces::*;
 use dxgi::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC };
@@ -57,15 +58,25 @@ extern "C" {
 	fn GetMonitorInfoW(monitor: HMONITOR, monitor_info: *mut MONITORINFO) -> BOOL;
 }
 
+const DXGI_PIXEL_SIZE: u32 = 4; // BGRA8 => 4 bytes, DXGI default
+
+#[derive(Copy, Debug, PartialOrd, PartialEq, Eq, Ord)]
+struct BGRA8 {
+	b: u8,
+	g: u8,
+	r: u8,
+	a: u8,
+}
+
 /// A unique pointer to a COM object. Handles refcounting.
 pub struct UniqueCOMPtr<T: IUnknownT> {
-	ptr: Unique<T>,
+	ptr: *mut T,
 }
 impl<T: IUnknownT> UniqueCOMPtr<T> {
 	/// Construct a new unique COM pointer from a pointer to a COM object.
 	/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand 
 	pub unsafe fn from_ptr(ptr: *mut T) -> UniqueCOMPtr<T> {
-		UniqueCOMPtr{ ptr: Unique::new(ptr) }
+		UniqueCOMPtr{ ptr: ptr }
 	}
 
 	pub unsafe fn query_interface<U>(mut self, interface_identifier: &IID)
@@ -84,12 +95,12 @@ impl<T: IUnknownT> std::ops::Deref for UniqueCOMPtr<T> {
 	type Target = T;
 
 	fn deref(&self) -> &T {
-		unsafe { self.ptr.get() }
+		unsafe { &*self.ptr }
 	}
 }
 impl<T: IUnknownT> std::ops::DerefMut for UniqueCOMPtr<T> {
 	fn deref_mut(&mut self) -> &mut T {
-		unsafe { self.ptr.get_mut() }
+		unsafe { &mut *self.ptr }
 	}
 }
 #[unsafe_destructor]
@@ -101,6 +112,21 @@ impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
 /// This is not actually necessarily thread safe. It's up to the user to guarantee that all
 /// pointers are uniquely owned.
 unsafe impl<T> Send for UniqueCOMPtr<T> { }
+
+/// Possible errors when capturing
+#[derive(Debug)]
+pub enum CaptureError {
+	// Could not duplicate output, access denied. Might be in protected fullscreen.
+	AccessDenied,
+	// Access to the duplicated output was lost. Likely, mode was changed e.g. window => full
+	AccessLost,
+	// Error when trying to refresh outputs after some failure.
+	RefreshFailure,
+	// AcquireNextFrame timed out.
+	Timeout,
+	// General/Unexpected failure
+	Fail,
+}
 
 pub fn hr_failed(hr: HRESULT) -> bool { hr < 0 }
 
@@ -129,7 +155,7 @@ fn d3d11_create_device<T: IDXGIAdapterT>(adapter: &mut T)
 		let mut d3d11_device: *mut ID3D11Device = ptr::null_mut();
 		let mut device_context: *mut ID3D11DeviceContext = ptr::null_mut();
 
-		let hr = D3D11CreateDevice(mem::transmute(adapter),
+		let hr = D3D11CreateDevice(transmute(adapter),
 			D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
 			ptr::null_mut(), 0, ptr::null_mut(), 0,
 			D3D11_SDK_VERSION,
@@ -149,7 +175,7 @@ pub fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGI
 			if hr_failed(adapter.EnumOutputs(i, &mut output)) {
 				None
 			} else {
-				let mut out_desc = unsafe { mem::zeroed() };
+				let mut out_desc = unsafe { zeroed() };
 				unsafe { (*output).GetDesc(&mut out_desc) };
 
 				if out_desc.AttachedToDesktop != 0 {
@@ -168,17 +194,16 @@ struct DuplicatedOutput {
 impl DuplicatedOutput {
 	fn get_desc(&self) -> DXGI_OUTPUT_DESC {
 		unsafe {
-			let mut desc = mem::zeroed();
-			mem::transmute::<_, &mut Self>(self).output.GetDesc(&mut desc);
+			let mut desc = zeroed();
+			transmute::<_, &mut Self>(self).output.GetDesc(&mut desc);
 			desc }
 	}
 
-	fn get_frame(&mut self, timeout: Duration) -> Result<UniqueCOMPtr<IDXGISurface1>, HRESULT> {
+	fn get_frame(&mut self, timeout_ms: u32) -> Result<UniqueCOMPtr<IDXGISurface1>, HRESULT> {
 		let frame_resource = unsafe {
 			let mut frame_resource = ptr::null_mut();
-			let mut frame_info = mem::zeroed();
-			let hr = self.dxgi_output_dup.AcquireNextFrame(timeout.num_milliseconds() as u32,
-				&mut frame_info,
+			let mut frame_info = zeroed();
+			let hr = self.dxgi_output_dup.AcquireNextFrame(timeout_ms, &mut frame_info,
 				&mut frame_resource);
 			if hr_failed(hr) {
 				return Err(hr);
@@ -188,7 +213,7 @@ impl DuplicatedOutput {
 		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> = unsafe {
 			frame_resource.query_interface(&IID_ID3D11Texture2D).unwrap() };
 
-		let mut texture_desc = unsafe { mem::zeroed() };
+		let mut texture_desc = unsafe { zeroed() };
 		frame_texture.GetDesc(&mut texture_desc);
 
 		// Configure the description to make the texture readable
@@ -226,9 +251,9 @@ impl DuplicatedOutput {
 
 	fn is_primary(&self) -> bool {
 		unsafe {
-			let mut output_desc = mem::zeroed();
-			mem::transmute::<_, &mut Self>(self).output.GetDesc(&mut output_desc);
-			let mut monitor_info: MONITORINFO = mem::zeroed();
+			let mut output_desc = zeroed();
+			transmute::<_, &mut Self>(self).output.GetDesc(&mut output_desc);
+			let mut monitor_info: MONITORINFO = zeroed();
 			monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
 			 GetMonitorInfoW(output_desc.Monitor, &mut monitor_info);
 
@@ -256,7 +281,7 @@ impl DXGIManager {
 
 		match manager.refresh_output() {
 			Ok(_) => Ok(manager),
-			Err(e) => Err(e)
+			Err(_) => Err("Failed to get outputs")
 		}
 	}
 
@@ -299,7 +324,7 @@ impl DXGIManager {
 						let mut duplicated_output: *mut IDXGIOutputDuplication = ptr::null_mut();
 						assert_eq!(0,
 							output.DuplicateOutput(
-								mem::transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
+								transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
 								&mut duplicated_output));
 						UniqueCOMPtr::from_ptr(duplicated_output) };
 					out_dups.push((duplicated_output, output));
@@ -334,11 +359,11 @@ impl DXGIManager {
 		}
 	}
 
-	fn refresh_output(&mut self) -> Result<(), &'static str> {
+	fn refresh_output(&mut self) -> Result<(), ()> {
 		self.gather_output_duplications();
 		self.duplicated_output_i = self.active_output_duplication_index();
 		if let None = self.duplicated_output_i {
-			Err("Failed to get out")
+			Err(())
 		} else {
 			Ok(()) }
 	}
@@ -356,85 +381,91 @@ impl DXGIManager {
 				.nth(self.capture_source - 1)
 		}
 	}
+
+	fn get_duplicated_output(&mut self) -> Option<&mut DuplicatedOutput> {
+		if let Some(i) = self.duplicated_output_i {
+			Some(&mut self.duplicated_outputs[i])
+		} else {
+			None }
+	}
+
+	fn get_frame(&mut self) -> Result<UniqueCOMPtr<IDXGISurface1>, CaptureError> {
+		let timeout_ms = self.timeout_ms;
+
+		let surface_result = if let Some(i) = self.duplicated_output_i {
+			self.duplicated_outputs[i].get_frame(timeout_ms)
+		} else {
+			if let Ok(_) = self.refresh_output() {
+				return Err(CaptureError::Fail)
+			} else {
+				return Err(CaptureError::RefreshFailure)
+			}
+		};
+
+		match surface_result {
+			Ok(surface) => Ok(surface),
+			Err(DXGI_ERROR_ACCESS_LOST) => if let Ok(_) = self.refresh_output() {
+				Err(CaptureError::Fail)
+			} else {
+				Err(CaptureError::RefreshFailure) },
+			Err(E_ACCESSDENIED) => Err(CaptureError::AccessDenied),
+			Err(DXGI_ERROR_WAIT_TIMEOUT) => Err(CaptureError::Timeout),
+			Err(_) => if let Ok(_) = self.refresh_output() {
+				Err(CaptureError::Fail)
+			} else {
+				Err(CaptureError::RefreshFailure) } }
+	}
+
+	fn get_output_data(&mut self) -> Result<Vec<BGRA8>, CaptureError> {
+		use dxgi::enumerations::DXGI_MODE_ROTATION::*;
+
+		let mut frame_surface = match self.get_frame() {
+			Ok(surface) => surface,
+			Err(e) => return Err(e) };
+
+		let mut mapped_surface = unsafe { zeroed() };
+		if hr_failed(frame_surface.Map(&mut mapped_surface, DXGI_MAP_READ)) {
+			frame_surface.Release();
+			return Err(CaptureError::Fail);
+		}
+
+		let output_desc = self.get_duplicated_output().unwrap().get_desc();
+		let output_rect = output_desc.DesktopCoordinates;
+		let output_width = (output_rect.right - output_rect.left) as usize;
+		let output_height = (output_rect.bottom - output_rect.top) as usize;
+
+		let map_pitch_n_pixels = mapped_surface.Pitch as usize / DXGI_PIXEL_SIZE as usize;
+
+		let mut pixel_buf = Vec::with_capacity(output_width * output_height);
+
+		let pixel_index: Box<Fn(usize, usize) -> usize> = match output_desc.Rotation {
+			DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => Box::new(
+				|row, col| row * map_pitch_n_pixels + col),
+			DXGI_MODE_ROTATION_ROTATE90 => Box::new(
+				|row, col| (output_width-1-col) * map_pitch_n_pixels + row),
+			DXGI_MODE_ROTATION_ROTATE180 => Box::new(
+				|row, col| (output_height-1-row) * map_pitch_n_pixels + (output_width-col-1)),
+			DXGI_MODE_ROTATION_ROTATE270 => Box::new(
+				|row, col| col * map_pitch_n_pixels + (output_height-row-1)) };
+
+		let mapped_pixels = unsafe {
+			slice::from_raw_parts(transmute(mapped_surface.pBits),
+				output_width * output_height * map_pitch_n_pixels) };
+		for row in 0..output_height {
+			for col in 0..output_width {
+				pixel_buf.push(mapped_pixels[pixel_index(row, col)]);
+			}
+		}
+
+		frame_surface.Unmap();
+
+		Ok(pixel_buf)
+	}
 }
 
 #[test]
 fn test() {
-	let mut factory = unsafe {
-		let mut factory: *mut c_void = ptr::null_mut();
-		assert_eq!(0, CreateDXGIFactory1(&IID_IDXGIFactory1, &mut factory));
-		UniqueCOMPtr::from_ptr(factory as *mut IDXGIFactory1) };
-
-	let adapters: Vec<_> = (0..).map(|i| {
-			let mut adapter = ptr::null_mut();
-			if factory.EnumAdapters1(i, &mut adapter) != DXGI_ERROR_NOT_FOUND {
-				Some(unsafe { UniqueCOMPtr::from_ptr(adapter) })
-			} else { None } })
-		.take_while(Option::is_some).map(Option::unwrap)
-		.collect();
-
-	let mut duplicated_outputs = Vec::with_capacity(4);
-
-	for (outputs, mut adapter) in adapters.into_iter()
-		.map(|mut adapter| (get_adater_outputs(&mut adapter), adapter))
-		.filter(|&(ref outs, _)| !outs.is_empty())
-	{
-		// Creating device for each adapter that has the output
-		let (d3d11_device, device_context) = unsafe {
-			let mut d3d11_device: *mut ID3D11Device = ptr::null_mut();
-			let mut device_context: *mut ID3D11DeviceContext = ptr::null_mut();
-			assert_eq!(0,
-				D3D11CreateDevice(mem::transmute::<&mut IDXGIAdapter1, _>(&mut adapter),
-					D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
-					ptr::null_mut(), 0, ptr::null_mut(), 0,
-					D3D11_SDK_VERSION,
-					&mut d3d11_device,
-					&mut D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_9_1,
-					&mut device_context));
-			(UniqueCOMPtr::from_ptr(d3d11_device as *mut ID3D11Device),
-				UniqueCOMPtr::from_ptr(device_context)) };
-
-		let (d3d11_device, output_duplications) = outputs.into_iter()
-			.map(|out| unsafe { out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap() })
-			.fold((d3d11_device, Vec::new()), |(d3d11_device, mut out_dups), mut output| {
-				let mut dxgi_device = unsafe {
-					d3d11_device.query_interface::<IDXGIDevice1>(&IID_IDXGIDevice1).unwrap() };
-
-				let duplicated_output = unsafe {
-					let mut duplicated_output: *mut IDXGIOutputDuplication = ptr::null_mut();
-					assert_eq!(0,
-						output.DuplicateOutput(
-							mem::transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
-							&mut duplicated_output));
-					UniqueCOMPtr::from_ptr(duplicated_output) };
-				out_dups.push((duplicated_output, output));
-				(unsafe { dxgi_device.query_interface::<ID3D11Device>(&IID_ID3D11Device).unwrap() },
-					out_dups)
-			});
-
-		let d3d11_device = Arc::new(Mutex::new(d3d11_device));
-		let device_context = Arc::new(Mutex::new(device_context));
-
-		for duplicated_output in output_duplications.into_iter()
-			.map(|(duplicated_output, output)| {
-				let (d3d11_device, device_context) = (d3d11_device.clone(), device_context.clone());
-
-				DuplicatedOutput { device: d3d11_device,
-					device_context: device_context,
-					output: output,
-					dxgi_output_dup: duplicated_output }
-			})
-		{
-			duplicated_outputs.push(duplicated_output);
-		}
-	}
-
-	for dup_out in &mut duplicated_outputs {
-		let desc = dup_out.get_desc();
-		println!("name: {}, coords: {:?}, attached: {:?}, rotation: {}",
-			c_utf16_to_string(&desc.DeviceName),
-			((desc.DesktopCoordinates.left, desc.DesktopCoordinates.top),
-				(desc.DesktopCoordinates.right, desc.DesktopCoordinates.bottom)),
-			desc.AttachedToDesktop, desc.Rotation as usize);
-	}
+	let mut manager = DXGIManager::new(Duration::milliseconds(200)).unwrap();
+	
+	println!("largest: {:?} ", manager.get_output_data().unwrap().into_iter().max().unwrap());
 }
