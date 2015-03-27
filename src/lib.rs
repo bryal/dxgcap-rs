@@ -22,7 +22,7 @@
 
 //! Capture the screen with DXGI in rust
 
-#![feature(libc, unique, unsafe_destructor, std_misc)]
+#![feature(libc, unsafe_destructor, std_misc)]
 #![allow(dead_code, non_snake_case)]
 
 extern crate libc;
@@ -32,9 +32,8 @@ extern crate dxgi;
 extern crate d3d11;
 
 use std::sync::{Arc, Mutex};
-use std::{ mem, slice };
+use std::{ mem, slice, ptr };
 use std::mem::{ transmute, zeroed };
-use std::ptr::{ self, Unique };
 use std::time::duration::Duration;
 use libc::c_void;
 use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL, E_ACCESSDENIED };
@@ -125,7 +124,7 @@ pub enum CaptureError {
 	// AcquireNextFrame timed out.
 	Timeout,
 	// General/Unexpected failure
-	Fail,
+	Fail(&'static str),
 }
 
 pub fn hr_failed(hr: HRESULT) -> bool { hr < 0 }
@@ -241,6 +240,8 @@ impl DuplicatedOutput {
 			.CopyResource(&mut *readable_surface,
 				&mut *unsafe { frame_texture.query_interface(&IID_ID3D11Resource).unwrap() });
 
+		self.dxgi_output_dup.ReleaseFrame();
+
 		unsafe { readable_surface.query_interface(&IID_IDXGISurface1) }
 	}
 
@@ -349,14 +350,14 @@ impl DXGIManager {
 			}
 		}
 
-		for dup_out in & self.duplicated_outputs {
-			let desc = dup_out.get_desc();
-			println!("name: {}, coords: {:?}, attached: {:?}, rotation: {}",
-				c_utf16_to_string(&desc.DeviceName),
-				((desc.DesktopCoordinates.left, desc.DesktopCoordinates.top),
-					(desc.DesktopCoordinates.right, desc.DesktopCoordinates.bottom)),
-				desc.AttachedToDesktop, desc.Rotation as usize);
-		}
+		// for dup_out in & self.duplicated_outputs {
+		// 	let desc = dup_out.get_desc();
+		// 	println!("name: {}, coords: {:?}, attached: {:?}, rotation: {}",
+		// 		c_utf16_to_string(&desc.DeviceName),
+		// 		((desc.DesktopCoordinates.left, desc.DesktopCoordinates.top),
+		// 			(desc.DesktopCoordinates.right, desc.DesktopCoordinates.bottom)),
+		// 		desc.AttachedToDesktop, desc.Rotation as usize);
+		// }
 	}
 
 	fn refresh_output(&mut self) -> Result<(), ()> {
@@ -396,7 +397,7 @@ impl DXGIManager {
 			self.duplicated_outputs[i].get_frame(timeout_ms)
 		} else {
 			if let Ok(_) = self.refresh_output() {
-				return Err(CaptureError::Fail)
+				return Err(CaptureError::Fail("No valid duplicated output"))
 			} else {
 				return Err(CaptureError::RefreshFailure)
 			}
@@ -405,13 +406,13 @@ impl DXGIManager {
 		match surface_result {
 			Ok(surface) => Ok(surface),
 			Err(DXGI_ERROR_ACCESS_LOST) => if let Ok(_) = self.refresh_output() {
-				Err(CaptureError::Fail)
+				Err(CaptureError::AccessLost)
 			} else {
 				Err(CaptureError::RefreshFailure) },
 			Err(E_ACCESSDENIED) => Err(CaptureError::AccessDenied),
 			Err(DXGI_ERROR_WAIT_TIMEOUT) => Err(CaptureError::Timeout),
-			Err(_) => if let Ok(_) = self.refresh_output() {
-				Err(CaptureError::Fail)
+			Err(e) => if let Ok(_) = self.refresh_output() {
+				Err(CaptureError::Fail("Failure when acquiring frame"))
 			} else {
 				Err(CaptureError::RefreshFailure) } }
 	}
@@ -426,7 +427,7 @@ impl DXGIManager {
 		let mut mapped_surface = unsafe { zeroed() };
 		if hr_failed(frame_surface.Map(&mut mapped_surface, DXGI_MAP_READ)) {
 			frame_surface.Release();
-			return Err(CaptureError::Fail);
+			return Err(CaptureError::Fail("Failed to map surface"));
 		}
 
 		let output_desc = self.get_duplicated_output().unwrap().get_desc();
@@ -466,6 +467,16 @@ impl DXGIManager {
 #[test]
 fn test() {
 	let mut manager = DXGIManager::new(Duration::milliseconds(200)).unwrap();
-	
-	println!("largest: {:?} ", manager.get_output_data().unwrap().into_iter().max().unwrap());
+	for 0..10 {
+		match manager.get_output_data() {
+			Ok(pixels) => {
+				let len = pixels.len() as u64;
+				let (r, g, b) = pixels.into_iter()
+					.fold((0u64, 0u64, 0u64), |(r, g, b), p|
+						(r+p.r as u64, g+p.g as u64, b+p.b as u64));
+				println!("avg: {} {} {}", r/len, g/len, b/len)
+			},
+			Err(e) => println!("error: {:?}", e)
+		}
+	}
 }
