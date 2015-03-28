@@ -30,8 +30,6 @@ extern crate winapi;
 extern crate dxgi;
 extern crate d3d11;
 
-use std::cell::RefCell;
-use std::rc::Rc;
 use std::{ mem, slice, ptr };
 use std::mem::{ transmute, zeroed };
 use std::time::duration::Duration;
@@ -190,9 +188,38 @@ pub fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGI
 		.collect()
 }
 
+fn output_is_primary(output: &IDXGIOutput1) -> bool {
+	unsafe {
+		let mut output_desc = zeroed();
+		transmute::<_, &mut IDXGIOutput1>(output).GetDesc(&mut output_desc);
+
+		let mut monitor_info: MONITORINFO = zeroed();
+		monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
+		GetMonitorInfoW(output_desc.Monitor, &mut monitor_info);
+
+		(monitor_info.dwFlags & 1) != 0
+	}
+}
+
+fn get_capture_source(
+	output_dups: Vec<(UniqueCOMPtr<IDXGIOutputDuplication>, UniqueCOMPtr<IDXGIOutput1>)>,
+	cs_index: usize)
+	-> Option<(UniqueCOMPtr<IDXGIOutputDuplication>, UniqueCOMPtr<IDXGIOutput1>)>
+{
+	if cs_index == 0 {
+		output_dups.into_iter().find(|&(_, ref out)| output_is_primary(&out))
+	} else {
+		output_dups.into_iter()
+			.filter(|&(_, ref out)| !output_is_primary(&out))
+			.nth(cs_index - 1)
+	}
+}
+
 struct DuplicatedOutput {
-	outputs: UniqueCOMPtr<IDXGIOutput1>,
-	output_duplications: UniqueCOMPtr<IDXGIOutputDuplication>,
+	device: UniqueCOMPtr<ID3D11Device>,
+	device_context: UniqueCOMPtr<ID3D11DeviceContext>,
+	output: UniqueCOMPtr<IDXGIOutput1>,
+	output_duplication: UniqueCOMPtr<IDXGIOutputDuplication>,
 }
 impl DuplicatedOutput {
 	fn get_desc(&self) -> DXGI_OUTPUT_DESC {
@@ -202,24 +229,18 @@ impl DuplicatedOutput {
 			desc
 		}
 	}
-}
 
-struct OutputDevice {
-	device: UniqueCOMPtr<ID3D11Device>,
-	device_context: UniqueCOMPtr<ID3D11DeviceContext>,
-	duplicated_outputs: Vec<DuplicatedOutput>,
-}
-impl OutputDevice {
 	fn get_frame(&mut self, timeout_ms: u32) -> Result<UniqueCOMPtr<IDXGISurface1>, HRESULT> {
 		let frame_resource = unsafe {
 			let mut frame_resource = ptr::null_mut();
 			let mut frame_info = zeroed();
-			let hr = self.dxgi_output_dup
+			let hr = self.output_duplication
 				.AcquireNextFrame(timeout_ms, &mut frame_info, &mut frame_resource);
 			if hr_failed(hr) {
 				return Err(hr);
 			}
-			UniqueCOMPtr::from_ptr(frame_resource) };
+			UniqueCOMPtr::from_ptr(frame_resource)
+		};
 
 		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> = unsafe {
 			frame_resource.query_interface(&IID_ID3D11Texture2D).unwrap()
@@ -236,7 +257,7 @@ impl OutputDevice {
 
 		let mut readable_texture = unsafe {
 			let mut readable_texture = ptr::null_mut();
-			let hr = self.device.borrow_mut()
+			let hr = self.device
 				.CreateTexture2D(&mut texture_desc, ptr::null(), &mut readable_texture);
 			if hr_failed(hr) {
 				return Err(hr);
@@ -252,75 +273,55 @@ impl OutputDevice {
 			let mut readable_surface =
 				readable_texture.query_interface(&IID_ID3D11Resource).unwrap();
 
-			self.device_context.borrow_mut().CopyResource(&mut *readable_surface,
+			self.device_context.CopyResource(&mut *readable_surface,
 				&mut *frame_texture.query_interface(&IID_ID3D11Resource).unwrap());
 
-			self.dxgi_output_dup.ReleaseFrame();
+			self.output_duplication.ReleaseFrame();
 
 			readable_surface.query_interface(&IID_IDXGISurface1)
 		}
 	}
 
 	fn release_frame(&mut self) -> Result<(), HRESULT> {
-		let hr = self.dxgi_output_dup.ReleaseFrame();
+		let hr = self.output_duplication.ReleaseFrame();
 		if hr_failed(hr) {
 			Err(hr)
 		} else {
 			Ok(())
 		}
 	}
-
-	fn is_primary(&self) -> bool {
-		unsafe {
-			let mut output_desc = zeroed();
-			transmute::<_, &mut Self>(self).output.GetDesc(&mut output_desc);
-			let mut monitor_info: MONITORINFO = zeroed();
-			monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
-			 GetMonitorInfoW(output_desc.Monitor, &mut monitor_info);
-
-			(monitor_info.dwFlags & 1) != 0
-		}
-	}
 }
 
 pub struct DXGIManager {
-	duplicated_output_i: Option<usize>,
-	duplicated_outputs: Vec<DuplicatedOutput>,
-	capture_source: usize,
-	output_rect: RECT,
-	frame_buf: Vec<u8>,
+	duplicated_output: Option<DuplicatedOutput>,
+	capture_source_index: usize,
 	timeout_ms: u32,
 }
 impl DXGIManager {
 	fn new(timeout: Duration) -> Result<DXGIManager, &'static str> {
-		let mut manager = DXGIManager{ duplicated_output_i: None,
-			duplicated_outputs: Vec::with_capacity(3),
-			capture_source: 0,
-			output_rect: RECT{ left: 0, top: 0, right: 0, bottom: 0 },
-			frame_buf: Vec::new(),
+		let mut manager = DXGIManager{ duplicated_output: None,
+			capture_source_index: 0,
 			timeout_ms: max(timeout.num_milliseconds(), 0) as u32 };
 
-		match manager.refresh_output() {
+		match manager.acquire_output_duplication() {
 			Ok(_) => Ok(manager),
 			Err(_) => Err("Failed to get outputs")
 		}
 	}
 
-	fn set_capture_source(&mut self, cs: usize) {
-		self.capture_source = cs;
-		self.refresh_output().unwrap()
+	fn set_capture_source_index(&mut self, cs: usize) {
+		self.capture_source_index = cs;
+		self.acquire_output_duplication().unwrap()
 	}
 
-	fn get_capture_source(&self) -> usize { self.capture_source }
+	fn get_capture_source_index(&self) -> usize { self.capture_source_index }
 
 	fn set_timeout(&mut self, t: Duration) {
 		self.timeout_ms = max(t.num_milliseconds(), 0) as u32
 	}
 
-	fn gather_output_duplications(&mut self) {
-		// clear output duplications
-		self.duplicated_output_i = None;
-		self.duplicated_outputs.clear();
+	fn acquire_output_duplication(&mut self) -> Result<(), ()> {
+		self.duplicated_output = None;
 
 		let mut factory = create_dxgi_factory_1();
 
@@ -359,88 +360,42 @@ impl DXGIManager {
 					})
 			};
 
-			let d3d11_device = Rc::new(RefCell::new(d3d11_device));
-			let device_context = Rc::new(RefCell::new(device_context));
-
-			for duplicated_output in output_duplications.into_iter()
-				.map(|(duplicated_output, output)| {
-					let (d3d11_device, device_context) =
-						(d3d11_device.clone(), device_context.clone());
-
-					DuplicatedOutput { device: d3d11_device,
-						device_context: device_context,
-						output: output,
-						dxgi_output_dup: duplicated_output }
-				})
+			if let Some((output_duplication, output)) =
+				get_capture_source(output_duplications, self.capture_source_index)
 			{
-				self.duplicated_outputs.push(duplicated_output);
+				self.duplicated_output = Some(DuplicatedOutput{
+					device: d3d11_device,
+					device_context: device_context,
+					output: output,
+					output_duplication: output_duplication
+				});
+				return Ok(())
 			}
 		}
 
-		// for dup_out in & self.duplicated_outputs {
-		// 	let desc = dup_out.get_desc();
-		// 	println!("name: {}, coords: {:?}, attached: {:?}, rotation: {}",
-		// 		c_utf16_to_string(&desc.DeviceName),
-		// 		((desc.DesktopCoordinates.left, desc.DesktopCoordinates.top),
-		// 			(desc.DesktopCoordinates.right, desc.DesktopCoordinates.bottom)),
-		// 		desc.AttachedToDesktop, desc.Rotation as usize);
-		// }
-	}
-
-	fn refresh_output(&mut self) -> Result<(), ()> {
-		self.gather_output_duplications();
-		self.duplicated_output_i = self.active_output_duplication_index();
-		if let None = self.duplicated_output_i {
-			Err(())
-		} else {
-			Ok(())
-		}
-	}
-
-	fn active_output_duplication_index(&self) -> Option<usize> {
-		if self.capture_source == 0 {
-			self.duplicated_outputs.iter().position(|o| o.is_primary())
-		} else {
-			self.duplicated_outputs.iter()
-				.enumerate()
-				.filter_map(|(i, out)| if out.is_primary() {
-					None
-				} else {
-					Some(i) })
-				.nth(self.capture_source - 1)
-		}
-	}
-
-	fn get_duplicated_output(&mut self) -> Option<&mut DuplicatedOutput> {
-		if let Some(i) = self.duplicated_output_i {
-			Some(&mut self.duplicated_outputs[i])
-		} else {
-			None
-		}
+		Err(())
 	}
 
 	fn get_frame(&mut self) -> Result<UniqueCOMPtr<IDXGISurface1>, CaptureError> {
-		let timeout_ms = self.timeout_ms;
-
-		let surface_result = if let Some(i) = self.duplicated_output_i {
-			self.duplicated_outputs[i].get_frame(timeout_ms)
-		} else {
-			if let Ok(_) = self.refresh_output() {
+		if let None = self.duplicated_output {
+			if let Ok(_) = self.acquire_output_duplication() {
 				return Err(CaptureError::Fail("No valid duplicated output"))
 			} else {
 				return Err(CaptureError::RefreshFailure)
 			}
-		};
+		}
 
-		match surface_result {
+		let timeout_ms = self.timeout_ms;
+
+		match self.duplicated_output.as_mut().unwrap().get_frame(timeout_ms) {
 			Ok(surface) => Ok(surface),
-			Err(DXGI_ERROR_ACCESS_LOST) => if let Ok(_) = self.refresh_output() {
+			Err(DXGI_ERROR_ACCESS_LOST) => if let Ok(_) = self.acquire_output_duplication() {
 				Err(CaptureError::AccessLost)
 			} else {
 				Err(CaptureError::RefreshFailure) },
 			Err(E_ACCESSDENIED) => Err(CaptureError::AccessDenied),
 			Err(DXGI_ERROR_WAIT_TIMEOUT) => Err(CaptureError::Timeout),
-			Err(_) => if let Ok(_) = self.refresh_output() {
+			Err(_) => if let Ok(_) = self.acquire_output_duplication() {
 				Err(CaptureError::Fail("Failure when acquiring frame"))
 			} else {
 				Err(CaptureError::RefreshFailure)
@@ -460,7 +415,7 @@ impl DXGIManager {
 			return Err(CaptureError::Fail("Failed to map surface"));
 		}
 
-		let output_desc = self.get_duplicated_output().unwrap().get_desc();
+		let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
 		let (output_width, output_height) = {
 			let RECT{ left, top, right, bottom } = output_desc.DesktopCoordinates;
 			((right - left) as usize, (bottom - top) as usize)
