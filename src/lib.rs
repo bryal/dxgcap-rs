@@ -85,8 +85,7 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 		if hr_failed(hr) {
 			Err(hr)
 		} else {
-			Ok(UniqueCOMPtr::from_ptr(interface as *mut U))
-		}
+			Ok(UniqueCOMPtr::from_ptr(interface as *mut U)) }
 	}
 }
 impl<T: IUnknownT> std::ops::Deref for UniqueCOMPtr<T> {
@@ -171,13 +170,14 @@ pub fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGI
 			let mut output = ptr::null_mut();
 			if hr_failed(adapter.EnumOutputs(i, &mut output)) {
 				None
-			} else {
-				let mut out_desc = unsafe { zeroed() };
-				unsafe { (*output).GetDesc(&mut out_desc) };
+			} else { unsafe {
+				let mut out_desc = zeroed();
+				(*output).GetDesc(&mut out_desc);
 
 				if out_desc.AttachedToDesktop != 0 {
-					Some(unsafe { UniqueCOMPtr::from_ptr(output) })
-				} else { None } } })
+					Some(UniqueCOMPtr::from_ptr(output))
+				} else {
+					None } } } })
 		.take_while(Option::is_some).map(Option::unwrap)
 		.collect()
 }
@@ -228,19 +228,20 @@ impl DuplicatedOutput {
 			}
 			UniqueCOMPtr::from_ptr(readable_texture) };
 
-		// Lower priorities causes stuff to be needlessly copied from gpu to ram, causing huge
-		// fluxuations on some systems.
+		// Lower priorities causes stuff to be needlessly copied from gpu to ram,
+		// causing huge fluxuations on some systems.
 		readable_texture.SetEvictionPriority(DXGI_RESOURCE_PRIORITY_MAXIMUM);
 
-		let mut readable_surface = unsafe {
-			readable_texture.query_interface(&IID_ID3D11Resource).unwrap() };
-		self.device_context.borrow_mut()
-			.CopyResource(&mut *readable_surface,
-				&mut *unsafe { frame_texture.query_interface(&IID_ID3D11Resource).unwrap() });
+		unsafe {
+			let mut readable_surface =
+				readable_texture.query_interface(&IID_ID3D11Resource).unwrap();
 
-		self.dxgi_output_dup.ReleaseFrame();
+			self.device_context.borrow_mut().CopyResource(&mut *readable_surface,
+				&mut *frame_texture.query_interface(&IID_ID3D11Resource).unwrap());
 
-		unsafe { readable_surface.query_interface(&IID_IDXGISurface1) }
+			self.dxgi_output_dup.ReleaseFrame();
+
+			readable_surface.query_interface(&IID_IDXGISurface1) }
 	}
 
 	fn release_frame(&mut self) -> Result<(), HRESULT> {
@@ -256,8 +257,7 @@ impl DuplicatedOutput {
 			monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
 			 GetMonitorInfoW(output_desc.Monitor, &mut monitor_info);
 
-			(monitor_info.dwFlags & 1) != 0
-		}
+			(monitor_info.dwFlags & 1) != 0 }
 	}
 }
 
@@ -280,8 +280,7 @@ impl DXGIManager {
 
 		match manager.refresh_output() {
 			Ok(_) => Ok(manager),
-			Err(_) => Err("Failed to get outputs")
-		}
+			Err(_) => Err("Failed to get outputs") }
 	}
 
 	fn set_capture_source(&mut self, cs: usize) {
@@ -291,7 +290,9 @@ impl DXGIManager {
 
 	fn get_capture_source(&self) -> usize { self.capture_source }
 
-	fn set_timeout(&mut self, t: Duration) { self.timeout_ms = max(t.num_milliseconds(), 0) as u32 }
+	fn set_timeout(&mut self, t: Duration) {
+		self.timeout_ms = max(t.num_milliseconds(), 0) as u32
+	}
 
 	fn gather_output_duplications(&mut self) {
 		// clear output duplications
@@ -313,30 +314,30 @@ impl DXGIManager {
 			// Creating device for each adapter that has the output
 			let (d3d11_device, device_context) = d3d11_create_device(&mut *adapter);
 
-			let (d3d11_device, output_duplications) = outputs.into_iter()
-				.map(|out| unsafe { out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap() })
+			let (d3d11_device, output_duplications) = unsafe { outputs.into_iter()
+				.map(|out| out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap())
 				.fold((d3d11_device, Vec::new()), |(d3d11_device, mut out_dups), mut output| {
-					let mut dxgi_device = unsafe {
-						d3d11_device.query_interface::<IDXGIDevice1>(&IID_IDXGIDevice1).unwrap() };
+					let mut dxgi_device =
+						d3d11_device.query_interface(&IID_IDXGIDevice1).unwrap();
 
-					let duplicated_output = unsafe {
-						let mut duplicated_output: *mut IDXGIOutputDuplication = ptr::null_mut();
+					let duplicated_output = {
+						let mut duplicated_output = ptr::null_mut();
 						assert_eq!(0,
 							output.DuplicateOutput(
 								transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
 								&mut duplicated_output));
 						UniqueCOMPtr::from_ptr(duplicated_output) };
+
 					out_dups.push((duplicated_output, output));
-					(unsafe { dxgi_device.query_interface::<ID3D11Device>(&IID_ID3D11Device).unwrap() },
-						out_dups)
-				});
+					(dxgi_device.query_interface(&IID_ID3D11Device).unwrap(), out_dups) }) };
 
 			let d3d11_device = Rc::new(RefCell::new(d3d11_device));
 			let device_context = Rc::new(RefCell::new(device_context));
 
 			for duplicated_output in output_duplications.into_iter()
 				.map(|(duplicated_output, output)| {
-					let (d3d11_device, device_context) = (d3d11_device.clone(), device_context.clone());
+					let (d3d11_device, device_context) =
+						(d3d11_device.clone(), device_context.clone());
 
 					DuplicatedOutput { device: d3d11_device,
 						device_context: device_context,
@@ -377,8 +378,7 @@ impl DXGIManager {
 					None
 				} else {
 					Some(i) })
-				.nth(self.capture_source - 1)
-		}
+				.nth(self.capture_source - 1) }
 	}
 
 	fn get_duplicated_output(&mut self) -> Option<&mut DuplicatedOutput> {
