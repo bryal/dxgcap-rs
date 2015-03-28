@@ -38,7 +38,7 @@ use std::time::duration::Duration;
 use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL, E_ACCESSDENIED };
 use dxgi::constants::*;
 use dxgi::interfaces::*;
-use dxgi::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC };
+use dxgi::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC, DXGI_MODE_ROTATION };
 use d3d11::constants::*;
 use d3d11::interfaces::*;
 use d3d11::{ D3D11_USAGE, D3D11_CPU_ACCESS_FLAG, D3D_DRIVER_TYPE,
@@ -107,8 +107,8 @@ impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
 		self.Release();
 	}
 }
-/// This is not actually necessarily thread safe. It's up to the user to guarantee that all
-/// pointers are uniquely owned.
+/// This is not actually necessarily thread safe.
+/// It's up to the user to guarantee that all pointers are uniquely owned.
 unsafe impl<T> Send for UniqueCOMPtr<T> { }
 
 /// Possible errors when capturing
@@ -150,15 +150,14 @@ fn d3d11_create_device<T: IDXGIAdapterT>(adapter: &mut T)
 	-> (UniqueCOMPtr<ID3D11Device>, UniqueCOMPtr<ID3D11DeviceContext>)
 {
 	unsafe {
-		let mut d3d11_device: *mut ID3D11Device = ptr::null_mut();
-		let mut device_context: *mut ID3D11DeviceContext = ptr::null_mut();
+		let (mut d3d11_device, mut device_context) = (ptr::null_mut(), ptr::null_mut());
 
 		let hr = D3D11CreateDevice(transmute(adapter),
-			D3D_DRIVER_TYPE::D3D_DRIVER_TYPE_UNKNOWN,
+			D3D_DRIVER_TYPE::UNKNOWN,
 			ptr::null_mut(), 0, ptr::null_mut(), 0,
 			D3D11_SDK_VERSION,
 			&mut d3d11_device,
-			&mut D3D_FEATURE_LEVEL::D3D_FEATURE_LEVEL_9_1,
+			&mut D3D_FEATURE_LEVEL::FL_9_1,
 			&mut device_context);
 		if hr_failed(hr) {
 			panic!("Failed to create d3d11 device and device context, {:x}", hr)
@@ -201,8 +200,8 @@ impl DuplicatedOutput {
 		let frame_resource = unsafe {
 			let mut frame_resource = ptr::null_mut();
 			let mut frame_info = zeroed();
-			let hr = self.dxgi_output_dup.AcquireNextFrame(timeout_ms, &mut frame_info,
-				&mut frame_resource);
+			let hr = self.dxgi_output_dup
+				.AcquireNextFrame(timeout_ms, &mut frame_info, &mut frame_resource);
 			if hr_failed(hr) {
 				return Err(hr);
 			}
@@ -215,9 +214,9 @@ impl DuplicatedOutput {
 		frame_texture.GetDesc(&mut texture_desc);
 
 		// Configure the description to make the texture readable
-		texture_desc.Usage = D3D11_USAGE::D3D11_USAGE_STAGING;
+		texture_desc.Usage = D3D11_USAGE::STAGING;
 		texture_desc.BindFlags = 0;
-		texture_desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_READ as u32;
+		texture_desc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::READ as u32;
 		texture_desc.MiscFlags = 0;
 
 		let mut readable_texture = unsafe {
@@ -417,8 +416,6 @@ impl DXGIManager {
 	}
 
 	fn get_output_data(&mut self) -> Result<Vec<BGRA8>, CaptureError> {
-		use dxgi::enumerations::DXGI_MODE_ROTATION::*;
-
 		let mut frame_surface = match self.get_frame() {
 			Ok(surface) => surface,
 			Err(e) => return Err(e) };
@@ -430,27 +427,27 @@ impl DXGIManager {
 		}
 
 		let output_desc = self.get_duplicated_output().unwrap().get_desc();
-		let output_rect = output_desc.DesktopCoordinates;
-		let output_width = (output_rect.right - output_rect.left) as usize;
-		let output_height = (output_rect.bottom - output_rect.top) as usize;
+		let (output_width, output_height) = {
+			let RECT{ left, top, right, bottom } = output_desc.DesktopCoordinates;
+			((right - left) as usize, (bottom - top) as usize) };
 
 		let map_pitch_n_pixels = mapped_surface.Pitch as usize / DXGI_PIXEL_SIZE as usize;
-
 		let mut pixel_buf = Vec::with_capacity(output_width * output_height);
 
 		let pixel_index: Box<Fn(usize, usize) -> usize> = match output_desc.Rotation {
-			DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => Box::new(
+			DXGI_MODE_ROTATION::IDENTITY | DXGI_MODE_ROTATION::UNSPECIFIED => Box::new(
 				|row, col| row * map_pitch_n_pixels + col),
-			DXGI_MODE_ROTATION_ROTATE90 => Box::new(
+			DXGI_MODE_ROTATION::ROTATE90 => Box::new(
 				|row, col| (output_width-1-col) * map_pitch_n_pixels + row),
-			DXGI_MODE_ROTATION_ROTATE180 => Box::new(
+			DXGI_MODE_ROTATION::ROTATE180 => Box::new(
 				|row, col| (output_height-1-row) * map_pitch_n_pixels + (output_width-col-1)),
-			DXGI_MODE_ROTATION_ROTATE270 => Box::new(
+			DXGI_MODE_ROTATION::ROTATE270 => Box::new(
 				|row, col| col * map_pitch_n_pixels + (output_height-row-1)) };
 
 		let mapped_pixels = unsafe {
 			slice::from_raw_parts(transmute(mapped_surface.pBits),
 				output_width * output_height * map_pitch_n_pixels) };
+
 		for row in 0..output_height {
 			for col in 0..output_width {
 				pixel_buf.push(mapped_pixels[pixel_index(row, col)]);
