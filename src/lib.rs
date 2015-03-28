@@ -22,10 +22,9 @@
 
 //! Capture the screen with DXGI in rust
 
-#![feature(libc, unsafe_destructor, std_misc)]
+#![feature(unsafe_destructor, std_misc)]
 #![allow(dead_code, non_snake_case)]
 
-extern crate libc;
 extern crate winapi;
 #[macro_use(c_mtdcall)]
 extern crate dxgi;
@@ -36,7 +35,6 @@ use std::rc::Rc;
 use std::{ mem, slice, ptr };
 use std::mem::{ transmute, zeroed };
 use std::time::duration::Duration;
-use libc::c_void;
 use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL, E_ACCESSDENIED };
 use dxgi::constants::*;
 use dxgi::interfaces::*;
@@ -82,7 +80,7 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 	pub unsafe fn query_interface<U>(mut self, interface_identifier: &IID)
 		-> Result<UniqueCOMPtr<U>, HRESULT> where U: IUnknownT
 	{
-		let mut interface: *mut c_void = ptr::null_mut();
+		let mut interface = ptr::null_mut();
 		let hr = self.QueryInterface(interface_identifier, &mut interface);
 		if hr_failed(hr) {
 			Err(hr)
@@ -139,7 +137,7 @@ fn max<T: PartialOrd>(a: T, b: T) -> T { if a > b { a } else { b } }
 
 fn create_dxgi_factory_1() -> UniqueCOMPtr<IDXGIFactory1> {
 	unsafe {
-		let mut factory: *mut c_void = ptr::null_mut();
+		let mut factory = ptr::null_mut();
 
 		let hr = CreateDXGIFactory1(&IID_IDXGIFactory1, &mut factory);
 		if hr_failed(hr) {
@@ -412,7 +410,7 @@ impl DXGIManager {
 				Err(CaptureError::RefreshFailure) },
 			Err(E_ACCESSDENIED) => Err(CaptureError::AccessDenied),
 			Err(DXGI_ERROR_WAIT_TIMEOUT) => Err(CaptureError::Timeout),
-			Err(e) => if let Ok(_) = self.refresh_output() {
+			Err(_) => if let Ok(_) = self.refresh_output() {
 				Err(CaptureError::Fail("Failure when acquiring frame"))
 			} else {
 				Err(CaptureError::RefreshFailure) } }
