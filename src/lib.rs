@@ -31,7 +31,8 @@ extern crate winapi;
 extern crate dxgi;
 extern crate d3d11;
 
-use std::sync::{Arc, Mutex};
+use std::cell::RefCell;
+use std::rc::Rc;
 use std::{ mem, slice, ptr };
 use std::mem::{ transmute, zeroed };
 use std::time::duration::Duration;
@@ -185,8 +186,8 @@ pub fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGI
 }
 
 struct DuplicatedOutput {
-	device: Arc<Mutex<UniqueCOMPtr<ID3D11Device>>>,
-	device_context: Arc<Mutex<UniqueCOMPtr<ID3D11DeviceContext>>>,
+	device: Rc<RefCell<UniqueCOMPtr<ID3D11Device>>>,
+	device_context: Rc<RefCell<UniqueCOMPtr<ID3D11DeviceContext>>>,
 	output: UniqueCOMPtr<IDXGIOutput1>,
 	dxgi_output_dup: UniqueCOMPtr<IDXGIOutputDuplication>,
 }
@@ -223,7 +224,7 @@ impl DuplicatedOutput {
 
 		let mut readable_texture = unsafe {
 			let mut readable_texture = ptr::null_mut();
-			let hr = self.device.lock().unwrap()
+			let hr = self.device.borrow_mut()
 				.CreateTexture2D(&mut texture_desc, ptr::null(), &mut readable_texture);
 			if hr_failed(hr) {
 				return Err(hr);
@@ -236,7 +237,7 @@ impl DuplicatedOutput {
 
 		let mut readable_surface = unsafe {
 			readable_texture.query_interface(&IID_ID3D11Resource).unwrap() };
-		self.device_context.lock().unwrap()
+		self.device_context.borrow_mut()
 			.CopyResource(&mut *readable_surface,
 				&mut *unsafe { frame_texture.query_interface(&IID_ID3D11Resource).unwrap() });
 
@@ -333,8 +334,8 @@ impl DXGIManager {
 						out_dups)
 				});
 
-			let d3d11_device = Arc::new(Mutex::new(d3d11_device));
-			let device_context = Arc::new(Mutex::new(device_context));
+			let d3d11_device = Rc::new(RefCell::new(d3d11_device));
+			let device_context = Rc::new(RefCell::new(device_context));
 
 			for duplicated_output in output_duplications.into_iter()
 				.map(|(duplicated_output, output)| {
@@ -467,7 +468,7 @@ impl DXGIManager {
 #[test]
 fn test() {
 	let mut manager = DXGIManager::new(Duration::milliseconds(200)).unwrap();
-	for 0..10 {
+	for _ in 0..10 {
 		match manager.get_output_data() {
 			Ok(pixels) => {
 				let len = pixels.len() as u64;
