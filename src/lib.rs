@@ -54,14 +54,14 @@ extern "C" {
 	fn GetMonitorInfoW(monitor: HMONITOR, monitor_info: *mut MONITORINFO) -> BOOL;
 }
 
-const DXGI_PIXEL_SIZE: u32 = 4; // BGRA8 => 4 bytes, DXGI default
+pub const DXGI_PIXEL_SIZE: u32 = 4; // BGRA8 => 4 bytes, DXGI default
 
-#[derive(Copy, Debug, PartialOrd, PartialEq, Eq, Ord)]
-struct BGRA8 {
-	b: u8,
-	g: u8,
-	r: u8,
-	a: u8,
+#[derive(Copy, Clone, Debug, PartialOrd, PartialEq, Eq, Ord)]
+pub struct BGRA8 {
+	pub b: u8,
+	pub g: u8,
+	pub r: u8,
+	pub a: u8,
 }
 
 /// A unique pointer to a COM object. Handles refcounting.
@@ -168,7 +168,7 @@ fn d3d11_create_device<T: IDXGIAdapterT>(adapter: &mut T)
 	}
 }
 
-pub fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGIOutput>> {
+fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGIOutput>> {
 	(0..).map(|i| unsafe {
 			let mut output = ptr::null_mut();
 			if hr_failed(adapter.EnumOutputs(i, &mut output)) {
@@ -212,6 +212,31 @@ fn get_capture_source(
 		output_dups.into_iter()
 			.filter(|&(_, ref out)| !output_is_primary(&out))
 			.nth(cs_index - 1)
+	}
+}
+
+fn duplicate_outputs(device: UniqueCOMPtr<ID3D11Device>, outputs: Vec<UniqueCOMPtr<IDXGIOutput>>)
+	-> (UniqueCOMPtr<ID3D11Device>,
+		Vec<(UniqueCOMPtr<IDXGIOutputDuplication>, UniqueCOMPtr<IDXGIOutput1>)>)
+{
+	unsafe {
+		outputs.into_iter()
+			.map(|out| out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap())
+			.fold((device, Vec::new()), |(device, mut out_dups), mut output| {
+				let mut dxgi_device =
+					device.query_interface(&IID_IDXGIDevice1).unwrap();
+
+				let output_duplication = {
+					let mut output_duplication = ptr::null_mut();
+					assert_eq!(0,
+						output.DuplicateOutput(
+							transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
+							&mut output_duplication));
+					UniqueCOMPtr::from_ptr(output_duplication) };
+
+				out_dups.push((output_duplication, output));
+				(dxgi_device.query_interface(&IID_ID3D11Device).unwrap(), out_dups)
+			})
 	}
 }
 
@@ -298,7 +323,7 @@ pub struct DXGIManager {
 	timeout_ms: u32,
 }
 impl DXGIManager {
-	fn new(timeout: Duration) -> Result<DXGIManager, &'static str> {
+	pub fn new(timeout: Duration) -> Result<DXGIManager, &'static str> {
 		let mut manager = DXGIManager{ duplicated_output: None,
 			capture_source_index: 0,
 			timeout_ms: max(timeout.num_milliseconds(), 0) as u32 };
@@ -309,18 +334,18 @@ impl DXGIManager {
 		}
 	}
 
-	fn set_capture_source_index(&mut self, cs: usize) {
+	pub fn set_capture_source_index(&mut self, cs: usize) {
 		self.capture_source_index = cs;
 		self.acquire_output_duplication().unwrap()
 	}
 
-	fn get_capture_source_index(&self) -> usize { self.capture_source_index }
+	pub fn get_capture_source_index(&self) -> usize { self.capture_source_index }
 
-	fn set_timeout(&mut self, t: Duration) {
+	pub fn set_timeout(&mut self, t: Duration) {
 		self.timeout_ms = max(t.num_milliseconds(), 0) as u32
 	}
 
-	fn acquire_output_duplication(&mut self) -> Result<(), ()> {
+	pub fn acquire_output_duplication(&mut self) -> Result<(), ()> {
 		self.duplicated_output = None;
 
 		let mut factory = create_dxgi_factory_1();
@@ -340,25 +365,7 @@ impl DXGIManager {
 			// Creating device for each adapter that has the output
 			let (d3d11_device, device_context) = d3d11_create_device(&mut *adapter);
 
-			let (d3d11_device, output_duplications) = unsafe {
-				outputs.into_iter()
-					.map(|out| out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap())
-					.fold((d3d11_device, Vec::new()), |(d3d11_device, mut out_dups), mut output| {
-						let mut dxgi_device =
-							d3d11_device.query_interface(&IID_IDXGIDevice1).unwrap();
-
-						let duplicated_output = {
-							let mut duplicated_output = ptr::null_mut();
-							assert_eq!(0,
-								output.DuplicateOutput(
-									transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
-									&mut duplicated_output));
-							UniqueCOMPtr::from_ptr(duplicated_output) };
-
-						out_dups.push((duplicated_output, output));
-						(dxgi_device.query_interface(&IID_ID3D11Device).unwrap(), out_dups)
-					})
-			};
+			let (d3d11_device, output_duplications) = duplicate_outputs(d3d11_device, outputs);
 
 			if let Some((output_duplication, output)) =
 				get_capture_source(output_duplications, self.capture_source_index)
@@ -403,7 +410,7 @@ impl DXGIManager {
 		}
 	}
 
-	fn get_output_data(&mut self) -> Result<Vec<BGRA8>, CaptureError> {
+	pub fn get_output_data(&mut self) -> Result<(Vec<BGRA8>, (usize, usize)), CaptureError> {
 		let mut frame_surface = match self.get_frame() {
 			Ok(surface) => surface,
 			Err(e) => return Err(e)
@@ -448,7 +455,7 @@ impl DXGIManager {
 
 		frame_surface.Unmap();
 
-		Ok(pixel_buf)
+		Ok((pixel_buf, (output_width, output_height)))
 	}
 }
 
