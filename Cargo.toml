@@ -12,9 +12,7 @@ license = "MIT"
 winapi = "*"
 
 [dependencies.dxgi]
-# git = "https://github.com/bryal/dxgi-rs"
-path = "../dxgi-rs"
+git = "https://github.com/bryal/dxgi-rs"
 
 [dependencies.d3d11]
-# git = "https://github.com/bryal/d3d11-rs"
-path = "../d3d11-rs"
+git = "https://github.com/bryal/d3d11-rs"
