@@ -43,7 +43,7 @@
     <section id='main' class="content enum">
 <h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>dxgcap</a>::<wbr><a class='enum' href=''>CaptureError</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1112' class='srclink' href='../src/dxgcap/lib.rs.html#111-122'>[src]</a></span></h1>
+        </span><a id='src-1112' class='srclink' href='../src/dxgcap/lib.rs.html#133-144'>[src]</a></span></h1>
 <pre class='rust enum'>pub enum CaptureError {
     AccessDenied,
     AccessLost,
@@ -52,7 +52,12 @@
     Fail(&amp;'static <a href='http://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
 }</pre><div class='docblock'><p>Possible errors when capturing</p>
 </div><h2 class='variants'>Variants</h2>
-<table><tr><td id='variant.AccessDenied'><code>AccessDenied</code></td><td></td></tr><tr><td id='variant.AccessLost'><code>AccessLost</code></td><td></td></tr><tr><td id='variant.RefreshFailure'><code>RefreshFailure</code></td><td></td></tr><tr><td id='variant.Timeout'><code>Timeout</code></td><td></td></tr><tr><td id='variant.Fail'><code>Fail</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../dxgcap/enum.CaptureError.html' title='dxgcap::CaptureError'>CaptureError</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+<table><tr><td id='variant.AccessDenied'><code>AccessDenied</code></td><td><div class='docblock'><p>Could not duplicate output, access denied. Might be in protected fullscreen.</p>
+</div></td></tr><tr><td id='variant.AccessLost'><code>AccessLost</code></td><td><div class='docblock'><p>Access to the duplicated output was lost. Likely, mode was changed e.g. window =&gt; full</p>
+</div></td></tr><tr><td id='variant.RefreshFailure'><code>RefreshFailure</code></td><td><div class='docblock'><p>Error when trying to refresh outputs after some failure.</p>
+</div></td></tr><tr><td id='variant.Timeout'><code>Timeout</code></td><td><div class='docblock'><p>AcquireNextFrame timed out.</p>
+</div></td></tr><tr><td id='variant.Fail'><code>Fail</code></td><td><div class='docblock'><p>General/Unexpected failure</p>
+</div></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../dxgcap/enum.CaptureError.html' title='dxgcap::CaptureError'>CaptureError</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
