@@ -26,20 +26,19 @@
 #![allow(dead_code, non_snake_case)]
 
 extern crate winapi;
-#[macro_use(c_mtdcall)]
-extern crate dxgi;
-extern crate d3d11;
+extern crate dxgi_win;
+extern crate d3d11_win;
 
 use std::{ mem, slice, ptr };
 use std::mem::{ transmute, zeroed };
 use std::time::duration::Duration;
-use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL, E_ACCESSDENIED };
-use dxgi::constants::*;
-use dxgi::interfaces::*;
-use dxgi::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC, DXGI_MODE_ROTATION };
-use d3d11::constants::*;
-use d3d11::interfaces::*;
-use d3d11::{ D3D11_USAGE, D3D11_CPU_ACCESS_FLAG, D3D_DRIVER_TYPE,
+use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL };
+use dxgi_win::constants::*;
+use dxgi_win::interfaces::*;
+use dxgi_win::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC, DXGI_MODE_ROTATION };
+use d3d11_win::constants::*;
+use d3d11_win::interfaces::*;
+use d3d11_win::{ D3D11_USAGE, D3D11_CPU_ACCESS_FLAG, D3D_DRIVER_TYPE,
 	D3D_FEATURE_LEVEL, D3D11CreateDevice };
 
 #[repr(C)] struct MONITORINFO {
@@ -339,7 +338,9 @@ impl DXGIManager {
 		self.acquire_output_duplication().unwrap()
 	}
 
-	pub fn get_capture_source_index(&self) -> usize { self.capture_source_index }
+	pub fn get_capture_source_index(&self) -> usize {
+		self.capture_source_index
+	}
 
 	pub fn set_timeout(&mut self, t: Duration) {
 		self.timeout_ms = max(t.num_milliseconds(), 0) as u32
@@ -464,7 +465,7 @@ fn test() {
 	let mut manager = DXGIManager::new(Duration::milliseconds(200)).unwrap();
 	for _ in 0..10 {
 		match manager.get_output_data() {
-			Ok(pixels) => {
+			Ok((pixels, (_, _))) => {
 				let len = pixels.len() as u64;
 				let (r, g, b) = pixels.into_iter()
 					.fold((0u64, 0u64, 0u64), |(r, g, b), p|
