@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ID3D10Blob",""],["ID3D10BlobVtbl",""],["ID3DInclude",""],["ID3DIncludeVtbl",""],["ID3DUserDefinedAnnotation",""],["ID3DUserDefinedAnnotationVtbl",""]],"trait":[["ID3D10BlobT",""],["ID3DIncludeT",""],["ID3DUserDefinedAnnotationT",""]],"type":[["ID3DBlob",""]]});

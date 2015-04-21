@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `E:\Dropbox\Program\Rust\d3d11-rs\src\core\enumerations.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>enumerations.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
+<span id="354">354</span>
+<span id="355">355</span>
+<span id="356">356</span>
+<span id="357">357</span>
+<span id="358">358</span>
+<span id="359">359</span>
+<span id="360">360</span>
+<span id="361">361</span>
+<span id="362">362</span>
+<span id="363">363</span>
+<span id="364">364</span>
+<span id="365">365</span>
+<span id="366">366</span>
+<span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+</pre><pre class='rust '>
+<span class='comment'>// The MIT License (MIT)</span>
+<span class='comment'>//</span>
+<span class='comment'>// Copyright (c) 2015 Johan Johansson</span>
+<span class='comment'>//</span>
+<span class='comment'>// Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class='comment'>// of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class='comment'>// in the Software without restriction, including without limitation the rights</span>
+<span class='comment'>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class='comment'>// copies of the Software, and to permit persons to whom the Software is</span>
+<span class='comment'>// furnished to do so, subject to the following conditions:</span>
+<span class='comment'>//</span>
+<span class='comment'>// The above copyright notice and this permission notice shall be included in</span>
+<span class='comment'>// all copies or substantial portions of the Software.</span>
+<span class='comment'>//</span>
+<span class='comment'>// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class='comment'>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class='comment'>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class='comment'>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class='comment'>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class='comment'>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class='comment'>// THE SOFTWARE.</span>
+
+<span class='doccomment'>//! Core Enumerations provided by D3D11</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # References</span>
+<span class='doccomment'>//! [D3D11 Core Enumerations, MSDN]</span>
+<span class='doccomment'>//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476152(v =vs.85).aspx)</span>
+
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_snake_case</span>, <span class='ident'>non_camel_case_types</span>)]</span>
+
+<span class='comment'>// CORE ENUMERATIONS</span>
+
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_ASYNC_GETDATA_FLAG</span> {
+	<span class='ident'>D3D11_ASYNC_GETDATA_DONOTFLUSH</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_BLEND</span> {
+	<span class='ident'>D3D11_BLEND_ZERO</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_BLEND_ONE</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_BLEND_SRC_COLOR</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_BLEND_INV_SRC_COLOR</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_BLEND_SRC_ALPHA</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_BLEND_INV_SRC_ALPHA</span> <span class='op'>=</span> <span class='number'>6</span>,
+	<span class='ident'>D3D11_BLEND_DEST_ALPHA</span> <span class='op'>=</span> <span class='number'>7</span>,
+	<span class='ident'>D3D11_BLEND_INV_DEST_ALPHA</span> <span class='op'>=</span> <span class='number'>8</span>,
+	<span class='ident'>D3D11_BLEND_DEST_COLOR</span> <span class='op'>=</span> <span class='number'>9</span>,
+	<span class='ident'>D3D11_BLEND_INV_DEST_COLOR</span> <span class='op'>=</span> <span class='number'>10</span>,
+	<span class='ident'>D3D11_BLEND_SRC_ALPHA_SAT</span> <span class='op'>=</span> <span class='number'>11</span>,
+	<span class='ident'>D3D11_BLEND_BLEND_FACTOR</span> <span class='op'>=</span> <span class='number'>14</span>,
+	<span class='ident'>D3D11_BLEND_INV_BLEND_FACTOR</span> <span class='op'>=</span> <span class='number'>15</span>,
+	<span class='ident'>D3D11_BLEND_SRC1_COLOR</span> <span class='op'>=</span> <span class='number'>16</span>,
+	<span class='ident'>D3D11_BLEND_INV_SRC1_COLOR</span> <span class='op'>=</span> <span class='number'>17</span>,
+	<span class='ident'>D3D11_BLEND_SRC1_ALPHA</span> <span class='op'>=</span> <span class='number'>18</span>,
+	<span class='ident'>D3D11_BLEND_INV_SRC1_ALPHA</span> <span class='op'>=</span> <span class='number'>19</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_BLEND_OP</span> {
+	<span class='ident'>D3D11_BLEND_OP_ADD</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_BLEND_OP_SUBTRACT</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_BLEND_OP_REV_SUBTRACT</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_BLEND_OP_MIN</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_BLEND_OP_MAX</span> <span class='op'>=</span> <span class='number'>5</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_CLEAR_FLAG</span> {
+	<span class='ident'>D3D11_CLEAR_DEPTH</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_CLEAR_STENCIL</span> <span class='op'>=</span> <span class='number'>0x2</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_COLOR_WRITE_ENABLE</span> {
+	<span class='ident'>D3D11_COLOR_WRITE_ENABLE_RED</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_COLOR_WRITE_ENABLE_GREEN</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_COLOR_WRITE_ENABLE_BLUE</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_COLOR_WRITE_ENABLE_ALPHA</span> <span class='op'>=</span> <span class='number'>8</span>,
+	<span class='ident'>D3D11_COLOR_WRITE_ENABLE_ALL</span> <span class='op'>=</span> (((<span class='ident'>D3D11_COLOR_WRITE_ENABLE</span>::<span class='ident'>D3D11_COLOR_WRITE_ENABLE_RED</span> <span class='kw'>as</span> <span class='ident'>isize</span> <span class='op'>|</span>
+		<span class='ident'>D3D11_COLOR_WRITE_ENABLE</span>::<span class='ident'>D3D11_COLOR_WRITE_ENABLE_GREEN</span> <span class='kw'>as</span> <span class='ident'>isize</span>) <span class='op'>|</span>
+			<span class='ident'>D3D11_COLOR_WRITE_ENABLE</span>::<span class='ident'>D3D11_COLOR_WRITE_ENABLE_BLUE</span> <span class='kw'>as</span> <span class='ident'>isize</span>) <span class='op'>|</span>
+				<span class='ident'>D3D11_COLOR_WRITE_ENABLE</span>::<span class='ident'>D3D11_COLOR_WRITE_ENABLE_ALPHA</span> <span class='kw'>as</span> <span class='ident'>isize</span>)
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_COMPARISON_FUNC</span> {
+	<span class='ident'>D3D11_COMPARISON_NEVER</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_COMPARISON_LESS</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_COMPARISON_EQUAL</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_COMPARISON_LESS_EQUAL</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_COMPARISON_GREATER</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_COMPARISON_NOT_EQUAL</span> <span class='op'>=</span> <span class='number'>6</span>,
+	<span class='ident'>D3D11_COMPARISON_GREATER_EQUAL</span> <span class='op'>=</span> <span class='number'>7</span>,
+	<span class='ident'>D3D11_COMPARISON_ALWAYS</span> <span class='op'>=</span> <span class='number'>8</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_COPY_FLAGS</span> {
+	<span class='ident'>D3D11_COPY_NO_OVERWRITE</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_COPY_DISCARD</span> <span class='op'>=</span> <span class='number'>0x2</span>
+}
+
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_COUNTER</span> {
+	<span class='ident'>D3D11_COUNTER_DEVICE_DEPENDENT_0</span> <span class='op'>=</span> <span class='number'>0x40000000</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_COUNTER_TYPE</span> {
+	<span class='ident'>D3D11_COUNTER_TYPE_FLOAT32</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_COUNTER_TYPE_UINT16</span>,
+	<span class='ident'>D3D11_COUNTER_TYPE_UINT32</span>,
+	<span class='ident'>D3D11_COUNTER_TYPE_UINT64</span>,
+}
+
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_1_CREATE_DEVICE_CONTEXT_STATE_FLAG</span> {
+	<span class='ident'>D3D11_1_CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_CULL_MODE</span> {
+	<span class='ident'>D3D11_CULL_NONE</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_CULL_FRONT</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_CULL_BACK</span> <span class='op'>=</span> <span class='number'>3</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_DEPTH_WRITE_MASK</span> {
+	<span class='ident'>D3D11_DEPTH_WRITE_MASK_ZERO</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_DEPTH_WRITE_MASK_ALL</span> <span class='op'>=</span> <span class='number'>1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_DEVICE_CONTEXT_TYPE</span> {
+	<span class='ident'>D3D11_DEVICE_CONTEXT_IMMEDIATE</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_DEVICE_CONTEXT_DEFERRED</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FEATURE</span> {
+	<span class='ident'>D3D11_FEATURE_THREADING</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_FEATURE_DOUBLES</span>,
+	<span class='ident'>D3D11_FEATURE_FORMAT_SUPPORT</span>,
+	<span class='ident'>D3D11_FEATURE_FORMAT_SUPPORT2</span>,
+	<span class='ident'>D3D11_FEATURE_D3D10_X_HARDWARE_OPTIONS</span>,
+	<span class='ident'>D3D11_FEATURE_D3D11_OPTIONS</span>,
+	<span class='ident'>D3D11_FEATURE_ARCHITECTURE_INFO</span>,
+	<span class='ident'>D3D11_FEATURE_D3D9_OPTIONS</span>,
+	<span class='ident'>D3D11_FEATURE_SHADER_MIN_PRECISION_SUPPORT</span>,
+	<span class='ident'>D3D11_FEATURE_D3D9_SHADOW_SUPPORT</span>,
+	<span class='ident'>D3D11_FEATURE_D3D11_OPTIONS1</span>,
+	<span class='ident'>D3D11_FEATURE_D3D9_SIMPLE_INSTANCING_SUPPORT</span>,
+	<span class='ident'>D3D11_FEATURE_MARKER_SUPPORT</span>,
+	<span class='ident'>D3D11_FEATURE_D3D9_OPTIONS1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FILL_MODE</span> {
+	<span class='ident'>D3D11_FILL_WIREFRAME</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_FILL_SOLID</span> <span class='op'>=</span> <span class='number'>3</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FILTER</span> {
+	<span class='ident'>D3D11_FILTER_MIN_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_FILTER_MIN_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+	<span class='ident'>D3D11_FILTER_MIN_POINT_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x5</span>,
+	<span class='ident'>D3D11_FILTER_MIN_LINEAR_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x10</span>,
+	<span class='ident'>D3D11_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x11</span>,
+	<span class='ident'>D3D11_FILTER_MIN_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x14</span>,
+	<span class='ident'>D3D11_FILTER_MIN_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x15</span>,
+	<span class='ident'>D3D11_FILTER_ANISOTROPIC</span> <span class='op'>=</span> <span class='number'>0x55</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x81</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x84</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_POINT_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x85</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x90</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_LINEAR_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x91</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x94</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_MIN_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x95</span>,
+	<span class='ident'>D3D11_FILTER_COMPARISON_ANISOTROPIC</span> <span class='op'>=</span> <span class='number'>0xd5</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x100</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x101</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x104</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_POINT_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x105</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x110</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x111</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x114</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_MIN_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x115</span>,
+	<span class='ident'>D3D11_FILTER_MINIMUM_ANISOTROPIC</span> <span class='op'>=</span> <span class='number'>0x155</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x180</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x181</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x184</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_POINT_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x185</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x190</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_LINEAR_MAG_POINT_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x191</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_MAG_LINEAR_MIP_POINT</span> <span class='op'>=</span> <span class='number'>0x194</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_MIN_MAG_MIP_LINEAR</span> <span class='op'>=</span> <span class='number'>0x195</span>,
+	<span class='ident'>D3D11_FILTER_MAXIMUM_ANISOTROPIC</span> <span class='op'>=</span> <span class='number'>0x1d5</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FILTER_TYPE</span> {
+	<span class='ident'>D3D11_FILTER_TYPE_POINT</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_FILTER_TYPE_LINEAR</span> <span class='op'>=</span> <span class='number'>1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FORMAT_SUPPORT</span> {
+	<span class='ident'>D3D11_FORMAT_SUPPORT_BUFFER</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SO_BUFFER</span> <span class='op'>=</span> <span class='number'>0x8</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_TEXTURE1D</span> <span class='op'>=</span> <span class='number'>0x10</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_TEXTURE2D</span> <span class='op'>=</span> <span class='number'>0x20</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_TEXTURE3D</span> <span class='op'>=</span> <span class='number'>0x40</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_TEXTURECUBE</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_LOAD</span> <span class='op'>=</span> <span class='number'>0x100</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE</span> <span class='op'>=</span> <span class='number'>0x200</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON</span> <span class='op'>=</span> <span class='number'>0x400</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT</span> <span class='op'>=</span> <span class='number'>0x800</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_MIP</span> <span class='op'>=</span> <span class='number'>0x1000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_MIP_AUTOGEN</span> <span class='op'>=</span> <span class='number'>0x2000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_RENDER_TARGET</span> <span class='op'>=</span> <span class='number'>0x4000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_BLENDABLE</span> <span class='op'>=</span> <span class='number'>0x8000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_DEPTH_STENCIL</span> <span class='op'>=</span> <span class='number'>0x10000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_CPU_LOCKABLE</span> <span class='op'>=</span> <span class='number'>0x20000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE</span> <span class='op'>=</span> <span class='number'>0x40000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_DISPLAY</span> <span class='op'>=</span> <span class='number'>0x80000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT</span> <span class='op'>=</span> <span class='number'>0x100000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET</span> <span class='op'>=</span> <span class='number'>0x200000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD</span> <span class='op'>=</span> <span class='number'>0x400000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_GATHER</span> <span class='op'>=</span> <span class='number'>0x800000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST</span> <span class='op'>=</span> <span class='number'>0x1000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW</span> <span class='op'>=</span> <span class='number'>0x2000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON</span> <span class='op'>=</span> <span class='number'>0x4000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_DECODER_OUTPUT</span> <span class='op'>=</span> <span class='number'>0x8000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT</span> <span class='op'>=</span> <span class='number'>0x10000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT</span> <span class='op'>=</span> <span class='number'>0x20000000</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT_VIDEO_ENCODER</span> <span class='op'>=</span> <span class='number'>0x40000000</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_FORMAT_SUPPORT2</span> {
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE</span> <span class='op'>=</span> <span class='number'>0x8</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX</span> <span class='op'>=</span> <span class='number'>0x10</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX</span> <span class='op'>=</span> <span class='number'>0x20</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD</span> <span class='op'>=</span> <span class='number'>0x40</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP</span> <span class='op'>=</span> <span class='number'>0x100</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_TILED</span> <span class='op'>=</span> <span class='number'>0x200</span>,
+	<span class='ident'>D3D11_FORMAT_SUPPORT2_SHAREABLE</span> <span class='op'>=</span> <span class='number'>0x400</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_INPUT_CLASSIFICATION</span> {
+	<span class='ident'>D3D11_INPUT_PER_VERTEX_DATA</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_INPUT_PER_INSTANCE_DATA</span> <span class='op'>=</span> <span class='number'>1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_LOGIC_OP</span> {
+	<span class='ident'>D3D11_LOGIC_OP_CLEAR</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_LOGIC_OP_SET</span>,
+	<span class='ident'>D3D11_LOGIC_OP_COPY</span>,
+	<span class='ident'>D3D11_LOGIC_OP_COPY_INVERTED</span>,
+	<span class='ident'>D3D11_LOGIC_OP_NOOP</span>,
+	<span class='ident'>D3D11_LOGIC_OP_INVERT</span>,
+	<span class='ident'>D3D11_LOGIC_OP_AND</span>,
+	<span class='ident'>D3D11_LOGIC_OP_NAND</span>,
+	<span class='ident'>D3D11_LOGIC_OP_OR</span>,
+	<span class='ident'>D3D11_LOGIC_OP_NOR</span>,
+	<span class='ident'>D3D11_LOGIC_OP_XOR</span>,
+	<span class='ident'>D3D11_LOGIC_OP_EQUIV</span>,
+	<span class='ident'>D3D11_LOGIC_OP_AND_REVERSE</span>,
+	<span class='ident'>D3D11_LOGIC_OP_AND_INVERTED</span>,
+	<span class='ident'>D3D11_LOGIC_OP_OR_REVERSE</span>,
+	<span class='ident'>D3D11_LOGIC_OP_OR_INVERTED</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_PRIMITIVE_TOPOLOGY</span> { 
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_UNDEFINED</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_POINTLIST</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_LINELIST</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_LINELIST_ADJ</span> <span class='op'>=</span> <span class='number'>10</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ</span> <span class='op'>=</span> <span class='number'>11</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ</span> <span class='op'>=</span> <span class='number'>12</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ</span> <span class='op'>=</span> <span class='number'>13</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_1_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>33</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_2_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>34</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_3_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>35</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_4_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>36</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_5_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>37</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_6_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>38</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_7_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>39</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_8_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>40</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_9_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>41</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_10_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>42</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_11_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>43</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_12_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>44</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_13_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>45</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_14_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>46</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_15_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>47</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_16_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>48</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_17_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>49</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_18_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>50</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_19_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>51</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_20_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>52</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_21_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>53</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_22_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>54</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_23_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>55</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_24_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>56</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_25_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>57</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_26_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>58</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_27_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>59</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_28_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>60</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_29_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>61</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_30_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>62</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_31_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>63</span>,
+	<span class='ident'>D3D11_PRIMITIVE_TOPOLOGY_32_CONTROL_POINT_PATCHLIST</span> <span class='op'>=</span> <span class='number'>64</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_QUERY</span> {
+	<span class='ident'>D3D11_QUERY_EVENT</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_QUERY_OCCLUSION</span>,
+	<span class='ident'>D3D11_QUERY_TIMESTAMP</span>,
+	<span class='ident'>D3D11_QUERY_TIMESTAMP_DISJOINT</span>,
+	<span class='ident'>D3D11_QUERY_PIPELINE_STATISTICS</span>,
+	<span class='ident'>D3D11_QUERY_OCCLUSION_PREDICATE</span>,
+	<span class='ident'>D3D11_QUERY_SO_STATISTICS</span>,
+	<span class='ident'>D3D11_QUERY_SO_OVERFLOW_PREDICATE</span>,
+	<span class='ident'>D3D11_QUERY_SO_STATISTICS_STREAM0</span>,
+	<span class='ident'>D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM0</span>,
+	<span class='ident'>D3D11_QUERY_SO_STATISTICS_STREAM1</span>,
+	<span class='ident'>D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM1</span>,
+	<span class='ident'>D3D11_QUERY_SO_STATISTICS_STREAM2</span>,
+	<span class='ident'>D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM2</span>,
+	<span class='ident'>D3D11_QUERY_SO_STATISTICS_STREAM3</span>,
+	<span class='ident'>D3D11_QUERY_SO_OVERFLOW_PREDICATE_STREAM3</span>
+}
+
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_QUERY_MISC_FLAG</span> {
+	<span class='ident'>D3D11_QUERY_MISC_PREDICATEHINT</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_RAISE_FLAG</span> {
+	<span class='ident'>D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_SHADER_MIN_PRECISION_SUPPORT</span> {
+	<span class='ident'>D3D11_SHADER_MIN_PRECISION_10_BIT</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_SHADER_MIN_PRECISION_16_BIT</span> <span class='op'>=</span> <span class='number'>0x2</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_STENCIL_OP</span> {
+	<span class='ident'>D3D11_STENCIL_OP_KEEP</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_STENCIL_OP_ZERO</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_STENCIL_OP_REPLACE</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_STENCIL_OP_INCR_SAT</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_STENCIL_OP_DECR_SAT</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_STENCIL_OP_INVERT</span> <span class='op'>=</span> <span class='number'>6</span>,
+	<span class='ident'>D3D11_STENCIL_OP_INCR</span> <span class='op'>=</span> <span class='number'>7</span>,
+	<span class='ident'>D3D11_STENCIL_OP_DECR</span> <span class='op'>=</span> <span class='number'>8</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TEXTURE_ADDRESS_MODE</span> {
+	<span class='ident'>D3D11_TEXTURE_ADDRESS_WRAP</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_TEXTURE_ADDRESS_MIRROR</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_TEXTURE_ADDRESS_CLAMP</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_TEXTURE_ADDRESS_BORDER</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_TEXTURE_ADDRESS_MIRROR_ONCE</span> <span class='op'>=</span> <span class='number'>5</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TEXTURECUBE_FACE</span> {
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_POSITIVE_X</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_NEGATIVE_X</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_POSITIVE_Y</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_NEGATIVE_Y</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_POSITIVE_Z</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_TEXTURECUBE_FACE_NEGATIVE_Z</span> <span class='op'>=</span> <span class='number'>5</span>
+}
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TILED_RESOURCES_TIER</span> {
+	<span class='ident'>D3D11_TILED_RESOURCES_NOT_SUPPORTED</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_TILED_RESOURCES_TIER_1</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_TILED_RESOURCES_TIER_2</span> <span class='op'>=</span> <span class='number'>2</span>
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

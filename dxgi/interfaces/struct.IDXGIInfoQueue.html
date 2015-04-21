@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIInfoQueue` struct in crate `dxgi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIInfoQueue">
+
+    <title>dxgi::interfaces::IDXGIInfoQueue - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIInfoQueue', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>IDXGIInfoQueue</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1710' href='../../src/dxgi/interfaces.rs.html#62'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGIInfoQueue {
+    pub vtable: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIInfoQueueVtbl.html' title='dxgi::interfaces::IDXGIInfoQueueVtbl'>IDXGIInfoQueueVtbl</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.vtable'><a class='stability Unmarked' title='No stability level'></a><code>vtable</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../dxgi/interfaces/trait.IDXGIInfoQueueT.html' title='dxgi::interfaces::IDXGIInfoQueueT'>IDXGIInfoQueueT</a> for <a class='struct' href='../../dxgi/interfaces/struct.IDXGIInfoQueue.html' title='dxgi::interfaces::IDXGIInfoQueue'>IDXGIInfoQueue</a></code></h3><div class='impl-items'><h4 id='method.SetMessageCountLimit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetMessageCountLimit' class='fnname'>SetMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, msg_count_limit: UINT64) -&gt; HRESULT</code></h4>
+<h4 id='method.ClearStoredMessages' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ClearStoredMessages' class='fnname'>ClearStoredMessages</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetMessage' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetMessage' class='fnname'>GetMessage</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, message_i: UINT64, message: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_MESSAGE.html' title='dxgi::structures::DXGI_INFO_QUEUE_MESSAGE'>DXGI_INFO_QUEUE_MESSAGE</a>, msg_byte_len: *mut SIZE_T) -&gt; HRESULT</code></h4>
+<h4 id='method.GetNumStoredMessagesAllowedByRetrievalFilters' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetNumStoredMessagesAllowedByRetrievalFilters' class='fnname'>GetNumStoredMessagesAllowedByRetrievalFilters</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.GetNumStoredMessages' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetNumStoredMessages' class='fnname'>GetNumStoredMessages</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.GetNumMessagesDiscardedByMessageCountLimit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetNumMessagesDiscardedByMessageCountLimit' class='fnname'>GetNumMessagesDiscardedByMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.GetMessageCountLimit' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetMessageCountLimit' class='fnname'>GetMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.GetNumMessagesAllowedByStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetNumMessagesAllowedByStorageFilter' class='fnname'>GetNumMessagesAllowedByStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.GetNumMessagesDeniedByStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetNumMessagesDeniedByStorageFilter' class='fnname'>GetNumMessagesDeniedByStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT64</code></h4>
+<h4 id='method.AddStorageFilterEntries' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddStorageFilterEntries' class='fnname'>AddStorageFilterEntries</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.GetStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetStorageFilter' class='fnname'>GetStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>, filter_byte_len: *mut SIZE_T) -&gt; HRESULT</code></h4>
+<h4 id='method.ClearStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ClearStorageFilter' class='fnname'>ClearStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.PushEmptyStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushEmptyStorageFilter' class='fnname'>PushEmptyStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushDenyAllStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushDenyAllStorageFilter' class='fnname'>PushDenyAllStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushCopyOfStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushCopyOfStorageFilter' class='fnname'>PushCopyOfStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushStorageFilter' class='fnname'>PushStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PopStorageFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PopStorageFilter' class='fnname'>PopStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetStorageFilterStackSize' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetStorageFilterStackSize' class='fnname'>GetStorageFilterStackSize</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT</code></h4>
+<h4 id='method.AddRetrievalFilterEntries' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddRetrievalFilterEntries' class='fnname'>AddRetrievalFilterEntries</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.GetRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetRetrievalFilter' class='fnname'>GetRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>, filter_byte_len: *mut SIZE_T) -&gt; HRESULT</code></h4>
+<h4 id='method.ClearRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.ClearRetrievalFilter' class='fnname'>ClearRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.PushEmptyRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushEmptyRetrievalFilter' class='fnname'>PushEmptyRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushDenyAllRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushDenyAllRetrievalFilter' class='fnname'>PushDenyAllRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushCopyOfRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushCopyOfRetrievalFilter' class='fnname'>PushCopyOfRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PushRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PushRetrievalFilter' class='fnname'>PushRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PopRetrievalFilter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PopRetrievalFilter' class='fnname'>PopRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetRetrievalFilterStackSize' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetRetrievalFilterStackSize' class='fnname'>GetRetrievalFilterStackSize</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; UINT</code></h4>
+<h4 id='method.AddMessage' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddMessage' class='fnname'>AddMessage</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>, severity: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, id: <a class='type' href='../../dxgi/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>, desc: LPCSTR) -&gt; HRESULT</code></h4>
+<h4 id='method.AddApplicationMessage' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddApplicationMessage' class='fnname'>AddApplicationMessage</a>(&amp;mut self, severity: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, desc: LPCSTR) -&gt; HRESULT</code></h4>
+<h4 id='method.SetBreakOnCategory' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetBreakOnCategory' class='fnname'>SetBreakOnCategory</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>, enable: BOOL) -&gt; HRESULT</code></h4>
+<h4 id='method.SetBreakOnSeverity' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetBreakOnSeverity' class='fnname'>SetBreakOnSeverity</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, severity: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, enable: BOOL) -&gt; HRESULT</code></h4>
+<h4 id='method.SetBreakOnID' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetBreakOnID' class='fnname'>SetBreakOnID</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, id: <a class='type' href='../../dxgi/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>, enable: BOOL) -&gt; HRESULT</code></h4>
+<h4 id='method.GetBreakOnCategory' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetBreakOnCategory' class='fnname'>GetBreakOnCategory</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>) -&gt; BOOL</code></h4>
+<h4 id='method.GetBreakOnSeverity' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetBreakOnSeverity' class='fnname'>GetBreakOnSeverity</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, severity: <a class='enum' href='../../dxgi/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>) -&gt; BOOL</code></h4>
+<h4 id='method.GetBreakOnID' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetBreakOnID' class='fnname'>GetBreakOnID</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, id: <a class='type' href='../../dxgi/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>) -&gt; BOOL</code></h4>
+<h4 id='method.SetMuteDebugOutput' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetMuteDebugOutput' class='fnname'>SetMuteDebugOutput</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, mute: BOOL)</code></h4>
+<h4 id='method.GetMuteDebugOutput' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetMuteDebugOutput' class='fnname'>GetMuteDebugOutput</a>(&amp;mut self, producer: <a class='type' href='../../dxgi/constants/type.DXGI_DEBUG_ID.html' title='dxgi::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; BOOL</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../dxgi/interfaces/trait.IUnknownT.html' title='dxgi::interfaces::IUnknownT'>IUnknownT</a> for <a class='struct' href='../../dxgi/interfaces/struct.IDXGIInfoQueue.html' title='dxgi::interfaces::IDXGIInfoQueue'>IDXGIInfoQueue</a></code></h3><div class='impl-items'><h4 id='method.QueryInterface' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.QueryInterface' class='fnname'>QueryInterface</a>(&amp;mut self, riid: REFIID, object: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.AddRef' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddRef' class='fnname'>AddRef</a>(&amp;mut self) -&gt; ULONG</code></h4>
+<h4 id='method.Release' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.Release' class='fnname'>Release</a>(&amp;mut self) -&gt; ULONG</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

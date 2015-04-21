@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `D3DCAPS9` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, D3DCAPS9">
+
+    <title>winapi::d3d9caps::D3DCAPS9 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>d3d9caps</a></p><script>window.sidebarCurrent = {name: 'D3DCAPS9', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>d3d9caps</a>::<wbr><a class='struct' href=''>D3DCAPS9</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-11049' class='srclink' href='../../src/winapi/d3d9caps.rs.html#82-152'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct D3DCAPS9 {
+    pub DeviceType: <a class='enum' href='../../winapi/d3d9types/enum.D3DDEVTYPE.html' title='winapi::d3d9types::D3DDEVTYPE'>D3DDEVTYPE</a>,
+    pub AdapterOrdinal: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub Caps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub Caps2: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub Caps3: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub PresentationIntervals: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub CursorCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub DevCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub PrimitiveMiscCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub RasterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub ZCmpCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub SrcBlendCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub DestBlendCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub AlphaCmpCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub ShadeCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub TextureCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub TextureFilterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub CubeTextureFilterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub VolumeTextureFilterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub TextureAddressCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub VolumeTextureAddressCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub LineCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxTextureWidth: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxTextureHeight: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVolumeExtent: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxTextureRepeat: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxTextureAspectRatio: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxAnisotropy: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexW: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub GuardBandLeft: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub GuardBandTop: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub GuardBandRight: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub GuardBandBottom: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub ExtentsAdjust: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub StencilCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub FVFCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub TextureOpCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxTextureBlendStages: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxSimultaneousTextures: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub VertexProcessingCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxActiveLights: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxUserClipPlanes: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexBlendMatrices: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexBlendMatrixIndex: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxPointSize: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub MaxPrimitiveCount: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexIndex: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxStreams: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxStreamStride: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub VertexShaderVersion: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexShaderConst: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub PixelShaderVersion: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub PixelShader1xMaxValue: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub DevCaps2: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxNpatchTessellationLevel: <a class='type' href='../../winapi/type.c_float.html' title='winapi::c_float'>c_float</a>,
+    pub Reserved5: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MasterAdapterOrdinal: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub AdapterOrdinalInGroup: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub NumberOfAdaptersInGroup: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub DeclTypes: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub NumSimultaneousRTs: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub StretchRectFilterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub VS20Caps: <a class='struct' href='../../winapi/d3d9caps/struct.D3DVSHADERCAPS2_0.html' title='winapi::d3d9caps::D3DVSHADERCAPS2_0'>D3DVSHADERCAPS2_0</a>,
+    pub PS20Caps: <a class='struct' href='../../winapi/d3d9caps/struct.D3DPSHADERCAPS2_0.html' title='winapi::d3d9caps::D3DPSHADERCAPS2_0'>D3DPSHADERCAPS2_0</a>,
+    pub VertexTextureFilterCaps: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVShaderInstructionsExecuted: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxPShaderInstructionsExecuted: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxVertexShader30InstructionSlots: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MaxPixelShader30InstructionSlots: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.DeviceType'><code>DeviceType</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AdapterOrdinal'><code>AdapterOrdinal</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Caps'><code>Caps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Caps2'><code>Caps2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Caps3'><code>Caps3</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PresentationIntervals'><code>PresentationIntervals</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.CursorCaps'><code>CursorCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DevCaps'><code>DevCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PrimitiveMiscCaps'><code>PrimitiveMiscCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.RasterCaps'><code>RasterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ZCmpCaps'><code>ZCmpCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SrcBlendCaps'><code>SrcBlendCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DestBlendCaps'><code>DestBlendCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AlphaCmpCaps'><code>AlphaCmpCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ShadeCaps'><code>ShadeCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureCaps'><code>TextureCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureFilterCaps'><code>TextureFilterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.CubeTextureFilterCaps'><code>CubeTextureFilterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VolumeTextureFilterCaps'><code>VolumeTextureFilterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureAddressCaps'><code>TextureAddressCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VolumeTextureAddressCaps'><code>VolumeTextureAddressCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.LineCaps'><code>LineCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxTextureWidth'><code>MaxTextureWidth</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxTextureHeight'><code>MaxTextureHeight</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVolumeExtent'><code>MaxVolumeExtent</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxTextureRepeat'><code>MaxTextureRepeat</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxTextureAspectRatio'><code>MaxTextureAspectRatio</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxAnisotropy'><code>MaxAnisotropy</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexW'><code>MaxVertexW</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GuardBandLeft'><code>GuardBandLeft</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GuardBandTop'><code>GuardBandTop</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GuardBandRight'><code>GuardBandRight</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GuardBandBottom'><code>GuardBandBottom</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ExtentsAdjust'><code>ExtentsAdjust</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.StencilCaps'><code>StencilCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.FVFCaps'><code>FVFCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureOpCaps'><code>TextureOpCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxTextureBlendStages'><code>MaxTextureBlendStages</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxSimultaneousTextures'><code>MaxSimultaneousTextures</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VertexProcessingCaps'><code>VertexProcessingCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxActiveLights'><code>MaxActiveLights</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxUserClipPlanes'><code>MaxUserClipPlanes</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexBlendMatrices'><code>MaxVertexBlendMatrices</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexBlendMatrixIndex'><code>MaxVertexBlendMatrixIndex</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxPointSize'><code>MaxPointSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxPrimitiveCount'><code>MaxPrimitiveCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexIndex'><code>MaxVertexIndex</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxStreams'><code>MaxStreams</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxStreamStride'><code>MaxStreamStride</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VertexShaderVersion'><code>VertexShaderVersion</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexShaderConst'><code>MaxVertexShaderConst</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelShaderVersion'><code>PixelShaderVersion</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PixelShader1xMaxValue'><code>PixelShader1xMaxValue</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DevCaps2'><code>DevCaps2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxNpatchTessellationLevel'><code>MaxNpatchTessellationLevel</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Reserved5'><code>Reserved5</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MasterAdapterOrdinal'><code>MasterAdapterOrdinal</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AdapterOrdinalInGroup'><code>AdapterOrdinalInGroup</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.NumberOfAdaptersInGroup'><code>NumberOfAdaptersInGroup</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DeclTypes'><code>DeclTypes</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.NumSimultaneousRTs'><code>NumSimultaneousRTs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.StretchRectFilterCaps'><code>StretchRectFilterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VS20Caps'><code>VS20Caps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PS20Caps'><code>PS20Caps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VertexTextureFilterCaps'><code>VertexTextureFilterCaps</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVShaderInstructionsExecuted'><code>MaxVShaderInstructionsExecuted</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxPShaderInstructionsExecuted'><code>MaxPShaderInstructionsExecuted</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxVertexShader30InstructionSlots'><code>MaxVertexShader30InstructionSlots</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MaxPixelShader30InstructionSlots'><code>MaxPixelShader30InstructionSlots</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../winapi/d3d9caps/struct.D3DCAPS9.html' title='winapi::d3d9caps::D3DCAPS9'>D3DCAPS9</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../winapi/d3d9caps/struct.D3DCAPS9.html' title='winapi::d3d9caps::D3DCAPS9'>D3DCAPS9</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../winapi/d3d9caps/struct.D3DCAPS9.html' title='winapi::d3d9caps::D3DCAPS9'>D3DCAPS9</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../winapi/d3d9caps/struct.D3DCAPS9.html' title='winapi::d3d9caps::D3DCAPS9'>D3DCAPS9</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

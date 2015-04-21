@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `D3D11_SHADER_DESC` struct in crate `d3d11_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, D3D11_SHADER_DESC">
+
+    <title>d3d11_win::shader::structures::D3D11_SHADER_DESC - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>d3d11_win</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>structures</a></p><script>window.sidebarCurrent = {name: 'D3D11_SHADER_DESC', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>d3d11_win</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>structures</a>::<wbr><a class='struct' href=''>D3D11_SHADER_DESC</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-41857' class='srclink' href='../../../src/d3d11_win/shader/structures.rs.html#132-171'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct D3D11_SHADER_DESC {
+    pub Version: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub Creator: <a class='type' href='../../../winapi/type.LPCSTR.html' title='winapi::LPCSTR'>LPCSTR</a>,
+    pub Flags: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub ConstantBuffers: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub BoundResources: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub InputParameters: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub OutputParameters: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub InstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TempRegisterCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TempArrayCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub DefCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub DclCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TextureNormalInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TextureLoadInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TextureCompInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TextureBiasInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub TextureGradientInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub FloatInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub IntInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub UintInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub StaticFlowControlCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub DynamicFlowControlCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub MacroInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub ArrayInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub CutInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub EmitInstructionCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub GSOutputTopology: <a class='enum' href='../../../d3d11_win/common_version/enumerations/enum.D3D_PRIMITIVE_TOPOLOGY.html' title='d3d11_win::common_version::enumerations::D3D_PRIMITIVE_TOPOLOGY'>D3D_PRIMITIVE_TOPOLOGY</a>,
+    pub GSMaxOutputVertexCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub InputPrimitive: <a class='enum' href='../../../d3d11_win/common_version/enumerations/enum.D3D_PRIMITIVE.html' title='d3d11_win::common_version::enumerations::D3D_PRIMITIVE'>D3D_PRIMITIVE</a>,
+    pub PatchConstantParameters: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub cGSInstanceCount: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub cControlPoints: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub HSOutputPrimitive: <a class='enum' href='../../../d3d11_win/common_version/enumerations/enum.D3D_TESSELLATOR_OUTPUT_PRIMITIVE.html' title='d3d11_win::common_version::enumerations::D3D_TESSELLATOR_OUTPUT_PRIMITIVE'>D3D_TESSELLATOR_OUTPUT_PRIMITIVE</a>,
+    pub HSPartitioning: <a class='enum' href='../../../d3d11_win/common_version/enumerations/enum.D3D_TESSELLATOR_PARTITIONING.html' title='d3d11_win::common_version::enumerations::D3D_TESSELLATOR_PARTITIONING'>D3D_TESSELLATOR_PARTITIONING</a>,
+    pub TessellatorDomain: <a class='enum' href='../../../d3d11_win/common_version/enumerations/enum.D3D_TESSELLATOR_DOMAIN.html' title='d3d11_win::common_version::enumerations::D3D_TESSELLATOR_DOMAIN'>D3D_TESSELLATOR_DOMAIN</a>,
+    pub cBarrierInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub cInterlockedInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+    pub cTextureStoreInstructions: <a class='type' href='../../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.Version'><code>Version</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Creator'><code>Creator</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Flags'><code>Flags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ConstantBuffers'><code>ConstantBuffers</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.BoundResources'><code>BoundResources</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.InputParameters'><code>InputParameters</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.OutputParameters'><code>OutputParameters</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.InstructionCount'><code>InstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TempRegisterCount'><code>TempRegisterCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TempArrayCount'><code>TempArrayCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DefCount'><code>DefCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DclCount'><code>DclCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureNormalInstructions'><code>TextureNormalInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureLoadInstructions'><code>TextureLoadInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureCompInstructions'><code>TextureCompInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureBiasInstructions'><code>TextureBiasInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TextureGradientInstructions'><code>TextureGradientInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.FloatInstructionCount'><code>FloatInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.IntInstructionCount'><code>IntInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.UintInstructionCount'><code>UintInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.StaticFlowControlCount'><code>StaticFlowControlCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DynamicFlowControlCount'><code>DynamicFlowControlCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MacroInstructionCount'><code>MacroInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ArrayInstructionCount'><code>ArrayInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.CutInstructionCount'><code>CutInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.EmitInstructionCount'><code>EmitInstructionCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GSOutputTopology'><code>GSOutputTopology</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GSMaxOutputVertexCount'><code>GSMaxOutputVertexCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.InputPrimitive'><code>InputPrimitive</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.PatchConstantParameters'><code>PatchConstantParameters</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cGSInstanceCount'><code>cGSInstanceCount</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cControlPoints'><code>cControlPoints</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.HSOutputPrimitive'><code>HSOutputPrimitive</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.HSPartitioning'><code>HSPartitioning</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.TessellatorDomain'><code>TessellatorDomain</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cBarrierInstructions'><code>cBarrierInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cInterlockedInstructions'><code>cInterlockedInstructions</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cTextureStoreInstructions'><code>cTextureStoreInstructions</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

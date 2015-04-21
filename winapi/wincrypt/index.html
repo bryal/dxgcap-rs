@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `wincrypt` mod in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, wincrypt">
+
+    <title>winapi::wincrypt - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'wincrypt', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winapi</a>::<wbr><a class='mod' href=''>wincrypt</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-36465' class='srclink' href='../../src/winapi/wincrypt.rs.html#3-194'>[src]</a></span></h1>
+<div class='docblock'><p>Cryptographic API Prototypes and Definitions</p>
+</div><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_ALL.html'
+                               title='winapi::wincrypt::ALG_CLASS_ALL'>ALG_CLASS_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_ANY.html'
+                               title='winapi::wincrypt::ALG_CLASS_ANY'>ALG_CLASS_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_DATA_ENCRYPT.html'
+                               title='winapi::wincrypt::ALG_CLASS_DATA_ENCRYPT'>ALG_CLASS_DATA_ENCRYPT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_HASH.html'
+                               title='winapi::wincrypt::ALG_CLASS_HASH'>ALG_CLASS_HASH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_KEY_EXCHANGE.html'
+                               title='winapi::wincrypt::ALG_CLASS_KEY_EXCHANGE'>ALG_CLASS_KEY_EXCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_MSG_ENCRYPT.html'
+                               title='winapi::wincrypt::ALG_CLASS_MSG_ENCRYPT'>ALG_CLASS_MSG_ENCRYPT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_CLASS_SIGNATURE.html'
+                               title='winapi::wincrypt::ALG_CLASS_SIGNATURE'>ALG_CLASS_SIGNATURE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_3DES.html'
+                               title='winapi::wincrypt::ALG_SID_3DES'>ALG_SID_3DES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_3DES_112.html'
+                               title='winapi::wincrypt::ALG_SID_3DES_112'>ALG_SID_3DES_112</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_AES.html'
+                               title='winapi::wincrypt::ALG_SID_AES'>ALG_SID_AES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_AES_128.html'
+                               title='winapi::wincrypt::ALG_SID_AES_128'>ALG_SID_AES_128</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_AES_192.html'
+                               title='winapi::wincrypt::ALG_SID_AES_192'>ALG_SID_AES_192</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_AES_256.html'
+                               title='winapi::wincrypt::ALG_SID_AES_256'>ALG_SID_AES_256</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_AGREED_KEY_ANY.html'
+                               title='winapi::wincrypt::ALG_SID_AGREED_KEY_ANY'>ALG_SID_AGREED_KEY_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_ANY.html'
+                               title='winapi::wincrypt::ALG_SID_ANY'>ALG_SID_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_CAST.html'
+                               title='winapi::wincrypt::ALG_SID_CAST'>ALG_SID_CAST</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_CYLINK_MEK.html'
+                               title='winapi::wincrypt::ALG_SID_CYLINK_MEK'>ALG_SID_CYLINK_MEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DES.html'
+                               title='winapi::wincrypt::ALG_SID_DES'>ALG_SID_DES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DESX.html'
+                               title='winapi::wincrypt::ALG_SID_DESX'>ALG_SID_DESX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DH_EPHEM.html'
+                               title='winapi::wincrypt::ALG_SID_DH_EPHEM'>ALG_SID_DH_EPHEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DH_SANDF.html'
+                               title='winapi::wincrypt::ALG_SID_DH_SANDF'>ALG_SID_DH_SANDF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DSS_ANY.html'
+                               title='winapi::wincrypt::ALG_SID_DSS_ANY'>ALG_SID_DSS_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DSS_DMS.html'
+                               title='winapi::wincrypt::ALG_SID_DSS_DMS'>ALG_SID_DSS_DMS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_DSS_PKCS.html'
+                               title='winapi::wincrypt::ALG_SID_DSS_PKCS'>ALG_SID_DSS_PKCS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_ECDH.html'
+                               title='winapi::wincrypt::ALG_SID_ECDH'>ALG_SID_ECDH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_ECDSA.html'
+                               title='winapi::wincrypt::ALG_SID_ECDSA'>ALG_SID_ECDSA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_ECMQV.html'
+                               title='winapi::wincrypt::ALG_SID_ECMQV'>ALG_SID_ECMQV</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_EXAMPLE.html'
+                               title='winapi::wincrypt::ALG_SID_EXAMPLE'>ALG_SID_EXAMPLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_HASH_REPLACE_OWF.html'
+                               title='winapi::wincrypt::ALG_SID_HASH_REPLACE_OWF'>ALG_SID_HASH_REPLACE_OWF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_HMAC.html'
+                               title='winapi::wincrypt::ALG_SID_HMAC'>ALG_SID_HMAC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_IDEA.html'
+                               title='winapi::wincrypt::ALG_SID_IDEA'>ALG_SID_IDEA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_KEA.html'
+                               title='winapi::wincrypt::ALG_SID_KEA'>ALG_SID_KEA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_MAC.html'
+                               title='winapi::wincrypt::ALG_SID_MAC'>ALG_SID_MAC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_MD2.html'
+                               title='winapi::wincrypt::ALG_SID_MD2'>ALG_SID_MD2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_MD4.html'
+                               title='winapi::wincrypt::ALG_SID_MD4'>ALG_SID_MD4</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_MD5.html'
+                               title='winapi::wincrypt::ALG_SID_MD5'>ALG_SID_MD5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_PCT1_MASTER.html'
+                               title='winapi::wincrypt::ALG_SID_PCT1_MASTER'>ALG_SID_PCT1_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RC2.html'
+                               title='winapi::wincrypt::ALG_SID_RC2'>ALG_SID_RC2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RC4.html'
+                               title='winapi::wincrypt::ALG_SID_RC4'>ALG_SID_RC4</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RC5.html'
+                               title='winapi::wincrypt::ALG_SID_RC5'>ALG_SID_RC5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RIPEMD.html'
+                               title='winapi::wincrypt::ALG_SID_RIPEMD'>ALG_SID_RIPEMD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RIPEMD160.html'
+                               title='winapi::wincrypt::ALG_SID_RIPEMD160'>ALG_SID_RIPEMD160</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RSA_ANY.html'
+                               title='winapi::wincrypt::ALG_SID_RSA_ANY'>ALG_SID_RSA_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RSA_ENTRUST.html'
+                               title='winapi::wincrypt::ALG_SID_RSA_ENTRUST'>ALG_SID_RSA_ENTRUST</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RSA_MSATWORK.html'
+                               title='winapi::wincrypt::ALG_SID_RSA_MSATWORK'>ALG_SID_RSA_MSATWORK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RSA_PGP.html'
+                               title='winapi::wincrypt::ALG_SID_RSA_PGP'>ALG_SID_RSA_PGP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_RSA_PKCS.html'
+                               title='winapi::wincrypt::ALG_SID_RSA_PKCS'>ALG_SID_RSA_PKCS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SAFERSK128.html'
+                               title='winapi::wincrypt::ALG_SID_SAFERSK128'>ALG_SID_SAFERSK128</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SAFERSK64.html'
+                               title='winapi::wincrypt::ALG_SID_SAFERSK64'>ALG_SID_SAFERSK64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SCHANNEL_ENC_KEY.html'
+                               title='winapi::wincrypt::ALG_SID_SCHANNEL_ENC_KEY'>ALG_SID_SCHANNEL_ENC_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SCHANNEL_MAC_KEY.html'
+                               title='winapi::wincrypt::ALG_SID_SCHANNEL_MAC_KEY'>ALG_SID_SCHANNEL_MAC_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SCHANNEL_MASTER_HASH.html'
+                               title='winapi::wincrypt::ALG_SID_SCHANNEL_MASTER_HASH'>ALG_SID_SCHANNEL_MASTER_HASH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SEAL.html'
+                               title='winapi::wincrypt::ALG_SID_SEAL'>ALG_SID_SEAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SHA.html'
+                               title='winapi::wincrypt::ALG_SID_SHA'>ALG_SID_SHA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SHA1.html'
+                               title='winapi::wincrypt::ALG_SID_SHA1'>ALG_SID_SHA1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SHA_256.html'
+                               title='winapi::wincrypt::ALG_SID_SHA_256'>ALG_SID_SHA_256</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SHA_384.html'
+                               title='winapi::wincrypt::ALG_SID_SHA_384'>ALG_SID_SHA_384</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SHA_512.html'
+                               title='winapi::wincrypt::ALG_SID_SHA_512'>ALG_SID_SHA_512</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SKIPJACK.html'
+                               title='winapi::wincrypt::ALG_SID_SKIPJACK'>ALG_SID_SKIPJACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SSL2_MASTER.html'
+                               title='winapi::wincrypt::ALG_SID_SSL2_MASTER'>ALG_SID_SSL2_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SSL3SHAMD5.html'
+                               title='winapi::wincrypt::ALG_SID_SSL3SHAMD5'>ALG_SID_SSL3SHAMD5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_SSL3_MASTER.html'
+                               title='winapi::wincrypt::ALG_SID_SSL3_MASTER'>ALG_SID_SSL3_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_TEK.html'
+                               title='winapi::wincrypt::ALG_SID_TEK'>ALG_SID_TEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_TLS1PRF.html'
+                               title='winapi::wincrypt::ALG_SID_TLS1PRF'>ALG_SID_TLS1PRF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_SID_TLS1_MASTER.html'
+                               title='winapi::wincrypt::ALG_SID_TLS1_MASTER'>ALG_SID_TLS1_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_ANY.html'
+                               title='winapi::wincrypt::ALG_TYPE_ANY'>ALG_TYPE_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_BLOCK.html'
+                               title='winapi::wincrypt::ALG_TYPE_BLOCK'>ALG_TYPE_BLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_DH.html'
+                               title='winapi::wincrypt::ALG_TYPE_DH'>ALG_TYPE_DH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_DSS.html'
+                               title='winapi::wincrypt::ALG_TYPE_DSS'>ALG_TYPE_DSS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_RSA.html'
+                               title='winapi::wincrypt::ALG_TYPE_RSA'>ALG_TYPE_RSA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_SECURECHANNEL.html'
+                               title='winapi::wincrypt::ALG_TYPE_SECURECHANNEL'>ALG_TYPE_SECURECHANNEL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ALG_TYPE_STREAM.html'
+                               title='winapi::wincrypt::ALG_TYPE_STREAM'>ALG_TYPE_STREAM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_3DES.html'
+                               title='winapi::wincrypt::CALG_3DES'>CALG_3DES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_3DES_112.html'
+                               title='winapi::wincrypt::CALG_3DES_112'>CALG_3DES_112</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_AES.html'
+                               title='winapi::wincrypt::CALG_AES'>CALG_AES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_AES_128.html'
+                               title='winapi::wincrypt::CALG_AES_128'>CALG_AES_128</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_AES_192.html'
+                               title='winapi::wincrypt::CALG_AES_192'>CALG_AES_192</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_AES_256.html'
+                               title='winapi::wincrypt::CALG_AES_256'>CALG_AES_256</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_AGREEDKEY_ANY.html'
+                               title='winapi::wincrypt::CALG_AGREEDKEY_ANY'>CALG_AGREEDKEY_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_CYLINK_MEK.html'
+                               title='winapi::wincrypt::CALG_CYLINK_MEK'>CALG_CYLINK_MEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_DES.html'
+                               title='winapi::wincrypt::CALG_DES'>CALG_DES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_DESX.html'
+                               title='winapi::wincrypt::CALG_DESX'>CALG_DESX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_DH_EPHEM.html'
+                               title='winapi::wincrypt::CALG_DH_EPHEM'>CALG_DH_EPHEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_DH_SF.html'
+                               title='winapi::wincrypt::CALG_DH_SF'>CALG_DH_SF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_DSS_SIGN.html'
+                               title='winapi::wincrypt::CALG_DSS_SIGN'>CALG_DSS_SIGN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_ECDH.html'
+                               title='winapi::wincrypt::CALG_ECDH'>CALG_ECDH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_ECDSA.html'
+                               title='winapi::wincrypt::CALG_ECDSA'>CALG_ECDSA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_ECMQV.html'
+                               title='winapi::wincrypt::CALG_ECMQV'>CALG_ECMQV</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_HASH_REPLACE_OWF.html'
+                               title='winapi::wincrypt::CALG_HASH_REPLACE_OWF'>CALG_HASH_REPLACE_OWF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_HMAC.html'
+                               title='winapi::wincrypt::CALG_HMAC'>CALG_HMAC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_HUGHES_MD5.html'
+                               title='winapi::wincrypt::CALG_HUGHES_MD5'>CALG_HUGHES_MD5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_KEA_KEYX.html'
+                               title='winapi::wincrypt::CALG_KEA_KEYX'>CALG_KEA_KEYX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_MAC.html'
+                               title='winapi::wincrypt::CALG_MAC'>CALG_MAC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_MD2.html'
+                               title='winapi::wincrypt::CALG_MD2'>CALG_MD2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_MD4.html'
+                               title='winapi::wincrypt::CALG_MD4'>CALG_MD4</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_MD5.html'
+                               title='winapi::wincrypt::CALG_MD5'>CALG_MD5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_NO_SIGN.html'
+                               title='winapi::wincrypt::CALG_NO_SIGN'>CALG_NO_SIGN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_PCT1_MASTER.html'
+                               title='winapi::wincrypt::CALG_PCT1_MASTER'>CALG_PCT1_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_RC2.html'
+                               title='winapi::wincrypt::CALG_RC2'>CALG_RC2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_RC4.html'
+                               title='winapi::wincrypt::CALG_RC4'>CALG_RC4</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_RC5.html'
+                               title='winapi::wincrypt::CALG_RC5'>CALG_RC5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_RSA_KEYX.html'
+                               title='winapi::wincrypt::CALG_RSA_KEYX'>CALG_RSA_KEYX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_RSA_SIGN.html'
+                               title='winapi::wincrypt::CALG_RSA_SIGN'>CALG_RSA_SIGN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SCHANNEL_ENC_KEY.html'
+                               title='winapi::wincrypt::CALG_SCHANNEL_ENC_KEY'>CALG_SCHANNEL_ENC_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SCHANNEL_MAC_KEY.html'
+                               title='winapi::wincrypt::CALG_SCHANNEL_MAC_KEY'>CALG_SCHANNEL_MAC_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SCHANNEL_MASTER_HASH.html'
+                               title='winapi::wincrypt::CALG_SCHANNEL_MASTER_HASH'>CALG_SCHANNEL_MASTER_HASH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SEAL.html'
+                               title='winapi::wincrypt::CALG_SEAL'>CALG_SEAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SHA.html'
+                               title='winapi::wincrypt::CALG_SHA'>CALG_SHA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SHA1.html'
+                               title='winapi::wincrypt::CALG_SHA1'>CALG_SHA1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SHA_256.html'
+                               title='winapi::wincrypt::CALG_SHA_256'>CALG_SHA_256</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SHA_384.html'
+                               title='winapi::wincrypt::CALG_SHA_384'>CALG_SHA_384</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SHA_512.html'
+                               title='winapi::wincrypt::CALG_SHA_512'>CALG_SHA_512</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SKIPJACK.html'
+                               title='winapi::wincrypt::CALG_SKIPJACK'>CALG_SKIPJACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SSL2_MASTER.html'
+                               title='winapi::wincrypt::CALG_SSL2_MASTER'>CALG_SSL2_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SSL3_MASTER.html'
+                               title='winapi::wincrypt::CALG_SSL3_MASTER'>CALG_SSL3_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_SSL3_SHAMD5.html'
+                               title='winapi::wincrypt::CALG_SSL3_SHAMD5'>CALG_SSL3_SHAMD5</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_TEK.html'
+                               title='winapi::wincrypt::CALG_TEK'>CALG_TEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_TLS1PRF.html'
+                               title='winapi::wincrypt::CALG_TLS1PRF'>CALG_TLS1PRF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CALG_TLS1_MASTER.html'
+                               title='winapi::wincrypt::CALG_TLS1_MASTER'>CALG_TLS1_MASTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_ARCHIVABLE.html'
+                               title='winapi::wincrypt::CRYPT_ARCHIVABLE'>CRYPT_ARCHIVABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_BLOB_VER3.html'
+                               title='winapi::wincrypt::CRYPT_BLOB_VER3'>CRYPT_BLOB_VER3</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_CREATE_IV.html'
+                               title='winapi::wincrypt::CRYPT_CREATE_IV'>CRYPT_CREATE_IV</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_CREATE_SALT.html'
+                               title='winapi::wincrypt::CRYPT_CREATE_SALT'>CRYPT_CREATE_SALT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DATA_KEY.html'
+                               title='winapi::wincrypt::CRYPT_DATA_KEY'>CRYPT_DATA_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DECRYPT_RSA_NO_PADDING_CHECK.html'
+                               title='winapi::wincrypt::CRYPT_DECRYPT_RSA_NO_PADDING_CHECK'>CRYPT_DECRYPT_RSA_NO_PADDING_CHECK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DEFAULT_CONTAINER_OPTIONAL.html'
+                               title='winapi::wincrypt::CRYPT_DEFAULT_CONTAINER_OPTIONAL'>CRYPT_DEFAULT_CONTAINER_OPTIONAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DELETEKEYSET.html'
+                               title='winapi::wincrypt::CRYPT_DELETEKEYSET'>CRYPT_DELETEKEYSET</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DELETE_DEFAULT.html'
+                               title='winapi::wincrypt::CRYPT_DELETE_DEFAULT'>CRYPT_DELETE_DEFAULT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_DESTROYKEY.html'
+                               title='winapi::wincrypt::CRYPT_DESTROYKEY'>CRYPT_DESTROYKEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_EXPORTABLE.html'
+                               title='winapi::wincrypt::CRYPT_EXPORTABLE'>CRYPT_EXPORTABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_FORCE_KEY_PROTECTION_HIGH.html'
+                               title='winapi::wincrypt::CRYPT_FORCE_KEY_PROTECTION_HIGH'>CRYPT_FORCE_KEY_PROTECTION_HIGH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_INITIATOR.html'
+                               title='winapi::wincrypt::CRYPT_INITIATOR'>CRYPT_INITIATOR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_IPSEC_HMAC_KEY.html'
+                               title='winapi::wincrypt::CRYPT_IPSEC_HMAC_KEY'>CRYPT_IPSEC_HMAC_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_KEK.html'
+                               title='winapi::wincrypt::CRYPT_KEK'>CRYPT_KEK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_LITTLE_ENDIAN.html'
+                               title='winapi::wincrypt::CRYPT_LITTLE_ENDIAN'>CRYPT_LITTLE_ENDIAN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MACHINE_DEFAULT.html'
+                               title='winapi::wincrypt::CRYPT_MACHINE_DEFAULT'>CRYPT_MACHINE_DEFAULT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MACHINE_KEYSET.html'
+                               title='winapi::wincrypt::CRYPT_MACHINE_KEYSET'>CRYPT_MACHINE_KEYSET</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MODE_CBCI.html'
+                               title='winapi::wincrypt::CRYPT_MODE_CBCI'>CRYPT_MODE_CBCI</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MODE_CBCOFM.html'
+                               title='winapi::wincrypt::CRYPT_MODE_CBCOFM'>CRYPT_MODE_CBCOFM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MODE_CBCOFMI.html'
+                               title='winapi::wincrypt::CRYPT_MODE_CBCOFMI'>CRYPT_MODE_CBCOFMI</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MODE_CFBP.html'
+                               title='winapi::wincrypt::CRYPT_MODE_CFBP'>CRYPT_MODE_CFBP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_MODE_OFBP.html'
+                               title='winapi::wincrypt::CRYPT_MODE_OFBP'>CRYPT_MODE_OFBP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_NEWKEYSET.html'
+                               title='winapi::wincrypt::CRYPT_NEWKEYSET'>CRYPT_NEWKEYSET</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_NOHASHOID.html'
+                               title='winapi::wincrypt::CRYPT_NOHASHOID'>CRYPT_NOHASHOID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_NO_SALT.html'
+                               title='winapi::wincrypt::CRYPT_NO_SALT'>CRYPT_NO_SALT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_OAEP.html'
+                               title='winapi::wincrypt::CRYPT_OAEP'>CRYPT_OAEP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_ONLINE.html'
+                               title='winapi::wincrypt::CRYPT_ONLINE'>CRYPT_ONLINE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_OWF_REPL_LM_HASH.html'
+                               title='winapi::wincrypt::CRYPT_OWF_REPL_LM_HASH'>CRYPT_OWF_REPL_LM_HASH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_PREGEN.html'
+                               title='winapi::wincrypt::CRYPT_PREGEN'>CRYPT_PREGEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_RECIPIENT.html'
+                               title='winapi::wincrypt::CRYPT_RECIPIENT'>CRYPT_RECIPIENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SECRETDIGEST.html'
+                               title='winapi::wincrypt::CRYPT_SECRETDIGEST'>CRYPT_SECRETDIGEST</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SERVER.html'
+                               title='winapi::wincrypt::CRYPT_SERVER'>CRYPT_SERVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SF.html'
+                               title='winapi::wincrypt::CRYPT_SF'>CRYPT_SF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SGCKEY.html'
+                               title='winapi::wincrypt::CRYPT_SGCKEY'>CRYPT_SGCKEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SILENT.html'
+                               title='winapi::wincrypt::CRYPT_SILENT'>CRYPT_SILENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_SSL2_FALLBACK.html'
+                               title='winapi::wincrypt::CRYPT_SSL2_FALLBACK'>CRYPT_SSL2_FALLBACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_TYPE2_FORMAT.html'
+                               title='winapi::wincrypt::CRYPT_TYPE2_FORMAT'>CRYPT_TYPE2_FORMAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_UPDATE_KEY.html'
+                               title='winapi::wincrypt::CRYPT_UPDATE_KEY'>CRYPT_UPDATE_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_USER_DEFAULT.html'
+                               title='winapi::wincrypt::CRYPT_USER_DEFAULT'>CRYPT_USER_DEFAULT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_USER_PROTECTED.html'
+                               title='winapi::wincrypt::CRYPT_USER_PROTECTED'>CRYPT_USER_PROTECTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_USER_PROTECTED_STRONG.html'
+                               title='winapi::wincrypt::CRYPT_USER_PROTECTED_STRONG'>CRYPT_USER_PROTECTED_STRONG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_VERIFYCONTEXT.html'
+                               title='winapi::wincrypt::CRYPT_VERIFYCONTEXT'>CRYPT_VERIFYCONTEXT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_VOLATILE.html'
+                               title='winapi::wincrypt::CRYPT_VOLATILE'>CRYPT_VOLATILE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_X931_FORMAT.html'
+                               title='winapi::wincrypt::CRYPT_X931_FORMAT'>CRYPT_X931_FORMAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CRYPT_Y_ONLY.html'
+                               title='winapi::wincrypt::CRYPT_Y_ONLY'>CRYPT_Y_ONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_ALGID.html'
+                               title='winapi::wincrypt::HP_ALGID'>HP_ALGID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_HASHSIZE.html'
+                               title='winapi::wincrypt::HP_HASHSIZE'>HP_HASHSIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_HASHVAL.html'
+                               title='winapi::wincrypt::HP_HASHVAL'>HP_HASHVAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_HMAC_INFO.html'
+                               title='winapi::wincrypt::HP_HMAC_INFO'>HP_HMAC_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_TLS1PRF_LABEL.html'
+                               title='winapi::wincrypt::HP_TLS1PRF_LABEL'>HP_TLS1PRF_LABEL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.HP_TLS1PRF_SEED.html'
+                               title='winapi::wincrypt::HP_TLS1PRF_SEED'>HP_TLS1PRF_SEED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.KEY_LENGTH_MASK.html'
+                               title='winapi::wincrypt::KEY_LENGTH_MASK'>KEY_LENGTH_MASK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.PROV_RSA_AES.html'
+                               title='winapi::wincrypt::PROV_RSA_AES'>PROV_RSA_AES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.RSA1024BIT_KEY.html'
+                               title='winapi::wincrypt::RSA1024BIT_KEY'>RSA1024BIT_KEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.ALG_ID.html'
+                               title='winapi::wincrypt::ALG_ID'>ALG_ID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.HCRYPTHASH.html'
+                               title='winapi::wincrypt::HCRYPTHASH'>HCRYPTHASH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.HCRYPTKEY.html'
+                               title='winapi::wincrypt::HCRYPTKEY'>HCRYPTKEY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.HCRYPTPROV.html'
+                               title='winapi::wincrypt::HCRYPTPROV'>HCRYPTPROV</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

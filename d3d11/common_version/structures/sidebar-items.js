@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["D3D_SHADER_MACRO",""]]});

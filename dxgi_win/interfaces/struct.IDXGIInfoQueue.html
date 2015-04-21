@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIInfoQueue` struct in crate `dxgi_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIInfoQueue">
+
+    <title>dxgi_win::interfaces::IDXGIInfoQueue - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIInfoQueue', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>IDXGIInfoQueue</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1681' class='srclink' href='../../src/dxgi_win/interfaces.rs.html#61'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGIInfoQueue {
+    pub vtable: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIInfoQueueVtbl.html' title='dxgi_win::interfaces::IDXGIInfoQueueVtbl'>IDXGIInfoQueueVtbl</a></a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.vtable'><code>vtable</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html' title='dxgi_win::interfaces::IDXGIInfoQueueT'>IDXGIInfoQueueT</a> for <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIInfoQueue.html' title='dxgi_win::interfaces::IDXGIInfoQueue'>IDXGIInfoQueue</a></code></h3><div class='impl-items'><h4 id='method.SetMessageCountLimit' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.SetMessageCountLimit' class='fnname'>SetMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, msg_count_limit: <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.ClearStoredMessages' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.ClearStoredMessages' class='fnname'>ClearStoredMessages</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetMessage' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetMessage' class='fnname'>GetMessage</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, message_i: <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a>, message: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_MESSAGE.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_MESSAGE'>DXGI_INFO_QUEUE_MESSAGE</a></a>, msg_byte_len: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/basetsd/type.SIZE_T.html' title='winapi::basetsd::SIZE_T'>SIZE_T</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetNumStoredMessagesAllowedByRetrievalFilters' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetNumStoredMessagesAllowedByRetrievalFilters' class='fnname'>GetNumStoredMessagesAllowedByRetrievalFilters</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.GetNumStoredMessages' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetNumStoredMessages' class='fnname'>GetNumStoredMessages</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.GetNumMessagesDiscardedByMessageCountLimit' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetNumMessagesDiscardedByMessageCountLimit' class='fnname'>GetNumMessagesDiscardedByMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.GetMessageCountLimit' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetMessageCountLimit' class='fnname'>GetMessageCountLimit</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.GetNumMessagesAllowedByStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetNumMessagesAllowedByStorageFilter' class='fnname'>GetNumMessagesAllowedByStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.GetNumMessagesDeniedByStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetNumMessagesDeniedByStorageFilter' class='fnname'>GetNumMessagesDeniedByStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a></code></h4>
+<h4 id='method.AddStorageFilterEntries' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.AddStorageFilterEntries' class='fnname'>AddStorageFilterEntries</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetStorageFilter' class='fnname'>GetStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>, filter_byte_len: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/basetsd/type.SIZE_T.html' title='winapi::basetsd::SIZE_T'>SIZE_T</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.ClearStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.ClearStorageFilter' class='fnname'>ClearStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.PushEmptyStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushEmptyStorageFilter' class='fnname'>PushEmptyStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushDenyAllStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushDenyAllStorageFilter' class='fnname'>PushDenyAllStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushCopyOfStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushCopyOfStorageFilter' class='fnname'>PushCopyOfStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushStorageFilter' class='fnname'>PushStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PopStorageFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PopStorageFilter' class='fnname'>PopStorageFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetStorageFilterStackSize' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetStorageFilterStackSize' class='fnname'>GetStorageFilterStackSize</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></code></h4>
+<h4 id='method.AddRetrievalFilterEntries' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.AddRetrievalFilterEntries' class='fnname'>AddRetrievalFilterEntries</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetRetrievalFilter' class='fnname'>GetRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>, filter_byte_len: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/basetsd/type.SIZE_T.html' title='winapi::basetsd::SIZE_T'>SIZE_T</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.ClearRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.ClearRetrievalFilter' class='fnname'>ClearRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.PushEmptyRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushEmptyRetrievalFilter' class='fnname'>PushEmptyRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushDenyAllRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushDenyAllRetrievalFilter' class='fnname'>PushDenyAllRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushCopyOfRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushCopyOfRetrievalFilter' class='fnname'>PushCopyOfRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PushRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PushRetrievalFilter' class='fnname'>PushRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, filter: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/structures/struct.DXGI_INFO_QUEUE_FILTER.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_FILTER'>DXGI_INFO_QUEUE_FILTER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.PopRetrievalFilter' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.PopRetrievalFilter' class='fnname'>PopRetrievalFilter</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>)</code></h4>
+<h4 id='method.GetRetrievalFilterStackSize' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetRetrievalFilterStackSize' class='fnname'>GetRetrievalFilterStackSize</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></code></h4>
+<h4 id='method.AddMessage' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.AddMessage' class='fnname'>AddMessage</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>, severity: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, id: <a class='type' href='../../dxgi_win/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>, desc: <a class='type' href='../../winapi/type.LPCSTR.html' title='winapi::LPCSTR'>LPCSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.AddApplicationMessage' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.AddApplicationMessage' class='fnname'>AddApplicationMessage</a>(&amp;mut self, severity: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, desc: <a class='type' href='../../winapi/type.LPCSTR.html' title='winapi::LPCSTR'>LPCSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.SetBreakOnCategory' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.SetBreakOnCategory' class='fnname'>SetBreakOnCategory</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>, enable: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.SetBreakOnSeverity' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.SetBreakOnSeverity' class='fnname'>SetBreakOnSeverity</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, severity: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>, enable: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.SetBreakOnID' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.SetBreakOnID' class='fnname'>SetBreakOnID</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, id: <a class='type' href='../../dxgi_win/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>, enable: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetBreakOnCategory' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetBreakOnCategory' class='fnname'>GetBreakOnCategory</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, category: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_CATEGORY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_CATEGORY'>DXGI_INFO_QUEUE_MESSAGE_CATEGORY</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></code></h4>
+<h4 id='method.GetBreakOnSeverity' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetBreakOnSeverity' class='fnname'>GetBreakOnSeverity</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, severity: <a class='enum' href='../../dxgi_win/enumerations/enum.DXGI_INFO_QUEUE_MESSAGE_SEVERITY.html' title='dxgi_win::enumerations::DXGI_INFO_QUEUE_MESSAGE_SEVERITY'>DXGI_INFO_QUEUE_MESSAGE_SEVERITY</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></code></h4>
+<h4 id='method.GetBreakOnID' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetBreakOnID' class='fnname'>GetBreakOnID</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, id: <a class='type' href='../../dxgi_win/structures/type.DXGI_INFO_QUEUE_MESSAGE_ID.html' title='dxgi_win::structures::DXGI_INFO_QUEUE_MESSAGE_ID'>DXGI_INFO_QUEUE_MESSAGE_ID</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></code></h4>
+<h4 id='method.SetMuteDebugOutput' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.SetMuteDebugOutput' class='fnname'>SetMuteDebugOutput</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>, mute: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>)</code></h4>
+<h4 id='method.GetMuteDebugOutput' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IDXGIInfoQueueT.html#method.GetMuteDebugOutput' class='fnname'>GetMuteDebugOutput</a>(&amp;mut self, producer: <a class='type' href='../../dxgi_win/constants/type.DXGI_DEBUG_ID.html' title='dxgi_win::constants::DXGI_DEBUG_ID'>DXGI_DEBUG_ID</a>) -&gt; <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../dxgi_win/interfaces/trait.IUnknownT.html' title='dxgi_win::interfaces::IUnknownT'>IUnknownT</a> for <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIInfoQueue.html' title='dxgi_win::interfaces::IDXGIInfoQueue'>IDXGIInfoQueue</a></code></h3><div class='impl-items'><h4 id='method.QueryInterface' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IUnknownT.html#method.QueryInterface' class='fnname'>QueryInterface</a>(&amp;mut self, riid: <a class='type' href='../../winapi/type.REFIID.html' title='winapi::REFIID'>REFIID</a>, object: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.AddRef' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IUnknownT.html#method.AddRef' class='fnname'>AddRef</a>(&amp;mut self) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></code></h4>
+<h4 id='method.Release' class='method'><code>fn <a href='../../dxgi_win/interfaces/trait.IUnknownT.html#method.Release' class='fnname'>Release</a>(&amp;mut self) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

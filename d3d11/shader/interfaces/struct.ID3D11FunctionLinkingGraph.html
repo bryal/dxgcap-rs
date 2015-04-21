@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ID3D11FunctionLinkingGraph` struct in crate `d3d11`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ID3D11FunctionLinkingGraph">
+
+    <title>d3d11::shader::interfaces::ID3D11FunctionLinkingGraph - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'ID3D11FunctionLinkingGraph', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>ID3D11FunctionLinkingGraph</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-45174' href='../../../src/d3d11/shader/interfaces.rs.html#52'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ID3D11FunctionLinkingGraph {
+    pub vtable: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11FunctionLinkingGraphVtbl.html' title='d3d11::shader::interfaces::ID3D11FunctionLinkingGraphVtbl'>ID3D11FunctionLinkingGraphVtbl</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.vtable'><a class='stability Unmarked' title='No stability level'></a><code>vtable</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../../d3d11/shader/interfaces/trait.ID3D11FunctionLinkingGraphT.html' title='d3d11::shader::interfaces::ID3D11FunctionLinkingGraphT'>ID3D11FunctionLinkingGraphT</a> for <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11FunctionLinkingGraph.html' title='d3d11::shader::interfaces::ID3D11FunctionLinkingGraph'>ID3D11FunctionLinkingGraph</a></code></h3><div class='impl-items'><h4 id='method.CreateModuleInstance' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.CreateModuleInstance' class='fnname'>CreateModuleInstance</a>(&amp;mut self, module_instance: *mut *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ModuleInstance.html' title='d3d11::shader::interfaces::ID3D11ModuleInstance'>ID3D11ModuleInstance</a>, error_buffer: *mut *mut <a class='type' href='../../../d3d11/common_version/interfaces/type.ID3DBlob.html' title='d3d11::common_version::interfaces::ID3DBlob'>ID3DBlob</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.SetInputSignature' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetInputSignature' class='fnname'>SetInputSignature</a>(&amp;mut self, input_parameters: *const <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_PARAMETER_DESC'>D3D11_PARAMETER_DESC</a>, input_parameters_count: UINT, output_node: *mut *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.CallFunction' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.CallFunction' class='fnname'>CallFunction</a>(&amp;mut self, modure_instance_namespace: LPCSTR, module_with_fn_prototype: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11Module.html' title='d3d11::shader::interfaces::ID3D11Module'>ID3D11Module</a>, funtion_name: LPCSTR, call_node: *mut *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.PassValue' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PassValue' class='fnname'>PassValue</a>(&amp;mut self, src_node: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>, src_parameter_index: INT, dst_node: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>, dst_parameter_index: INT) -&gt; HRESULT</code></h4>
+<h4 id='method.PassValueWithSwizzle' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.PassValueWithSwizzle' class='fnname'>PassValueWithSwizzle</a>(&amp;mut self, src_node: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>, src_parameter_index: INT, src_swizzle: LPCSTR, dst_node: *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11LinkingNode.html' title='d3d11::shader::interfaces::ID3D11LinkingNode'>ID3D11LinkingNode</a>, dst_parameter_index: INT, dst_swizzle: LPCSTR) -&gt; HRESULT</code></h4>
+<h4 id='method.GetLastError' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetLastError' class='fnname'>GetLastError</a>(&amp;mut self, error_buf: *mut *mut <a class='type' href='../../../d3d11/common_version/interfaces/type.ID3DBlob.html' title='d3d11::common_version::interfaces::ID3DBlob'>ID3DBlob</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.GenerateHlsl' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GenerateHlsl' class='fnname'>GenerateHlsl</a>(&amp;mut self, flags: UINT, buffer: *mut *mut <a class='type' href='../../../d3d11/common_version/interfaces/type.ID3DBlob.html' title='d3d11::common_version::interfaces::ID3DBlob'>ID3DBlob</a>) -&gt; HRESULT</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../../dxgi/interfaces/trait.IUnknownT.html' title='dxgi::interfaces::IUnknownT'>IUnknownT</a> for <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11FunctionLinkingGraph.html' title='d3d11::shader::interfaces::ID3D11FunctionLinkingGraph'>ID3D11FunctionLinkingGraph</a></code></h3><div class='impl-items'><h4 id='method.QueryInterface' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.QueryInterface' class='fnname'>QueryInterface</a>(&amp;mut self, riid: REFIID, object: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.AddRef' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddRef' class='fnname'>AddRef</a>(&amp;mut self) -&gt; ULONG</code></h4>
+<h4 id='method.Release' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.Release' class='fnname'>Release</a>(&amp;mut self) -&gt; ULONG</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `D3DSHADER_INSTRUCTION_OPCODE_TYPE` enum in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, D3DSHADER_INSTRUCTION_OPCODE_TYPE">
+
+    <title>winapi::d3d9types::D3DSHADER_INSTRUCTION_OPCODE_TYPE - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>d3d9types</a></p><script>window.sidebarCurrent = {name: 'D3DSHADER_INSTRUCTION_OPCODE_TYPE', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>d3d9types</a>::<wbr><a class='enum' href=''>D3DSHADER_INSTRUCTION_OPCODE_TYPE</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-18921' class='srclink' href='../../src/winapi/d3d9types.rs.html#535-621'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum D3DSHADER_INSTRUCTION_OPCODE_TYPE {
+    NOP,
+    MOV,
+    ADD,
+    SUB,
+    MAD,
+    MUL,
+    RCP,
+    RSQ,
+    DP3,
+    DP4,
+    MIN,
+    MAX,
+    SLT,
+    SGE,
+    EXP,
+    LOG,
+    LIT,
+    DST,
+    LRP,
+    FRC,
+    M4x4,
+    M4x3,
+    M3x4,
+    M3x3,
+    M3x2,
+    CALL,
+    CALLNZ,
+    LOOP,
+    RET,
+    ENDLOOP,
+    LABEL,
+    DCL,
+    POW,
+    CRS,
+    SGN,
+    ABS,
+    NRM,
+    SINCOS,
+    REP,
+    ENDREP,
+    IF,
+    IFC,
+    ELSE,
+    ENDIF,
+    BREAK,
+    BREAKC,
+    MOVA,
+    DEFB,
+    DEFI,
+    TEXCOORD,
+    TEXKILL,
+    TEX,
+    TEXBEM,
+    TEXBEML,
+    TEXREG2AR,
+    TEXREG2GB,
+    TEXM3x2PAD,
+    TEXM3x2TEX,
+    TEXM3x3PAD,
+    TEXM3x3TEX,
+    RESERVED0,
+    TEXM3x3SPEC,
+    TEXM3x3VSPEC,
+    EXPP,
+    LOGP,
+    CND,
+    DEF,
+    TEXREG2RGB,
+    TEXDP3TEX,
+    TEXM3x2DEPTH,
+    TEXDP3,
+    TEXM3x3,
+    TEXDEPTH,
+    CMP,
+    BEM,
+    DP2ADD,
+    DSX,
+    DSY,
+    TEXLDD,
+    SETP,
+    TEXLDL,
+    BREAKP,
+    PHASE,
+    COMMENT,
+    END,
+}</pre><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.NOP'><code>NOP</code></td><td></td></tr><tr><td id='variant.MOV'><code>MOV</code></td><td></td></tr><tr><td id='variant.ADD'><code>ADD</code></td><td></td></tr><tr><td id='variant.SUB'><code>SUB</code></td><td></td></tr><tr><td id='variant.MAD'><code>MAD</code></td><td></td></tr><tr><td id='variant.MUL'><code>MUL</code></td><td></td></tr><tr><td id='variant.RCP'><code>RCP</code></td><td></td></tr><tr><td id='variant.RSQ'><code>RSQ</code></td><td></td></tr><tr><td id='variant.DP3'><code>DP3</code></td><td></td></tr><tr><td id='variant.DP4'><code>DP4</code></td><td></td></tr><tr><td id='variant.MIN'><code>MIN</code></td><td></td></tr><tr><td id='variant.MAX'><code>MAX</code></td><td></td></tr><tr><td id='variant.SLT'><code>SLT</code></td><td></td></tr><tr><td id='variant.SGE'><code>SGE</code></td><td></td></tr><tr><td id='variant.EXP'><code>EXP</code></td><td></td></tr><tr><td id='variant.LOG'><code>LOG</code></td><td></td></tr><tr><td id='variant.LIT'><code>LIT</code></td><td></td></tr><tr><td id='variant.DST'><code>DST</code></td><td></td></tr><tr><td id='variant.LRP'><code>LRP</code></td><td></td></tr><tr><td id='variant.FRC'><code>FRC</code></td><td></td></tr><tr><td id='variant.M4x4'><code>M4x4</code></td><td></td></tr><tr><td id='variant.M4x3'><code>M4x3</code></td><td></td></tr><tr><td id='variant.M3x4'><code>M3x4</code></td><td></td></tr><tr><td id='variant.M3x3'><code>M3x3</code></td><td></td></tr><tr><td id='variant.M3x2'><code>M3x2</code></td><td></td></tr><tr><td id='variant.CALL'><code>CALL</code></td><td></td></tr><tr><td id='variant.CALLNZ'><code>CALLNZ</code></td><td></td></tr><tr><td id='variant.LOOP'><code>LOOP</code></td><td></td></tr><tr><td id='variant.RET'><code>RET</code></td><td></td></tr><tr><td id='variant.ENDLOOP'><code>ENDLOOP</code></td><td></td></tr><tr><td id='variant.LABEL'><code>LABEL</code></td><td></td></tr><tr><td id='variant.DCL'><code>DCL</code></td><td></td></tr><tr><td id='variant.POW'><code>POW</code></td><td></td></tr><tr><td id='variant.CRS'><code>CRS</code></td><td></td></tr><tr><td id='variant.SGN'><code>SGN</code></td><td></td></tr><tr><td id='variant.ABS'><code>ABS</code></td><td></td></tr><tr><td id='variant.NRM'><code>NRM</code></td><td></td></tr><tr><td id='variant.SINCOS'><code>SINCOS</code></td><td></td></tr><tr><td id='variant.REP'><code>REP</code></td><td></td></tr><tr><td id='variant.ENDREP'><code>ENDREP</code></td><td></td></tr><tr><td id='variant.IF'><code>IF</code></td><td></td></tr><tr><td id='variant.IFC'><code>IFC</code></td><td></td></tr><tr><td id='variant.ELSE'><code>ELSE</code></td><td></td></tr><tr><td id='variant.ENDIF'><code>ENDIF</code></td><td></td></tr><tr><td id='variant.BREAK'><code>BREAK</code></td><td></td></tr><tr><td id='variant.BREAKC'><code>BREAKC</code></td><td></td></tr><tr><td id='variant.MOVA'><code>MOVA</code></td><td></td></tr><tr><td id='variant.DEFB'><code>DEFB</code></td><td></td></tr><tr><td id='variant.DEFI'><code>DEFI</code></td><td></td></tr><tr><td id='variant.TEXCOORD'><code>TEXCOORD</code></td><td></td></tr><tr><td id='variant.TEXKILL'><code>TEXKILL</code></td><td></td></tr><tr><td id='variant.TEX'><code>TEX</code></td><td></td></tr><tr><td id='variant.TEXBEM'><code>TEXBEM</code></td><td></td></tr><tr><td id='variant.TEXBEML'><code>TEXBEML</code></td><td></td></tr><tr><td id='variant.TEXREG2AR'><code>TEXREG2AR</code></td><td></td></tr><tr><td id='variant.TEXREG2GB'><code>TEXREG2GB</code></td><td></td></tr><tr><td id='variant.TEXM3x2PAD'><code>TEXM3x2PAD</code></td><td></td></tr><tr><td id='variant.TEXM3x2TEX'><code>TEXM3x2TEX</code></td><td></td></tr><tr><td id='variant.TEXM3x3PAD'><code>TEXM3x3PAD</code></td><td></td></tr><tr><td id='variant.TEXM3x3TEX'><code>TEXM3x3TEX</code></td><td></td></tr><tr><td id='variant.RESERVED0'><code>RESERVED0</code></td><td></td></tr><tr><td id='variant.TEXM3x3SPEC'><code>TEXM3x3SPEC</code></td><td></td></tr><tr><td id='variant.TEXM3x3VSPEC'><code>TEXM3x3VSPEC</code></td><td></td></tr><tr><td id='variant.EXPP'><code>EXPP</code></td><td></td></tr><tr><td id='variant.LOGP'><code>LOGP</code></td><td></td></tr><tr><td id='variant.CND'><code>CND</code></td><td></td></tr><tr><td id='variant.DEF'><code>DEF</code></td><td></td></tr><tr><td id='variant.TEXREG2RGB'><code>TEXREG2RGB</code></td><td></td></tr><tr><td id='variant.TEXDP3TEX'><code>TEXDP3TEX</code></td><td></td></tr><tr><td id='variant.TEXM3x2DEPTH'><code>TEXM3x2DEPTH</code></td><td></td></tr><tr><td id='variant.TEXDP3'><code>TEXDP3</code></td><td></td></tr><tr><td id='variant.TEXM3x3'><code>TEXM3x3</code></td><td></td></tr><tr><td id='variant.TEXDEPTH'><code>TEXDEPTH</code></td><td></td></tr><tr><td id='variant.CMP'><code>CMP</code></td><td></td></tr><tr><td id='variant.BEM'><code>BEM</code></td><td></td></tr><tr><td id='variant.DP2ADD'><code>DP2ADD</code></td><td></td></tr><tr><td id='variant.DSX'><code>DSX</code></td><td></td></tr><tr><td id='variant.DSY'><code>DSY</code></td><td></td></tr><tr><td id='variant.TEXLDD'><code>TEXLDD</code></td><td></td></tr><tr><td id='variant.SETP'><code>SETP</code></td><td></td></tr><tr><td id='variant.TEXLDL'><code>TEXLDL</code></td><td></td></tr><tr><td id='variant.BREAKP'><code>BREAKP</code></td><td></td></tr><tr><td id='variant.PHASE'><code>PHASE</code></td><td></td></tr><tr><td id='variant.COMMENT'><code>COMMENT</code></td><td></td></tr><tr><td id='variant.END'><code>END</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../../winapi/d3d9types/enum.D3DSHADER_INSTRUCTION_OPCODE_TYPE.html' title='winapi::d3d9types::D3DSHADER_INSTRUCTION_OPCODE_TYPE'>D3DSHADER_INSTRUCTION_OPCODE_TYPE</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='enum' href='../../winapi/d3d9types/enum.D3DSHADER_INSTRUCTION_OPCODE_TYPE.html' title='winapi::d3d9types::D3DSHADER_INSTRUCTION_OPCODE_TYPE'>D3DSHADER_INSTRUCTION_OPCODE_TYPE</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../../winapi/d3d9types/enum.D3DSHADER_INSTRUCTION_OPCODE_TYPE.html' title='winapi::d3d9types::D3DSHADER_INSTRUCTION_OPCODE_TYPE'>D3DSHADER_INSTRUCTION_OPCODE_TYPE</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../../winapi/d3d9types/enum.D3DSHADER_INSTRUCTION_OPCODE_TYPE.html' title='winapi::d3d9types::D3DSHADER_INSTRUCTION_OPCODE_TYPE'>D3DSHADER_INSTRUCTION_OPCODE_TYPE</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

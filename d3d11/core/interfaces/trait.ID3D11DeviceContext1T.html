@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ID3D11DeviceContext1T` trait in crate `d3d11`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ID3D11DeviceContext1T">
+
+    <title>d3d11::core::interfaces::ID3D11DeviceContext1T - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>core</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'ID3D11DeviceContext1T', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>core</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='trait' href=''>ID3D11DeviceContext1T</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-14864' href='../../../src/d3d11/<dxgi macros>.html#15-18'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait ID3D11DeviceContext1T: <a class='trait' href='../../../d3d11/core/interfaces/trait.ID3D11DeviceContextT.html' title='d3d11::core::interfaces::ID3D11DeviceContextT'>ID3D11DeviceContextT</a> {
+    fn <a href='#tymethod.CopySubresourceRegion1' class='fnname'>CopySubresourceRegion1</a>(&amp;mut self, pDstResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, DstSubresource: UINT, DstX: UINT, DstY: UINT, DstZ: UINT, pSrcResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, SrcSubresource: UINT, pSrcBox: *const <a class='struct' href='../../../d3d11/core/structures/struct.D3D11_BOX.html' title='d3d11::core::structures::D3D11_BOX'>D3D11_BOX</a>, CopyFlags: UINT);
+    fn <a href='#tymethod.UpdateSubresource1' class='fnname'>UpdateSubresource1</a>(&amp;mut self, pDstResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, DstSubresource: UINT, pDstBox: *const <a class='struct' href='../../../d3d11/core/structures/struct.D3D11_BOX.html' title='d3d11::core::structures::D3D11_BOX'>D3D11_BOX</a>, pSrcData: *const <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>, SrcRowPitch: UINT, SrcDepthPitch: UINT, CopyFlags: UINT);
+    fn <a href='#tymethod.DiscardResource' class='fnname'>DiscardResource</a>(&amp;mut self, pResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>);
+    fn <a href='#tymethod.DiscardView' class='fnname'>DiscardView</a>(&amp;mut self, pResourceView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>);
+    fn <a href='#tymethod.VSSetConstantBuffers1' class='fnname'>VSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.HSSetConstantBuffers1' class='fnname'>HSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.DSSetConstantBuffers1' class='fnname'>DSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.GSSetConstantBuffers1' class='fnname'>GSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.PSSetConstantBuffers1' class='fnname'>PSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.CSSetConstantBuffers1' class='fnname'>CSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT);
+    fn <a href='#tymethod.VSGetConstantBuffers1' class='fnname'>VSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.HSGetConstantBuffers1' class='fnname'>HSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.DSGetConstantBuffers1' class='fnname'>DSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.GSGetConstantBuffers1' class='fnname'>GSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.PSGetConstantBuffers1' class='fnname'>PSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.CSGetConstantBuffers1' class='fnname'>CSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT);
+    fn <a href='#tymethod.SwapDeviceContextState' class='fnname'>SwapDeviceContextState</a>(&amp;mut self, pState: *mut <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3DDeviceContextState.html' title='d3d11::core::interfaces::ID3DDeviceContextState'>ID3DDeviceContextState</a>, ppPreviousState: *mut *mut <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3DDeviceContextState.html' title='d3d11::core::interfaces::ID3DDeviceContextState'>ID3DDeviceContextState</a>);
+    fn <a href='#tymethod.ClearView' class='fnname'>ClearView</a>(&amp;mut self, pView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>, Color: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>[FLOAT; 4]</a>, pRect: *const <a class='type' href='../../../d3d11/core/structures/type.D3D11_RECT.html' title='d3d11::core::structures::D3D11_RECT'>D3D11_RECT</a>, NumRects: UINT);
+    fn <a href='#tymethod.DiscardView1' class='fnname'>DiscardView1</a>(&amp;mut self, pResourceView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>, pRects: *const <a class='type' href='../../../d3d11/core/structures/type.D3D11_RECT.html' title='d3d11::core::structures::D3D11_RECT'>D3D11_RECT</a>, NumRects: UINT);
+}</pre>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.CopySubresourceRegion1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.CopySubresourceRegion1' class='fnname'>CopySubresourceRegion1</a>(&amp;mut self, pDstResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, DstSubresource: UINT, DstX: UINT, DstY: UINT, DstZ: UINT, pSrcResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, SrcSubresource: UINT, pSrcBox: *const <a class='struct' href='../../../d3d11/core/structures/struct.D3D11_BOX.html' title='d3d11::core::structures::D3D11_BOX'>D3D11_BOX</a>, CopyFlags: UINT)</code></h3><h3 id='tymethod.UpdateSubresource1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.UpdateSubresource1' class='fnname'>UpdateSubresource1</a>(&amp;mut self, pDstResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>, DstSubresource: UINT, pDstBox: *const <a class='struct' href='../../../d3d11/core/structures/struct.D3D11_BOX.html' title='d3d11::core::structures::D3D11_BOX'>D3D11_BOX</a>, pSrcData: *const <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>, SrcRowPitch: UINT, SrcDepthPitch: UINT, CopyFlags: UINT)</code></h3><h3 id='tymethod.DiscardResource' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.DiscardResource' class='fnname'>DiscardResource</a>(&amp;mut self, pResource: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Resource.html' title='d3d11::resource::interfaces::ID3D11Resource'>ID3D11Resource</a>)</code></h3><h3 id='tymethod.DiscardView' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.DiscardView' class='fnname'>DiscardView</a>(&amp;mut self, pResourceView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>)</code></h3><h3 id='tymethod.VSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.VSSetConstantBuffers1' class='fnname'>VSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.HSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.HSSetConstantBuffers1' class='fnname'>HSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.DSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.DSSetConstantBuffers1' class='fnname'>DSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.GSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GSSetConstantBuffers1' class='fnname'>GSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.PSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.PSSetConstantBuffers1' class='fnname'>PSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.CSSetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.CSSetConstantBuffers1' class='fnname'>CSSetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *const *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *const UINT, pNumConstants: *const UINT)</code></h3><h3 id='tymethod.VSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.VSGetConstantBuffers1' class='fnname'>VSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.HSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.HSGetConstantBuffers1' class='fnname'>HSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.DSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.DSGetConstantBuffers1' class='fnname'>DSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.GSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GSGetConstantBuffers1' class='fnname'>GSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.PSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.PSGetConstantBuffers1' class='fnname'>PSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.CSGetConstantBuffers1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.CSGetConstantBuffers1' class='fnname'>CSGetConstantBuffers1</a>(&amp;mut self, StartSlot: UINT, NumBuffers: UINT, ppConstantBuffers: *mut *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11Buffer.html' title='d3d11::resource::interfaces::ID3D11Buffer'>ID3D11Buffer</a>, pFirstConstant: *mut UINT, pNumConstants: *mut UINT)</code></h3><h3 id='tymethod.SwapDeviceContextState' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.SwapDeviceContextState' class='fnname'>SwapDeviceContextState</a>(&amp;mut self, pState: *mut <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3DDeviceContextState.html' title='d3d11::core::interfaces::ID3DDeviceContextState'>ID3DDeviceContextState</a>, ppPreviousState: *mut *mut <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3DDeviceContextState.html' title='d3d11::core::interfaces::ID3DDeviceContextState'>ID3DDeviceContextState</a>)</code></h3><h3 id='tymethod.ClearView' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.ClearView' class='fnname'>ClearView</a>(&amp;mut self, pView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>, Color: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>[FLOAT; 4]</a>, pRect: *const <a class='type' href='../../../d3d11/core/structures/type.D3D11_RECT.html' title='d3d11::core::structures::D3D11_RECT'>D3D11_RECT</a>, NumRects: UINT)</code></h3><h3 id='tymethod.DiscardView1' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.DiscardView1' class='fnname'>DiscardView1</a>(&amp;mut self, pResourceView: *mut <a class='struct' href='../../../d3d11/resource/interfaces/struct.ID3D11View.html' title='d3d11::resource::interfaces::ID3D11View'>ID3D11View</a>, pRects: *const <a class='type' href='../../../d3d11/core/structures/type.D3D11_RECT.html' title='d3d11::core::structures::D3D11_RECT'>D3D11_RECT</a>, NumRects: UINT)</code></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../../d3d11/core/interfaces/trait.ID3D11DeviceContext1T.html' title='d3d11::core::interfaces::ID3D11DeviceContext1T'>ID3D11DeviceContext1T</a> for <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3D11DeviceContext1.html' title='d3d11::core::interfaces::ID3D11DeviceContext1'>ID3D11DeviceContext1</a></code></li>
+<li><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../../d3d11/core/interfaces/trait.ID3D11DeviceContext1T.html' title='d3d11::core::interfaces::ID3D11DeviceContext1T'>ID3D11DeviceContext1T</a> for <a class='struct' href='../../../d3d11/core/interfaces/struct.ID3D11DeviceContext2.html' title='d3d11::core::interfaces::ID3D11DeviceContext2'>ID3D11DeviceContext2</a></code></li>
+</ul><script type="text/javascript" async
+                              src="../../../implementors/d3d11/core/interfaces/trait.ID3D11DeviceContext1T.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

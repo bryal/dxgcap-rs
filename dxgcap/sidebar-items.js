@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["CaptureError","Possible errors when capturing"]],"fn":[["hr_failed",""]],"struct":[["BGRA8",""],["DXGIManager",""],["UniqueCOMPtr","A unique pointer to a COM object. Handles refcounting."]]});

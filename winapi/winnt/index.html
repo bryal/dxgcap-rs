@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `winnt` mod in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, winnt">
+
+    <title>winapi::winnt - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'winnt', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winapi</a>::<wbr><a class='mod' href=''>winnt</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-64402' class='srclink' href='../../src/winapi/winnt.rs.html#3-530'>[src]</a></span></h1>
+<div class='docblock'><p>This module defines the 32-Bit Windows types and constants that are defined by NT, but exposed
+through the Win32 API.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.ACL.html'
+                               title='winapi::winnt::ACL'>ACL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CLAIM_SECURITY_ATTRIBUTES_INFORMATION.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTES_INFORMATION'>CLAIM_SECURITY_ATTRIBUTES_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE'>CLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE'>CLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1'>CLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CLAIM_SECURITY_ATTRIBUTE_V1.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_V1'>CLAIM_SECURITY_ATTRIBUTE_V1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.CONTEXT.html'
+                               title='winapi::winnt::CONTEXT'>CONTEXT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.EXCEPTION_POINTERS.html'
+                               title='winapi::winnt::EXCEPTION_POINTERS'>EXCEPTION_POINTERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.EXCEPTION_RECORD.html'
+                               title='winapi::winnt::EXCEPTION_RECORD'>EXCEPTION_RECORD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FILE_ID_128.html'
+                               title='winapi::winnt::FILE_ID_128'>FILE_ID_128</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FILE_NOTIFY_INFORMATION.html'
+                               title='winapi::winnt::FILE_NOTIFY_INFORMATION'>FILE_NOTIFY_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.FILE_SEGMENT_ELEMENT.html'
+                               title='winapi::winnt::FILE_SEGMENT_ELEMENT'>FILE_SEGMENT_ELEMENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.IO_COUNTERS.html'
+                               title='winapi::winnt::IO_COUNTERS'>IO_COUNTERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.JOBOBJECT_BASIC_LIMIT_INFORMATION.html'
+                               title='winapi::winnt::JOBOBJECT_BASIC_LIMIT_INFORMATION'>JOBOBJECT_BASIC_LIMIT_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.JOBOBJECT_BASIC_PROCESS_ID_LIST.html'
+                               title='winapi::winnt::JOBOBJECT_BASIC_PROCESS_ID_LIST'>JOBOBJECT_BASIC_PROCESS_ID_LIST</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.JOBOBJECT_EXTENDED_LIMIT_INFORMATION.html'
+                               title='winapi::winnt::JOBOBJECT_EXTENDED_LIMIT_INFORMATION'>JOBOBJECT_EXTENDED_LIMIT_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.RTL_SRWLOCK.html'
+                               title='winapi::winnt::RTL_SRWLOCK'>RTL_SRWLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.JOBOBJECTINFOCLASS.html'
+                               title='winapi::winnt::JOBOBJECTINFOCLASS'>JOBOBJECTINFOCLASS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACCESS_SYSTEM_SECURITY.html'
+                               title='winapi::winnt::ACCESS_SYSTEM_SECURITY'>ACCESS_SYSTEM_SECURITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION.html'
+                               title='winapi::winnt::ACL_REVISION'>ACL_REVISION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION1.html'
+                               title='winapi::winnt::ACL_REVISION1'>ACL_REVISION1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION2.html'
+                               title='winapi::winnt::ACL_REVISION2'>ACL_REVISION2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION3.html'
+                               title='winapi::winnt::ACL_REVISION3'>ACL_REVISION3</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION4.html'
+                               title='winapi::winnt::ACL_REVISION4'>ACL_REVISION4</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ACL_REVISION_DS.html'
+                               title='winapi::winnt::ACL_REVISION_DS'>ACL_REVISION_DS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.ANYSIZE_ARRAY.html'
+                               title='winapi::winnt::ANYSIZE_ARRAY'>ANYSIZE_ARRAY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION'>CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION_V1.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION_V1'>CLAIM_SECURITY_ATTRIBUTES_INFORMATION_VERSION_V1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_CUSTOM_FLAGS.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_CUSTOM_FLAGS'>CLAIM_SECURITY_ATTRIBUTE_CUSTOM_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_DISABLED.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_DISABLED'>CLAIM_SECURITY_ATTRIBUTE_DISABLED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_DISABLED_BY_DEFAULT.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_DISABLED_BY_DEFAULT'>CLAIM_SECURITY_ATTRIBUTE_DISABLED_BY_DEFAULT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_MANDATORY.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_MANDATORY'>CLAIM_SECURITY_ATTRIBUTE_MANDATORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_NON_INHERITABLE.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_NON_INHERITABLE'>CLAIM_SECURITY_ATTRIBUTE_NON_INHERITABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN'>CLAIM_SECURITY_ATTRIBUTE_TYPE_BOOLEAN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_FQBN.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_FQBN'>CLAIM_SECURITY_ATTRIBUTE_TYPE_FQBN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_INT64.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_INT64'>CLAIM_SECURITY_ATTRIBUTE_TYPE_INT64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID'>CLAIM_SECURITY_ATTRIBUTE_TYPE_INVALID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING'>CLAIM_SECURITY_ATTRIBUTE_TYPE_OCTET_STRING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_SID.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_SID'>CLAIM_SECURITY_ATTRIBUTE_TYPE_SID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_STRING.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_STRING'>CLAIM_SECURITY_ATTRIBUTE_TYPE_STRING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_TYPE_UINT64.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_TYPE_UINT64'>CLAIM_SECURITY_ATTRIBUTE_TYPE_UINT64</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_USE_FOR_DENY_ONLY.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_USE_FOR_DENY_ONLY'>CLAIM_SECURITY_ATTRIBUTE_USE_FOR_DENY_ONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_VALID_FLAGS.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_VALID_FLAGS'>CLAIM_SECURITY_ATTRIBUTE_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.CLAIM_SECURITY_ATTRIBUTE_VALUE_CASE_SENSITIVE.html'
+                               title='winapi::winnt::CLAIM_SECURITY_ATTRIBUTE_VALUE_CASE_SENSITIVE'>CLAIM_SECURITY_ATTRIBUTE_VALUE_CASE_SENSITIVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.DELETE.html'
+                               title='winapi::winnt::DELETE'>DELETE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.EXCEPTION_MAXIMUM_PARAMETERS.html'
+                               title='winapi::winnt::EXCEPTION_MAXIMUM_PARAMETERS'>EXCEPTION_MAXIMUM_PARAMETERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ACTION_ADDED.html'
+                               title='winapi::winnt::FILE_ACTION_ADDED'>FILE_ACTION_ADDED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ACTION_MODIFIED.html'
+                               title='winapi::winnt::FILE_ACTION_MODIFIED'>FILE_ACTION_MODIFIED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ACTION_REMOVED.html'
+                               title='winapi::winnt::FILE_ACTION_REMOVED'>FILE_ACTION_REMOVED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ACTION_RENAMED_NEW_NAME.html'
+                               title='winapi::winnt::FILE_ACTION_RENAMED_NEW_NAME'>FILE_ACTION_RENAMED_NEW_NAME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ACTION_RENAMED_OLD_NAME.html'
+                               title='winapi::winnt::FILE_ACTION_RENAMED_OLD_NAME'>FILE_ACTION_RENAMED_OLD_NAME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ADD_FILE.html'
+                               title='winapi::winnt::FILE_ADD_FILE'>FILE_ADD_FILE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ADD_SUBDIRECTORY.html'
+                               title='winapi::winnt::FILE_ADD_SUBDIRECTORY'>FILE_ADD_SUBDIRECTORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ALL_ACCESS.html'
+                               title='winapi::winnt::FILE_ALL_ACCESS'>FILE_ALL_ACCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_APPEND_DATA.html'
+                               title='winapi::winnt::FILE_APPEND_DATA'>FILE_APPEND_DATA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_ARCHIVE.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_ARCHIVE'>FILE_ATTRIBUTE_ARCHIVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_COMPRESSED.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_COMPRESSED'>FILE_ATTRIBUTE_COMPRESSED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_DEVICE.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_DEVICE'>FILE_ATTRIBUTE_DEVICE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_DIRECTORY.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_DIRECTORY'>FILE_ATTRIBUTE_DIRECTORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_EA.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_EA'>FILE_ATTRIBUTE_EA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_ENCRYPTED.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_ENCRYPTED'>FILE_ATTRIBUTE_ENCRYPTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_HIDDEN.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_HIDDEN'>FILE_ATTRIBUTE_HIDDEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_INTEGRITY_STREAM.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_INTEGRITY_STREAM'>FILE_ATTRIBUTE_INTEGRITY_STREAM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_NORMAL.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_NORMAL'>FILE_ATTRIBUTE_NORMAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_NOT_CONTENT_INDEXED.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_NOT_CONTENT_INDEXED'>FILE_ATTRIBUTE_NOT_CONTENT_INDEXED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_NO_SCRUB_DATA.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_NO_SCRUB_DATA'>FILE_ATTRIBUTE_NO_SCRUB_DATA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_OFFLINE.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_OFFLINE'>FILE_ATTRIBUTE_OFFLINE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_READONLY.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_READONLY'>FILE_ATTRIBUTE_READONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_REPARSE_POINT.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_REPARSE_POINT'>FILE_ATTRIBUTE_REPARSE_POINT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_SPARSE_FILE.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_SPARSE_FILE'>FILE_ATTRIBUTE_SPARSE_FILE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_SYSTEM.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_SYSTEM'>FILE_ATTRIBUTE_SYSTEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_TEMPORARY.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_TEMPORARY'>FILE_ATTRIBUTE_TEMPORARY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_ATTRIBUTE_VIRTUAL.html'
+                               title='winapi::winnt::FILE_ATTRIBUTE_VIRTUAL'>FILE_ATTRIBUTE_VIRTUAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_CASE_PRESERVED_NAMES.html'
+                               title='winapi::winnt::FILE_CASE_PRESERVED_NAMES'>FILE_CASE_PRESERVED_NAMES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_CASE_SENSITIVE_SEARCH.html'
+                               title='winapi::winnt::FILE_CASE_SENSITIVE_SEARCH'>FILE_CASE_SENSITIVE_SEARCH</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_CREATE_PIPE_INSTANCE.html'
+                               title='winapi::winnt::FILE_CREATE_PIPE_INSTANCE'>FILE_CREATE_PIPE_INSTANCE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_DELETE_CHILD.html'
+                               title='winapi::winnt::FILE_DELETE_CHILD'>FILE_DELETE_CHILD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_EXECUTE.html'
+                               title='winapi::winnt::FILE_EXECUTE'>FILE_EXECUTE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_FILE_COMPRESSION.html'
+                               title='winapi::winnt::FILE_FILE_COMPRESSION'>FILE_FILE_COMPRESSION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_GENERIC_EXECUTE.html'
+                               title='winapi::winnt::FILE_GENERIC_EXECUTE'>FILE_GENERIC_EXECUTE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_GENERIC_READ.html'
+                               title='winapi::winnt::FILE_GENERIC_READ'>FILE_GENERIC_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_GENERIC_WRITE.html'
+                               title='winapi::winnt::FILE_GENERIC_WRITE'>FILE_GENERIC_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_INVALID_FILE_ID.html'
+                               title='winapi::winnt::FILE_INVALID_FILE_ID'>FILE_INVALID_FILE_ID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_LIST_DIRECTORY.html'
+                               title='winapi::winnt::FILE_LIST_DIRECTORY'>FILE_LIST_DIRECTORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NAMED_STREAMS.html'
+                               title='winapi::winnt::FILE_NAMED_STREAMS'>FILE_NAMED_STREAMS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_ATTRIBUTES.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_ATTRIBUTES'>FILE_NOTIFY_CHANGE_ATTRIBUTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_CREATION.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_CREATION'>FILE_NOTIFY_CHANGE_CREATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_DIR_NAME.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_DIR_NAME'>FILE_NOTIFY_CHANGE_DIR_NAME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_FILE_NAME.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_FILE_NAME'>FILE_NOTIFY_CHANGE_FILE_NAME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_LAST_ACCESS.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_LAST_ACCESS'>FILE_NOTIFY_CHANGE_LAST_ACCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_LAST_WRITE.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_LAST_WRITE'>FILE_NOTIFY_CHANGE_LAST_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_SECURITY.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_SECURITY'>FILE_NOTIFY_CHANGE_SECURITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_NOTIFY_CHANGE_SIZE.html'
+                               title='winapi::winnt::FILE_NOTIFY_CHANGE_SIZE'>FILE_NOTIFY_CHANGE_SIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_PERSISTENT_ACLS.html'
+                               title='winapi::winnt::FILE_PERSISTENT_ACLS'>FILE_PERSISTENT_ACLS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_READ_ATTRIBUTES.html'
+                               title='winapi::winnt::FILE_READ_ATTRIBUTES'>FILE_READ_ATTRIBUTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_READ_DATA.html'
+                               title='winapi::winnt::FILE_READ_DATA'>FILE_READ_DATA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_READ_EA.html'
+                               title='winapi::winnt::FILE_READ_EA'>FILE_READ_EA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_READ_ONLY_VOLUME.html'
+                               title='winapi::winnt::FILE_READ_ONLY_VOLUME'>FILE_READ_ONLY_VOLUME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SEQUENTIAL_WRITE_ONCE.html'
+                               title='winapi::winnt::FILE_SEQUENTIAL_WRITE_ONCE'>FILE_SEQUENTIAL_WRITE_ONCE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SHARE_DELETE.html'
+                               title='winapi::winnt::FILE_SHARE_DELETE'>FILE_SHARE_DELETE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SHARE_READ.html'
+                               title='winapi::winnt::FILE_SHARE_READ'>FILE_SHARE_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SHARE_WRITE.html'
+                               title='winapi::winnt::FILE_SHARE_WRITE'>FILE_SHARE_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_ENCRYPTION.html'
+                               title='winapi::winnt::FILE_SUPPORTS_ENCRYPTION'>FILE_SUPPORTS_ENCRYPTION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_EXTENDED_ATTRIBUTES.html'
+                               title='winapi::winnt::FILE_SUPPORTS_EXTENDED_ATTRIBUTES'>FILE_SUPPORTS_EXTENDED_ATTRIBUTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_HARD_LINKS.html'
+                               title='winapi::winnt::FILE_SUPPORTS_HARD_LINKS'>FILE_SUPPORTS_HARD_LINKS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_INTEGRITY_STREAMS.html'
+                               title='winapi::winnt::FILE_SUPPORTS_INTEGRITY_STREAMS'>FILE_SUPPORTS_INTEGRITY_STREAMS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_OBJECT_IDS.html'
+                               title='winapi::winnt::FILE_SUPPORTS_OBJECT_IDS'>FILE_SUPPORTS_OBJECT_IDS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_OPEN_BY_FILE_ID.html'
+                               title='winapi::winnt::FILE_SUPPORTS_OPEN_BY_FILE_ID'>FILE_SUPPORTS_OPEN_BY_FILE_ID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_REMOTE_STORAGE.html'
+                               title='winapi::winnt::FILE_SUPPORTS_REMOTE_STORAGE'>FILE_SUPPORTS_REMOTE_STORAGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_REPARSE_POINTS.html'
+                               title='winapi::winnt::FILE_SUPPORTS_REPARSE_POINTS'>FILE_SUPPORTS_REPARSE_POINTS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_SPARSE_FILES.html'
+                               title='winapi::winnt::FILE_SUPPORTS_SPARSE_FILES'>FILE_SUPPORTS_SPARSE_FILES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_TRANSACTIONS.html'
+                               title='winapi::winnt::FILE_SUPPORTS_TRANSACTIONS'>FILE_SUPPORTS_TRANSACTIONS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_SUPPORTS_USN_JOURNAL.html'
+                               title='winapi::winnt::FILE_SUPPORTS_USN_JOURNAL'>FILE_SUPPORTS_USN_JOURNAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_TRAVERSE.html'
+                               title='winapi::winnt::FILE_TRAVERSE'>FILE_TRAVERSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_UNICODE_ON_DISK.html'
+                               title='winapi::winnt::FILE_UNICODE_ON_DISK'>FILE_UNICODE_ON_DISK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_VOLUME_IS_COMPRESSED.html'
+                               title='winapi::winnt::FILE_VOLUME_IS_COMPRESSED'>FILE_VOLUME_IS_COMPRESSED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_VOLUME_QUOTAS.html'
+                               title='winapi::winnt::FILE_VOLUME_QUOTAS'>FILE_VOLUME_QUOTAS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_WRITE_ATTRIBUTES.html'
+                               title='winapi::winnt::FILE_WRITE_ATTRIBUTES'>FILE_WRITE_ATTRIBUTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_WRITE_DATA.html'
+                               title='winapi::winnt::FILE_WRITE_DATA'>FILE_WRITE_DATA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.FILE_WRITE_EA.html'
+                               title='winapi::winnt::FILE_WRITE_EA'>FILE_WRITE_EA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.GENERIC_ALL.html'
+                               title='winapi::winnt::GENERIC_ALL'>GENERIC_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.GENERIC_EXECUTE.html'
+                               title='winapi::winnt::GENERIC_EXECUTE'>GENERIC_EXECUTE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.GENERIC_READ.html'
+                               title='winapi::winnt::GENERIC_READ'>GENERIC_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.GENERIC_WRITE.html'
+                               title='winapi::winnt::GENERIC_WRITE'>GENERIC_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_CSV.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_CSV'>IO_REPARSE_TAG_CSV</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_DEDUP.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_DEDUP'>IO_REPARSE_TAG_DEDUP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_DFS.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_DFS'>IO_REPARSE_TAG_DFS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_DFSR.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_DFSR'>IO_REPARSE_TAG_DFSR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_FILE_PLACEHOLDER.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_FILE_PLACEHOLDER'>IO_REPARSE_TAG_FILE_PLACEHOLDER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_HSM.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_HSM'>IO_REPARSE_TAG_HSM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_HSM2.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_HSM2'>IO_REPARSE_TAG_HSM2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_MOUNT_POINT.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_MOUNT_POINT'>IO_REPARSE_TAG_MOUNT_POINT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_NFS.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_NFS'>IO_REPARSE_TAG_NFS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_SIS.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_SIS'>IO_REPARSE_TAG_SIS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_SYMLINK.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_SYMLINK'>IO_REPARSE_TAG_SYMLINK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_WIM.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_WIM'>IO_REPARSE_TAG_WIM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.IO_REPARSE_TAG_WOF.html'
+                               title='winapi::winnt::IO_REPARSE_TAG_WOF'>IO_REPARSE_TAG_WOF</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_BASIC_LIMIT_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_BASIC_LIMIT_VALID_FLAGS'>JOB_OBJECT_BASIC_LIMIT_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_CPU_RATE_CONTROL_ENABLE.html'
+                               title='winapi::winnt::JOB_OBJECT_CPU_RATE_CONTROL_ENABLE'>JOB_OBJECT_CPU_RATE_CONTROL_ENABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_CPU_RATE_CONTROL_HARD_CAP.html'
+                               title='winapi::winnt::JOB_OBJECT_CPU_RATE_CONTROL_HARD_CAP'>JOB_OBJECT_CPU_RATE_CONTROL_HARD_CAP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_CPU_RATE_CONTROL_NOTIFY.html'
+                               title='winapi::winnt::JOB_OBJECT_CPU_RATE_CONTROL_NOTIFY'>JOB_OBJECT_CPU_RATE_CONTROL_NOTIFY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_CPU_RATE_CONTROL_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_CPU_RATE_CONTROL_VALID_FLAGS'>JOB_OBJECT_CPU_RATE_CONTROL_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_CPU_RATE_CONTROL_WEIGHT_BASED.html'
+                               title='winapi::winnt::JOB_OBJECT_CPU_RATE_CONTROL_WEIGHT_BASED'>JOB_OBJECT_CPU_RATE_CONTROL_WEIGHT_BASED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_EXTENDED_LIMIT_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_EXTENDED_LIMIT_VALID_FLAGS'>JOB_OBJECT_EXTENDED_LIMIT_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_ACTIVE_PROCESS.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_ACTIVE_PROCESS'>JOB_OBJECT_LIMIT_ACTIVE_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_AFFINITY.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_AFFINITY'>JOB_OBJECT_LIMIT_AFFINITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_BREAKAWAY_OK.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_BREAKAWAY_OK'>JOB_OBJECT_LIMIT_BREAKAWAY_OK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_DIE_ON_UNHANDLED_EXCEPTION.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_DIE_ON_UNHANDLED_EXCEPTION'>JOB_OBJECT_LIMIT_DIE_ON_UNHANDLED_EXCEPTION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_JOB_MEMORY.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_JOB_MEMORY'>JOB_OBJECT_LIMIT_JOB_MEMORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_JOB_READ_BYTES.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_JOB_READ_BYTES'>JOB_OBJECT_LIMIT_JOB_READ_BYTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_JOB_TIME.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_JOB_TIME'>JOB_OBJECT_LIMIT_JOB_TIME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_JOB_WRITE_BYTES.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_JOB_WRITE_BYTES'>JOB_OBJECT_LIMIT_JOB_WRITE_BYTES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE'>JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_PRESERVE_JOB_TIME.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_PRESERVE_JOB_TIME'>JOB_OBJECT_LIMIT_PRESERVE_JOB_TIME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_PRIORITY_CLASS.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_PRIORITY_CLASS'>JOB_OBJECT_LIMIT_PRIORITY_CLASS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_PROCESS_MEMORY.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_PROCESS_MEMORY'>JOB_OBJECT_LIMIT_PROCESS_MEMORY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_PROCESS_TIME.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_PROCESS_TIME'>JOB_OBJECT_LIMIT_PROCESS_TIME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_RATE_CONTROL.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_RATE_CONTROL'>JOB_OBJECT_LIMIT_RATE_CONTROL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_RESERVED3.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_RESERVED3'>JOB_OBJECT_LIMIT_RESERVED3</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_SCHEDULING_CLASS.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_SCHEDULING_CLASS'>JOB_OBJECT_LIMIT_SCHEDULING_CLASS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK'>JOB_OBJECT_LIMIT_SILENT_BREAKAWAY_OK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_SUBSET_AFFINITY.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_SUBSET_AFFINITY'>JOB_OBJECT_LIMIT_SUBSET_AFFINITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_VALID_FLAGS'>JOB_OBJECT_LIMIT_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_LIMIT_WORKINGSET.html'
+                               title='winapi::winnt::JOB_OBJECT_LIMIT_WORKINGSET'>JOB_OBJECT_LIMIT_WORKINGSET</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_ABNORMAL_EXIT_PROCESS.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_ABNORMAL_EXIT_PROCESS'>JOB_OBJECT_MSG_ABNORMAL_EXIT_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_ACTIVE_PROCESS_LIMIT.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_ACTIVE_PROCESS_LIMIT'>JOB_OBJECT_MSG_ACTIVE_PROCESS_LIMIT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_ACTIVE_PROCESS_ZERO.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_ACTIVE_PROCESS_ZERO'>JOB_OBJECT_MSG_ACTIVE_PROCESS_ZERO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_END_OF_JOB_TIME.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_END_OF_JOB_TIME'>JOB_OBJECT_MSG_END_OF_JOB_TIME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_END_OF_PROCESS_TIME.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_END_OF_PROCESS_TIME'>JOB_OBJECT_MSG_END_OF_PROCESS_TIME</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_EXIT_PROCESS.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_EXIT_PROCESS'>JOB_OBJECT_MSG_EXIT_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_JOB_CYCLE_TIME_LIMIT.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_JOB_CYCLE_TIME_LIMIT'>JOB_OBJECT_MSG_JOB_CYCLE_TIME_LIMIT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_JOB_MEMORY_LIMIT.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_JOB_MEMORY_LIMIT'>JOB_OBJECT_MSG_JOB_MEMORY_LIMIT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_MAXIMUM.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_MAXIMUM'>JOB_OBJECT_MSG_MAXIMUM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_MINIMUM.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_MINIMUM'>JOB_OBJECT_MSG_MINIMUM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_NEW_PROCESS.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_NEW_PROCESS'>JOB_OBJECT_MSG_NEW_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_NOTIFICATION_LIMIT.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_NOTIFICATION_LIMIT'>JOB_OBJECT_MSG_NOTIFICATION_LIMIT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_MSG_PROCESS_MEMORY_LIMIT.html'
+                               title='winapi::winnt::JOB_OBJECT_MSG_PROCESS_MEMORY_LIMIT'>JOB_OBJECT_MSG_PROCESS_MEMORY_LIMIT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_NOTIFICATION_LIMIT_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_NOTIFICATION_LIMIT_VALID_FLAGS'>JOB_OBJECT_NOTIFICATION_LIMIT_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_POST_AT_END_OF_JOB.html'
+                               title='winapi::winnt::JOB_OBJECT_POST_AT_END_OF_JOB'>JOB_OBJECT_POST_AT_END_OF_JOB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS'>JOB_OBJECT_RESERVED_LIMIT_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_SECURITY_FILTER_TOKENS.html'
+                               title='winapi::winnt::JOB_OBJECT_SECURITY_FILTER_TOKENS'>JOB_OBJECT_SECURITY_FILTER_TOKENS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_SECURITY_NO_ADMIN.html'
+                               title='winapi::winnt::JOB_OBJECT_SECURITY_NO_ADMIN'>JOB_OBJECT_SECURITY_NO_ADMIN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_SECURITY_ONLY_TOKEN.html'
+                               title='winapi::winnt::JOB_OBJECT_SECURITY_ONLY_TOKEN'>JOB_OBJECT_SECURITY_ONLY_TOKEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_SECURITY_RESTRICTED_TOKEN.html'
+                               title='winapi::winnt::JOB_OBJECT_SECURITY_RESTRICTED_TOKEN'>JOB_OBJECT_SECURITY_RESTRICTED_TOKEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_SECURITY_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_SECURITY_VALID_FLAGS'>JOB_OBJECT_SECURITY_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_TERMINATE_AT_END_OF_JOB.html'
+                               title='winapi::winnt::JOB_OBJECT_TERMINATE_AT_END_OF_JOB'>JOB_OBJECT_TERMINATE_AT_END_OF_JOB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_ALL.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_ALL'>JOB_OBJECT_UILIMIT_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_DESKTOP.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_DESKTOP'>JOB_OBJECT_UILIMIT_DESKTOP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_DISPLAYSETTINGS.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_DISPLAYSETTINGS'>JOB_OBJECT_UILIMIT_DISPLAYSETTINGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_EXITWINDOWS.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_EXITWINDOWS'>JOB_OBJECT_UILIMIT_EXITWINDOWS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_GLOBALATOMS.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_GLOBALATOMS'>JOB_OBJECT_UILIMIT_GLOBALATOMS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_HANDLES.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_HANDLES'>JOB_OBJECT_UILIMIT_HANDLES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_NONE.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_NONE'>JOB_OBJECT_UILIMIT_NONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_READCLIPBOARD.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_READCLIPBOARD'>JOB_OBJECT_UILIMIT_READCLIPBOARD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_SYSTEMPARAMETERS.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_SYSTEMPARAMETERS'>JOB_OBJECT_UILIMIT_SYSTEMPARAMETERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UILIMIT_WRITECLIPBOARD.html'
+                               title='winapi::winnt::JOB_OBJECT_UILIMIT_WRITECLIPBOARD'>JOB_OBJECT_UILIMIT_WRITECLIPBOARD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_UI_VALID_FLAGS.html'
+                               title='winapi::winnt::JOB_OBJECT_UI_VALID_FLAGS'>JOB_OBJECT_UI_VALID_FLAGS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.JOB_OBJECT_VALID_COMPLETION_FILTER.html'
+                               title='winapi::winnt::JOB_OBJECT_VALID_COMPLETION_FILTER'>JOB_OBJECT_VALID_COMPLETION_FILTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MAILSLOT_NO_MESSAGE.html'
+                               title='winapi::winnt::MAILSLOT_NO_MESSAGE'>MAILSLOT_NO_MESSAGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MAILSLOT_WAIT_FOREVER.html'
+                               title='winapi::winnt::MAILSLOT_WAIT_FOREVER'>MAILSLOT_WAIT_FOREVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MAXIMUM_ALLOWED.html'
+                               title='winapi::winnt::MAXIMUM_ALLOWED'>MAXIMUM_ALLOWED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MAX_ACL_REVISION.html'
+                               title='winapi::winnt::MAX_ACL_REVISION'>MAX_ACL_REVISION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.MIN_ACL_REVISION.html'
+                               title='winapi::winnt::MIN_ACL_REVISION'>MIN_ACL_REVISION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.READ_CONTROL.html'
+                               title='winapi::winnt::READ_CONTROL'>READ_CONTROL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ADAPTER.html'
+                               title='winapi::winnt::SERVICE_ADAPTER'>SERVICE_ADAPTER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_DRIVER.html'
+                               title='winapi::winnt::SERVICE_DRIVER'>SERVICE_DRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_FILE_SYSTEM_DRIVER.html'
+                               title='winapi::winnt::SERVICE_FILE_SYSTEM_DRIVER'>SERVICE_FILE_SYSTEM_DRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_INTERACTIVE_PROCESS.html'
+                               title='winapi::winnt::SERVICE_INTERACTIVE_PROCESS'>SERVICE_INTERACTIVE_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_KERNEL_DRIVER.html'
+                               title='winapi::winnt::SERVICE_KERNEL_DRIVER'>SERVICE_KERNEL_DRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_RECOGNIZER_DRIVER.html'
+                               title='winapi::winnt::SERVICE_RECOGNIZER_DRIVER'>SERVICE_RECOGNIZER_DRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TYPE_ALL.html'
+                               title='winapi::winnt::SERVICE_TYPE_ALL'>SERVICE_TYPE_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_WIN32.html'
+                               title='winapi::winnt::SERVICE_WIN32'>SERVICE_WIN32</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_WIN32_OWN_PROCESS.html'
+                               title='winapi::winnt::SERVICE_WIN32_OWN_PROCESS'>SERVICE_WIN32_OWN_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_WIN32_SHARE_PROCESS.html'
+                               title='winapi::winnt::SERVICE_WIN32_SHARE_PROCESS'>SERVICE_WIN32_SHARE_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SPECIFIC_RIGHTS_ALL.html'
+                               title='winapi::winnt::SPECIFIC_RIGHTS_ALL'>SPECIFIC_RIGHTS_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.STANDARD_RIGHTS_ALL.html'
+                               title='winapi::winnt::STANDARD_RIGHTS_ALL'>STANDARD_RIGHTS_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.STANDARD_RIGHTS_EXECUTE.html'
+                               title='winapi::winnt::STANDARD_RIGHTS_EXECUTE'>STANDARD_RIGHTS_EXECUTE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.STANDARD_RIGHTS_READ.html'
+                               title='winapi::winnt::STANDARD_RIGHTS_READ'>STANDARD_RIGHTS_READ</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.STANDARD_RIGHTS_REQUIRED.html'
+                               title='winapi::winnt::STANDARD_RIGHTS_REQUIRED'>STANDARD_RIGHTS_REQUIRED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.STANDARD_RIGHTS_WRITE.html'
+                               title='winapi::winnt::STANDARD_RIGHTS_WRITE'>STANDARD_RIGHTS_WRITE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SYNCHRONIZE.html'
+                               title='winapi::winnt::SYNCHRONIZE'>SYNCHRONIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.WRITE_DAC.html'
+                               title='winapi::winnt::WRITE_DAC'>WRITE_DAC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.WRITE_OWNER.html'
+                               title='winapi::winnt::WRITE_OWNER'>WRITE_OWNER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.CHAR.html'
+                               title='winapi::winnt::CHAR'>CHAR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LONG.html'
+                               title='winapi::winnt::LONG'>LONG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.NTSTATUS.html'
+                               title='winapi::winnt::NTSTATUS'>NTSTATUS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PACCESS_TOKEN.html'
+                               title='winapi::winnt::PACCESS_TOKEN'>PACCESS_TOKEN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PACL.html'
+                               title='winapi::winnt::PACL'>PACL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PAPCFUNC.html'
+                               title='winapi::winnt::PAPCFUNC'>PAPCFUNC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIMS_BLOB.html'
+                               title='winapi::winnt::PCLAIMS_BLOB'>PCLAIMS_BLOB</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIM_SECURITY_ATTRIBUTES_INFORMATION.html'
+                               title='winapi::winnt::PCLAIM_SECURITY_ATTRIBUTES_INFORMATION'>PCLAIM_SECURITY_ATTRIBUTES_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE.html'
+                               title='winapi::winnt::PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE'>PCLAIM_SECURITY_ATTRIBUTE_FQBN_VALUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE.html'
+                               title='winapi::winnt::PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE'>PCLAIM_SECURITY_ATTRIBUTE_OCTET_STRING_VALUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1.html'
+                               title='winapi::winnt::PCLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1'>PCLAIM_SECURITY_ATTRIBUTE_RELATIVE_V1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCLAIM_SECURITY_ATTRIBUTE_V1.html'
+                               title='winapi::winnt::PCLAIM_SECURITY_ATTRIBUTE_V1'>PCLAIM_SECURITY_ATTRIBUTE_V1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PCONTEXT.html'
+                               title='winapi::winnt::PCONTEXT'>PCONTEXT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PEXCEPTION_POINTERS.html'
+                               title='winapi::winnt::PEXCEPTION_POINTERS'>PEXCEPTION_POINTERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PEXCEPTION_RECORD.html'
+                               title='winapi::winnt::PEXCEPTION_RECORD'>PEXCEPTION_RECORD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PFILE_ID_128.html'
+                               title='winapi::winnt::PFILE_ID_128'>PFILE_ID_128</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PFILE_SEGMENT_ELEMENT.html'
+                               title='winapi::winnt::PFILE_SEGMENT_ELEMENT'>PFILE_SEGMENT_ELEMENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PIO_COUNTERS.html'
+                               title='winapi::winnt::PIO_COUNTERS'>PIO_COUNTERS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PJOBOBJECT_BASIC_LIMIT_INFORMATION.html'
+                               title='winapi::winnt::PJOBOBJECT_BASIC_LIMIT_INFORMATION'>PJOBOBJECT_BASIC_LIMIT_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PJOBOBJECT_BASIC_PROCESS_ID_LIST.html'
+                               title='winapi::winnt::PJOBOBJECT_BASIC_PROCESS_ID_LIST'>PJOBOBJECT_BASIC_PROCESS_ID_LIST</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PJOBOBJECT_EXTENDED_LIMIT_INFORMATION.html'
+                               title='winapi::winnt::PJOBOBJECT_EXTENDED_LIMIT_INFORMATION'>PJOBOBJECT_EXTENDED_LIMIT_INFORMATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PRTL_SRWLOCK.html'
+                               title='winapi::winnt::PRTL_SRWLOCK'>PRTL_SRWLOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PSECURE_MEMORY_CACHE_CALLBACK.html'
+                               title='winapi::winnt::PSECURE_MEMORY_CACHE_CALLBACK'>PSECURE_MEMORY_CACHE_CALLBACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PSECURITY_DESCRIPTOR.html'
+                               title='winapi::winnt::PSECURITY_DESCRIPTOR'>PSECURITY_DESCRIPTOR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PSID.html'
+                               title='winapi::winnt::PSID'>PSID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.PVECTORED_EXCEPTION_HANDLER.html'
+                               title='winapi::winnt::PVECTORED_EXCEPTION_HANDLER'>PVECTORED_EXCEPTION_HANDLER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.SHORT.html'
+                               title='winapi::winnt::SHORT'>SHORT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.VOID.html'
+                               title='winapi::winnt::VOID'>VOID</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

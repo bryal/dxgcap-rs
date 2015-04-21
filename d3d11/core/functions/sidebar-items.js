@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["D3D11CreateDevice",""],["D3D11CreateDeviceAndSwapChain",""]]});

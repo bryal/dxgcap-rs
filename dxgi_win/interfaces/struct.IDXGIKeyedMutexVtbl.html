@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIKeyedMutexVtbl` struct in crate `dxgi_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIKeyedMutexVtbl">
+
+    <title>dxgi_win::interfaces::IDXGIKeyedMutexVtbl - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIKeyedMutexVtbl', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>IDXGIKeyedMutexVtbl</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-6633' class='srclink' href='../../src/dxgi_win/macros.rs.html#49-52'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGIKeyedMutexVtbl {
+    pub QueryInterface: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, riid: <a class='type' href='../../winapi/type.REFIID.html' title='winapi::REFIID'>REFIID</a>, object: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub AddRef: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a>&gt;,
+    pub Release: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a>&gt;,
+    pub SetPrivateData: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, name: <a class='type' href='../../winapi/type.REFGUID.html' title='winapi::REFGUID'>REFGUID</a>, data_size: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub SetPrivateDataInterface: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, name: <a class='type' href='../../winapi/type.REFGUID.html' title='winapi::REFGUID'>REFGUID</a>, unknown: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../dxgi_win/interfaces/struct.IUnknown.html' title='dxgi_win::interfaces::IUnknown'>IUnknown</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub GetPrivateData: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, name: <a class='type' href='../../winapi/type.REFGUID.html' title='winapi::REFGUID'>REFGUID</a>, data_size: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub GetParent: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, riid: <a class='type' href='../../winapi/type.REFIID.html' title='winapi::REFIID'>REFIID</a>, parent: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub GetDevice: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, riid: <a class='type' href='../../winapi/type.REFIID.html' title='winapi::REFIID'>REFIID</a>, device: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub AcquireSync: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, key: <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a>, milliseconds: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+    pub ReleaseSync: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIKeyedMutex.html' title='dxgi_win::interfaces::IDXGIKeyedMutex'>IDXGIKeyedMutex</a></a>, key: <a class='type' href='../../winapi/basetsd/type.UINT64.html' title='winapi::basetsd::UINT64'>UINT64</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>&gt;,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.QueryInterface'><code>QueryInterface</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddRef'><code>AddRef</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Release'><code>Release</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetPrivateData'><code>SetPrivateData</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetPrivateDataInterface'><code>SetPrivateDataInterface</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetPrivateData'><code>GetPrivateData</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetParent'><code>GetParent</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetDevice'><code>GetDevice</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AcquireSync'><code>AcquireSync</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ReleaseSync'><code>ReleaseSync</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

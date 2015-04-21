@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIResource1T` trait in crate `dxgi_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIResource1T">
+
+    <title>dxgi_win::interfaces::IDXGIResource1T - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIResource1T', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='trait' href=''>IDXGIResource1T</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-7774' class='srclink' href='../../src/dxgi_win/macros.rs.html#71-73'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait IDXGIResource1T: <a class='trait' href='../../dxgi_win/interfaces/trait.IDXGIResourceT.html' title='dxgi_win::interfaces::IDXGIResourceT'>IDXGIResourceT</a> {
+    fn <a href='#tymethod.CreateSubresourceSurface' class='fnname'>CreateSubresourceSurface</a>(&amp;mut self, index: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, surface: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGISurface2.html' title='dxgi_win::interfaces::IDXGISurface2'>IDXGISurface2</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>;
+    fn <a href='#tymethod.CreateSharedHandle' class='fnname'>CreateSharedHandle</a>(&amp;mut self, attributes: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../winapi/minwinbase/struct.SECURITY_ATTRIBUTES.html' title='winapi::minwinbase::SECURITY_ATTRIBUTES'>SECURITY_ATTRIBUTES</a></a>, access: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, name: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>, handle: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.HANDLE.html' title='winapi::HANDLE'>HANDLE</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>;
+}</pre>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.CreateSubresourceSurface' class='method stab '><code>fn <a href='#tymethod.CreateSubresourceSurface' class='fnname'>CreateSubresourceSurface</a>(&amp;mut self, index: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, surface: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGISurface2.html' title='dxgi_win::interfaces::IDXGISurface2'>IDXGISurface2</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h3><h3 id='tymethod.CreateSharedHandle' class='method stab '><code>fn <a href='#tymethod.CreateSharedHandle' class='fnname'>CreateSharedHandle</a>(&amp;mut self, attributes: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../winapi/minwinbase/struct.SECURITY_ATTRIBUTES.html' title='winapi::minwinbase::SECURITY_ATTRIBUTES'>SECURITY_ATTRIBUTES</a></a>, access: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, name: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>, handle: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.HANDLE.html' title='winapi::HANDLE'>HANDLE</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl <a class='trait' href='../../dxgi_win/interfaces/trait.IDXGIResource1T.html' title='dxgi_win::interfaces::IDXGIResource1T'>IDXGIResource1T</a> for <a class='struct' href='../../dxgi_win/interfaces/struct.IDXGIResource1.html' title='dxgi_win::interfaces::IDXGIResource1'>IDXGIResource1</a></code></li>
+</ul><script type="text/javascript" async
+                              src="../../implementors/dxgi_win/interfaces/trait.IDXGIResource1T.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

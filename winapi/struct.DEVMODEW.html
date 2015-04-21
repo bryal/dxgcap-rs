@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `DEVMODEW` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, DEVMODEW">
+
+    <title>winapi::DEVMODEW - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'DEVMODEW', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>winapi</a>::<wbr><a class='struct' href=''>DEVMODEW</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-94242' class='srclink' href='../src/winapi/lib.rs.html#2598-2626'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct DEVMODEW {
+    pub dmDeviceName: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='type' href='../winapi/type.WCHAR.html' title='winapi::WCHAR'>WCHAR</a>; CCHDEVICENAME]</a>,
+    pub dmSpecVersion: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dmDriverVersion: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dmSize: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dmDriverExtra: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dmFields: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub union1: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a>; 16]</a>,
+    pub dmColor: <a class='type' href='../winapi/type.c_short.html' title='winapi::c_short'>c_short</a>,
+    pub dmDuplex: <a class='type' href='../winapi/type.c_short.html' title='winapi::c_short'>c_short</a>,
+    pub dmYResolution: <a class='type' href='../winapi/type.c_short.html' title='winapi::c_short'>c_short</a>,
+    pub dmTTOption: <a class='type' href='../winapi/type.c_short.html' title='winapi::c_short'>c_short</a>,
+    pub dmCollate: <a class='type' href='../winapi/type.c_short.html' title='winapi::c_short'>c_short</a>,
+    pub dmFormName: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='type' href='../winapi/type.WCHAR.html' title='winapi::WCHAR'>WCHAR</a>; CCHFORMNAME]</a>,
+    pub dmLogPixels: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dmBitsPerPel: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmPelsWidth: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmPelsHeight: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmDisplayFlags: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmDisplayFrequency: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmICMMethod: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmICMIntent: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmMediaType: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmDitherType: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmReserved1: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmReserved2: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmPanningWidth: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dmPanningHeight: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.dmDeviceName'><code>dmDeviceName</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmSpecVersion'><code>dmSpecVersion</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDriverVersion'><code>dmDriverVersion</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmSize'><code>dmSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDriverExtra'><code>dmDriverExtra</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmFields'><code>dmFields</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.union1'><code>union1</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmColor'><code>dmColor</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDuplex'><code>dmDuplex</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmYResolution'><code>dmYResolution</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmTTOption'><code>dmTTOption</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmCollate'><code>dmCollate</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmFormName'><code>dmFormName</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmLogPixels'><code>dmLogPixels</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmBitsPerPel'><code>dmBitsPerPel</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmPelsWidth'><code>dmPelsWidth</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmPelsHeight'><code>dmPelsHeight</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDisplayFlags'><code>dmDisplayFlags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDisplayFrequency'><code>dmDisplayFrequency</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmICMMethod'><code>dmICMMethod</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmICMIntent'><code>dmICMIntent</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmMediaType'><code>dmMediaType</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmDitherType'><code>dmDitherType</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmReserved1'><code>dmReserved1</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmReserved2'><code>dmReserved2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmPanningWidth'><code>dmPanningWidth</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dmPanningHeight'><code>dmPanningHeight</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../winapi/struct.DEVMODEW.html' title='winapi::DEVMODEW'>DEVMODEW</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../winapi/struct.DEVMODEW.html' title='winapi::DEVMODEW'>DEVMODEW</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../winapi/struct.DEVMODEW.html' title='winapi::DEVMODEW'>DEVMODEW</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../winapi/struct.DEVMODEW.html' title='winapi::DEVMODEW'>DEVMODEW</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

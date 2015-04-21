@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["enumerations","Common Version Enumerations provided by D3D11"],["interfaces","Common Version interfaces provided by D3D11"],["structures","Common Version structures provided"]]});

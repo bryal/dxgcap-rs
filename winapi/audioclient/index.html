@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `audioclient` mod in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, audioclient">
+
+    <title>winapi::audioclient - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'audioclient', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winapi</a>::<wbr><a class='mod' href=''>audioclient</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-43' class='srclink' href='../../src/winapi/audioclient.rs.html#3-49'>[src]</a></span></h1>
+<div class='docblock'><p>this ALWAYS GENERATED file contains the definitions for the interfaces</p>
+</div><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_ALREADY_INITIALIZED.html'
+                               title='winapi::audioclient::AUDCLNT_E_ALREADY_INITIALIZED'>AUDCLNT_E_ALREADY_INITIALIZED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFDURATION_PERIOD_NOT_EQUAL.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFDURATION_PERIOD_NOT_EQUAL'>AUDCLNT_E_BUFDURATION_PERIOD_NOT_EQUAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFFER_ERROR.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFFER_ERROR'>AUDCLNT_E_BUFFER_ERROR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFFER_OPERATION_PENDING.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFFER_OPERATION_PENDING'>AUDCLNT_E_BUFFER_OPERATION_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFFER_SIZE_ERROR.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFFER_SIZE_ERROR'>AUDCLNT_E_BUFFER_SIZE_ERROR</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFFER_SIZE_NOT_ALIGNED.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFFER_SIZE_NOT_ALIGNED'>AUDCLNT_E_BUFFER_SIZE_NOT_ALIGNED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_BUFFER_TOO_LARGE.html'
+                               title='winapi::audioclient::AUDCLNT_E_BUFFER_TOO_LARGE'>AUDCLNT_E_BUFFER_TOO_LARGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_CPUUSAGE_EXCEEDED.html'
+                               title='winapi::audioclient::AUDCLNT_E_CPUUSAGE_EXCEEDED'>AUDCLNT_E_CPUUSAGE_EXCEEDED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_DEVICE_INVALIDATED.html'
+                               title='winapi::audioclient::AUDCLNT_E_DEVICE_INVALIDATED'>AUDCLNT_E_DEVICE_INVALIDATED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_DEVICE_IN_USE.html'
+                               title='winapi::audioclient::AUDCLNT_E_DEVICE_IN_USE'>AUDCLNT_E_DEVICE_IN_USE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_ENDPOINT_CREATE_FAILED.html'
+                               title='winapi::audioclient::AUDCLNT_E_ENDPOINT_CREATE_FAILED'>AUDCLNT_E_ENDPOINT_CREATE_FAILED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_ENDPOINT_OFFLOAD_NOT_CAPABLE.html'
+                               title='winapi::audioclient::AUDCLNT_E_ENDPOINT_OFFLOAD_NOT_CAPABLE'>AUDCLNT_E_ENDPOINT_OFFLOAD_NOT_CAPABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_EVENTHANDLE_NOT_EXPECTED.html'
+                               title='winapi::audioclient::AUDCLNT_E_EVENTHANDLE_NOT_EXPECTED'>AUDCLNT_E_EVENTHANDLE_NOT_EXPECTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_EVENTHANDLE_NOT_SET.html'
+                               title='winapi::audioclient::AUDCLNT_E_EVENTHANDLE_NOT_SET'>AUDCLNT_E_EVENTHANDLE_NOT_SET</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_EXCLUSIVE_MODE_NOT_ALLOWED.html'
+                               title='winapi::audioclient::AUDCLNT_E_EXCLUSIVE_MODE_NOT_ALLOWED'>AUDCLNT_E_EXCLUSIVE_MODE_NOT_ALLOWED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_EXCLUSIVE_MODE_ONLY.html'
+                               title='winapi::audioclient::AUDCLNT_E_EXCLUSIVE_MODE_ONLY'>AUDCLNT_E_EXCLUSIVE_MODE_ONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_INCORRECT_BUFFER_SIZE.html'
+                               title='winapi::audioclient::AUDCLNT_E_INCORRECT_BUFFER_SIZE'>AUDCLNT_E_INCORRECT_BUFFER_SIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_INVALID_DEVICE_PERIOD.html'
+                               title='winapi::audioclient::AUDCLNT_E_INVALID_DEVICE_PERIOD'>AUDCLNT_E_INVALID_DEVICE_PERIOD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_INVALID_SIZE.html'
+                               title='winapi::audioclient::AUDCLNT_E_INVALID_SIZE'>AUDCLNT_E_INVALID_SIZE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_INVALID_STREAM_FLAG.html'
+                               title='winapi::audioclient::AUDCLNT_E_INVALID_STREAM_FLAG'>AUDCLNT_E_INVALID_STREAM_FLAG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_NONOFFLOAD_MODE_ONLY.html'
+                               title='winapi::audioclient::AUDCLNT_E_NONOFFLOAD_MODE_ONLY'>AUDCLNT_E_NONOFFLOAD_MODE_ONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_NOT_INITIALIZED.html'
+                               title='winapi::audioclient::AUDCLNT_E_NOT_INITIALIZED'>AUDCLNT_E_NOT_INITIALIZED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_NOT_STOPPED.html'
+                               title='winapi::audioclient::AUDCLNT_E_NOT_STOPPED'>AUDCLNT_E_NOT_STOPPED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_OFFLOAD_MODE_ONLY.html'
+                               title='winapi::audioclient::AUDCLNT_E_OFFLOAD_MODE_ONLY'>AUDCLNT_E_OFFLOAD_MODE_ONLY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_OUT_OF_OFFLOAD_RESOURCES.html'
+                               title='winapi::audioclient::AUDCLNT_E_OUT_OF_OFFLOAD_RESOURCES'>AUDCLNT_E_OUT_OF_OFFLOAD_RESOURCES</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_OUT_OF_ORDER.html'
+                               title='winapi::audioclient::AUDCLNT_E_OUT_OF_ORDER'>AUDCLNT_E_OUT_OF_ORDER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_RAW_MODE_UNSUPPORTED.html'
+                               title='winapi::audioclient::AUDCLNT_E_RAW_MODE_UNSUPPORTED'>AUDCLNT_E_RAW_MODE_UNSUPPORTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_RESOURCES_INVALIDATED.html'
+                               title='winapi::audioclient::AUDCLNT_E_RESOURCES_INVALIDATED'>AUDCLNT_E_RESOURCES_INVALIDATED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_SERVICE_NOT_RUNNING.html'
+                               title='winapi::audioclient::AUDCLNT_E_SERVICE_NOT_RUNNING'>AUDCLNT_E_SERVICE_NOT_RUNNING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_THREAD_NOT_REGISTERED.html'
+                               title='winapi::audioclient::AUDCLNT_E_THREAD_NOT_REGISTERED'>AUDCLNT_E_THREAD_NOT_REGISTERED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_UNSUPPORTED_FORMAT.html'
+                               title='winapi::audioclient::AUDCLNT_E_UNSUPPORTED_FORMAT'>AUDCLNT_E_UNSUPPORTED_FORMAT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_E_WRONG_ENDPOINT_TYPE.html'
+                               title='winapi::audioclient::AUDCLNT_E_WRONG_ENDPOINT_TYPE'>AUDCLNT_E_WRONG_ENDPOINT_TYPE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_S_BUFFER_EMPTY.html'
+                               title='winapi::audioclient::AUDCLNT_S_BUFFER_EMPTY'>AUDCLNT_S_BUFFER_EMPTY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_S_POSITION_STALLED.html'
+                               title='winapi::audioclient::AUDCLNT_S_POSITION_STALLED'>AUDCLNT_S_POSITION_STALLED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.AUDCLNT_S_THREAD_ALREADY_REGISTERED.html'
+                               title='winapi::audioclient::AUDCLNT_S_THREAD_ALREADY_REGISTERED'>AUDCLNT_S_THREAD_ALREADY_REGISTERED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

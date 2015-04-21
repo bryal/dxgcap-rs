@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `E:\Dropbox\Program\Rust\d3d11-rs\src\resource\enumerations.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>enumerations.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+</pre><pre class='rust '>
+<span class='comment'>// The MIT License (MIT)</span>
+<span class='comment'>//</span>
+<span class='comment'>// Copyright (c) 2015 Johan Johansson</span>
+<span class='comment'>//</span>
+<span class='comment'>// Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class='comment'>// of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class='comment'>// in the Software without restriction, including without limitation the rights</span>
+<span class='comment'>// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class='comment'>// copies of the Software, and to permit persons to whom the Software is</span>
+<span class='comment'>// furnished to do so, subject to the following conditions:</span>
+<span class='comment'>//</span>
+<span class='comment'>// The above copyright notice and this permission notice shall be included in</span>
+<span class='comment'>// all copies or substantial portions of the Software.</span>
+<span class='comment'>//</span>
+<span class='comment'>// THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class='comment'>// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class='comment'>// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class='comment'>// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class='comment'>// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class='comment'>// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span>
+<span class='comment'>// THE SOFTWARE.</span>
+
+<span class='doccomment'>//! Resource Enumerations provided by D3D11</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! # References</span>
+<span class='doccomment'>//! [D3D11 Resource Enumerations, MSDN]</span>
+<span class='doccomment'>//! (https://msdn.microsoft.com/en-us/library/windows/desktop/ff476170(v=vs.85).aspx)</span>
+
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>non_camel_case_types</span>)]</span>
+
+<span class='kw'>use</span> <span class='ident'>common_version</span>::<span class='ident'>enumerations</span>::<span class='ident'>D3D_SRV_DIMENSION</span>;
+
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>D3D11_SRV_DIMENSION</span> <span class='op'>=</span> <span class='ident'>D3D_SRV_DIMENSION</span>;
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_BIND_FLAG</span> {
+	<span class='ident'>D3D11_BIND_VERTEX_BUFFER</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_BIND_INDEX_BUFFER</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_BIND_CONSTANT_BUFFER</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+	<span class='ident'>D3D11_BIND_SHADER_RESOURCE</span> <span class='op'>=</span> <span class='number'>0x8</span>,
+	<span class='ident'>D3D11_BIND_STREAM_OUTPUT</span> <span class='op'>=</span> <span class='number'>0x10</span>,
+	<span class='ident'>D3D11_BIND_RENDER_TARGET</span> <span class='op'>=</span> <span class='number'>0x20</span>,
+	<span class='ident'>D3D11_BIND_DEPTH_STENCIL</span> <span class='op'>=</span> <span class='number'>0x40</span>,
+	<span class='ident'>D3D11_BIND_UNORDERED_ACCESS</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+	<span class='ident'>D3D11_BIND_DECODER</span> <span class='op'>=</span> <span class='number'>0x200</span>,
+	<span class='ident'>D3D11_BIND_VIDEO_ENCODER</span> <span class='op'>=</span> <span class='number'>0x400</span>
+}
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_BUFFEREX_SRV_FLAG</span> {
+	<span class='ident'>D3D11_BUFFEREX_SRV_FLAG_RAW</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_BUFFER_UAV_FLAG</span> {
+	<span class='ident'>D3D11_BUFFER_UAV_FLAG_RAW</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_BUFFER_UAV_FLAG_APPEND</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_BUFFER_UAV_FLAG_COUNTER</span> <span class='op'>=</span> <span class='number'>0x4</span>
+}
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_FLAG</span> {
+	<span class='ident'>D3D11_CHECK_MULTISAMPLE_QUALITY_LEVELS_TILED_RESOURCE</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_CPU_ACCESS_FLAG</span> {
+	<span class='ident'>D3D11_CPU_ACCESS_WRITE</span> <span class='op'>=</span> <span class='number'>0x10000</span>,
+	<span class='ident'>D3D11_CPU_ACCESS_READ</span> <span class='op'>=</span> <span class='number'>0x20000</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_DSV_DIMENSION</span> {
+	<span class='ident'>D3D11_DSV_DIMENSION_UNKNOWN</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE1D</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE1DARRAY</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE2D</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE2DARRAY</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE2DMS</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_DSV_DIMENSION_TEXTURE2DMSARRAY</span> <span class='op'>=</span> <span class='number'>6</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_DSV_FLAG</span> {
+	<span class='ident'>D3D11_DSV_READ_ONLY_DEPTH</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_DSV_READ_ONLY_STENCIL</span> <span class='op'>=</span> <span class='number'>0x2</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_MAP</span> {
+	<span class='ident'>D3D11_MAP_READ</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_MAP_WRITE</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_MAP_READ_WRITE</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_MAP_WRITE_DISCARD</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_MAP_WRITE_NO_OVERWRITE</span> <span class='op'>=</span> <span class='number'>5</span>
+}
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_MAP_FLAG</span> {
+	<span class='ident'>D3D11_MAP_FLAG_DO_NOT_WAIT</span> <span class='op'>=</span> <span class='number'>0x100000</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_RESOURCE_DIMENSION</span> {
+	<span class='ident'>D3D11_RESOURCE_DIMENSION_UNKNOWN</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_RESOURCE_DIMENSION_BUFFER</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_RESOURCE_DIMENSION_TEXTURE1D</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_RESOURCE_DIMENSION_TEXTURE2D</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_RESOURCE_DIMENSION_TEXTURE3D</span> <span class='op'>=</span> <span class='number'>4</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_RESOURCE_MISC_FLAG</span> {
+	<span class='ident'>D3D11_RESOURCE_MISC_GENERATE_MIPS</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_SHARED</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_TEXTURECUBE</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_DRAWINDIRECT_ARGS</span> <span class='op'>=</span> <span class='number'>0x10</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS</span> <span class='op'>=</span> <span class='number'>0x20</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_BUFFER_STRUCTURED</span> <span class='op'>=</span> <span class='number'>0x40</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_RESOURCE_CLAMP</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_SHARED_KEYEDMUTEX</span> <span class='op'>=</span> <span class='number'>0x100</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_GDI_COMPATIBLE</span> <span class='op'>=</span> <span class='number'>0x200</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_SHARED_NTHANDLE</span> <span class='op'>=</span> <span class='number'>0x800</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_RESTRICTED_CONTENT</span> <span class='op'>=</span> <span class='number'>0x1000</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE</span> <span class='op'>=</span> <span class='number'>0x2000</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER</span> <span class='op'>=</span> <span class='number'>0x4000</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_GUARDED</span> <span class='op'>=</span> <span class='number'>0x8000</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_TILE_POOL</span> <span class='op'>=</span> <span class='number'>0x20000</span>,
+	<span class='ident'>D3D11_RESOURCE_MISC_TILED</span> <span class='op'>=</span> <span class='number'>0x40000</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_RTV_DIMENSION</span> {
+	<span class='ident'>D3D11_RTV_DIMENSION_UNKNOWN</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_BUFFER</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE1D</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE1DARRAY</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE2D</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE2DARRAY</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE2DMS</span> <span class='op'>=</span> <span class='number'>6</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE2DMSARRAY</span> <span class='op'>=</span> <span class='number'>7</span>,
+	<span class='ident'>D3D11_RTV_DIMENSION_TEXTURE3D</span> <span class='op'>=</span> <span class='number'>8</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_STANDARD_MULTISAMPLE_QUALITY_LEVELS</span> {
+	<span class='ident'>D3D11_STANDARD_MULTISAMPLE_PATTERN</span> <span class='op'>=</span> <span class='number'>0xffffffff</span>,
+	<span class='ident'>D3D11_CENTER_MULTISAMPLE_PATTERN</span> <span class='op'>=</span> <span class='number'>0xfffffffe</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TILE_COPY_FLAG</span> {
+	<span class='ident'>D3D11_TILE_COPY_NO_OVERWRITE</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_TILE_COPY_LINEAR_BUFFER_TO_SWIZZLED_TILED_RESOURCE</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_TILE_COPY_SWIZZLED_TILED_RESOURCE_TO_LINEAR_BUFFER</span> <span class='op'>=</span> <span class='number'>0x4</span>
+}
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TILE_MAPPING_FLAG</span> {
+	<span class='ident'>D3D11_TILE_MAPPING_NO_OVERWRITE</span> <span class='op'>=</span> <span class='number'>0x1</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_TILE_RANGE_FLAG</span> {
+	<span class='ident'>D3D11_TILE_RANGE_NULL</span> <span class='op'>=</span> <span class='number'>0x1</span>,
+	<span class='ident'>D3D11_TILE_RANGE_SKIP</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+	<span class='ident'>D3D11_TILE_RANGE_REUSE_SINGLE_TILE</span> <span class='op'>=</span> <span class='number'>0x4</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_UAV_DIMENSION</span> {
+	<span class='ident'>D3D11_UAV_DIMENSION_UNKNOWN</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_BUFFER</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_TEXTURE1D</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_TEXTURE1DARRAY</span> <span class='op'>=</span> <span class='number'>3</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_TEXTURE2D</span> <span class='op'>=</span> <span class='number'>4</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_TEXTURE2DARRAY</span> <span class='op'>=</span> <span class='number'>5</span>,
+	<span class='ident'>D3D11_UAV_DIMENSION_TEXTURE3D</span> <span class='op'>=</span> <span class='number'>8</span>
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>D3D11_USAGE</span> {
+	<span class='ident'>D3D11_USAGE_DEFAULT</span> <span class='op'>=</span> <span class='number'>0</span>,
+	<span class='ident'>D3D11_USAGE_IMMUTABLE</span> <span class='op'>=</span> <span class='number'>1</span>,
+	<span class='ident'>D3D11_USAGE_DYNAMIC</span> <span class='op'>=</span> <span class='number'>2</span>,
+	<span class='ident'>D3D11_USAGE_STAGING</span> <span class='op'>=</span> <span class='number'>3</span>
+}
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ID3D11ShaderReflectionT` trait in crate `d3d11`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ID3D11ShaderReflectionT">
+
+    <title>d3d11::shader::interfaces::ID3D11ShaderReflectionT - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'ID3D11ShaderReflectionT', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../../index.html'>d3d11</a>::<wbr><a href='../index.html'>shader</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='trait' href=''>ID3D11ShaderReflectionT</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-50655' href='../../../src/d3d11/<dxgi macros>.html#15-18'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait ID3D11ShaderReflectionT: <a class='trait' href='../../../dxgi/interfaces/trait.IUnknownT.html' title='dxgi::interfaces::IUnknownT'>IUnknownT</a> {
+    fn <a href='#tymethod.GetDesc' class='fnname'>GetDesc</a>(&amp;mut self, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_DESC'>D3D11_SHADER_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetConstantBufferByIndex' class='fnname'>GetConstantBufferByIndex</a>(&amp;mut self, Index: UINT) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionConstantBuffer.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionConstantBuffer'>ID3D11ShaderReflectionConstantBuffer</a>;
+    fn <a href='#tymethod.GetConstantBufferByName' class='fnname'>GetConstantBufferByName</a>(&amp;mut self, Name: LPCSTR) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionConstantBuffer.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionConstantBuffer'>ID3D11ShaderReflectionConstantBuffer</a>;
+    fn <a href='#tymethod.GetResourceBindingDesc' class='fnname'>GetResourceBindingDesc</a>(&amp;mut self, ResourceIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_INPUT_BIND_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_INPUT_BIND_DESC'>D3D11_SHADER_INPUT_BIND_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetInputParameterDesc' class='fnname'>GetInputParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetOutputParameterDesc' class='fnname'>GetOutputParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetPatchConstantParameterDesc' class='fnname'>GetPatchConstantParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetVariableByName' class='fnname'>GetVariableByName</a>(&amp;mut self, Name: LPCSTR) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionVariable.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionVariable'>ID3D11ShaderReflectionVariable</a>;
+    fn <a href='#tymethod.GetResourceBindingDescByName' class='fnname'>GetResourceBindingDescByName</a>(&amp;mut self, Name: LPCSTR, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_INPUT_BIND_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_INPUT_BIND_DESC'>D3D11_SHADER_INPUT_BIND_DESC</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetMovInstructionCount' class='fnname'>GetMovInstructionCount</a>(&amp;mut self) -&gt; UINT;
+    fn <a href='#tymethod.GetMovcInstructionCount' class='fnname'>GetMovcInstructionCount</a>(&amp;mut self) -&gt; UINT;
+    fn <a href='#tymethod.GetConversionInstructionCount' class='fnname'>GetConversionInstructionCount</a>(&amp;mut self) -&gt; UINT;
+    fn <a href='#tymethod.GetBitwiseInstructionCount' class='fnname'>GetBitwiseInstructionCount</a>(&amp;mut self) -&gt; UINT;
+    fn <a href='#tymethod.GetGSInputPrimitive' class='fnname'>GetGSInputPrimitive</a>(&amp;mut self) -&gt; <a class='enum' href='../../../d3d11/common_version/enumerations/enum.D3D_PRIMITIVE.html' title='d3d11::common_version::enumerations::D3D_PRIMITIVE'>D3D_PRIMITIVE</a>;
+    fn <a href='#tymethod.IsSampleFrequencyShader' class='fnname'>IsSampleFrequencyShader</a>(&amp;mut self) -&gt; BOOL;
+    fn <a href='#tymethod.GetNumInterfaceSlots' class='fnname'>GetNumInterfaceSlots</a>(&amp;mut self) -&gt; UINT;
+    fn <a href='#tymethod.GetMinFeatureLevel' class='fnname'>GetMinFeatureLevel</a>(&amp;mut self, pLevel: *mut <a class='enum' href='../../../d3d11/common_version/enumerations/enum.D3D_FEATURE_LEVEL.html' title='d3d11::common_version::enumerations::D3D_FEATURE_LEVEL'>D3D_FEATURE_LEVEL</a>) -&gt; HRESULT;
+    fn <a href='#tymethod.GetThreadGroupSize' class='fnname'>GetThreadGroupSize</a>(&amp;mut self, pSizeX: *mut UINT, pSizeY: *mut UINT, pSizeZ: *mut UINT) -&gt; UINT;
+    fn <a href='#tymethod.GetRequiresFlags' class='fnname'>GetRequiresFlags</a>(&amp;mut self) -&gt; UINT64;
+}</pre>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.GetDesc' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetDesc' class='fnname'>GetDesc</a>(&amp;mut self, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_DESC'>D3D11_SHADER_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetConstantBufferByIndex' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetConstantBufferByIndex' class='fnname'>GetConstantBufferByIndex</a>(&amp;mut self, Index: UINT) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionConstantBuffer.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionConstantBuffer'>ID3D11ShaderReflectionConstantBuffer</a></code></h3><h3 id='tymethod.GetConstantBufferByName' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetConstantBufferByName' class='fnname'>GetConstantBufferByName</a>(&amp;mut self, Name: LPCSTR) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionConstantBuffer.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionConstantBuffer'>ID3D11ShaderReflectionConstantBuffer</a></code></h3><h3 id='tymethod.GetResourceBindingDesc' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetResourceBindingDesc' class='fnname'>GetResourceBindingDesc</a>(&amp;mut self, ResourceIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_INPUT_BIND_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_INPUT_BIND_DESC'>D3D11_SHADER_INPUT_BIND_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetInputParameterDesc' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetInputParameterDesc' class='fnname'>GetInputParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetOutputParameterDesc' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetOutputParameterDesc' class='fnname'>GetOutputParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetPatchConstantParameterDesc' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetPatchConstantParameterDesc' class='fnname'>GetPatchConstantParameterDesc</a>(&amp;mut self, ParameterIndex: UINT, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SIGNATURE_PARAMETER_DESC.html' title='d3d11::shader::structures::D3D11_SIGNATURE_PARAMETER_DESC'>D3D11_SIGNATURE_PARAMETER_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetVariableByName' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetVariableByName' class='fnname'>GetVariableByName</a>(&amp;mut self, Name: LPCSTR) -&gt; *mut <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflectionVariable.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionVariable'>ID3D11ShaderReflectionVariable</a></code></h3><h3 id='tymethod.GetResourceBindingDescByName' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetResourceBindingDescByName' class='fnname'>GetResourceBindingDescByName</a>(&amp;mut self, Name: LPCSTR, pDesc: *mut <a class='struct' href='../../../d3d11/shader/structures/struct.D3D11_SHADER_INPUT_BIND_DESC.html' title='d3d11::shader::structures::D3D11_SHADER_INPUT_BIND_DESC'>D3D11_SHADER_INPUT_BIND_DESC</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetMovInstructionCount' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetMovInstructionCount' class='fnname'>GetMovInstructionCount</a>(&amp;mut self) -&gt; UINT</code></h3><h3 id='tymethod.GetMovcInstructionCount' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetMovcInstructionCount' class='fnname'>GetMovcInstructionCount</a>(&amp;mut self) -&gt; UINT</code></h3><h3 id='tymethod.GetConversionInstructionCount' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetConversionInstructionCount' class='fnname'>GetConversionInstructionCount</a>(&amp;mut self) -&gt; UINT</code></h3><h3 id='tymethod.GetBitwiseInstructionCount' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetBitwiseInstructionCount' class='fnname'>GetBitwiseInstructionCount</a>(&amp;mut self) -&gt; UINT</code></h3><h3 id='tymethod.GetGSInputPrimitive' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetGSInputPrimitive' class='fnname'>GetGSInputPrimitive</a>(&amp;mut self) -&gt; <a class='enum' href='../../../d3d11/common_version/enumerations/enum.D3D_PRIMITIVE.html' title='d3d11::common_version::enumerations::D3D_PRIMITIVE'>D3D_PRIMITIVE</a></code></h3><h3 id='tymethod.IsSampleFrequencyShader' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.IsSampleFrequencyShader' class='fnname'>IsSampleFrequencyShader</a>(&amp;mut self) -&gt; BOOL</code></h3><h3 id='tymethod.GetNumInterfaceSlots' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetNumInterfaceSlots' class='fnname'>GetNumInterfaceSlots</a>(&amp;mut self) -&gt; UINT</code></h3><h3 id='tymethod.GetMinFeatureLevel' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetMinFeatureLevel' class='fnname'>GetMinFeatureLevel</a>(&amp;mut self, pLevel: *mut <a class='enum' href='../../../d3d11/common_version/enumerations/enum.D3D_FEATURE_LEVEL.html' title='d3d11::common_version::enumerations::D3D_FEATURE_LEVEL'>D3D_FEATURE_LEVEL</a>) -&gt; HRESULT</code></h3><h3 id='tymethod.GetThreadGroupSize' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetThreadGroupSize' class='fnname'>GetThreadGroupSize</a>(&amp;mut self, pSizeX: *mut UINT, pSizeY: *mut UINT, pSizeZ: *mut UINT) -&gt; UINT</code></h3><h3 id='tymethod.GetRequiresFlags' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.GetRequiresFlags' class='fnname'>GetRequiresFlags</a>(&amp;mut self) -&gt; UINT64</code></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../../d3d11/shader/interfaces/trait.ID3D11ShaderReflectionT.html' title='d3d11::shader::interfaces::ID3D11ShaderReflectionT'>ID3D11ShaderReflectionT</a> for <a class='struct' href='../../../d3d11/shader/interfaces/struct.ID3D11ShaderReflection.html' title='d3d11::shader::interfaces::ID3D11ShaderReflection'>ID3D11ShaderReflection</a></code></li>
+</ul><script type="text/javascript" async
+                              src="../../../implementors/d3d11/shader/interfaces/trait.ID3D11ShaderReflectionT.js">
+                      </script></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "d3d11";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `CONTEXT` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, CONTEXT">
+
+    <title>winapi::winnt::CONTEXT - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>winnt</a></p><script>window.sidebarCurrent = {name: 'CONTEXT', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>winnt</a>::<wbr><a class='struct' href=''>CONTEXT</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-64422' class='srclink' href='../../src/winapi/winnt.rs.html#67-131'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct CONTEXT {
+    pub P1Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub P2Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub P3Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub P4Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub P5Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub P6Home: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub ContextFlags: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub MxCsr: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub SegCs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub SegDs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub SegEs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub SegFs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub SegGs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub SegSs: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub EFlags: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub Dr0: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Dr1: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Dr2: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Dr3: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Dr6: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Dr7: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rax: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rcx: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rdx: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rbx: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rsp: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rbp: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rsi: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rdi: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R8: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R9: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R10: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R11: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R12: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R13: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R14: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub R15: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Rip: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub Header: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>; 2]</a>,
+    pub Legacy: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>; 8]</a>,
+    pub Xmm0: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm1: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm2: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm3: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm4: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm5: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm6: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm7: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm8: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm9: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm10: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm11: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm12: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm13: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm14: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub Xmm15: <a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>,
+    pub VectorRegister: <a href='http://doc.rust-lang.org/nightly/std/primitive.array.html'>[<a class='struct' href='../../winapi/struct.M128A.html' title='winapi::M128A'>M128A</a>; 26]</a>,
+    pub VectorControl: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub DebugControl: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub LastBranchToRip: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub LastBranchFromRip: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub LastExceptionToRip: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+    pub LastExceptionFromRip: <a class='type' href='../../winapi/basetsd/type.DWORD64.html' title='winapi::basetsd::DWORD64'>DWORD64</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.P1Home'><code>P1Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.P2Home'><code>P2Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.P3Home'><code>P3Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.P4Home'><code>P4Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.P5Home'><code>P5Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.P6Home'><code>P6Home</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.ContextFlags'><code>ContextFlags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MxCsr'><code>MxCsr</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegCs'><code>SegCs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegDs'><code>SegDs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegEs'><code>SegEs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegFs'><code>SegFs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegGs'><code>SegGs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SegSs'><code>SegSs</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.EFlags'><code>EFlags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr0'><code>Dr0</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr1'><code>Dr1</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr2'><code>Dr2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr3'><code>Dr3</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr6'><code>Dr6</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Dr7'><code>Dr7</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rax'><code>Rax</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rcx'><code>Rcx</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rdx'><code>Rdx</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rbx'><code>Rbx</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rsp'><code>Rsp</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rbp'><code>Rbp</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rsi'><code>Rsi</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rdi'><code>Rdi</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R8'><code>R8</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R9'><code>R9</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R10'><code>R10</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R11'><code>R11</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R12'><code>R12</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R13'><code>R13</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R14'><code>R14</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.R15'><code>R15</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Rip'><code>Rip</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Header'><code>Header</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Legacy'><code>Legacy</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm0'><code>Xmm0</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm1'><code>Xmm1</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm2'><code>Xmm2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm3'><code>Xmm3</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm4'><code>Xmm4</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm5'><code>Xmm5</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm6'><code>Xmm6</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm7'><code>Xmm7</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm8'><code>Xmm8</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm9'><code>Xmm9</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm10'><code>Xmm10</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm11'><code>Xmm11</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm12'><code>Xmm12</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm13'><code>Xmm13</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm14'><code>Xmm14</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.Xmm15'><code>Xmm15</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VectorRegister'><code>VectorRegister</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.VectorControl'><code>VectorControl</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.DebugControl'><code>DebugControl</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.LastBranchToRip'><code>LastBranchToRip</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.LastBranchFromRip'><code>LastBranchFromRip</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.LastExceptionToRip'><code>LastExceptionToRip</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.LastExceptionFromRip'><code>LastExceptionFromRip</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../winapi/winnt/struct.CONTEXT.html' title='winapi::winnt::CONTEXT'>CONTEXT</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../winapi/winnt/struct.CONTEXT.html' title='winapi::winnt::CONTEXT'>CONTEXT</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../winapi/winnt/struct.CONTEXT.html' title='winapi::winnt::CONTEXT'>CONTEXT</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../winapi/winnt/struct.CONTEXT.html' title='winapi::winnt::CONTEXT'>CONTEXT</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

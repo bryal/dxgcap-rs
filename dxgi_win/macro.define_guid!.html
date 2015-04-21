@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `define_guid!` macro in crate `dxgi_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, define_guid!">
+
+    <title>dxgi_win::define_guid! - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>dxgi_win</a></p><script>window.sidebarCurrent = {name: 'define_guid!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content macro">
+<h1 class='fqn'><span class='in-band'><a href='index.html'>dxgi_win</a>::<wbr><a class='macro' href=''>define_guid!</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-24256' class='srclink' href='../src/dxgi_win/macros.rs.html#30-37'>[src]</a></span></h1>
+<pre class='rust macro'>
+<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>define_guid</span> {
+	(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>name</span>:<span class='ident'>ident</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d1</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d2</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d3</span>:<span class='ident'>expr</span>,
+		<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d4</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d5</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d6</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d7</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d8</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d9</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d10</span>:<span class='ident'>expr</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d11</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span>
+	{
+		<span class='kw'>pub</span> <span class='kw'>const</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>name</span>: <span class='ident'>GUID</span> <span class='op'>=</span> <span class='ident'>GUID</span>{ <span class='ident'>Data1</span>: <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d1</span>, <span class='ident'>Data2</span>: <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d2</span>, <span class='ident'>Data3</span>: <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d3</span>,
+			<span class='ident'>Data4</span>: [<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d4</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d5</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d6</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d7</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d8</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d9</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d10</span>, <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>d11</span>] };
+	}
+}
+</pre>
+<div class='docblock'><p>Rust equivalent to windows C DEFINE_GUID macro</p>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "dxgi_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

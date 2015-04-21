@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `winsvc` mod in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, winsvc">
+
+    <title>winapi::winsvc - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'winsvc', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>winapi</a>::<wbr><a class='mod' href=''>winsvc</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-68369' class='srclink' href='../../src/winapi/winsvc.rs.html#3-209'>[src]</a></span></h1>
+<div class='docblock'><p>Header file for the Service Control Manager</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SERVICE_STATUS.html'
+                               title='winapi::winsvc::SERVICE_STATUS'>SERVICE_STATUS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SERVICE_TABLE_ENTRYA.html'
+                               title='winapi::winsvc::SERVICE_TABLE_ENTRYA'>SERVICE_TABLE_ENTRYA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='struct' href='struct.SERVICE_TABLE_ENTRYW.html'
+                               title='winapi::winsvc::SERVICE_TABLE_ENTRYW'>SERVICE_TABLE_ENTRYW</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum.SC_STATUS_TYPE.html'
+                               title='winapi::winsvc::SC_STATUS_TYPE'>SC_STATUS_TYPE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='enum' href='enum._SC_ENUM_TYPE.html'
+                               title='winapi::winsvc::_SC_ENUM_TYPE'>_SC_ENUM_TYPE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_ALL_ACCESS.html'
+                               title='winapi::winsvc::SC_MANAGER_ALL_ACCESS'>SC_MANAGER_ALL_ACCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_CONNECT.html'
+                               title='winapi::winsvc::SC_MANAGER_CONNECT'>SC_MANAGER_CONNECT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_CREATE_SERVICE.html'
+                               title='winapi::winsvc::SC_MANAGER_CREATE_SERVICE'>SC_MANAGER_CREATE_SERVICE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_ENUMERATE_SERVICE.html'
+                               title='winapi::winsvc::SC_MANAGER_ENUMERATE_SERVICE'>SC_MANAGER_ENUMERATE_SERVICE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_LOCK.html'
+                               title='winapi::winsvc::SC_MANAGER_LOCK'>SC_MANAGER_LOCK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_MODIFY_BOOT_CONFIG.html'
+                               title='winapi::winsvc::SC_MANAGER_MODIFY_BOOT_CONFIG'>SC_MANAGER_MODIFY_BOOT_CONFIG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SC_MANAGER_QUERY_LOCK_STATUS.html'
+                               title='winapi::winsvc::SC_MANAGER_QUERY_LOCK_STATUS'>SC_MANAGER_QUERY_LOCK_STATUS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_HARDWAREPROFILECHANGE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_HARDWAREPROFILECHANGE'>SERVICE_ACCEPT_HARDWAREPROFILECHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_NETBINDCHANGE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_NETBINDCHANGE'>SERVICE_ACCEPT_NETBINDCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_PARAMCHANGE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_PARAMCHANGE'>SERVICE_ACCEPT_PARAMCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_PAUSE_CONTINUE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_PAUSE_CONTINUE'>SERVICE_ACCEPT_PAUSE_CONTINUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_POWEREVENT.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_POWEREVENT'>SERVICE_ACCEPT_POWEREVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_PRESHUTDOWN.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_PRESHUTDOWN'>SERVICE_ACCEPT_PRESHUTDOWN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_SESSIONCHANGE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_SESSIONCHANGE'>SERVICE_ACCEPT_SESSIONCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_SHUTDOWN.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_SHUTDOWN'>SERVICE_ACCEPT_SHUTDOWN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_STOP.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_STOP'>SERVICE_ACCEPT_STOP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_TIMECHANGE.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_TIMECHANGE'>SERVICE_ACCEPT_TIMECHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACCEPT_TRIGGEREVENT.html'
+                               title='winapi::winsvc::SERVICE_ACCEPT_TRIGGEREVENT'>SERVICE_ACCEPT_TRIGGEREVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ACTIVE.html'
+                               title='winapi::winsvc::SERVICE_ACTIVE'>SERVICE_ACTIVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ALL_ACCESS.html'
+                               title='winapi::winsvc::SERVICE_ALL_ACCESS'>SERVICE_ALL_ACCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CHANGE_CONFIG.html'
+                               title='winapi::winsvc::SERVICE_CHANGE_CONFIG'>SERVICE_CHANGE_CONFIG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_DELAYED_AUTO_START_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_DELAYED_AUTO_START_INFO'>SERVICE_CONFIG_DELAYED_AUTO_START_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_DESCRIPTION.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_DESCRIPTION'>SERVICE_CONFIG_DESCRIPTION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_FAILURE_ACTIONS.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_FAILURE_ACTIONS'>SERVICE_CONFIG_FAILURE_ACTIONS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_FAILURE_ACTIONS_FLAG.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_FAILURE_ACTIONS_FLAG'>SERVICE_CONFIG_FAILURE_ACTIONS_FLAG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_LAUNCH_PROTECTED.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_LAUNCH_PROTECTED'>SERVICE_CONFIG_LAUNCH_PROTECTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_PREFERRED_NODE.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_PREFERRED_NODE'>SERVICE_CONFIG_PREFERRED_NODE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_PRESHUTDOWN_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_PRESHUTDOWN_INFO'>SERVICE_CONFIG_PRESHUTDOWN_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_REQUIRED_PRIVILEGES_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_REQUIRED_PRIVILEGES_INFO'>SERVICE_CONFIG_REQUIRED_PRIVILEGES_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_SERVICE_SID_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_SERVICE_SID_INFO'>SERVICE_CONFIG_SERVICE_SID_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONFIG_TRIGGER_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONFIG_TRIGGER_INFO'>SERVICE_CONFIG_TRIGGER_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTINUE_PENDING.html'
+                               title='winapi::winsvc::SERVICE_CONTINUE_PENDING'>SERVICE_CONTINUE_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_CONTINUE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_CONTINUE'>SERVICE_CONTROL_CONTINUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_DEVICEEVENT.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_DEVICEEVENT'>SERVICE_CONTROL_DEVICEEVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_HARDWAREPROFILECHANGE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_HARDWAREPROFILECHANGE'>SERVICE_CONTROL_HARDWAREPROFILECHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_INTERROGATE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_INTERROGATE'>SERVICE_CONTROL_INTERROGATE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_NETBINDADD.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_NETBINDADD'>SERVICE_CONTROL_NETBINDADD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_NETBINDDISABLE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_NETBINDDISABLE'>SERVICE_CONTROL_NETBINDDISABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_NETBINDENABLE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_NETBINDENABLE'>SERVICE_CONTROL_NETBINDENABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_NETBINDREMOVE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_NETBINDREMOVE'>SERVICE_CONTROL_NETBINDREMOVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_PARAMCHANGE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_PARAMCHANGE'>SERVICE_CONTROL_PARAMCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_PAUSE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_PAUSE'>SERVICE_CONTROL_PAUSE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_POWEREVENT.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_POWEREVENT'>SERVICE_CONTROL_POWEREVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_PRESHUTDOWN.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_PRESHUTDOWN'>SERVICE_CONTROL_PRESHUTDOWN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_SESSIONCHANGE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_SESSIONCHANGE'>SERVICE_CONTROL_SESSIONCHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_SHUTDOWN.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_SHUTDOWN'>SERVICE_CONTROL_SHUTDOWN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_STATUS_REASON_INFO.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_STATUS_REASON_INFO'>SERVICE_CONTROL_STATUS_REASON_INFO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_STOP.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_STOP'>SERVICE_CONTROL_STOP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_TIMECHANGE.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_TIMECHANGE'>SERVICE_CONTROL_TIMECHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_CONTROL_TRIGGEREVENT.html'
+                               title='winapi::winsvc::SERVICE_CONTROL_TRIGGEREVENT'>SERVICE_CONTROL_TRIGGEREVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_DYNAMIC_INFORMATION_LEVEL_START_REASON.html'
+                               title='winapi::winsvc::SERVICE_DYNAMIC_INFORMATION_LEVEL_START_REASON'>SERVICE_DYNAMIC_INFORMATION_LEVEL_START_REASON</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_ENUMERATE_DEPENDENTS.html'
+                               title='winapi::winsvc::SERVICE_ENUMERATE_DEPENDENTS'>SERVICE_ENUMERATE_DEPENDENTS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_INACTIVE.html'
+                               title='winapi::winsvc::SERVICE_INACTIVE'>SERVICE_INACTIVE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_INTERROGATE.html'
+                               title='winapi::winsvc::SERVICE_INTERROGATE'>SERVICE_INTERROGATE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_LAUNCH_PROTECTED_ANTIMALWARE_LIGHT.html'
+                               title='winapi::winsvc::SERVICE_LAUNCH_PROTECTED_ANTIMALWARE_LIGHT'>SERVICE_LAUNCH_PROTECTED_ANTIMALWARE_LIGHT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_LAUNCH_PROTECTED_NONE.html'
+                               title='winapi::winsvc::SERVICE_LAUNCH_PROTECTED_NONE'>SERVICE_LAUNCH_PROTECTED_NONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_LAUNCH_PROTECTED_WINDOWS.html'
+                               title='winapi::winsvc::SERVICE_LAUNCH_PROTECTED_WINDOWS'>SERVICE_LAUNCH_PROTECTED_WINDOWS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_LAUNCH_PROTECTED_WINDOWS_LIGHT.html'
+                               title='winapi::winsvc::SERVICE_LAUNCH_PROTECTED_WINDOWS_LIGHT'>SERVICE_LAUNCH_PROTECTED_WINDOWS_LIGHT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_CONTINUE_PENDING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_CONTINUE_PENDING'>SERVICE_NOTIFY_CONTINUE_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_CREATED.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_CREATED'>SERVICE_NOTIFY_CREATED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_DELETED.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_DELETED'>SERVICE_NOTIFY_DELETED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_DELETE_PENDING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_DELETE_PENDING'>SERVICE_NOTIFY_DELETE_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_PAUSED.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_PAUSED'>SERVICE_NOTIFY_PAUSED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_PAUSE_PENDING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_PAUSE_PENDING'>SERVICE_NOTIFY_PAUSE_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_RUNNING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_RUNNING'>SERVICE_NOTIFY_RUNNING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_START_PENDING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_START_PENDING'>SERVICE_NOTIFY_START_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_STATUS_CHANGE.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_STATUS_CHANGE'>SERVICE_NOTIFY_STATUS_CHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_STATUS_CHANGE_1.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_STATUS_CHANGE_1'>SERVICE_NOTIFY_STATUS_CHANGE_1</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_STATUS_CHANGE_2.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_STATUS_CHANGE_2'>SERVICE_NOTIFY_STATUS_CHANGE_2</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_STOPPED.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_STOPPED'>SERVICE_NOTIFY_STOPPED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NOTIFY_STOP_PENDING.html'
+                               title='winapi::winsvc::SERVICE_NOTIFY_STOP_PENDING'>SERVICE_NOTIFY_STOP_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_NO_CHANGE.html'
+                               title='winapi::winsvc::SERVICE_NO_CHANGE'>SERVICE_NO_CHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_PAUSED.html'
+                               title='winapi::winsvc::SERVICE_PAUSED'>SERVICE_PAUSED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_PAUSE_CONTINUE.html'
+                               title='winapi::winsvc::SERVICE_PAUSE_CONTINUE'>SERVICE_PAUSE_CONTINUE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_PAUSE_PENDING.html'
+                               title='winapi::winsvc::SERVICE_PAUSE_PENDING'>SERVICE_PAUSE_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_QUERY_CONFIG.html'
+                               title='winapi::winsvc::SERVICE_QUERY_CONFIG'>SERVICE_QUERY_CONFIG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_QUERY_STATUS.html'
+                               title='winapi::winsvc::SERVICE_QUERY_STATUS'>SERVICE_QUERY_STATUS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_RUNNING.html'
+                               title='winapi::winsvc::SERVICE_RUNNING'>SERVICE_RUNNING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_RUNS_IN_SYSTEM_PROCESS.html'
+                               title='winapi::winsvc::SERVICE_RUNS_IN_SYSTEM_PROCESS'>SERVICE_RUNS_IN_SYSTEM_PROCESS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_SID_TYPE_NONE.html'
+                               title='winapi::winsvc::SERVICE_SID_TYPE_NONE'>SERVICE_SID_TYPE_NONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_SID_TYPE_RESTRICTED.html'
+                               title='winapi::winsvc::SERVICE_SID_TYPE_RESTRICTED'>SERVICE_SID_TYPE_RESTRICTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_SID_TYPE_UNRESTRICTED.html'
+                               title='winapi::winsvc::SERVICE_SID_TYPE_UNRESTRICTED'>SERVICE_SID_TYPE_UNRESTRICTED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START.html'
+                               title='winapi::winsvc::SERVICE_START'>SERVICE_START</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_PENDING.html'
+                               title='winapi::winsvc::SERVICE_START_PENDING'>SERVICE_START_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_REASON_AUTO.html'
+                               title='winapi::winsvc::SERVICE_START_REASON_AUTO'>SERVICE_START_REASON_AUTO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_REASON_DELAYEDAUTO.html'
+                               title='winapi::winsvc::SERVICE_START_REASON_DELAYEDAUTO'>SERVICE_START_REASON_DELAYEDAUTO</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_REASON_DEMAND.html'
+                               title='winapi::winsvc::SERVICE_START_REASON_DEMAND'>SERVICE_START_REASON_DEMAND</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_REASON_RESTART_ON_FAILURE.html'
+                               title='winapi::winsvc::SERVICE_START_REASON_RESTART_ON_FAILURE'>SERVICE_START_REASON_RESTART_ON_FAILURE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_START_REASON_TRIGGER.html'
+                               title='winapi::winsvc::SERVICE_START_REASON_TRIGGER'>SERVICE_START_REASON_TRIGGER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STATE_ALL.html'
+                               title='winapi::winsvc::SERVICE_STATE_ALL'>SERVICE_STATE_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP.html'
+                               title='winapi::winsvc::SERVICE_STOP'>SERVICE_STOP</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOPPED.html'
+                               title='winapi::winsvc::SERVICE_STOPPED'>SERVICE_STOPPED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_PENDING.html'
+                               title='winapi::winsvc::SERVICE_STOP_PENDING'>SERVICE_STOP_PENDING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_FLAG_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_FLAG_CUSTOM'>SERVICE_STOP_REASON_FLAG_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_FLAG_MAX.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_FLAG_MAX'>SERVICE_STOP_REASON_FLAG_MAX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_FLAG_MIN.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_FLAG_MIN'>SERVICE_STOP_REASON_FLAG_MIN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_FLAG_PLANNED.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_FLAG_PLANNED'>SERVICE_STOP_REASON_FLAG_PLANNED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_FLAG_UNPLANNED.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_FLAG_UNPLANNED'>SERVICE_STOP_REASON_FLAG_UNPLANNED</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_APPLICATION.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_APPLICATION'>SERVICE_STOP_REASON_MAJOR_APPLICATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_HARDWARE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_HARDWARE'>SERVICE_STOP_REASON_MAJOR_HARDWARE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_MAX.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_MAX'>SERVICE_STOP_REASON_MAJOR_MAX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_MAX_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_MAX_CUSTOM'>SERVICE_STOP_REASON_MAJOR_MAX_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_MIN.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_MIN'>SERVICE_STOP_REASON_MAJOR_MIN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_MIN_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_MIN_CUSTOM'>SERVICE_STOP_REASON_MAJOR_MIN_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_NONE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_NONE'>SERVICE_STOP_REASON_MAJOR_NONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_OPERATINGSYSTEM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_OPERATINGSYSTEM'>SERVICE_STOP_REASON_MAJOR_OPERATINGSYSTEM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_OTHER.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_OTHER'>SERVICE_STOP_REASON_MAJOR_OTHER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MAJOR_SOFTWARE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MAJOR_SOFTWARE'>SERVICE_STOP_REASON_MAJOR_SOFTWARE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_DISK.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_DISK'>SERVICE_STOP_REASON_MINOR_DISK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_ENVIRONMENT.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_ENVIRONMENT'>SERVICE_STOP_REASON_MINOR_ENVIRONMENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_HARDWARE_DRIVER.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_HARDWARE_DRIVER'>SERVICE_STOP_REASON_MINOR_HARDWARE_DRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_HUNG.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_HUNG'>SERVICE_STOP_REASON_MINOR_HUNG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_INSTALLATION.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_INSTALLATION'>SERVICE_STOP_REASON_MINOR_INSTALLATION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MAINTENANCE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MAINTENANCE'>SERVICE_STOP_REASON_MINOR_MAINTENANCE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MAX.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MAX'>SERVICE_STOP_REASON_MINOR_MAX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MAX_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MAX_CUSTOM'>SERVICE_STOP_REASON_MINOR_MAX_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MIN.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MIN'>SERVICE_STOP_REASON_MINOR_MIN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MIN_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MIN_CUSTOM'>SERVICE_STOP_REASON_MINOR_MIN_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_MMC.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_MMC'>SERVICE_STOP_REASON_MINOR_MMC</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_NETWORKCARD.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_NETWORKCARD'>SERVICE_STOP_REASON_MINOR_NETWORKCARD</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_NETWORK_CONNECTIVITY.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_NETWORK_CONNECTIVITY'>SERVICE_STOP_REASON_MINOR_NETWORK_CONNECTIVITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_NONE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_NONE'>SERVICE_STOP_REASON_MINOR_NONE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_OTHER.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_OTHER'>SERVICE_STOP_REASON_MINOR_OTHER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_OTHERDRIVER.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_OTHERDRIVER'>SERVICE_STOP_REASON_MINOR_OTHERDRIVER</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_RECONFIG.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_RECONFIG'>SERVICE_STOP_REASON_MINOR_RECONFIG</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SECURITY.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SECURITY'>SERVICE_STOP_REASON_MINOR_SECURITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SECURITYFIX.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SECURITYFIX'>SERVICE_STOP_REASON_MINOR_SECURITYFIX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SECURITYFIX_UNINSTALL.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SECURITYFIX_UNINSTALL'>SERVICE_STOP_REASON_MINOR_SECURITYFIX_UNINSTALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SERVICEPACK.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SERVICEPACK'>SERVICE_STOP_REASON_MINOR_SERVICEPACK</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SERVICEPACK_UNINSTALL.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SERVICEPACK_UNINSTALL'>SERVICE_STOP_REASON_MINOR_SERVICEPACK_UNINSTALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE'>SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE_UNINSTALL.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE_UNINSTALL'>SERVICE_STOP_REASON_MINOR_SOFTWARE_UPDATE_UNINSTALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_UNSTABLE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_UNSTABLE'>SERVICE_STOP_REASON_MINOR_UNSTABLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_UPGRADE.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_UPGRADE'>SERVICE_STOP_REASON_MINOR_UPGRADE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_STOP_REASON_MINOR_WMI.html'
+                               title='winapi::winsvc::SERVICE_STOP_REASON_MINOR_WMI'>SERVICE_STOP_REASON_MINOR_WMI</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_DATA_TYPE_BINARY.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_DATA_TYPE_BINARY'>SERVICE_TRIGGER_DATA_TYPE_BINARY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ALL.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ALL'>SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ALL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ANY.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ANY'>SERVICE_TRIGGER_DATA_TYPE_KEYWORD_ANY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_DATA_TYPE_LEVEL.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_DATA_TYPE_LEVEL'>SERVICE_TRIGGER_DATA_TYPE_LEVEL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_DATA_TYPE_STRING.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_DATA_TYPE_STRING'>SERVICE_TRIGGER_DATA_TYPE_STRING</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_CUSTOM.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_CUSTOM'>SERVICE_TRIGGER_TYPE_CUSTOM</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_CUSTOM_SYSTEM_STATE_CHANGE.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_CUSTOM_SYSTEM_STATE_CHANGE'>SERVICE_TRIGGER_TYPE_CUSTOM_SYSTEM_STATE_CHANGE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_DEVICE_INTERFACE_ARRIVAL.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_DEVICE_INTERFACE_ARRIVAL'>SERVICE_TRIGGER_TYPE_DEVICE_INTERFACE_ARRIVAL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_DOMAIN_JOIN.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_DOMAIN_JOIN'>SERVICE_TRIGGER_TYPE_DOMAIN_JOIN</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_FIREWALL_PORT_EVENT.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_FIREWALL_PORT_EVENT'>SERVICE_TRIGGER_TYPE_FIREWALL_PORT_EVENT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_GROUP_POLICY.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_GROUP_POLICY'>SERVICE_TRIGGER_TYPE_GROUP_POLICY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_IP_ADDRESS_AVAILABILITY.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_IP_ADDRESS_AVAILABILITY'>SERVICE_TRIGGER_TYPE_IP_ADDRESS_AVAILABILITY</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_TRIGGER_TYPE_NETWORK_ENDPOINT.html'
+                               title='winapi::winsvc::SERVICE_TRIGGER_TYPE_NETWORK_ENDPOINT'>SERVICE_TRIGGER_TYPE_NETWORK_ENDPOINT</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='constant' href='constant.SERVICE_USER_DEFINED_CONTROL.html'
+                               title='winapi::winsvc::SERVICE_USER_DEFINED_CONTROL'>SERVICE_USER_DEFINED_CONTROL</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPHANDLER_FUNCTION.html'
+                               title='winapi::winsvc::LPHANDLER_FUNCTION'>LPHANDLER_FUNCTION</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPHANDLER_FUNCTION_EX.html'
+                               title='winapi::winsvc::LPHANDLER_FUNCTION_EX'>LPHANDLER_FUNCTION_EX</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSC_HANDLE.html'
+                               title='winapi::winsvc::LPSC_HANDLE'>LPSC_HANDLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSERVICE_MAIN_FUNCTIONA.html'
+                               title='winapi::winsvc::LPSERVICE_MAIN_FUNCTIONA'>LPSERVICE_MAIN_FUNCTIONA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSERVICE_MAIN_FUNCTIONW.html'
+                               title='winapi::winsvc::LPSERVICE_MAIN_FUNCTIONW'>LPSERVICE_MAIN_FUNCTIONW</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSERVICE_STATUS.html'
+                               title='winapi::winsvc::LPSERVICE_STATUS'>LPSERVICE_STATUS</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSERVICE_TABLE_ENTRYA.html'
+                               title='winapi::winsvc::LPSERVICE_TABLE_ENTRYA'>LPSERVICE_TABLE_ENTRYA</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.LPSERVICE_TABLE_ENTRYW.html'
+                               title='winapi::winsvc::LPSERVICE_TABLE_ENTRYW'>LPSERVICE_TABLE_ENTRYW</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.SC_HANDLE.html'
+                               title='winapi::winsvc::SC_HANDLE'>SC_HANDLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                
+                    <tr class=' module-item'>
+                        <td><a class='type' href='type.SERVICE_STATUS_HANDLE.html'
+                               title='winapi::winsvc::SERVICE_STATUS_HANDLE'>SERVICE_STATUS_HANDLE</a></td>
+                        <td class='docblock short'>
+                             
+                        </td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

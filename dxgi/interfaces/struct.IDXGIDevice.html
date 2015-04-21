@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIDevice` struct in crate `dxgi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIDevice">
+
+    <title>dxgi::interfaces::IDXGIDevice - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIDevice', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>IDXGIDevice</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1655' href='../../src/dxgi/interfaces.rs.html#51'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGIDevice {
+    pub vtable: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIDeviceVtbl.html' title='dxgi::interfaces::IDXGIDeviceVtbl'>IDXGIDeviceVtbl</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.vtable'><a class='stability Unmarked' title='No stability level'></a><code>vtable</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../dxgi/interfaces/trait.IDXGIDeviceT.html' title='dxgi::interfaces::IDXGIDeviceT'>IDXGIDeviceT</a> for <a class='struct' href='../../dxgi/interfaces/struct.IDXGIDevice.html' title='dxgi::interfaces::IDXGIDevice'>IDXGIDevice</a></code></h3><div class='impl-items'><h4 id='method.GetAdapter' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetAdapter' class='fnname'>GetAdapter</a>(&amp;mut self, adapter: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIAdapter.html' title='dxgi::interfaces::IDXGIAdapter'>IDXGIAdapter</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.CreateSurface' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.CreateSurface' class='fnname'>CreateSurface</a>(&amp;mut self, desc: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SURFACE_DESC.html' title='dxgi::structures::DXGI_SURFACE_DESC'>DXGI_SURFACE_DESC</a>, num_surfaces: UINT, usage: <a class='type' href='../../dxgi/constants/type.DXGI_USAGE.html' title='dxgi::constants::DXGI_USAGE'>DXGI_USAGE</a>, shared_resource: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SHARED_RESOURCE.html' title='dxgi::structures::DXGI_SHARED_RESOURCE'>DXGI_SHARED_RESOURCE</a>, surface: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGISurface.html' title='dxgi::interfaces::IDXGISurface'>IDXGISurface</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.QueryResourceResidency' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.QueryResourceResidency' class='fnname'>QueryResourceResidency</a>(&amp;mut self, resources: *const <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, residency_status: *mut <a class='enum' href='../../dxgi/enumerations/enum.DXGI_RESIDENCY.html' title='dxgi::enumerations::DXGI_RESIDENCY'>DXGI_RESIDENCY</a>, num_resources: UINT) -&gt; HRESULT</code></h4>
+<h4 id='method.SetGPUThreadPriority' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetGPUThreadPriority' class='fnname'>SetGPUThreadPriority</a>(&amp;mut self, priority: INT) -&gt; HRESULT</code></h4>
+<h4 id='method.GetGPUThreadPriority' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetGPUThreadPriority' class='fnname'>GetGPUThreadPriority</a>(&amp;mut self, priority: *mut INT) -&gt; HRESULT</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../dxgi/interfaces/trait.IUnknownT.html' title='dxgi::interfaces::IUnknownT'>IUnknownT</a> for <a class='struct' href='../../dxgi/interfaces/struct.IDXGIDevice.html' title='dxgi::interfaces::IDXGIDevice'>IDXGIDevice</a></code></h3><div class='impl-items'><h4 id='method.QueryInterface' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.QueryInterface' class='fnname'>QueryInterface</a>(&amp;mut self, riid: REFIID, object: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.AddRef' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.AddRef' class='fnname'>AddRef</a>(&amp;mut self) -&gt; ULONG</code></h4>
+<h4 id='method.Release' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.Release' class='fnname'>Release</a>(&amp;mut self) -&gt; ULONG</code></h4>
+</div><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='trait' href='../../dxgi/interfaces/trait.IDXGIObjectT.html' title='dxgi::interfaces::IDXGIObjectT'>IDXGIObjectT</a> for <a class='struct' href='../../dxgi/interfaces/struct.IDXGIDevice.html' title='dxgi::interfaces::IDXGIDevice'>IDXGIDevice</a></code></h3><div class='impl-items'><h4 id='method.SetPrivateData' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetPrivateData' class='fnname'>SetPrivateData</a>(&amp;mut self, name: REFGUID, data_size: UINT, data: *const <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.SetPrivateDataInterface' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.SetPrivateDataInterface' class='fnname'>SetPrivateDataInterface</a>(&amp;mut self, name: REFGUID, unknown: *const <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.GetPrivateData' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetPrivateData' class='fnname'>GetPrivateData</a>(&amp;mut self, name: REFGUID, data_size: UINT, data: *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+<h4 id='method.GetParent' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.GetParent' class='fnname'>GetParent</a>(&amp;mut self, riid: REFIID, parent: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

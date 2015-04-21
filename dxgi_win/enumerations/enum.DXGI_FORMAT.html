@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `DXGI_FORMAT` enum in crate `dxgi_win`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, DXGI_FORMAT">
+
+    <title>dxgi_win::enumerations::DXGI_FORMAT - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>enumerations</a></p><script>window.sidebarCurrent = {name: 'DXGI_FORMAT', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='../index.html'>dxgi_win</a>::<wbr><a href='index.html'>enumerations</a>::<wbr><a class='enum' href=''>DXGI_FORMAT</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-471' class='srclink' href='../../src/dxgi_win/enumerations.rs.html#59-177'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum DXGI_FORMAT {
+    UNKNOWN,
+    R32G32B32A32_TYPELESS,
+    R32G32B32A32_FLOAT,
+    R32G32B32A32_UINT,
+    R32G32B32A32_SINT,
+    R32G32B32_TYPELESS,
+    R32G32B32_FLOAT,
+    R32G32B32_UINT,
+    R32G32B32_SINT,
+    R16G16B16A16_TYPELESS,
+    R16G16B16A16_FLOAT,
+    R16G16B16A16_UNORM,
+    R16G16B16A16_UINT,
+    R16G16B16A16_SNORM,
+    R16G16B16A16_SINT,
+    R32G32_TYPELESS,
+    R32G32_FLOAT,
+    R32G32_UINT,
+    R32G32_SINT,
+    R32G8X24_TYPELESS,
+    D32_FLOAT_S8X24_UINT,
+    R32_FLOAT_X8X24_TYPELESS,
+    X32_TYPELESS_G8X24_UINT,
+    R10G10B10A2_TYPELESS,
+    R10G10B10A2_UNORM,
+    R10G10B10A2_UINT,
+    R11G11B10_FLOAT,
+    R8G8B8A8_TYPELESS,
+    R8G8B8A8_UNORM,
+    R8G8B8A8_UNORM_SRGB,
+    R8G8B8A8_UINT,
+    R8G8B8A8_SNORM,
+    R8G8B8A8_SINT,
+    R16G16_TYPELESS,
+    R16G16_FLOAT,
+    R16G16_UNORM,
+    R16G16_UINT,
+    R16G16_SNORM,
+    R16G16_SINT,
+    R32_TYPELESS,
+    D32_FLOAT,
+    R32_FLOAT,
+    R32_UINT,
+    R32_SINT,
+    R24G8_TYPELESS,
+    D24_UNORM_S8_UINT,
+    R24_UNORM_X8_TYPELESS,
+    X24_TYPELESS_G8_UINT,
+    R8G8_TYPELESS,
+    R8G8_UNORM,
+    R8G8_UINT,
+    R8G8_SNORM,
+    R8G8_SINT,
+    R16_TYPELESS,
+    R16_FLOAT,
+    D16_UNORM,
+    R16_UNORM,
+    R16_UINT,
+    R16_SNORM,
+    R16_SINT,
+    R8_TYPELESS,
+    R8_UNORM,
+    R8_UINT,
+    R8_SNORM,
+    R8_SINT,
+    A8_UNORM,
+    R1_UNORM,
+    R9G9B9E5_SHAREDEXP,
+    R8G8_B8G8_UNORM,
+    G8R8_G8B8_UNORM,
+    BC1_TYPELESS,
+    BC1_UNORM,
+    BC1_UNORM_SRGB,
+    BC2_TYPELESS,
+    BC2_UNORM,
+    BC2_UNORM_SRGB,
+    BC3_TYPELESS,
+    BC3_UNORM,
+    BC3_UNORM_SRGB,
+    BC4_TYPELESS,
+    BC4_UNORM,
+    BC4_SNORM,
+    BC5_TYPELESS,
+    BC5_UNORM,
+    BC5_SNORM,
+    B5G6R5_UNORM,
+    B5G5R5A1_UNORM,
+    B8G8R8A8_UNORM,
+    B8G8R8X8_UNORM,
+    R10G10B10_XR_BIAS_A2_UNORM,
+    B8G8R8A8_TYPELESS,
+    B8G8R8A8_UNORM_SRGB,
+    B8G8R8X8_TYPELESS,
+    B8G8R8X8_UNORM_SRGB,
+    BC6H_TYPELESS,
+    BC6H_UF16,
+    BC6H_SF16,
+    BC7_TYPELESS,
+    BC7_UNORM,
+    BC7_UNORM_SRGB,
+    AYUV,
+    Y410,
+    Y416,
+    NV12,
+    P010,
+    P016,
+    OPAQUE_420,
+    YUY2,
+    Y210,
+    Y216,
+    NV11,
+    AI44,
+    IA44,
+    P8,
+    A8P8,
+    B4G4R4A4_UNORM,
+    FORCE_UINT,
+}</pre><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.UNKNOWN'><code>UNKNOWN</code></td><td></td></tr><tr><td id='variant.R32G32B32A32_TYPELESS'><code>R32G32B32A32_TYPELESS</code></td><td></td></tr><tr><td id='variant.R32G32B32A32_FLOAT'><code>R32G32B32A32_FLOAT</code></td><td></td></tr><tr><td id='variant.R32G32B32A32_UINT'><code>R32G32B32A32_UINT</code></td><td></td></tr><tr><td id='variant.R32G32B32A32_SINT'><code>R32G32B32A32_SINT</code></td><td></td></tr><tr><td id='variant.R32G32B32_TYPELESS'><code>R32G32B32_TYPELESS</code></td><td></td></tr><tr><td id='variant.R32G32B32_FLOAT'><code>R32G32B32_FLOAT</code></td><td></td></tr><tr><td id='variant.R32G32B32_UINT'><code>R32G32B32_UINT</code></td><td></td></tr><tr><td id='variant.R32G32B32_SINT'><code>R32G32B32_SINT</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_TYPELESS'><code>R16G16B16A16_TYPELESS</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_FLOAT'><code>R16G16B16A16_FLOAT</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_UNORM'><code>R16G16B16A16_UNORM</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_UINT'><code>R16G16B16A16_UINT</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_SNORM'><code>R16G16B16A16_SNORM</code></td><td></td></tr><tr><td id='variant.R16G16B16A16_SINT'><code>R16G16B16A16_SINT</code></td><td></td></tr><tr><td id='variant.R32G32_TYPELESS'><code>R32G32_TYPELESS</code></td><td></td></tr><tr><td id='variant.R32G32_FLOAT'><code>R32G32_FLOAT</code></td><td></td></tr><tr><td id='variant.R32G32_UINT'><code>R32G32_UINT</code></td><td></td></tr><tr><td id='variant.R32G32_SINT'><code>R32G32_SINT</code></td><td></td></tr><tr><td id='variant.R32G8X24_TYPELESS'><code>R32G8X24_TYPELESS</code></td><td></td></tr><tr><td id='variant.D32_FLOAT_S8X24_UINT'><code>D32_FLOAT_S8X24_UINT</code></td><td></td></tr><tr><td id='variant.R32_FLOAT_X8X24_TYPELESS'><code>R32_FLOAT_X8X24_TYPELESS</code></td><td></td></tr><tr><td id='variant.X32_TYPELESS_G8X24_UINT'><code>X32_TYPELESS_G8X24_UINT</code></td><td></td></tr><tr><td id='variant.R10G10B10A2_TYPELESS'><code>R10G10B10A2_TYPELESS</code></td><td></td></tr><tr><td id='variant.R10G10B10A2_UNORM'><code>R10G10B10A2_UNORM</code></td><td></td></tr><tr><td id='variant.R10G10B10A2_UINT'><code>R10G10B10A2_UINT</code></td><td></td></tr><tr><td id='variant.R11G11B10_FLOAT'><code>R11G11B10_FLOAT</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_TYPELESS'><code>R8G8B8A8_TYPELESS</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_UNORM'><code>R8G8B8A8_UNORM</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_UNORM_SRGB'><code>R8G8B8A8_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_UINT'><code>R8G8B8A8_UINT</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_SNORM'><code>R8G8B8A8_SNORM</code></td><td></td></tr><tr><td id='variant.R8G8B8A8_SINT'><code>R8G8B8A8_SINT</code></td><td></td></tr><tr><td id='variant.R16G16_TYPELESS'><code>R16G16_TYPELESS</code></td><td></td></tr><tr><td id='variant.R16G16_FLOAT'><code>R16G16_FLOAT</code></td><td></td></tr><tr><td id='variant.R16G16_UNORM'><code>R16G16_UNORM</code></td><td></td></tr><tr><td id='variant.R16G16_UINT'><code>R16G16_UINT</code></td><td></td></tr><tr><td id='variant.R16G16_SNORM'><code>R16G16_SNORM</code></td><td></td></tr><tr><td id='variant.R16G16_SINT'><code>R16G16_SINT</code></td><td></td></tr><tr><td id='variant.R32_TYPELESS'><code>R32_TYPELESS</code></td><td></td></tr><tr><td id='variant.D32_FLOAT'><code>D32_FLOAT</code></td><td></td></tr><tr><td id='variant.R32_FLOAT'><code>R32_FLOAT</code></td><td></td></tr><tr><td id='variant.R32_UINT'><code>R32_UINT</code></td><td></td></tr><tr><td id='variant.R32_SINT'><code>R32_SINT</code></td><td></td></tr><tr><td id='variant.R24G8_TYPELESS'><code>R24G8_TYPELESS</code></td><td></td></tr><tr><td id='variant.D24_UNORM_S8_UINT'><code>D24_UNORM_S8_UINT</code></td><td></td></tr><tr><td id='variant.R24_UNORM_X8_TYPELESS'><code>R24_UNORM_X8_TYPELESS</code></td><td></td></tr><tr><td id='variant.X24_TYPELESS_G8_UINT'><code>X24_TYPELESS_G8_UINT</code></td><td></td></tr><tr><td id='variant.R8G8_TYPELESS'><code>R8G8_TYPELESS</code></td><td></td></tr><tr><td id='variant.R8G8_UNORM'><code>R8G8_UNORM</code></td><td></td></tr><tr><td id='variant.R8G8_UINT'><code>R8G8_UINT</code></td><td></td></tr><tr><td id='variant.R8G8_SNORM'><code>R8G8_SNORM</code></td><td></td></tr><tr><td id='variant.R8G8_SINT'><code>R8G8_SINT</code></td><td></td></tr><tr><td id='variant.R16_TYPELESS'><code>R16_TYPELESS</code></td><td></td></tr><tr><td id='variant.R16_FLOAT'><code>R16_FLOAT</code></td><td></td></tr><tr><td id='variant.D16_UNORM'><code>D16_UNORM</code></td><td></td></tr><tr><td id='variant.R16_UNORM'><code>R16_UNORM</code></td><td></td></tr><tr><td id='variant.R16_UINT'><code>R16_UINT</code></td><td></td></tr><tr><td id='variant.R16_SNORM'><code>R16_SNORM</code></td><td></td></tr><tr><td id='variant.R16_SINT'><code>R16_SINT</code></td><td></td></tr><tr><td id='variant.R8_TYPELESS'><code>R8_TYPELESS</code></td><td></td></tr><tr><td id='variant.R8_UNORM'><code>R8_UNORM</code></td><td></td></tr><tr><td id='variant.R8_UINT'><code>R8_UINT</code></td><td></td></tr><tr><td id='variant.R8_SNORM'><code>R8_SNORM</code></td><td></td></tr><tr><td id='variant.R8_SINT'><code>R8_SINT</code></td><td></td></tr><tr><td id='variant.A8_UNORM'><code>A8_UNORM</code></td><td></td></tr><tr><td id='variant.R1_UNORM'><code>R1_UNORM</code></td><td></td></tr><tr><td id='variant.R9G9B9E5_SHAREDEXP'><code>R9G9B9E5_SHAREDEXP</code></td><td></td></tr><tr><td id='variant.R8G8_B8G8_UNORM'><code>R8G8_B8G8_UNORM</code></td><td></td></tr><tr><td id='variant.G8R8_G8B8_UNORM'><code>G8R8_G8B8_UNORM</code></td><td></td></tr><tr><td id='variant.BC1_TYPELESS'><code>BC1_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC1_UNORM'><code>BC1_UNORM</code></td><td></td></tr><tr><td id='variant.BC1_UNORM_SRGB'><code>BC1_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.BC2_TYPELESS'><code>BC2_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC2_UNORM'><code>BC2_UNORM</code></td><td></td></tr><tr><td id='variant.BC2_UNORM_SRGB'><code>BC2_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.BC3_TYPELESS'><code>BC3_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC3_UNORM'><code>BC3_UNORM</code></td><td></td></tr><tr><td id='variant.BC3_UNORM_SRGB'><code>BC3_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.BC4_TYPELESS'><code>BC4_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC4_UNORM'><code>BC4_UNORM</code></td><td></td></tr><tr><td id='variant.BC4_SNORM'><code>BC4_SNORM</code></td><td></td></tr><tr><td id='variant.BC5_TYPELESS'><code>BC5_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC5_UNORM'><code>BC5_UNORM</code></td><td></td></tr><tr><td id='variant.BC5_SNORM'><code>BC5_SNORM</code></td><td></td></tr><tr><td id='variant.B5G6R5_UNORM'><code>B5G6R5_UNORM</code></td><td></td></tr><tr><td id='variant.B5G5R5A1_UNORM'><code>B5G5R5A1_UNORM</code></td><td></td></tr><tr><td id='variant.B8G8R8A8_UNORM'><code>B8G8R8A8_UNORM</code></td><td></td></tr><tr><td id='variant.B8G8R8X8_UNORM'><code>B8G8R8X8_UNORM</code></td><td></td></tr><tr><td id='variant.R10G10B10_XR_BIAS_A2_UNORM'><code>R10G10B10_XR_BIAS_A2_UNORM</code></td><td></td></tr><tr><td id='variant.B8G8R8A8_TYPELESS'><code>B8G8R8A8_TYPELESS</code></td><td></td></tr><tr><td id='variant.B8G8R8A8_UNORM_SRGB'><code>B8G8R8A8_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.B8G8R8X8_TYPELESS'><code>B8G8R8X8_TYPELESS</code></td><td></td></tr><tr><td id='variant.B8G8R8X8_UNORM_SRGB'><code>B8G8R8X8_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.BC6H_TYPELESS'><code>BC6H_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC6H_UF16'><code>BC6H_UF16</code></td><td></td></tr><tr><td id='variant.BC6H_SF16'><code>BC6H_SF16</code></td><td></td></tr><tr><td id='variant.BC7_TYPELESS'><code>BC7_TYPELESS</code></td><td></td></tr><tr><td id='variant.BC7_UNORM'><code>BC7_UNORM</code></td><td></td></tr><tr><td id='variant.BC7_UNORM_SRGB'><code>BC7_UNORM_SRGB</code></td><td></td></tr><tr><td id='variant.AYUV'><code>AYUV</code></td><td></td></tr><tr><td id='variant.Y410'><code>Y410</code></td><td></td></tr><tr><td id='variant.Y416'><code>Y416</code></td><td></td></tr><tr><td id='variant.NV12'><code>NV12</code></td><td></td></tr><tr><td id='variant.P010'><code>P010</code></td><td></td></tr><tr><td id='variant.P016'><code>P016</code></td><td></td></tr><tr><td id='variant.OPAQUE_420'><code>OPAQUE_420</code></td><td></td></tr><tr><td id='variant.YUY2'><code>YUY2</code></td><td></td></tr><tr><td id='variant.Y210'><code>Y210</code></td><td></td></tr><tr><td id='variant.Y216'><code>Y216</code></td><td></td></tr><tr><td id='variant.NV11'><code>NV11</code></td><td></td></tr><tr><td id='variant.AI44'><code>AI44</code></td><td></td></tr><tr><td id='variant.IA44'><code>IA44</code></td><td></td></tr><tr><td id='variant.P8'><code>P8</code></td><td></td></tr><tr><td id='variant.A8P8'><code>A8P8</code></td><td></td></tr><tr><td id='variant.B4G4R4A4_UNORM'><code>B4G4R4A4_UNORM</code></td><td></td></tr><tr><td id='variant.FORCE_UINT'><code>FORCE_UINT</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi_win";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

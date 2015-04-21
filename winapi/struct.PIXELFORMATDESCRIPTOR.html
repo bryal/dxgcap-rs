@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `PIXELFORMATDESCRIPTOR` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, PIXELFORMATDESCRIPTOR">
+
+    <title>winapi::PIXELFORMATDESCRIPTOR - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='index.html'>winapi</a></p><script>window.sidebarCurrent = {name: 'PIXELFORMATDESCRIPTOR', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>winapi</a>::<wbr><a class='struct' href=''>PIXELFORMATDESCRIPTOR</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-94831' class='srclink' href='../src/winapi/lib.rs.html#2655-2682'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct PIXELFORMATDESCRIPTOR {
+    pub nSize: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub nVersion: <a class='type' href='../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub dwFlags: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub iPixelType: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cColorBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cRedBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cRedShift: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cGreenBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cGreenShift: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cBlueBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cBlueShift: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAlphaBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAlphaShift: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAccumBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAccumRedBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAccumGreenBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAccumBlueBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAccumAlphaBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cDepthBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cStencilBits: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub cAuxBuffers: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub iLayerType: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub bReserved: <a class='type' href='../winapi/minwindef/type.BYTE.html' title='winapi::minwindef::BYTE'>BYTE</a>,
+    pub dwLayerMask: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwVisibleMask: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwDamageMask: <a class='type' href='../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.nSize'><code>nSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.nVersion'><code>nVersion</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwFlags'><code>dwFlags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.iPixelType'><code>iPixelType</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cColorBits'><code>cColorBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cRedBits'><code>cRedBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cRedShift'><code>cRedShift</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cGreenBits'><code>cGreenBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cGreenShift'><code>cGreenShift</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cBlueBits'><code>cBlueBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cBlueShift'><code>cBlueShift</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAlphaBits'><code>cAlphaBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAlphaShift'><code>cAlphaShift</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAccumBits'><code>cAccumBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAccumRedBits'><code>cAccumRedBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAccumGreenBits'><code>cAccumGreenBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAccumBlueBits'><code>cAccumBlueBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAccumAlphaBits'><code>cAccumAlphaBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cDepthBits'><code>cDepthBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cStencilBits'><code>cStencilBits</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cAuxBuffers'><code>cAuxBuffers</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.iLayerType'><code>iLayerType</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.bReserved'><code>bReserved</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwLayerMask'><code>dwLayerMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwVisibleMask'><code>dwVisibleMask</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwDamageMask'><code>dwDamageMask</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../winapi/struct.PIXELFORMATDESCRIPTOR.html' title='winapi::PIXELFORMATDESCRIPTOR'>PIXELFORMATDESCRIPTOR</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../winapi/struct.PIXELFORMATDESCRIPTOR.html' title='winapi::PIXELFORMATDESCRIPTOR'>PIXELFORMATDESCRIPTOR</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../winapi/struct.PIXELFORMATDESCRIPTOR.html' title='winapi::PIXELFORMATDESCRIPTOR'>PIXELFORMATDESCRIPTOR</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../winapi/struct.PIXELFORMATDESCRIPTOR.html' title='winapi::PIXELFORMATDESCRIPTOR'>PIXELFORMATDESCRIPTOR</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>

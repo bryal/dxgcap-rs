@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["enumerations","Enumerations used to specify information about shaders"],["interfaces","Interfaces for the two basic types of resources: buffers and textures"],["structures","Structures used to create and use shaders"]]});

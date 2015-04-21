@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGIFactory3Vtbl` struct in crate `dxgi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGIFactory3Vtbl">
+
+    <title>dxgi::interfaces::IDXGIFactory3Vtbl - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a></p><script>window.sidebarCurrent = {name: 'IDXGIFactory3Vtbl', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>dxgi</a>::<wbr><a href='index.html'>interfaces</a>::<wbr><a class='struct' href=''>IDXGIFactory3Vtbl</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-17085' href='../../src/dxgi/macros.rs.html#48-51'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGIFactory3Vtbl {
+    pub QueryInterface: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, riid: REFIID, object: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT&gt;,
+    pub AddRef: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>) -&gt; ULONG&gt;,
+    pub Release: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>) -&gt; ULONG&gt;,
+    pub SetPrivateData: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, name: REFGUID, data_size: UINT, data: *const <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT&gt;,
+    pub SetPrivateDataInterface: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, name: REFGUID, unknown: *const <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>) -&gt; HRESULT&gt;,
+    pub GetPrivateData: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, name: REFGUID, data_size: UINT, data: *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT&gt;,
+    pub GetParent: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, riid: REFIID, parent: *mut *mut <a class='enum' href='http://doc.rust-lang.org/nightly/libc/types/common/c95/enum.c_void.html' title='libc::types::common::c95::c_void'>c_void</a>) -&gt; HRESULT&gt;,
+    pub EnumAdapters: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, adapter_i: UINT, adapter: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIAdapter.html' title='dxgi::interfaces::IDXGIAdapter'>IDXGIAdapter</a>) -&gt; HRESULT&gt;,
+    pub MakeWindowAssociation: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, window_handle: HWND, flags: UINT) -&gt; HRESULT&gt;,
+    pub GetWindowAssociation: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, window_handle: *mut HWND) -&gt; HRESULT&gt;,
+    pub CreateSwapChain: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, device: *mut <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, desc: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_DESC.html' title='dxgi::structures::DXGI_SWAP_CHAIN_DESC'>DXGI_SWAP_CHAIN_DESC</a>, swapchain: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGISwapChain.html' title='dxgi::interfaces::IDXGISwapChain'>IDXGISwapChain</a>) -&gt; HRESULT&gt;,
+    pub CreateSoftwareAdapter: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, module: HMODULE, adapter: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIAdapter.html' title='dxgi::interfaces::IDXGIAdapter'>IDXGIAdapter</a>) -&gt; HRESULT&gt;,
+    pub EnumAdapters1: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, adapter_i: UINT, adapter: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIAdapter1.html' title='dxgi::interfaces::IDXGIAdapter1'>IDXGIAdapter1</a>) -&gt; HRESULT&gt;,
+    pub IsCurrent: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>) -&gt; BOOL&gt;,
+    pub IsWindowedStereoEnabled: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>) -&gt; BOOL&gt;,
+    pub CreateSwapChainForHwnd: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, device: *mut <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, hwnd: HWND, desc: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_DESC1.html' title='dxgi::structures::DXGI_SWAP_CHAIN_DESC1'>DXGI_SWAP_CHAIN_DESC1</a>, fullscreen_desc: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_FULLSCREEN_DESC.html' title='dxgi::structures::DXGI_SWAP_CHAIN_FULLSCREEN_DESC'>DXGI_SWAP_CHAIN_FULLSCREEN_DESC</a>, restrict_to_output: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIOutput.html' title='dxgi::interfaces::IDXGIOutput'>IDXGIOutput</a>, swapchain: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGISwapChain1.html' title='dxgi::interfaces::IDXGISwapChain1'>IDXGISwapChain1</a>) -&gt; HRESULT&gt;,
+    pub CreateSwapChainForCoreWindow: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, device: *mut <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, window: *mut <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, desc: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_DESC1.html' title='dxgi::structures::DXGI_SWAP_CHAIN_DESC1'>DXGI_SWAP_CHAIN_DESC1</a>, restrict_to_output: *mut <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_DESC1.html' title='dxgi::structures::DXGI_SWAP_CHAIN_DESC1'>DXGI_SWAP_CHAIN_DESC1</a>) -&gt; HRESULT&gt;,
+    pub GetSharedResourceAdapterLuid: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, resource: HANDLE, luid: *mut LUID) -&gt; HRESULT&gt;,
+    pub RegisterStereoStatusWindow: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, window_handle: HWND, msg: UINT, cookie: *mut DWORD) -&gt; HRESULT&gt;,
+    pub RegisterStereoStatusEvent: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, event_handle: HANDLE, cookie: *mut DWORD) -&gt; HRESULT&gt;,
+    pub UnregisterStereoStatus: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, cookit: DWORD)&gt;,
+    pub RegisterOcclusionStatusWindow: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, window_handle: HWND, msg: UINT, cookie: *mut DWORD) -&gt; HRESULT&gt;,
+    pub RegisterOcclusionStatusEvent: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, event_handle: HANDLE, cookie: *mut DWORD) -&gt; HRESULT&gt;,
+    pub UnregisterOcclusionStatus: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, cookie: DWORD)&gt;,
+    pub CreateSwapChainForComposition: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>, device: *mut <a class='struct' href='../../dxgi/interfaces/struct.IUnknown.html' title='dxgi::interfaces::IUnknown'>IUnknown</a>, desc: *const <a class='struct' href='../../dxgi/structures/struct.DXGI_SWAP_CHAIN_DESC1.html' title='dxgi::structures::DXGI_SWAP_CHAIN_DESC1'>DXGI_SWAP_CHAIN_DESC1</a>, restrict_to_output: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIOutput.html' title='dxgi::interfaces::IDXGIOutput'>IDXGIOutput</a>, swapchain: *mut *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGISwapChain1.html' title='dxgi::interfaces::IDXGISwapChain1'>IDXGISwapChain1</a>) -&gt; HRESULT&gt;,
+    pub GetCreationFlags: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;unsafe  extern "system" fn(this: *mut <a class='struct' href='../../dxgi/interfaces/struct.IDXGIFactory3.html' title='dxgi::interfaces::IDXGIFactory3'>IDXGIFactory3</a>) -&gt; UINT&gt;,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.QueryInterface'><a class='stability Unmarked' title='No stability level'></a><code>QueryInterface</code></td><td></td></tr><tr><td id='structfield.AddRef'><a class='stability Unmarked' title='No stability level'></a><code>AddRef</code></td><td></td></tr><tr><td id='structfield.Release'><a class='stability Unmarked' title='No stability level'></a><code>Release</code></td><td></td></tr><tr><td id='structfield.SetPrivateData'><a class='stability Unmarked' title='No stability level'></a><code>SetPrivateData</code></td><td></td></tr><tr><td id='structfield.SetPrivateDataInterface'><a class='stability Unmarked' title='No stability level'></a><code>SetPrivateDataInterface</code></td><td></td></tr><tr><td id='structfield.GetPrivateData'><a class='stability Unmarked' title='No stability level'></a><code>GetPrivateData</code></td><td></td></tr><tr><td id='structfield.GetParent'><a class='stability Unmarked' title='No stability level'></a><code>GetParent</code></td><td></td></tr><tr><td id='structfield.EnumAdapters'><a class='stability Unmarked' title='No stability level'></a><code>EnumAdapters</code></td><td></td></tr><tr><td id='structfield.MakeWindowAssociation'><a class='stability Unmarked' title='No stability level'></a><code>MakeWindowAssociation</code></td><td></td></tr><tr><td id='structfield.GetWindowAssociation'><a class='stability Unmarked' title='No stability level'></a><code>GetWindowAssociation</code></td><td></td></tr><tr><td id='structfield.CreateSwapChain'><a class='stability Unmarked' title='No stability level'></a><code>CreateSwapChain</code></td><td></td></tr><tr><td id='structfield.CreateSoftwareAdapter'><a class='stability Unmarked' title='No stability level'></a><code>CreateSoftwareAdapter</code></td><td></td></tr><tr><td id='structfield.EnumAdapters1'><a class='stability Unmarked' title='No stability level'></a><code>EnumAdapters1</code></td><td></td></tr><tr><td id='structfield.IsCurrent'><a class='stability Unmarked' title='No stability level'></a><code>IsCurrent</code></td><td></td></tr><tr><td id='structfield.IsWindowedStereoEnabled'><a class='stability Unmarked' title='No stability level'></a><code>IsWindowedStereoEnabled</code></td><td></td></tr><tr><td id='structfield.CreateSwapChainForHwnd'><a class='stability Unmarked' title='No stability level'></a><code>CreateSwapChainForHwnd</code></td><td></td></tr><tr><td id='structfield.CreateSwapChainForCoreWindow'><a class='stability Unmarked' title='No stability level'></a><code>CreateSwapChainForCoreWindow</code></td><td></td></tr><tr><td id='structfield.GetSharedResourceAdapterLuid'><a class='stability Unmarked' title='No stability level'></a><code>GetSharedResourceAdapterLuid</code></td><td></td></tr><tr><td id='structfield.RegisterStereoStatusWindow'><a class='stability Unmarked' title='No stability level'></a><code>RegisterStereoStatusWindow</code></td><td></td></tr><tr><td id='structfield.RegisterStereoStatusEvent'><a class='stability Unmarked' title='No stability level'></a><code>RegisterStereoStatusEvent</code></td><td></td></tr><tr><td id='structfield.UnregisterStereoStatus'><a class='stability Unmarked' title='No stability level'></a><code>UnregisterStereoStatus</code></td><td></td></tr><tr><td id='structfield.RegisterOcclusionStatusWindow'><a class='stability Unmarked' title='No stability level'></a><code>RegisterOcclusionStatusWindow</code></td><td></td></tr><tr><td id='structfield.RegisterOcclusionStatusEvent'><a class='stability Unmarked' title='No stability level'></a><code>RegisterOcclusionStatusEvent</code></td><td></td></tr><tr><td id='structfield.UnregisterOcclusionStatus'><a class='stability Unmarked' title='No stability level'></a><code>UnregisterOcclusionStatus</code></td><td></td></tr><tr><td id='structfield.CreateSwapChainForComposition'><a class='stability Unmarked' title='No stability level'></a><code>CreateSwapChainForComposition</code></td><td></td></tr><tr><td id='structfield.GetCreationFlags'><a class='stability Unmarked' title='No stability level'></a><code>GetCreationFlags</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "dxgi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
