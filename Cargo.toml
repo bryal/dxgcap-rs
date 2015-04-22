@@ -6,7 +6,7 @@ description = "Screen capture with DXGI in rust"
 repository = "https://github.com/bryal/dxgcap-rs"
 documentation = "http://bryal.github.io/dxgcap-rs/dxgcap/"
 readme = "README.md"
-keywords = ["Windows", "DXGI", "Direct3D", "screen capture", "capture"]
+keywords = ["Windows", "DXGI", "screen", "record", "capture"]
 license = "MIT"
 
 [dependencies]
