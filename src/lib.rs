@@ -24,7 +24,6 @@
 
 #![cfg(windows)]
 
-#![feature(unsafe_destructor)]
 #![allow(dead_code, non_snake_case)]
 
 extern crate winapi;
@@ -73,7 +72,7 @@ pub struct UniqueCOMPtr<T: IUnknownT> {
 }
 impl<T: IUnknownT> UniqueCOMPtr<T> {
 	/// Construct a new unique COM pointer from a pointer to a COM interface.
-	/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand 
+	/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand
 	pub unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
 		UniqueCOMPtr{ ptr: ptr }
 	}
@@ -122,7 +121,6 @@ impl<T: IUnknownT> std::ops::DerefMut for UniqueCOMPtr<T> {
 		unsafe { &mut *self.ptr }
 	}
 }
-#[unsafe_destructor]
 impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
 	fn drop(&mut self) {
 		self.Release();

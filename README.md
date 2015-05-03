@@ -1,2 +1,3 @@
 # dxgcap-rs
-Rust port of DXGCap
+
+Screen capturing with DXGI for Windows in Rust
