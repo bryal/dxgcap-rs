@@ -539,18 +539,6 @@
 <span id="497">497</span>
 <span id="498">498</span>
 <span id="499">499</span>
-<span id="500">500</span>
-<span id="501">501</span>
-<span id="502">502</span>
-<span id="503">503</span>
-<span id="504">504</span>
-<span id="505">505</span>
-<span id="506">506</span>
-<span id="507">507</span>
-<span id="508">508</span>
-<span id="509">509</span>
-<span id="510">510</span>
-<span id="511">511</span>
 </pre><pre class='rust '>
 <span class='comment'>// The MIT License (MIT)</span>
 <span class='comment'>//</span>
@@ -608,8 +596,6 @@
 }
 
 <span class='doccomment'>/// Color represented by additive channels: Blue (b), Green (g), Red (r), and Alpha (a).</span>
-<span class='doccomment'>///</span>
-<span class='doccomment'>/// Basically a reversed RGB pixel.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>PartialOrd</span>, <span class='ident'>PartialEq</span>, <span class='ident'>Eq</span>, <span class='ident'>Ord</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BGRA8</span> {
 	<span class='kw'>pub</span> <span class='ident'>b</span>: <span class='ident'>u8</span>,
@@ -638,18 +624,10 @@
 	<span class='doccomment'>/// ```ignore</span>
 	<span class='doccomment'>/// let output = {</span>
 	<span class='doccomment'>///     let mut output_ptr = ptr::null_mut();</span>
-	<span class='doccomment'>///     adapter.EnumOutputs(i, &amp;mut output_ptr);</span>
+	<span class='doccomment'>///     adapter.EnumOutputs(0, &amp;mut output_ptr);</span>
 	<span class='doccomment'>///     UniqueCOMPtr::new(output)</span>
 	<span class='doccomment'>/// };</span>
-	<span class='doccomment'>/// let output1: UniqueCOMPtr&lt;IDXGIOutput1&gt; = output.query_interface(&amp;IID_IDXGIOutput1).unwrap();</span>
-	<span class='doccomment'>/// ```</span>
-	<span class='doccomment'>///</span>
-	<span class='doccomment'>/// # Safety</span>
-	<span class='doccomment'>/// This method is unsafe, as coerced type may differ from the one</span>
-	<span class='doccomment'>/// requested by IID in query_interface. At the moment, following is legal:</span>
-	<span class='doccomment'>///</span>
-	<span class='doccomment'>/// ```ignore</span>
-	<span class='doccomment'>/// let factory1: UniqueCOMPtr&lt;IDXGIFactory1&gt; = output.query_interface(&amp;IID_IDXGIOutput1).unwrap();</span>
+	<span class='doccomment'>/// let output1 = output.query_interface::&lt;IDXGIOutput1&gt;();</span>
 	<span class='doccomment'>/// ```</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>query_interface</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>, <span class='ident'>HRESULT</span><span class='op'>&gt;</span>
 		<span class='kw'>where</span> <span class='ident'>U</span>: <span class='ident'>COMInterface</span> <span class='op'>+</span> <span class='ident'>QueryIID</span>
@@ -875,8 +853,6 @@
 			<span class='self'>self</span>.<span class='ident'>output_duplication</span>.<span class='ident'>ReleaseFrame</span>();
 		}
 
-
-
 		<span class='ident'>readable_surface</span>.<span class='ident'>query_interface</span>()
 	}
 
@@ -994,7 +970,7 @@
 
 	<span class='doccomment'>/// Capture a frame</span>
 	<span class='doccomment'>///</span>
-	<span class='doccomment'>/// On success, return Vec with pixels, and width and height of frame.</span>
+	<span class='doccomment'>/// On success, return Vec with pixels and width and height of frame.</span>
 	<span class='doccomment'>/// On failure, return CaptureError.</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>capture_frame</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>BGRA8</span><span class='op'>&gt;</span>, (<span class='ident'>usize</span>, <span class='ident'>usize</span>)), <span class='ident'>CaptureError</span><span class='op'>&gt;</span> {
 		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_surface</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>capture_frame_to_surface</span>() {

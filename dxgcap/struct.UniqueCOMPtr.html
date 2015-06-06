@@ -45,7 +45,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-974' class='srclink' href='../src/dxgcap/lib.rs.html#70-72' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-974' class='srclink' href='../src/dxgcap/lib.rs.html#68-70' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct UniqueCOMPtr&lt;T: <a class='trait' href='../dxgi_win/interfaces/trait.COMInterface.html' title='dxgi_win::interfaces::COMInterface'>COMInterface</a>&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A unique pointer to a COM object. Handles refcounting.</p>
@@ -61,18 +61,10 @@ It is the users responsibility to guarantee that no copies of the pointer exists
                            href="#examples">Examples</a></h1><pre id='rust-example-rendered' class='rust '>
 <span class='kw'>let</span> <span class='ident'>output</span> <span class='op'>=</span> {
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>output_ptr</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
-    <span class='ident'>adapter</span>.<span class='ident'>EnumOutputs</span>(<span class='ident'>i</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>output_ptr</span>);
+    <span class='ident'>adapter</span>.<span class='ident'>EnumOutputs</span>(<span class='number'>0</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>output_ptr</span>);
     <span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>output</span>)
 };
-<span class='kw'>let</span> <span class='ident'>output1</span>: <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>output</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_IDXGIOutput1</span>).<span class='ident'>unwrap</span>();
-</pre>
-
-<h1 id="safety" class='section-header'><a
-                           href="#safety">Safety</a></h1>
-<p>This method is unsafe, as coerced type may differ from the one
-requested by IID in query_interface. At the moment, following is legal:</p>
-<pre id='rust-example-rendered' class='rust '>
-<span class='kw'>let</span> <span class='ident'>factory1</span>: <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIFactory1</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>output</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_IDXGIOutput1</span>).<span class='ident'>unwrap</span>();
+<span class='kw'>let</span> <span class='ident'>output1</span> <span class='op'>=</span> <span class='ident'>output</span>.<span class='ident'>query_interface</span>::<span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>();
 </pre>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;T: <a class='trait' href='../dxgi_win/interfaces/trait.COMInterface.html' title='dxgi_win::interfaces::COMInterface'>COMInterface</a>&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../dxgcap/struct.UniqueCOMPtr.html' title='dxgcap::UniqueCOMPtr'>UniqueCOMPtr</a>&lt;T&gt;</code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><code>type Target = T</code></h4>
 <h4 id='method.deref' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;T</code></h4>
