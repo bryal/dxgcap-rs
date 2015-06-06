@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["CLSID_MMDeviceEnumerator",""],["IID_IMMDeviceEnumerator",""]],"enum":[["EDataFlow",""],["ERole",""]],"struct":[["IMMDevice",""],["IMMDeviceCollection",""],["IMMDeviceEnumerator",""],["IMMDeviceEnumeratorVtbl",""],["IMMDeviceVtbl",""],["IMMNotificationClient",""]]});

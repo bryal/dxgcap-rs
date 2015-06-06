@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.17\src\minwinbase.rs`.">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.20\src\minwinbase.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>minwinbase.rs.html -- source</title>
@@ -196,14 +196,14 @@
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPOVERLAPPED_ENTRY</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>OVERLAPPED_ENTRY</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>SYSTEMTIME</span> {
-    <span class='kw'>pub</span> <span class='ident'>wYear</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wMonth</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wDayOfWeek</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wDay</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wHour</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wMinute</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wSecond</span>: ::<span class='ident'>DWORD</span>,
-    <span class='kw'>pub</span> <span class='ident'>wMilliseconds</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wYear</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wMonth</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wDayOfWeek</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wDay</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wHour</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wMinute</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wSecond</span>: ::<span class='ident'>WORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>wMilliseconds</span>: ::<span class='ident'>WORD</span>,
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>PSYSTEMTIME</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>SYSTEMTIME</span>;
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPSYSTEMTIME</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>SYSTEMTIME</span>;
@@ -324,6 +324,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

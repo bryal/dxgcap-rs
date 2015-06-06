@@ -42,8 +42,10 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>dxgi_win</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-0' class='srclink' href='../src/dxgi_win/lib.rs.html#23-51'>[src]</a></span></h1>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-0' class='srclink' href='../src/dxgi_win/lib.rs.html#23-51' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>FFI bindings to DXGI</p>
 </div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
 <table><tr><td><code>pub use <a class='mod' href='../dxgi_win/constants/index.html' title='dxgi_win::constants'>constants</a>::*;</code></td></tr><tr><td><code>pub use <a class='mod' href='../dxgi_win/enumerations/index.html' title='dxgi_win::enumerations'>enumerations</a>::*;</code></td></tr><tr><td><code>pub use <a class='mod' href='../dxgi_win/structures/index.html' title='dxgi_win::structures'>structures</a>::*;</code></td></tr><tr><td><code>pub use <a class='mod' href='../dxgi_win/interfaces/index.html' title='dxgi_win::interfaces'>interfaces</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
@@ -86,49 +88,10 @@
                 </table><h2 id='macros' class='section-header'><a href="#macros">Macros</a></h2>
 <table>
                     <tr class=' module-item'>
-                        <td><a class='macro' href='macro.c_vtable!.html'
-                               title='dxgi_win::c_vtable!'>c_vtable!</a></td>
+                        <td><a class='macro' href='macro.com_interface!.html'
+                               title='dxgi_win::com_interface!'>com_interface!</a></td>
                         <td class='docblock short'>
-                             <p>Macro used to make making bindings for C representations of C++ classes more convenient.</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='macro' href='macro.c_vtable_main!.html'
-                               title='dxgi_win::c_vtable_main!'>c_vtable_main!</a></td>
-                        <td class='docblock short'>
-                             <p>Helper macro. Actually construct the traits, vtables, and manage the inheritance</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='macro' href='macro.c_vtable_methods_to_trait!.html'
-                               title='dxgi_win::c_vtable_methods_to_trait!'>c_vtable_methods_to_trait!</a></td>
-                        <td class='docblock short'>
-                             <p>Helper macro. Construct a trait with the methods of the C++ interface. Removes the need to
-manually call the functions of a C vtable struct when forking with C++ class representations</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='macro' href='macro.c_vtable_pre!.html'
-                               title='dxgi_win::c_vtable_pre!'>c_vtable_pre!</a></td>
-                        <td class='docblock short'>
-                             <p>Helper macro. Deconstruct some syntax before actually doing anything.
-Handle the <code>pub</code> keyword for vtable and trait, and &quot;with heirs&quot; phrase</p>
-
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='macro' href='macro.c_vtable_struct!.html'
-                               title='dxgi_win::c_vtable_struct!'>c_vtable_struct!</a></td>
-                        <td class='docblock short'>
-                             <p>Helper macro. Construct C struct representing C++ method vtable</p>
-
+                             
                         </td>
                     </tr>
                 
@@ -142,11 +105,10 @@ Handle the <code>pub</code> keyword for vtable and trait, and &quot;with heirs&q
                     </tr>
                 
                     <tr class=' module-item'>
-                        <td><a class='macro' href='macro.impl_c_vtable_trait!.html'
-                               title='dxgi_win::impl_c_vtable_trait!'>impl_c_vtable_trait!</a></td>
+                        <td><a class='macro' href='macro.interface!.html'
+                               title='dxgi_win::interface!'>interface!</a></td>
                         <td class='docblock short'>
-                             <p>Helper macro. Implement the trait representing the class methods for the C vtable</p>
-
+                             
                         </td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
@@ -222,6 +184,10 @@ Handle the <code>pub</code> keyword for vtable and trait, and &quot;with heirs&q
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

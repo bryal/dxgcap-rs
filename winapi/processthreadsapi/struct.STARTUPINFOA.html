@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `STARTUPINFOA` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, STARTUPINFOA">
+
+    <title>winapi::processthreadsapi::STARTUPINFOA - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>processthreadsapi</a></p><script>window.sidebarCurrent = {name: 'STARTUPINFOA', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>processthreadsapi</a>::<wbr><a class='struct' href=''>STARTUPINFOA</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-41620' class='srclink' href='../../src/winapi/processthreadsapi.rs.html#4-23' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct STARTUPINFOA {
+    pub cb: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub lpReserved: <a class='type' href='../../winapi/type.LPSTR.html' title='winapi::LPSTR'>LPSTR</a>,
+    pub lpDesktop: <a class='type' href='../../winapi/type.LPSTR.html' title='winapi::LPSTR'>LPSTR</a>,
+    pub lpTitle: <a class='type' href='../../winapi/type.LPSTR.html' title='winapi::LPSTR'>LPSTR</a>,
+    pub dwX: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwY: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwXSize: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwYSize: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwXCountChars: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwYCountChars: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwFillAttribute: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub dwFlags: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>,
+    pub wShowWindow: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub cbReserved2: <a class='type' href='../../winapi/minwindef/type.WORD.html' title='winapi::minwindef::WORD'>WORD</a>,
+    pub lpReserved2: <a class='type' href='../../winapi/minwindef/type.LPBYTE.html' title='winapi::minwindef::LPBYTE'>LPBYTE</a>,
+    pub hStdInput: <a class='type' href='../../winapi/type.HANDLE.html' title='winapi::HANDLE'>HANDLE</a>,
+    pub hStdOutput: <a class='type' href='../../winapi/type.HANDLE.html' title='winapi::HANDLE'>HANDLE</a>,
+    pub hStdError: <a class='type' href='../../winapi/type.HANDLE.html' title='winapi::HANDLE'>HANDLE</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.cb'><code>cb</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.lpReserved'><code>lpReserved</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.lpDesktop'><code>lpDesktop</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.lpTitle'><code>lpTitle</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwX'><code>dwX</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwY'><code>dwY</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwXSize'><code>dwXSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwYSize'><code>dwYSize</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwXCountChars'><code>dwXCountChars</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwYCountChars'><code>dwYCountChars</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwFillAttribute'><code>dwFillAttribute</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.dwFlags'><code>dwFlags</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.wShowWindow'><code>wShowWindow</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.cbReserved2'><code>cbReserved2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.lpReserved2'><code>lpReserved2</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.hStdInput'><code>hStdInput</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.hStdOutput'><code>hStdOutput</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.hStdError'><code>hStdError</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../winapi/processthreadsapi/struct.STARTUPINFOA.html' title='winapi::processthreadsapi::STARTUPINFOA'>STARTUPINFOA</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../winapi/processthreadsapi/struct.STARTUPINFOA.html' title='winapi::processthreadsapi::STARTUPINFOA'>STARTUPINFOA</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='struct' href='../../winapi/processthreadsapi/struct.STARTUPINFOA.html' title='winapi::processthreadsapi::STARTUPINFOA'>STARTUPINFOA</a></code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='struct' href='../../winapi/processthreadsapi/struct.STARTUPINFOA.html' title='winapi::processthreadsapi::STARTUPINFOA'>STARTUPINFOA</a></code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

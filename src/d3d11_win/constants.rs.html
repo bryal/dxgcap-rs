@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\d3d11-win-0.1.0\src\constants.rs`.">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\d3d11-win-0.2.0\src\constants.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>constants.rs.html -- source</title>
@@ -149,12 +149,6 @@
 <span id="107">107</span>
 <span id="108">108</span>
 <span id="109">109</span>
-<span id="110">110</span>
-<span id="111">111</span>
-<span id="112">112</span>
-<span id="113">113</span>
-<span id="114">114</span>
-<span id="115">115</span>
 </pre><pre class='rust '>
 <span class='comment'>// The MIT License (MIT)</span>
 <span class='comment'>//</span>
@@ -187,7 +181,6 @@
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>D3D11_SDK_VERSION</span>: <span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>7</span>;
 
 <span class='comment'>// d3d11.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11DeviceChild</span>, <span class='number'>0x1841e5c8</span>, <span class='number'>0x16b0</span>, <span class='number'>0x489b</span>, <span class='number'>0xbc</span>, <span class='number'>0xc8</span>, <span class='number'>0x44</span>, <span class='number'>0xcf</span>, <span class='number'>0xb0</span>, <span class='number'>0xd5</span>, <span class='number'>0xde</span>, <span class='number'>0xae</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11DepthStencilState</span>, <span class='number'>0x03823efb</span>, <span class='number'>0x8d8f</span>, <span class='number'>0x4e1c</span>, <span class='number'>0x9a</span>, <span class='number'>0xa2</span>, <span class='number'>0xf6</span>, <span class='number'>0x4b</span>, <span class='number'>0xb2</span>, <span class='number'>0xcb</span>, <span class='number'>0xfd</span>, <span class='number'>0xf1</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11BlendState</span>, <span class='number'>0x75b68faa</span>, <span class='number'>0x347d</span>, <span class='number'>0x4159</span>, <span class='number'>0x8f</span>, <span class='number'>0x45</span>, <span class='number'>0xa0</span>, <span class='number'>0x64</span>, <span class='number'>0x0f</span>, <span class='number'>0x01</span>, <span class='number'>0xcd</span>, <span class='number'>0x9a</span>);
@@ -231,7 +224,6 @@
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11Device</span>, <span class='number'>0xdb6f6ddb</span>, <span class='number'>0xac77</span>, <span class='number'>0x4e88</span>, <span class='number'>0x82</span>, <span class='number'>0x53</span>, <span class='number'>0x81</span>, <span class='number'>0x9d</span>, <span class='number'>0xf9</span>, <span class='number'>0xbb</span>, <span class='number'>0xf1</span>, <span class='number'>0x40</span>);
 
 <span class='comment'>// d3d11_1.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11BlendState1</span>, <span class='number'>0xcc86fabe</span>, <span class='number'>0xda55</span>, <span class='number'>0x401d</span>, <span class='number'>0x85</span>, <span class='number'>0xe7</span>, <span class='number'>0xe3</span>, <span class='number'>0xc9</span>, <span class='number'>0xde</span>, <span class='number'>0x28</span>, <span class='number'>0x77</span>, <span class='number'>0xe9</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11RasterizerState1</span>, <span class='number'>0x1217d7a6</span>, <span class='number'>0x5039</span>, <span class='number'>0x418c</span>, <span class='number'>0xb0</span>, <span class='number'>0x42</span>, <span class='number'>0x9c</span>, <span class='number'>0xbe</span>, <span class='number'>0x25</span>, <span class='number'>0x6a</span>, <span class='number'>0xfd</span>, <span class='number'>0x6e</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3DDeviceContextState</span>, <span class='number'>0x5c1e0d8a</span>, <span class='number'>0x7c23</span>, <span class='number'>0x48f9</span>, <span class='number'>0x8c</span>, <span class='number'>0x59</span>, <span class='number'>0xa9</span>, <span class='number'>0x29</span>, <span class='number'>0x58</span>, <span class='number'>0xce</span>, <span class='number'>0xff</span>, <span class='number'>0x11</span>);
@@ -240,16 +232,13 @@
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3DUserDefinedAnnotation</span>, <span class='number'>0xb2daad8b</span>, <span class='number'>0x03d4</span>, <span class='number'>0x4dbf</span>, <span class='number'>0x95</span>, <span class='number'>0xeb</span>, <span class='number'>0x32</span>, <span class='number'>0xab</span>, <span class='number'>0x4b</span>, <span class='number'>0x63</span>, <span class='number'>0xd0</span>, <span class='number'>0xab</span>);
 
 <span class='comment'>// d3d11_2.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11DeviceContext2</span>,<span class='number'>0x420d5b32</span>,<span class='number'>0xb90c</span>,<span class='number'>0x4da4</span>,<span class='number'>0xbe</span>,<span class='number'>0xf0</span>,<span class='number'>0x35</span>,<span class='number'>0x9f</span>,<span class='number'>0x6a</span>,<span class='number'>0x24</span>,<span class='number'>0xa8</span>,<span class='number'>0x3a</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11Device2</span>,<span class='number'>0x9d06dffa</span>,<span class='number'>0xd1e5</span>,<span class='number'>0x4d07</span>,<span class='number'>0x83</span>,<span class='number'>0xa8</span>,<span class='number'>0x1b</span>,<span class='number'>0xb1</span>,<span class='number'>0x23</span>,<span class='number'>0xf2</span>,<span class='number'>0xf8</span>,<span class='number'>0x41</span>);
 
 <span class='comment'>// d3dcommon.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D10Blob</span>, <span class='number'>0x8ba5fb08</span>, <span class='number'>0x5195</span>, <span class='number'>0x40e2</span>, <span class='number'>0xac</span>, <span class='number'>0x58</span>, <span class='number'>0xd</span>, <span class='number'>0x98</span>, <span class='number'>0x9c</span>, <span class='number'>0x3a</span>, <span class='number'>0x1</span>, <span class='number'>0x2</span>);
 
 <span class='comment'>// d3d11shader.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11ShaderReflectionType</span>, <span class='number'>0x6e6ffa6a</span>, <span class='number'>0x9bae</span>, <span class='number'>0x4613</span>, <span class='number'>0xa5</span>, <span class='number'>0x1e</span>, <span class='number'>0x91</span>, <span class='number'>0x65</span>, <span class='number'>0x2d</span>, <span class='number'>0x50</span>, <span class='number'>0x8c</span>, <span class='number'>0x21</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11ShaderReflectionVariable</span>, <span class='number'>0x51f23923</span>, <span class='number'>0xf3e5</span>, <span class='number'>0x4bd1</span>, <span class='number'>0x91</span>, <span class='number'>0xcb</span>, <span class='number'>0x60</span>, <span class='number'>0x61</span>, <span class='number'>0x77</span>, <span class='number'>0xd8</span>, <span class='number'>0xdb</span>, <span class='number'>0x4c</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11ShaderReflectionConstantBuffer</span>, <span class='number'>0xeb62d63d</span>, <span class='number'>0x93dd</span>, <span class='number'>0x4318</span>, <span class='number'>0x8a</span>, <span class='number'>0xe8</span>, <span class='number'>0xc6</span>, <span class='number'>0xf8</span>, <span class='number'>0x3a</span>, <span class='number'>0xd3</span>, <span class='number'>0x71</span>, <span class='number'>0xb8</span>);
@@ -264,7 +253,6 @@
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11FunctionLinkingGraph</span>, <span class='number'>0x54133220</span>, <span class='number'>0x1ce8</span>, <span class='number'>0x43d3</span>, <span class='number'>0x82</span>, <span class='number'>0x36</span>, <span class='number'>0x98</span>, <span class='number'>0x55</span>, <span class='number'>0xc5</span>, <span class='number'>0xce</span>, <span class='number'>0xec</span>, <span class='number'>0xff</span>);
 
 <span class='comment'>// d3d11sdklayers.h</span>
-
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11Debug</span>, <span class='number'>0x79cf2233</span>, <span class='number'>0x7536</span>, <span class='number'>0x4948</span>, <span class='number'>0x9d</span>, <span class='number'>0x36</span>, <span class='number'>0x1e</span>, <span class='number'>0x46</span>, <span class='number'>0x92</span>, <span class='number'>0xdc</span>, <span class='number'>0x57</span>, <span class='number'>0x60</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11SwitchToRef</span>, <span class='number'>0x1ef337e3</span>, <span class='number'>0x58e7</span>, <span class='number'>0x4f83</span>, <span class='number'>0xa6</span>, <span class='number'>0x92</span>, <span class='number'>0xdb</span>, <span class='number'>0x22</span>, <span class='number'>0x1f</span>, <span class='number'>0x5e</span>, <span class='number'>0xd4</span>, <span class='number'>0x7e</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_ID3D11TracingDevice</span>, <span class='number'>0x1911c771</span>, <span class='number'>0x1587</span>, <span class='number'>0x413e</span>, <span class='number'>0xa7</span>, <span class='number'>0xe0</span>, <span class='number'>0xfb</span>, <span class='number'>0x26</span>, <span class='number'>0xc3</span>, <span class='number'>0xde</span>, <span class='number'>0x02</span>, <span class='number'>0x68</span>);
@@ -304,6 +292,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

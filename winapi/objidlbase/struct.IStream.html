@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IStream` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IStream">
+
+    <title>winapi::objidlbase::IStream - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>objidlbase</a></p><script>window.sidebarCurrent = {name: 'IStream', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>objidlbase</a>::<wbr><a class='struct' href=''>IStream</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-41084' class='srclink' href='../../src/winapi/lib.rs.html#148-150' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IStream {
+    pub lpVtbl: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../winapi/objidlbase/struct.IStreamVtbl.html' title='winapi::objidlbase::IStreamVtbl'>IStreamVtbl</a></a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.lpVtbl'><code>lpVtbl</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></code></h3><div class='impl-items'><h4 id='method.Seek' class='method'><code>unsafe fn <a href='#method.Seek' class='fnname'>Seek</a>(&amp;mut self, dlibMove: <a class='type' href='../../winapi/type.LARGE_INTEGER.html' title='winapi::LARGE_INTEGER'>LARGE_INTEGER</a>, dwOrigin: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, plibNewPosition: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.SetSize' class='method'><code>unsafe fn <a href='#method.SetSize' class='fnname'>SetSize</a>(&amp;mut self, libNewSize: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.CopyTo' class='method'><code>unsafe fn <a href='#method.CopyTo' class='fnname'>CopyTo</a>(&amp;mut self, pstm: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></a>, cb: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>, pcbRead: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a></a>, pcbWritten: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Commit' class='method'><code>unsafe fn <a href='#method.Commit' class='fnname'>Commit</a>(&amp;mut self, grfCommitFlags: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Revert' class='method'><code>unsafe fn <a href='#method.Revert' class='fnname'>Revert</a>(&amp;mut self) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.LockRegion' class='method'><code>unsafe fn <a href='#method.LockRegion' class='fnname'>LockRegion</a>(&amp;mut self, libOffset: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>, cb: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>, dwLockType: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.UnlockRegion' class='method'><code>unsafe fn <a href='#method.UnlockRegion' class='fnname'>UnlockRegion</a>(&amp;mut self, libOffset: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>, cb: <a class='type' href='../../winapi/type.ULARGE_INTEGER.html' title='winapi::ULARGE_INTEGER'>ULARGE_INTEGER</a>, dwLockType: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Stat' class='method'><code>unsafe fn <a href='#method.Stat' class='fnname'>Stat</a>(&amp;mut self, pstatstg: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/objidlbase/struct.STATSTG.html' title='winapi::objidlbase::STATSTG'>STATSTG</a></a>, grfStatFlag: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Clone' class='method'><code>unsafe fn <a href='#method.Clone' class='fnname'>Clone</a>(&amp;mut self, ppstm: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='deref-methods'>Methods from <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=<a class='struct' href='../../winapi/objidlbase/struct.ISequentialStream.html' title='winapi::objidlbase::ISequentialStream'>ISequentialStream</a>&gt;</h2><div class='impl-items'><h4 id='method.Read' class='method'><code>unsafe fn <a href='#method.Read' class='fnname'>Read</a>(&amp;mut self, pv: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../winapi/enum.c_void.html' title='winapi::c_void'>c_void</a></a>, cb: <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a>, pcbRead: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Write' class='method'><code>unsafe fn <a href='#method.Write' class='fnname'>Write</a>(&amp;mut self, pv: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='enum' href='../../winapi/enum.c_void.html' title='winapi::c_void'>c_void</a></a>, cb: <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a>, pcbWritten: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><code>type Target = <a class='struct' href='../../winapi/objidlbase/struct.ISequentialStream.html' title='winapi::objidlbase::ISequentialStream'>ISequentialStream</a></code></h4>
+<h4 id='method.deref' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class='struct' href='../../winapi/objidlbase/struct.ISequentialStream.html' title='winapi::objidlbase::ISequentialStream'>ISequentialStream</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html' title='core::ops::DerefMut'>DerefMut</a> for <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></code></h3><div class='impl-items'><h4 id='method.deref_mut' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html#method.deref_mut' class='fnname'>deref_mut</a>(&amp;mut self) -&gt; &amp;mut <a class='struct' href='../../winapi/objidlbase/struct.ISequentialStream.html' title='winapi::objidlbase::ISequentialStream'>ISequentialStream</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../winapi/objidlbase/struct.IStream.html' title='winapi::objidlbase::IStream'>IStream</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

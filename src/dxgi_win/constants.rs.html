@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\dxgi-win-0.1.1\src\constants.rs`.">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\dxgi-win-0.2.0\src\constants.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>constants.rs.html -- source</title>
@@ -199,6 +199,13 @@
 <span id="157">157</span>
 <span id="158">158</span>
 <span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
 </pre><pre class='rust '>
 <span class='comment'>// The MIT License (MIT)</span>
 <span class='comment'>//</span>
@@ -236,15 +243,22 @@
 
 <span class='comment'>// DXGI_DEBUG_ID GUIDs</span>
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>DXGI_DEBUG_ALL</span>,
-	<span class='number'>0xe48ae283</span>, <span class='number'>0xda80</span>, <span class='number'>0x490b</span>, <span class='number'>0x87</span>, <span class='number'>0xe6</span>, <span class='number'>0x43</span>, <span class='number'>0xe9</span>, <span class='number'>0xa9</span>, <span class='number'>0xcf</span>, <span class='number'>0xda</span>, <span class='number'>0x8</span>);
+	<span class='number'>0xe48ae283</span>, <span class='number'>0xda80</span>, <span class='number'>0x490b</span>, <span class='number'>0x87</span>, <span class='number'>0xe6</span>, <span class='number'>0x43</span>, <span class='number'>0xe9</span>, <span class='number'>0xa9</span>, <span class='number'>0xcf</span>, <span class='number'>0xda</span>, <span class='number'>0x08</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>DXGI_DEBUG_DX</span>,
 	<span class='number'>0x35cdd7fc</span>, <span class='number'>0x13b2</span>, <span class='number'>0x421d</span>, <span class='number'>0xa5</span>, <span class='number'>0xd7</span>, <span class='number'>0x7e</span>, <span class='number'>0x44</span>, <span class='number'>0x51</span>, <span class='number'>0x28</span>, <span class='number'>0x7d</span>, <span class='number'>0x64</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>DXGI_DEBUG_DXGI</span>,
 	<span class='number'>0x25cddaa4</span>, <span class='number'>0xb1c6</span>, <span class='number'>0x47e1</span>, <span class='number'>0xac</span>, <span class='number'>0x3e</span>, <span class='number'>0x98</span>, <span class='number'>0x87</span>, <span class='number'>0x5b</span>, <span class='number'>0x5a</span>, <span class='number'>0x2e</span>, <span class='number'>0x2a</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>DXGI_DEBUG_APP</span>,
-	<span class='number'>0x6cd6e01</span>, <span class='number'>0x4219</span>, <span class='number'>0x4ebd</span>, <span class='number'>0x87</span>, <span class='number'>0x9</span>, <span class='number'>0x27</span>, <span class='number'>0xed</span>, <span class='number'>0x23</span>, <span class='number'>0x36</span>, <span class='number'>0xc</span>, <span class='number'>0x62</span>);
+	<span class='number'>0x06cd6e01</span>, <span class='number'>0x4219</span>, <span class='number'>0x4ebd</span>, <span class='number'>0x87</span>, <span class='number'>0x09</span>, <span class='number'>0x27</span>, <span class='number'>0xed</span>, <span class='number'>0x23</span>, <span class='number'>0x36</span>, <span class='number'>0x0c</span>, <span class='number'>0x62</span>);
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>DXGI_DEBUG_D3D11</span>,
-	<span class='number'>0x4b99317b</span>, <span class='number'>0xac39</span>, <span class='number'>0x4aa6</span>, <span class='number'>0xbb</span>, <span class='number'>0xb</span>, <span class='number'>0xba</span>, <span class='number'>0xa0</span>, <span class='number'>0x47</span>, <span class='number'>0x84</span>, <span class='number'>0x79</span>, <span class='number'>0x8f</span>);
+	<span class='number'>0x4b99317b</span>, <span class='number'>0xac39</span>, <span class='number'>0x4aa6</span>, <span class='number'>0xbb</span>, <span class='number'>0x0b</span>, <span class='number'>0xba</span>, <span class='number'>0xa0</span>, <span class='number'>0x47</span>, <span class='number'>0x84</span>, <span class='number'>0x79</span>, <span class='number'>0x8f</span>);
+
+<span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_IDXGIInfoQueue</span>,
+	<span class='number'>0xD67441C7</span>, <span class='number'>0x672A</span>, <span class='number'>0x476f</span>, <span class='number'>0x9E</span>, <span class='number'>0x82</span>, <span class='number'>0xCD</span>, <span class='number'>0x55</span>, <span class='number'>0xB4</span>, <span class='number'>0x49</span>, <span class='number'>0x49</span>, <span class='number'>0xCE</span>);
+<span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_IDXGIDebug</span>,
+	<span class='number'>0x119E7452</span>, <span class='number'>0xDE9E</span>, <span class='number'>0x40fe</span>, <span class='number'>0x88</span>, <span class='number'>0x06</span>, <span class='number'>0x88</span>, <span class='number'>0xF9</span>, <span class='number'>0x0C</span>, <span class='number'>0x12</span>, <span class='number'>0xB4</span>, <span class='number'>0x41</span>);
+<span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_IDXGIDebug1</span>,
+	<span class='number'>0xc5a05f0c</span>, <span class='number'>0x16f2</span>, <span class='number'>0x4adf</span>, <span class='number'>0x9f</span>, <span class='number'>0x4d</span>, <span class='number'>0xa8</span>, <span class='number'>0xc4</span>, <span class='number'>0xd5</span>, <span class='number'>0x8a</span>, <span class='number'>0xc5</span>, <span class='number'>0x50</span>);
 
 <span class='comment'>// DXGI 1.0 / 1.1 GUIDs</span>
 <span class='macro'>define_guid</span><span class='macro'>!</span>(<span class='ident'>IID_IDXGIObject</span>,
@@ -392,6 +406,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

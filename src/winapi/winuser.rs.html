@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.17\src\winuser.rs`.">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.20\src\winuser.rs`.">
     <meta name="keywords" content="rust, rustlang, rust-lang">
 
     <title>winuser.rs.html -- source</title>
@@ -512,6 +512,187 @@
 <span id="470">470</span>
 <span id="471">471</span>
 <span id="472">472</span>
+<span id="473">473</span>
+<span id="474">474</span>
+<span id="475">475</span>
+<span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
+<span id="489">489</span>
+<span id="490">490</span>
+<span id="491">491</span>
+<span id="492">492</span>
+<span id="493">493</span>
+<span id="494">494</span>
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
+<span id="512">512</span>
+<span id="513">513</span>
+<span id="514">514</span>
+<span id="515">515</span>
+<span id="516">516</span>
+<span id="517">517</span>
+<span id="518">518</span>
+<span id="519">519</span>
+<span id="520">520</span>
+<span id="521">521</span>
+<span id="522">522</span>
+<span id="523">523</span>
+<span id="524">524</span>
+<span id="525">525</span>
+<span id="526">526</span>
+<span id="527">527</span>
+<span id="528">528</span>
+<span id="529">529</span>
+<span id="530">530</span>
+<span id="531">531</span>
+<span id="532">532</span>
+<span id="533">533</span>
+<span id="534">534</span>
+<span id="535">535</span>
+<span id="536">536</span>
+<span id="537">537</span>
+<span id="538">538</span>
+<span id="539">539</span>
+<span id="540">540</span>
+<span id="541">541</span>
+<span id="542">542</span>
+<span id="543">543</span>
+<span id="544">544</span>
+<span id="545">545</span>
+<span id="546">546</span>
+<span id="547">547</span>
+<span id="548">548</span>
+<span id="549">549</span>
+<span id="550">550</span>
+<span id="551">551</span>
+<span id="552">552</span>
+<span id="553">553</span>
+<span id="554">554</span>
+<span id="555">555</span>
+<span id="556">556</span>
+<span id="557">557</span>
+<span id="558">558</span>
+<span id="559">559</span>
+<span id="560">560</span>
+<span id="561">561</span>
+<span id="562">562</span>
+<span id="563">563</span>
+<span id="564">564</span>
+<span id="565">565</span>
+<span id="566">566</span>
+<span id="567">567</span>
+<span id="568">568</span>
+<span id="569">569</span>
+<span id="570">570</span>
+<span id="571">571</span>
+<span id="572">572</span>
+<span id="573">573</span>
+<span id="574">574</span>
+<span id="575">575</span>
+<span id="576">576</span>
+<span id="577">577</span>
+<span id="578">578</span>
+<span id="579">579</span>
+<span id="580">580</span>
+<span id="581">581</span>
+<span id="582">582</span>
+<span id="583">583</span>
+<span id="584">584</span>
+<span id="585">585</span>
+<span id="586">586</span>
+<span id="587">587</span>
+<span id="588">588</span>
+<span id="589">589</span>
+<span id="590">590</span>
+<span id="591">591</span>
+<span id="592">592</span>
+<span id="593">593</span>
+<span id="594">594</span>
+<span id="595">595</span>
+<span id="596">596</span>
+<span id="597">597</span>
+<span id="598">598</span>
+<span id="599">599</span>
+<span id="600">600</span>
+<span id="601">601</span>
+<span id="602">602</span>
+<span id="603">603</span>
+<span id="604">604</span>
+<span id="605">605</span>
+<span id="606">606</span>
+<span id="607">607</span>
+<span id="608">608</span>
+<span id="609">609</span>
+<span id="610">610</span>
+<span id="611">611</span>
+<span id="612">612</span>
+<span id="613">613</span>
+<span id="614">614</span>
+<span id="615">615</span>
+<span id="616">616</span>
+<span id="617">617</span>
+<span id="618">618</span>
+<span id="619">619</span>
+<span id="620">620</span>
+<span id="621">621</span>
+<span id="622">622</span>
+<span id="623">623</span>
+<span id="624">624</span>
+<span id="625">625</span>
+<span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
+<span id="644">644</span>
+<span id="645">645</span>
+<span id="646">646</span>
+<span id="647">647</span>
+<span id="648">648</span>
+<span id="649">649</span>
+<span id="650">650</span>
+<span id="651">651</span>
+<span id="652">652</span>
+<span id="653">653</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright © 2015, Peter Atashian</span>
 <span class='comment'>// Licensed under the MIT License &lt;LICENSE.md&gt;</span>
@@ -521,6 +702,44 @@
 <span class='comment'>//2206</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>XBUTTON1</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>XBUTTON2</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='comment'>//2392</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_LBUTTON</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_RBUTTON</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_SHIFT</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_CONTROL</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_MBUTTON</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_XBUTTON1</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MK_XBUTTON2</span>: ::<span class='ident'>WPARAM</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
+<span class='comment'>//2408</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TME_HOVER</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0000_0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TME_LEAVE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0000_0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TME_NONCLIENT</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0000_0010</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TME_QUERY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x4000_0000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TME_CANCEL</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x8000_0000</span>;
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>TRACKMOUSEEVENT</span> {
+    <span class='kw'>pub</span> <span class='ident'>cbSize</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>dwFlags</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>hwndTrack</span>: ::<span class='ident'>HWND</span>,
+    <span class='kw'>pub</span> <span class='ident'>dwHoverTime</span>: ::<span class='ident'>DWORD</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPTRACKMOUSEEVENT</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>TRACKMOUSEEVENT</span>;
+<span class='comment'>//2575</span>
+<span class='doccomment'>/// lParam of WM_WINDOWPOSCHANGING, WM_WINDOWPOSCHANGED</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>WINDOWPOS</span> {
+    <span class='kw'>pub</span> <span class='ident'>hwnd</span>: ::<span class='ident'>HWND</span>,
+    <span class='doccomment'>/// hwnd or HWND_BOTTOM, HWND_NOTOPMOST, HWND_TOP, HWND_TOPMOST</span>
+    <span class='kw'>pub</span> <span class='ident'>hwndInsertAfter</span>: ::<span class='ident'>HWND</span>,
+    <span class='kw'>pub</span> <span class='ident'>x</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>y</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>cx</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>cy</span>: ::<span class='ident'>c_int</span>,
+    <span class='doccomment'>/// SWP_\*</span>
+    <span class='kw'>pub</span> <span class='ident'>flags</span>: ::<span class='ident'>UINT</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPWINDOWPOS</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>WINDOWPOS</span>;
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>PWINDOWPOS</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>WINDOWPOS</span>;
 <span class='comment'>//3082</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>CREATESTRUCTA</span> {
@@ -554,6 +773,15 @@
     <span class='kw'>pub</span> <span class='ident'>dwExStyle</span>: ::<span class='ident'>DWORD</span>,
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPCREATESTRUCTW</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>CREATESTRUCTW</span>;
+<span class='comment'>//3145</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='doccomment'>/// The lParam of the WM_NOTIFY message is a pointer to this structure</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>NMHDR</span> {
+    <span class='kw'>pub</span> <span class='ident'>hwndFrom</span>: ::<span class='ident'>HWND</span>,
+    <span class='kw'>pub</span> <span class='ident'>idFrom</span>: ::<span class='ident'>UINT_PTR</span>,
+    <span class='kw'>pub</span> <span class='ident'>code</span>: ::<span class='ident'>UINT</span>,  <span class='comment'>// NM_ code</span>
+}
+
 <span class='comment'>//3400</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>PM_NOREMOVE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0000</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>PM_REMOVE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
@@ -562,6 +790,22 @@
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>PM_QS_POSTMESSAGE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> (<span class='ident'>QS_POSTMESSAGE</span> <span class='op'>|</span> <span class='ident'>QS_HOTKEY</span> <span class='op'>|</span> <span class='ident'>QS_TIMER</span>) <span class='op'>&lt;&lt;</span> <span class='number'>16</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>PM_QS_PAINT</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_PAINT</span> <span class='op'>&lt;&lt;</span> <span class='number'>16</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>PM_QS_SENDMESSAGE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_SENDMESSAGE</span> <span class='op'>&lt;&lt;</span> <span class='number'>16</span>;
+<span class='comment'>//4054 (Win 7 SDK)</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>FLASHWINFO</span> {
+    <span class='kw'>pub</span> <span class='ident'>cbSize</span>: ::<span class='ident'>UINT</span>,
+    <span class='kw'>pub</span> <span class='ident'>hwnd</span>: ::<span class='ident'>HWND</span>,
+    <span class='kw'>pub</span> <span class='ident'>dwFlags</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>uCount</span>: ::<span class='ident'>UINT</span>,
+    <span class='kw'>pub</span> <span class='ident'>dwTimeout</span>: ::<span class='ident'>DWORD</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>PFLASHWINFO</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>FLASHWINFO</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_STOP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_CAPTION</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x00000001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_TRAY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x00000002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_ALL</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>FLASHW_CAPTION</span> <span class='op'>|</span> <span class='ident'>FLASHW_TRAY</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_TIMER</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x00000004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>FLASHW_TIMERNOFG</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0000000C</span>;
 <span class='comment'>//5741</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>KEYEVENTF_EXTENDEDKEY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>KEYEVENTF_KEYUP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
@@ -641,23 +885,28 @@
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>GWLP_ID</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='op'>-</span><span class='number'>12</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>GWL_USERDATA</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='op'>-</span><span class='number'>21</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>GWLP_USERDATA</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='op'>-</span><span class='number'>21</span>;
+<span class='comment'>//6566</span>
+<span class='comment'>// flags for MsgWaitForMultipleObjectsEx</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MWMO_WAITALL</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MWMO_ALERTABLE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MWMO_INPUTAVAILABLE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
 <span class='comment'>//6573</span>
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_KEY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSEMOVE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSEBUTTON</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_POSTMESSAGE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_TIMER</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_PAINT</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_SENDMESSAGE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_HOTKEY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0080</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLPOSTMESSAGE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0100</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_RAWINPUT</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0400</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_TOUCH</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0800</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_POINTER</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x1000</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>QS_MOUSEMOVE</span> <span class='op'>|</span> <span class='ident'>QS_MOUSEBUTTON</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_INPUT</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>QS_MOUSE</span> <span class='op'>|</span> <span class='ident'>QS_KEY</span> <span class='op'>|</span> <span class='ident'>QS_RAWINPUT</span> <span class='op'>|</span> <span class='ident'>QS_TOUCH</span> <span class='op'>|</span> <span class='ident'>QS_POINTER</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLEVENTS</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>QS_INPUT</span> <span class='op'>|</span> <span class='ident'>QS_POSTMESSAGE</span> <span class='op'>|</span> <span class='ident'>QS_TIMER</span> <span class='op'>|</span> <span class='ident'>QS_PAINT</span> <span class='op'>|</span> <span class='ident'>QS_HOTKEY</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLINPUT</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>QS_INPUT</span> <span class='op'>|</span> <span class='ident'>QS_POSTMESSAGE</span> <span class='op'>|</span> <span class='ident'>QS_TIMER</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_KEY</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSEMOVE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSEBUTTON</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_POSTMESSAGE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_TIMER</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_PAINT</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_SENDMESSAGE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_HOTKEY</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0080</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLPOSTMESSAGE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0100</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_RAWINPUT</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0400</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_TOUCH</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x0800</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_POINTER</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x1000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_MOUSE</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_MOUSEMOVE</span> <span class='op'>|</span> <span class='ident'>QS_MOUSEBUTTON</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_INPUT</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_MOUSE</span> <span class='op'>|</span> <span class='ident'>QS_KEY</span> <span class='op'>|</span> <span class='ident'>QS_RAWINPUT</span> <span class='op'>|</span> <span class='ident'>QS_TOUCH</span> <span class='op'>|</span> <span class='ident'>QS_POINTER</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLEVENTS</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_INPUT</span> <span class='op'>|</span> <span class='ident'>QS_POSTMESSAGE</span> <span class='op'>|</span> <span class='ident'>QS_TIMER</span> <span class='op'>|</span> <span class='ident'>QS_PAINT</span> <span class='op'>|</span> <span class='ident'>QS_HOTKEY</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>QS_ALLINPUT</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='ident'>QS_INPUT</span> <span class='op'>|</span> <span class='ident'>QS_POSTMESSAGE</span> <span class='op'>|</span> <span class='ident'>QS_TIMER</span>
     <span class='op'>|</span> <span class='ident'>QS_PAINT</span> <span class='op'>|</span> <span class='ident'>QS_HOTKEY</span> <span class='op'>|</span> <span class='ident'>QS_SENDMESSAGE</span>;
 <span class='comment'>//6789</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>SM_CXSCREEN</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>0</span>;
@@ -761,6 +1010,59 @@
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>SM_CARETBLINKINGENABLED</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>0x2002</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>SM_CONVERTIBLESLATEMODE</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>0x2003</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>SM_SYSTEMDOCKED</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>0x2004</span>;
+<span class='comment'>//8855 (Win 7 SDK)</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ICONINFO</span> {
+    <span class='kw'>pub</span> <span class='ident'>fIcon</span>: ::<span class='ident'>BOOL</span>,
+    <span class='kw'>pub</span> <span class='ident'>xHotspot</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>yHotspot</span>: ::<span class='ident'>DWORD</span>,
+    <span class='kw'>pub</span> <span class='ident'>hbmMask</span>: ::<span class='ident'>HBITMAP</span>,
+    <span class='kw'>pub</span> <span class='ident'>hbmColor</span>: ::<span class='ident'>HBITMAP</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>PICONINFO</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ICONINFO</span>;
+<span class='comment'>//9066</span>
+<span class='comment'>// Color indexes for use in GetSysColor and SetSysColor</span>
+<span class='comment'>// 0-18 (after incrementing) are also valid in RegisterClass&#39;s WNDCLASS</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_SCROLLBAR</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>0</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BACKGROUND</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>1</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_ACTIVECAPTION</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>2</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_INACTIVECAPTION</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>3</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_MENU</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>4</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_WINDOW</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>5</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_WINDOWFRAME</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>6</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_MENUTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>7</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_WINDOWTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>8</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_CAPTIONTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>9</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_ACTIVEBORDER</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>10</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_INACTIVEBORDER</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>11</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_APPWORKSPACE</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>12</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_HIGHLIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>13</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_HIGHLIGHTTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>14</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BTNFACE</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>15</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BTNSHADOW</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>16</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_GRAYTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>17</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BTNTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>18</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_INACTIVECAPTIONTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>19</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BTNHIGHLIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>20</span>;
+<span class='comment'>// Introduced in Windows 95 (winver 0x0400):</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DDKSHADOW</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>21</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DLIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>22</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_INFOTEXT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>23</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_INFOBK</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>24</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_DESKTOP</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BACKGROUND</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DFACE</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BTNFACE</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DSHADOW</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BTNSHADOW</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DHIGHLIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BTNHIGHLIGHT</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_3DHILIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BTNHIGHLIGHT</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_BTNHILIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='ident'>COLOR_BTNHIGHLIGHT</span>;
+<span class='comment'>// Introduced in Windows 2000 (winver 0x0500)</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_HOTLIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>26</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_GRADIENTACTIVECAPTION</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>27</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_GRADIENTINACTIVECAPTION</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>28</span>;
+<span class='comment'>// Introduced in Windows XP (winver 0x0501)</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_MENUHILIGHT</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>29</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>COLOR_MENUBAR</span>: ::<span class='ident'>c_int</span> <span class='op'>=</span> <span class='number'>30</span>;
+
 <span class='comment'>//10069</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDC_ARROW</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32512</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDC_IBEAM</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32513</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
@@ -778,6 +1080,66 @@
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDC_HAND</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32649</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDC_APPSTARTING</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32650</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDC_HELP</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32651</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+
+<span class='comment'>//10492</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_APPLICATION</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32512</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_HAND</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32513</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_QUESTION</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32514</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_EXCLAMATION</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32515</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_ASTERISK</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32516</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_WINLOGO</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32517</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_SHIELD</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='number'>32518</span> <span class='kw'>as</span> ::<span class='ident'>LPCWSTR</span>;
+
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_WARNING</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='ident'>IDI_EXCLAMATION</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_ERROR</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='ident'>IDI_HAND</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>IDI_INFORMATION</span>: ::<span class='ident'>LPCWSTR</span> <span class='op'>=</span> <span class='ident'>IDI_ASTERISK</span>;
+
+<span class='comment'>//11813</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>SPI_GETNONCLIENTMETRICS</span>: ::<span class='ident'>UINT</span> <span class='op'>=</span> <span class='number'>0x29</span>;
+
+<span class='comment'>//12141</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>NONCLIENTMETRICSA</span> {
+    <span class='kw'>pub</span> <span class='ident'>cbSize</span>: ::<span class='ident'>UINT</span>,
+    <span class='kw'>pub</span> <span class='ident'>iBorderWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iScrollWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iScrollHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iCaptionWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iCaptionHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfCaptionFont</span>: ::<span class='ident'>LOGFONTA</span>,
+    <span class='kw'>pub</span> <span class='ident'>iSmCaptionWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iSmCaptionHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfSmCaptionFont</span>: ::<span class='ident'>LOGFONTA</span>,
+    <span class='kw'>pub</span> <span class='ident'>iMenuWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iMenuHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfMenuFont</span>: ::<span class='ident'>LOGFONTA</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfStatusFont</span>: ::<span class='ident'>LOGFONTA</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfMessageFont</span>: ::<span class='ident'>LOGFONTA</span>,
+    <span class='kw'>pub</span> <span class='ident'>iPaddedBorderWidth</span>: ::<span class='ident'>c_int</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPNONCLIENTMETRICSA</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>NONCLIENTMETRICSA</span>;
+
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>NONCLIENTMETRICSW</span> {
+    <span class='kw'>pub</span> <span class='ident'>cbSize</span>: ::<span class='ident'>UINT</span>,
+    <span class='kw'>pub</span> <span class='ident'>iBorderWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iScrollWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iScrollHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iCaptionWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iCaptionHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfCaptionFont</span>: ::<span class='ident'>LOGFONTW</span>,
+    <span class='kw'>pub</span> <span class='ident'>iSmCaptionWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iSmCaptionHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfSmCaptionFont</span>: ::<span class='ident'>LOGFONTW</span>,
+    <span class='kw'>pub</span> <span class='ident'>iMenuWidth</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>iMenuHeight</span>: ::<span class='ident'>c_int</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfMenuFont</span>: ::<span class='ident'>LOGFONTW</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfStatusFont</span>: ::<span class='ident'>LOGFONTW</span>,
+    <span class='kw'>pub</span> <span class='ident'>lfMessageFont</span>: ::<span class='ident'>LOGFONTW</span>,
+    <span class='kw'>pub</span> <span class='ident'>iPaddedBorderWidth</span>: ::<span class='ident'>c_int</span>,
+}
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPNONCLIENTMETRICSW</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>NONCLIENTMETRICSW</span>;
+
 <span class='comment'>//12900</span>
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MONITORINFOF_PRIMARY</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>1</span>;
 <span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>CCHDEVICENAME</span>: <span class='ident'>usize</span> <span class='op'>=</span> <span class='number'>32</span>;
@@ -840,28 +1202,28 @@
 }
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>PRAWMOUSE</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>RAWMOUSE</span>;
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>LPRAWMOUSE</span> <span class='op'>=</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>RAWMOUSE</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_1_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_DOWN</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_1_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_UP</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_2_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_DOWN</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_2_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_UP</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_3_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_DOWN</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_3_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_UP</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_4_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_4_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0080</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_5_DOWN</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0100</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_5_UP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0200</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_WHEEL</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x0400</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_RELATIVE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_ABSOLUTE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>1</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_VIRTUAL_DESKTOP</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x02</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_ATTRIBUTES_CHANGED</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x04</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_NOCOALESCE</span>: ::<span class='ident'>DWORD</span> <span class='op'>=</span> <span class='number'>0x08</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_1_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_DOWN</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_1_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_LEFT_BUTTON_UP</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_2_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_DOWN</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_2_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_RIGHT_BUTTON_UP</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_3_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_DOWN</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_3_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='ident'>RI_MOUSE_MIDDLE_BUTTON_UP</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_4_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_4_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0080</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_5_DOWN</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0100</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_BUTTON_5_UP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0200</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>RI_MOUSE_WHEEL</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x0400</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_RELATIVE</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_ABSOLUTE</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>1</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_VIRTUAL_DESKTOP</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x02</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_ATTRIBUTES_CHANGED</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x04</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MOUSE_MOVE_NOCOALESCE</span>: ::<span class='ident'>USHORT</span> <span class='op'>=</span> <span class='number'>0x08</span>;
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>RAWKEYBOARD</span> {
     <span class='kw'>pub</span> <span class='ident'>MakeCode</span>: ::<span class='ident'>USHORT</span>,
@@ -1018,6 +1380,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

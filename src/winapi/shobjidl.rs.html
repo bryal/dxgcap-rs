@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.20\src\shobjidl.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>shobjidl.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+</pre><pre class='rust '>
+<span class='comment'>// Copyright © 2015, Peter Atashian</span>
+<span class='comment'>// Licensed under the MIT License &lt;LICENSE.md&gt;</span>
+<span class='doccomment'>//! this ALWAYS GENERATED file contains the definitions for the interfaces</span>
+<span class='comment'>//4498</span>
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>SFGAOF</span> <span class='op'>=</span> ::<span class='ident'>ULONG</span>;
+<span class='comment'>//9466</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>SIGDN</span> {
+    <span class='ident'>NORMALDISPLAY</span> <span class='op'>=</span> <span class='number'>0</span>,
+    <span class='ident'>PARENTRELATIVEPARSING</span> <span class='op'>=</span> <span class='number'>0x80018001u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>DESKTOPABSOLUTEPARSING</span> <span class='op'>=</span> <span class='number'>0x80028000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>PARENTRELATIVEEDITING</span> <span class='op'>=</span> <span class='number'>0x80031001u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>DESKTOPABSOLUTEEDITING</span> <span class='op'>=</span> <span class='number'>0x8004c000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>FILESYSPATH</span> <span class='op'>=</span> <span class='number'>0x80058000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>URL</span> <span class='op'>=</span> <span class='number'>0x80068000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>PARENTRELATIVEFORADDRESSBAR</span> <span class='op'>=</span> <span class='number'>0x8007c001u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>PARENTRELATIVE</span> <span class='op'>=</span> <span class='number'>0x80080001u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>PARENTRELATIVEFORUI</span> <span class='op'>=</span> <span class='number'>0x80094001u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>SICHINTF</span> {
+    <span class='ident'>DISPLAY</span> <span class='op'>=</span> <span class='number'>0</span>,
+    <span class='ident'>ALLFIELDS</span> <span class='op'>=</span> <span class='number'>0x80000000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+    <span class='ident'>CANONICAL</span> <span class='op'>=</span> <span class='number'>0x10000000</span>,
+    <span class='ident'>TEST_FILESYSPATH_IF_NOT_EQUAL</span> <span class='op'>=</span> <span class='number'>0x20000000</span>,
+}
+<span class='comment'>//9498</span>
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IShellItem</span>(<span class='ident'>IShellItemVtbl</span>): <span class='ident'>IUnknown</span>(<span class='ident'>IUnknownVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>BindToHandler</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pbc</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>IBindCtx</span>, <span class='ident'>bhid</span>: ::<span class='ident'>REFGUID</span>, <span class='ident'>riid</span>: ::<span class='ident'>REFIID</span>, <span class='ident'>ppv</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>c_void</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetParent</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppsi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetDisplayName</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>sigdnName</span>: <span class='ident'>SIGDN</span>, <span class='ident'>ppszName</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>LPWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetAttributes</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>sfgaoMask</span>: <span class='ident'>SFGAOF</span>, <span class='ident'>psfgaoAttribs</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>SFGAOF</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>Compare</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>, <span class='ident'>hint</span>: <span class='ident'>SICHINTF</span>, <span class='ident'>piOrder</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>c_int</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='comment'>//11963</span>
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>IFileOperationProgressSink</span> <span class='op'>=</span> ::<span class='ident'>IUnknown</span>; <span class='comment'>// TODO</span>
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>IShellItemArray</span> <span class='op'>=</span> ::<span class='ident'>IUnknown</span>; <span class='comment'>// TODO</span>
+<span class='comment'>//20869</span>
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IModalWindow</span>(<span class='ident'>IModalWindowVtbl</span>): <span class='ident'>IUnknown</span>(<span class='ident'>IUnknownVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>Show</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>hwndOwner</span>: ::<span class='ident'>HWND</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='comment'>//22307</span>
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FDE_OVERWRITE_RESPONSE</span> {
+    <span class='ident'>DEFAULT</span> <span class='op'>=</span> <span class='number'>0</span>,
+    <span class='ident'>ACCEPT</span> <span class='op'>=</span> <span class='number'>1</span>,
+    <span class='ident'>REFUSE</span> <span class='op'>=</span> <span class='number'>2</span>,
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FDE_SHAREVIOLATION_RESPONSE</span> {
+    <span class='ident'>DEFAULT</span> <span class='op'>=</span> <span class='number'>0</span>,
+    <span class='ident'>ACCEPT</span> <span class='op'>=</span> <span class='number'>1</span>,
+    <span class='ident'>REFUSE</span> <span class='op'>=</span> <span class='number'>2</span>,
+}
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FDAP</span> {
+    <span class='ident'>BOTTOM</span> <span class='op'>=</span> <span class='number'>0</span>,
+    <span class='ident'>TOP</span> <span class='op'>=</span> <span class='number'>1</span>,
+}
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileDialogEvents</span>(<span class='ident'>IFileDialogEventsVtbl</span>): <span class='ident'>IUnknown</span>(<span class='ident'>IUnknownVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>OnFileOk</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnFolderChanging</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>, <span class='ident'>psiFolder</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnFolderChange</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnSelectionChange</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnShareViolation</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>,
+        <span class='ident'>pResponse</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>FDE_SHAREVIOLATION_RESPONSE</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnTypeChange</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnOverwrite</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfd</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialog</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>,
+        <span class='ident'>pResponse</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>FDE_OVERWRITE_RESPONSE</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>FILEOPENDIALOGOPTIONS</span> {
+    <span class='ident'>OVERWRITEPROMPT</span> <span class='op'>=</span> <span class='number'>0x2</span>,
+    <span class='ident'>STRICTFILETYPES</span> <span class='op'>=</span> <span class='number'>0x4</span>,
+    <span class='ident'>NOCHANGEDIR</span> <span class='op'>=</span> <span class='number'>0x8</span>,
+    <span class='ident'>PICKFOLDERS</span> <span class='op'>=</span> <span class='number'>0x20</span>,
+    <span class='ident'>FORCEFILESYSTEM</span> <span class='op'>=</span> <span class='number'>0x40</span>,
+    <span class='ident'>ALLNONSTORAGEITEMS</span> <span class='op'>=</span> <span class='number'>0x80</span>,
+    <span class='ident'>NOVALIDATE</span> <span class='op'>=</span> <span class='number'>0x100</span>,
+    <span class='ident'>ALLOWMULTISELECT</span> <span class='op'>=</span> <span class='number'>0x200</span>,
+    <span class='ident'>PATHMUSTEXIST</span> <span class='op'>=</span> <span class='number'>0x800</span>,
+    <span class='ident'>FILEMUSTEXIST</span> <span class='op'>=</span> <span class='number'>0x1000</span>,
+    <span class='ident'>CREATEPROMPT</span> <span class='op'>=</span> <span class='number'>0x2000</span>,
+    <span class='ident'>SHAREAWARE</span> <span class='op'>=</span> <span class='number'>0x4000</span>,
+    <span class='ident'>NOREADONLYRETURN</span> <span class='op'>=</span> <span class='number'>0x8000</span>,
+    <span class='ident'>NOTESTFILECREATE</span> <span class='op'>=</span> <span class='number'>0x10000</span>,
+    <span class='ident'>HIDEMRUPLACES</span> <span class='op'>=</span> <span class='number'>0x20000</span>,
+    <span class='ident'>HIDEPINNEDPLACES</span> <span class='op'>=</span> <span class='number'>0x40000</span>,
+    <span class='ident'>NODEREFERENCELINKS</span> <span class='op'>=</span> <span class='number'>0x100000</span>,
+    <span class='ident'>DONTADDTORECENT</span> <span class='op'>=</span> <span class='number'>0x2000000</span>,
+    <span class='ident'>FORCESHOWHIDDEN</span> <span class='op'>=</span> <span class='number'>0x10000000</span>,
+    <span class='ident'>DEFAULTNOMINIMODE</span> <span class='op'>=</span> <span class='number'>0x20000000</span>,
+    <span class='ident'>FORCEPREVIEWPANEON</span> <span class='op'>=</span> <span class='number'>0x40000000</span>,
+    <span class='ident'>SUPPORTSTREAMABLEITEMS</span> <span class='op'>=</span> <span class='number'>0x80000000u32</span> <span class='kw'>as</span> <span class='ident'>i32</span>,
+}
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileDialog</span>(<span class='ident'>IFileDialogVtbl</span>): <span class='ident'>IModalWindow</span>(<span class='ident'>IModalWindowVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>SetFileTypes</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>cFileTypes</span>: ::<span class='ident'>UINT</span>, <span class='ident'>rgFilterSpec</span>: <span class='op'>*</span><span class='kw'>const</span> ::<span class='ident'>COMDLG_FILTERSPEC</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetFileTypeIndex</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>iFileType</span>: ::<span class='ident'>UINT</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetFileTypeIndex</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>piFileType</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>UINT</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>Advise</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfde</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialogEvents</span>, <span class='ident'>pdwCookie</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>Unadvise</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwCookie</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetOptions</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>fos</span>: <span class='ident'>FILEOPENDIALOGOPTIONS</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetOptions</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfos</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>FILEOPENDIALOGOPTIONS</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetDefaultFolder</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetFolder</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetFolder</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppsi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetCurrentSelection</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppsi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetFileName</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszName</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetFileName</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszName</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>LPWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetTitle</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszTitle</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetOkButtonLabel</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszText</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetFileNameLabel</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetResult</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppsi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddPlace</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>, <span class='ident'>fdap</span>: <span class='ident'>FDAP</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetDefaultExtension</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszDefaultExtension</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>Close</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>hr</span>: ::<span class='ident'>HRESULT</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetClientGuid</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>guid</span>: ::<span class='ident'>REFGUID</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>ClearClientData</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetFilter</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pFilter</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItemFilter</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileSaveDialog</span>(<span class='ident'>IFileSaveDialogVtbl</span>): <span class='ident'>IFileDialog</span>(<span class='ident'>IFileDialogVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>SetSaveAsItem</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetProperties</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pStore</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>IPropertyStore</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetCollectedProperties</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pList</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>IPropertyDescriptionList</span>, <span class='ident'>fAppendDefault</span>: ::<span class='ident'>BOOL</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetProperties</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppStore</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>IPropertyStore</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>ApplyProperties</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItem</span>, <span class='ident'>pStore</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>IPropertyStore</span>, <span class='ident'>hwnd</span>: ::<span class='ident'>HWND</span>,
+        <span class='ident'>pSink</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileOperationProgressSink</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileOpenDialog</span>(<span class='ident'>IFileOpenDialogVtbl</span>): <span class='ident'>IFileDialog</span>(<span class='ident'>IFileDialogVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>GetResults</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppenum</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItemArray</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetSelectedItems</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ppsai</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IShellItemArray</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>i32</span>)]</span> <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Clone</span>, <span class='ident'>Copy</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>CDCONTROLSTATEF</span> {
+    <span class='ident'>INACTIVE</span> <span class='op'>=</span> <span class='number'>0x00000000</span>,
+    <span class='ident'>ENABLED</span> <span class='op'>=</span> <span class='number'>0x00000001</span>,
+    <span class='ident'>VISIBLE</span> <span class='op'>=</span> <span class='number'>0x00000002</span>,
+    <span class='ident'>ENABLEDVISIBLE</span> <span class='op'>=</span> <span class='number'>0x00000003</span>,
+}
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileDialogCustomize</span>(<span class='ident'>IFileDialogCustomizeVtbl</span>): <span class='ident'>IUnknown</span>(<span class='ident'>IUnknownVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>EnableOpenDropDown</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddMenu</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddPushButton</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddComboBox</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddRadioButtonList</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddCheckButton</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>, <span class='ident'>bChecked</span>: ::<span class='ident'>BOOL</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddEditBox</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszText</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddSeparator</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddText</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszText</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetControlLabel</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetControlState</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pdwState</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>CDCONTROLSTATEF</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetControlState</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwState</span>: <span class='ident'>CDCONTROLSTATEF</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetEditBoxText</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>ppszText</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>WCHAR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetEditBoxText</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszText</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetCheckButtonState</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pbChecked</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>BOOL</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetCheckButtonState</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>bChecked</span>: ::<span class='ident'>BOOL</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>AddControlItem</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>RemoveControlItem</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>RemoveAllControlItems</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetControlItemState</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pdwState</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>CDCONTROLSTATEF</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetControlItemState</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwState</span>: <span class='ident'>CDCONTROLSTATEF</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>GetSelectedControlItem</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pdwIDItem</span>: <span class='op'>*</span><span class='kw-2'>mut</span> ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetSelectedControlItem</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>StartVisualGroup</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>EndVisualGroup</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>MakeProminent</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetControlItemText</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileDialogControlEvents</span>(<span class='ident'>IFileDialogControlEventsVtbl</span>): <span class='ident'>IUnknown</span>(<span class='ident'>IUnknownVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>OnItemSelected</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfdc</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialogCustomize</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>dwIDItem</span>: ::<span class='ident'>DWORD</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnButtonClicked</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfdc</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialogCustomize</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnCheckButtonToggled</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfdc</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialogCustomize</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>, <span class='ident'>bChecked</span>: ::<span class='ident'>BOOL</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>OnControlActivating</span>(
+        <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pfdc</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IFileDialogCustomize</span>, <span class='ident'>dwIDCtl</span>: ::<span class='ident'>DWORD</span>
+    ) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='macro'>RIDL</span><span class='macro'>!</span>(
+<span class='ident'>interface</span> <span class='ident'>IFileDialog2</span>(<span class='ident'>IFileDialog2Vtbl</span>): <span class='ident'>IFileDialog</span>(<span class='ident'>IFileDialogVtbl</span>) {
+    <span class='kw'>fn</span> <span class='ident'>SetCancelButtonLabel</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>pszLabel</span>: ::<span class='ident'>LPCWSTR</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>,
+    <span class='kw'>fn</span> <span class='ident'>SetNavigationRoot</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>psi</span>: <span class='ident'>IShellItem</span>) <span class='op'>-&gt;</span> ::<span class='ident'>HRESULT</span>
+}
+);
+<span class='comment'>//27457</span>
+<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>IShellItemFilter</span> <span class='op'>=</span> ::<span class='ident'>IUnknown</span>; <span class='comment'>// TODO</span>
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

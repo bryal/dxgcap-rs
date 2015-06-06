@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IRunningObjectTable` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IRunningObjectTable">
+
+    <title>winapi::objidl::IRunningObjectTable - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>objidl</a></p><script>window.sidebarCurrent = {name: 'IRunningObjectTable', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>objidl</a>::<wbr><a class='struct' href=''>IRunningObjectTable</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-40030' class='srclink' href='../../src/winapi/lib.rs.html#148-150' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IRunningObjectTable {
+    pub lpVtbl: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../winapi/objidl/struct.IRunningObjectTableVtbl.html' title='winapi::objidl::IRunningObjectTableVtbl'>IRunningObjectTableVtbl</a></a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.lpVtbl'><code>lpVtbl</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../winapi/objidl/struct.IRunningObjectTable.html' title='winapi::objidl::IRunningObjectTable'>IRunningObjectTable</a></code></h3><div class='impl-items'><h4 id='method.Register' class='method'><code>unsafe fn <a href='#method.Register' class='fnname'>Register</a>(&amp;mut self, grfFlags: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, punkObject: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a></a>, pmkObjectName: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/objidl/type.IMoniker.html' title='winapi::objidl::IMoniker'>IMoniker</a></a>, pdwRegister: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.Revoke' class='method'><code>unsafe fn <a href='#method.Revoke' class='fnname'>Revoke</a>(&amp;mut self, dwRegister: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.IsRunning' class='method'><code>unsafe fn <a href='#method.IsRunning' class='fnname'>IsRunning</a>(&amp;mut self, pmkObjectName: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/objidl/type.IMoniker.html' title='winapi::objidl::IMoniker'>IMoniker</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetObject' class='method'><code>unsafe fn <a href='#method.GetObject' class='fnname'>GetObject</a>(&amp;mut self, pmkObjectName: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/objidl/type.IMoniker.html' title='winapi::objidl::IMoniker'>IMoniker</a></a>, ppunkObject: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.NoteChangeTime' class='method'><code>unsafe fn <a href='#method.NoteChangeTime' class='fnname'>NoteChangeTime</a>(&amp;mut self, dwRegister: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pfiletime: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/minwindef/struct.FILETIME.html' title='winapi::minwindef::FILETIME'>FILETIME</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.GetTimeOfLastChange' class='method'><code>unsafe fn <a href='#method.GetTimeOfLastChange' class='fnname'>GetTimeOfLastChange</a>(&amp;mut self, pmkObjectName: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/objidl/type.IMoniker.html' title='winapi::objidl::IMoniker'>IMoniker</a></a>, pfiletime: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/minwindef/struct.FILETIME.html' title='winapi::minwindef::FILETIME'>FILETIME</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.EnumRunning' class='method'><code>unsafe fn <a href='#method.EnumRunning' class='fnname'>EnumRunning</a>(&amp;mut self, ppenumMoniker: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/objidl/type.IEnumMoniker.html' title='winapi::objidl::IEnumMoniker'>IEnumMoniker</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='deref-methods'>Methods from <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=<a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a>&gt;</h2><div class='impl-items'><h4 id='method.QueryInterface' class='method'><code>unsafe fn <a href='#method.QueryInterface' class='fnname'>QueryInterface</a>(&amp;mut self, riid: <a class='type' href='../../winapi/type.REFIID.html' title='winapi::REFIID'>REFIID</a>, ppvObject: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../winapi/enum.c_void.html' title='winapi::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.AddRef' class='method'><code>unsafe fn <a href='#method.AddRef' class='fnname'>AddRef</a>(&amp;mut self) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></code></h4>
+<h4 id='method.Release' class='method'><code>unsafe fn <a href='#method.Release' class='fnname'>Release</a>(&amp;mut self) -&gt; <a class='type' href='../../winapi/minwindef/type.ULONG.html' title='winapi::minwindef::ULONG'>ULONG</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../../winapi/objidl/struct.IRunningObjectTable.html' title='winapi::objidl::IRunningObjectTable'>IRunningObjectTable</a></code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><code>type Target = <a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a></code></h4>
+<h4 id='method.deref' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html' title='core::ops::DerefMut'>DerefMut</a> for <a class='struct' href='../../winapi/objidl/struct.IRunningObjectTable.html' title='winapi::objidl::IRunningObjectTable'>IRunningObjectTable</a></code></h3><div class='impl-items'><h4 id='method.deref_mut' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.DerefMut.html#method.deref_mut' class='fnname'>deref_mut</a>(&amp;mut self) -&gt; &amp;mut <a class='struct' href='../../winapi/unknwnbase/struct.IUnknown.html' title='winapi::unknwnbase::IUnknown'>IUnknown</a></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../winapi/objidl/struct.IRunningObjectTable.html' title='winapi::objidl::IRunningObjectTable'>IRunningObjectTable</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

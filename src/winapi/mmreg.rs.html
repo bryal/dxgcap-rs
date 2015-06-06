@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="Source to the Rust file `C:\Users\Johan\.cargo\registry\src\github.com-1ecc6299db9ec823\winapi-0.1.20\src\mmreg.rs`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang">
+
+    <title>mmreg.rs.html -- source</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<span id="2">  2</span>
+<span id="3">  3</span>
+<span id="4">  4</span>
+<span id="5">  5</span>
+<span id="6">  6</span>
+<span id="7">  7</span>
+<span id="8">  8</span>
+<span id="9">  9</span>
+<span id="10"> 10</span>
+<span id="11"> 11</span>
+<span id="12"> 12</span>
+<span id="13"> 13</span>
+<span id="14"> 14</span>
+<span id="15"> 15</span>
+<span id="16"> 16</span>
+<span id="17"> 17</span>
+<span id="18"> 18</span>
+<span id="19"> 19</span>
+<span id="20"> 20</span>
+<span id="21"> 21</span>
+<span id="22"> 22</span>
+<span id="23"> 23</span>
+<span id="24"> 24</span>
+<span id="25"> 25</span>
+<span id="26"> 26</span>
+<span id="27"> 27</span>
+<span id="28"> 28</span>
+<span id="29"> 29</span>
+<span id="30"> 30</span>
+<span id="31"> 31</span>
+<span id="32"> 32</span>
+<span id="33"> 33</span>
+<span id="34"> 34</span>
+<span id="35"> 35</span>
+<span id="36"> 36</span>
+<span id="37"> 37</span>
+<span id="38"> 38</span>
+<span id="39"> 39</span>
+<span id="40"> 40</span>
+<span id="41"> 41</span>
+<span id="42"> 42</span>
+<span id="43"> 43</span>
+<span id="44"> 44</span>
+<span id="45"> 45</span>
+<span id="46"> 46</span>
+<span id="47"> 47</span>
+<span id="48"> 48</span>
+<span id="49"> 49</span>
+<span id="50"> 50</span>
+<span id="51"> 51</span>
+<span id="52"> 52</span>
+<span id="53"> 53</span>
+<span id="54"> 54</span>
+<span id="55"> 55</span>
+<span id="56"> 56</span>
+<span id="57"> 57</span>
+<span id="58"> 58</span>
+<span id="59"> 59</span>
+<span id="60"> 60</span>
+<span id="61"> 61</span>
+<span id="62"> 62</span>
+<span id="63"> 63</span>
+<span id="64"> 64</span>
+<span id="65"> 65</span>
+<span id="66"> 66</span>
+<span id="67"> 67</span>
+<span id="68"> 68</span>
+<span id="69"> 69</span>
+<span id="70"> 70</span>
+<span id="71"> 71</span>
+<span id="72"> 72</span>
+<span id="73"> 73</span>
+<span id="74"> 74</span>
+<span id="75"> 75</span>
+<span id="76"> 76</span>
+<span id="77"> 77</span>
+<span id="78"> 78</span>
+<span id="79"> 79</span>
+<span id="80"> 80</span>
+<span id="81"> 81</span>
+<span id="82"> 82</span>
+<span id="83"> 83</span>
+<span id="84"> 84</span>
+<span id="85"> 85</span>
+<span id="86"> 86</span>
+<span id="87"> 87</span>
+<span id="88"> 88</span>
+<span id="89"> 89</span>
+<span id="90"> 90</span>
+<span id="91"> 91</span>
+<span id="92"> 92</span>
+<span id="93"> 93</span>
+<span id="94"> 94</span>
+<span id="95"> 95</span>
+<span id="96"> 96</span>
+<span id="97"> 97</span>
+<span id="98"> 98</span>
+<span id="99"> 99</span>
+<span id="100">100</span>
+<span id="101">101</span>
+<span id="102">102</span>
+<span id="103">103</span>
+<span id="104">104</span>
+<span id="105">105</span>
+<span id="106">106</span>
+<span id="107">107</span>
+<span id="108">108</span>
+<span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
+<span id="121">121</span>
+<span id="122">122</span>
+<span id="123">123</span>
+<span id="124">124</span>
+<span id="125">125</span>
+<span id="126">126</span>
+<span id="127">127</span>
+<span id="128">128</span>
+<span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
+<span id="137">137</span>
+<span id="138">138</span>
+<span id="139">139</span>
+<span id="140">140</span>
+<span id="141">141</span>
+<span id="142">142</span>
+<span id="143">143</span>
+<span id="144">144</span>
+<span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
+<span id="148">148</span>
+<span id="149">149</span>
+<span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
+<span id="203">203</span>
+<span id="204">204</span>
+<span id="205">205</span>
+<span id="206">206</span>
+<span id="207">207</span>
+<span id="208">208</span>
+<span id="209">209</span>
+<span id="210">210</span>
+<span id="211">211</span>
+<span id="212">212</span>
+<span id="213">213</span>
+<span id="214">214</span>
+<span id="215">215</span>
+<span id="216">216</span>
+<span id="217">217</span>
+<span id="218">218</span>
+<span id="219">219</span>
+<span id="220">220</span>
+<span id="221">221</span>
+<span id="222">222</span>
+<span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+</pre><pre class='rust '>
+<span class='comment'>// Copyright © 2015, Peter Atashian</span>
+<span class='comment'>// Licensed under the MIT License &lt;LICENSE.md&gt;</span>
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UNKNOWN</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IEEE_FLOAT</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0003</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VSELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IBM_CVSD</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0005</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ALAW</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0006</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MULAW</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0007</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DTS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0008</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DRM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0009</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMAVOICE9</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x000A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMAVOICE10</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x000B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OKI_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0010</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DVI_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0011</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IMA_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='ident'>WAVE_FORMAT_DVI_ADPCM</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MEDIASPACE_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0012</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIERRA_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0013</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G723_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0014</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIGISTD</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0015</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIGIFIX</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0016</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIALOGIC_OKI_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0017</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MEDIAVISION_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0018</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CU_CODEC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0019</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_HP_DYN_VOICE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x001A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_YAMAHA_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0020</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONARC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0021</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DSPGROUP_TRUESPEECH</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0022</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ECHOSC1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0023</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_AUDIOFILE_AF36</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0024</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_APTX</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0025</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_AUDIOFILE_AF10</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0026</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PROSODY_1612</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0027</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LRC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0028</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DOLBY_AC2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0030</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM610</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0031</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MSNAUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0032</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ANTEX_ADPCME</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0033</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CONTROL_RES_VQLPC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0034</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIGIREAL</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0035</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIGIADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0036</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CONTROL_RES_CR10</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0037</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NMS_VBXADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0038</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CS_IMAADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0039</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ECHOSC3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x003A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ROCKWELL_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x003B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ROCKWELL_DIGITALK</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x003C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_XEBEC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x003D</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G721_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0040</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G728_CELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0041</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MSG723</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0042</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INTEL_G723_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0043</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INTEL_G729</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0044</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SHARP_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0045</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0050</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RT24</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0052</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0053</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEGLAYER3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0055</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LUCENT_G723</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0059</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CIRRUS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0060</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ESPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0061</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0062</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CANOPUS_ATRAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0063</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G726_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0064</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G722_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0065</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DSAT</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0066</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DSAT_DISPLAY</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0067</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_BYTE_ALIGNED</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0069</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_AC8</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0070</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_AC10</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0071</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_AC16</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0072</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_AC20</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0073</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_RT24</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0074</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_RT29</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0075</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_RT29HW</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0076</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_VR12</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0077</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_VR18</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0078</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_TQ40</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0079</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_SC3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x007A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_SC3_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x007B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SOFTSOUND</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0080</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_TQ60</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0081</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MSRT24</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0082</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G729A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0083</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MVI_MVI2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0084</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DF_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0085</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DF_GSM610</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0086</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ISIAUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0088</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ONLIVE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0089</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MULTITUDE_FT_SX20</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x008A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INFOCOM_ITS_G721_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x008B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CONVEDIA_G729</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x008C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CONGRUENCY</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x008D</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SBC24</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0091</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DOLBY_AC3_SPDIF</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0092</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MEDIASONIC_G723</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0093</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PROSODY_8KBPS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0094</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ZYXEL_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0097</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PHILIPS_LPCBB</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0098</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PACKED</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0099</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MALDEN_PHONYTALK</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00A0</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RACAL_RECORDER_GSM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00A1</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RACAL_RECORDER_G720_A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00A2</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RACAL_RECORDER_G723_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00A3</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RACAL_RECORDER_TETRA_ACELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00A4</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NEC_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00B0</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RAW_AAC1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x00FF</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RHETOREX_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0100</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IRAT</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0101</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VIVO_G723</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0111</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VIVO_SIREN</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0112</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PHILIPS_CELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0120</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_PHILIPS_GRUNDIG</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0121</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIGITAL_G723</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0123</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SANYO_LD_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0125</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_ACEPLNET</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0130</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_ACELP4800</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0131</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_ACELP8V3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0132</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_G729</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0133</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_G729A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0134</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SIPROLAB_KELVIN</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0135</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOICEAGE_AMR</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0136</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_G726ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0140</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DICTAPHONE_CELP68</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0141</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DICTAPHONE_CELP54</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0142</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_QUALCOMM_PUREVOICE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0150</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_QUALCOMM_HALFRATE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0151</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_TUBGSM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0155</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MSAUDIO1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0160</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMAUDIO2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0161</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMAUDIO3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0162</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMAUDIO_LOSSLESS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0163</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMASPDIF</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0164</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UNISYS_NAP_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0170</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UNISYS_NAP_ULAW</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0171</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UNISYS_NAP_ALAW</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0172</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UNISYS_NAP_16K</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0173</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SYCOM_ACM_SYC008</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0174</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SYCOM_ACM_SYC701_G726L</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0175</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SYCOM_ACM_SYC701_CELP54</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0176</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SYCOM_ACM_SYC701_CELP68</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0177</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_KNOWLEDGE_ADVENTURE_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0178</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_FRAUNHOFER_IIS_MPEG2_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0180</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DTS_DS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0190</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CREATIVE_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0200</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CREATIVE_FASTSPEECH8</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0202</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CREATIVE_FASTSPEECH10</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0203</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_UHER_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0210</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ULEAD_DV_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0215</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ULEAD_DV_AUDIO_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0216</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_QUARTERDECK</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0220</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ILINK_VC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0230</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RAW_SPORT</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0240</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ESST_AC3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0241</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GENERIC_PASSTHRU</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0249</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IPI_HSX</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0250</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_IPI_RPELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0251</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CS2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0260</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONY_SCX</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0270</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONY_SCY</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0271</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONY_ATRAC3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0272</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONY_SPC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0273</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_TELUM_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0280</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_TELUM_IA_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0281</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NORCOM_VOICE_SYSTEMS_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0285</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_FM_TOWNS_SND</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0300</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MICRONAS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0350</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MICRONAS_CELP833</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0351</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_BTV_DIGITAL</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0400</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INTEL_MUSIC_CODER</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0401</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INDEO_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0402</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_QDESIGN_MUSIC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0450</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ON2_VP7_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0500</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ON2_VP6_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0501</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VME_VMPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0680</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_TPC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x0681</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LIGHTWAVE_LOSSLESS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x08AE</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OLIGSM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OLIADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OLICELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1002</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OLISBC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1003</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OLIOPR</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1004</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LH_CODEC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1100</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LH_CODEC_CELP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1101</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LH_CODEC_SBC8</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1102</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LH_CODEC_SBC12</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1103</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LH_CODEC_SBC16</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1104</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NORRIS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1400</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ISIAUDIO_2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1401</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SOUNDSPACE_MUSICOMPRESS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1500</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG_ADTS_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1600</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG_RAW_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1601</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG_LOAS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1602</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NOKIA_MPEG_ADTS_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1608</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NOKIA_MPEG_RAW_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1609</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VODAFONE_MPEG_ADTS_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x160A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VODAFONE_MPEG_RAW_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x160B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG_HEAAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1610</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOXWARE_RT24_SPEECH</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x181C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SONICFOUNDRY_LOSSLESS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1971</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INNINGS_TELECOM_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1979</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LUCENT_SX8300P</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1C07</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LUCENT_SX5363S</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1C0C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CUSEEME</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1F03</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NTCSOFT_ALF2CM_ACM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x1FC4</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DVM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x2000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DTS2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x2001</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MAKEAVIS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x3313</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIVIO_MPEG4_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x4143</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NOKIA_ADAPTIVE_MULTIRATE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x4201</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DIVIO_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x4243</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LEAD_SPEECH</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x434C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_LEAD_VORBIS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x564C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WAVPACK_AUDIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x5756</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x674F</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_2</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x6750</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_3</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x6751</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_1_PLUS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x676F</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_2_PLUS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x6770</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_OGG_VORBIS_MODE_3_PLUS</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x6771</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_3COM_NBX</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7000</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_FAAD_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x706D</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_AMR_NB</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7361</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_AMR_WB</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7362</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_AMR_WP</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7363</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_AMR_CBR</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7A21</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_AMR_VBR_SID</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0x7A22</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_COMVERSE_INFOSYS_G723_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA100</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_COMVERSE_INFOSYS_AVQSBC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA101</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_COMVERSE_INFOSYS_SBC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA102</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SYMBOL_G729_A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA103</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOICEAGE_AMR_WB</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA104</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_INGENIENT_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA105</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_MPEG4_AAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA106</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ENCORE_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA107</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_ZOLL_ASAO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA108</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_SPEEX_VOICE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA109</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VIANIX_MASC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WM9_SPECTRUM_ANALYZER</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_WMF_SPECTRUM_ANAYZER</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_610</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10D</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_620</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10E</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_660</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA10F</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_690</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA110</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GSM_ADAPTIVE_MULTIRATE_WB</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA111</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_POLYCOM_G722</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA112</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_POLYCOM_G728</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA113</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_POLYCOM_G729_A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA114</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_POLYCOM_SIREN</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA115</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_GLOBAL_IP_ILBC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA116</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_RADIOTIME_TIME_SHIFT_RADIO</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA117</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NICE_ACA</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA118</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NICE_ADPCM</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA119</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G721</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11A</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G726</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11B</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G722_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11C</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G728</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11D</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G729</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11E</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G729_A</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA11F</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_G723_1</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA120</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_VOCORD_LBC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA121</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_NICE_G728</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA122</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_FRACE_TELECOM_G729</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA123</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_CODIAN</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xA124</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_FLAC</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xF1AC</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_EXTENSIBLE</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xFFFE</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>WAVE_FORMAT_DEVELOPMENT</span>: ::<span class='ident'>WORD</span> <span class='op'>=</span> <span class='number'>0xFFFF</span>;
+</pre>
+</section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

@@ -516,6 +516,41 @@
 <span id="474">474</span>
 <span id="475">475</span>
 <span id="476">476</span>
+<span id="477">477</span>
+<span id="478">478</span>
+<span id="479">479</span>
+<span id="480">480</span>
+<span id="481">481</span>
+<span id="482">482</span>
+<span id="483">483</span>
+<span id="484">484</span>
+<span id="485">485</span>
+<span id="486">486</span>
+<span id="487">487</span>
+<span id="488">488</span>
+<span id="489">489</span>
+<span id="490">490</span>
+<span id="491">491</span>
+<span id="492">492</span>
+<span id="493">493</span>
+<span id="494">494</span>
+<span id="495">495</span>
+<span id="496">496</span>
+<span id="497">497</span>
+<span id="498">498</span>
+<span id="499">499</span>
+<span id="500">500</span>
+<span id="501">501</span>
+<span id="502">502</span>
+<span id="503">503</span>
+<span id="504">504</span>
+<span id="505">505</span>
+<span id="506">506</span>
+<span id="507">507</span>
+<span id="508">508</span>
+<span id="509">509</span>
+<span id="510">510</span>
+<span id="511">511</span>
 </pre><pre class='rust '>
 <span class='comment'>// The MIT License (MIT)</span>
 <span class='comment'>//</span>
@@ -541,17 +576,15 @@
 
 <span class='doccomment'>//! Capture the screen with DXGI in rust</span>
 
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>std_misc</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg</span>(<span class='ident'>windows</span>)]</span>
+
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>, <span class='ident'>non_snake_case</span>)]</span>
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>winapi</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>dxgi_win</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>d3d11_win</span>;
 
-<span class='kw'>use</span> <span class='ident'>std</span>::{ <span class='ident'>mem</span>, <span class='ident'>slice</span>, <span class='ident'>ptr</span> };
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>::{ <span class='ident'>transmute</span>, <span class='ident'>zeroed</span> };
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>time</span>::<span class='ident'>duration</span>::<span class='ident'>Duration</span>;
-<span class='kw'>use</span> <span class='ident'>winapi</span>::{ <span class='ident'>HRESULT</span>, <span class='ident'>IID</span>, <span class='ident'>DWORD</span>, <span class='ident'>RECT</span>, <span class='ident'>HMONITOR</span>, <span class='ident'>BOOL</span> };
+<span class='kw'>use</span> <span class='ident'>winapi</span>::{ <span class='ident'>HRESULT</span>, <span class='ident'>DWORD</span>, <span class='ident'>RECT</span>, <span class='ident'>HMONITOR</span>, <span class='ident'>BOOL</span> };
 <span class='kw'>use</span> <span class='ident'>dxgi_win</span>::<span class='ident'>constants</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>dxgi_win</span>::<span class='ident'>interfaces</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>dxgi_win</span>::{ <span class='ident'>CreateDXGIFactory1</span>, <span class='ident'>DXGI_OUTPUT_DESC</span>, <span class='ident'>DXGI_MODE_ROTATION</span> };
@@ -559,6 +592,8 @@
 <span class='kw'>use</span> <span class='ident'>d3d11_win</span>::<span class='ident'>interfaces</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>d3d11_win</span>::{ <span class='ident'>D3D11_USAGE</span>, <span class='ident'>D3D11_CPU_ACCESS_FLAG</span>, <span class='ident'>D3D_DRIVER_TYPE</span>,
 	<span class='ident'>D3D_FEATURE_LEVEL</span>, <span class='ident'>D3D11CreateDevice</span> };
+<span class='kw'>use</span> <span class='ident'>std</span>::{ <span class='ident'>mem</span>, <span class='ident'>slice</span>, <span class='ident'>ptr</span> };
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>::<span class='ident'>zeroed</span>;
 
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span> <span class='kw'>struct</span> <span class='ident'>MONITORINFO</span> {
 	<span class='ident'>cbSize</span>: <span class='ident'>DWORD</span>,
@@ -572,6 +607,9 @@
 	<span class='kw'>fn</span> <span class='ident'>GetMonitorInfoW</span>(<span class='ident'>monitor</span>: <span class='ident'>HMONITOR</span>, <span class='ident'>monitor_info</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>MONITORINFO</span>) <span class='op'>-&gt;</span> <span class='ident'>BOOL</span>;
 }
 
+<span class='doccomment'>/// Color represented by additive channels: Blue (b), Green (g), Red (r), and Alpha (a).</span>
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Basically a reversed RGB pixel.</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Copy</span>, <span class='ident'>Clone</span>, <span class='ident'>Debug</span>, <span class='ident'>PartialOrd</span>, <span class='ident'>PartialEq</span>, <span class='ident'>Eq</span>, <span class='ident'>Ord</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>BGRA8</span> {
 	<span class='kw'>pub</span> <span class='ident'>b</span>: <span class='ident'>u8</span>,
@@ -581,73 +619,86 @@
 }
 
 <span class='doccomment'>/// A unique pointer to a COM object. Handles refcounting.</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IUnknownT</span><span class='op'>&gt;</span> {
+<span class='doccomment'>///</span>
+<span class='doccomment'>/// Similar to windows [CComQIPtr](https://msdn.microsoft.com/en-us/library/wc177dxw.aspx)</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> {
 	<span class='ident'>ptr</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>T</span>,
 }
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IUnknownT</span><span class='op'>&gt;</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
-	<span class='doccomment'>/// Construct a new unique COM pointer from a pointer to a COM object.</span>
-	<span class='doccomment'>/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand </span>
-	<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>from_ptr</span>(<span class='ident'>ptr</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+	<span class='doccomment'>/// Construct a new unique COM pointer from a pointer to a COM interface.</span>
+	<span class='doccomment'>/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand</span>
+	<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>ptr</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 		<span class='ident'>UniqueCOMPtr</span>{ <span class='ident'>ptr</span>: <span class='ident'>ptr</span> }
 	}
 
-	<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>fn</span> <span class='ident'>query_interface</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>interface_identifier</span>: <span class='kw-2'>&amp;</span><span class='ident'>IID</span>)
-		<span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>, <span class='ident'>HRESULT</span><span class='op'>&gt;</span> <span class='kw'>where</span> <span class='ident'>U</span>: <span class='ident'>IUnknownT</span>
+	<span class='comment'>// TODO: Use associated constant instead of explicit IID with `interface_identifier`</span>
+	<span class='doccomment'>/// Convert target interface by retrieving pointer to a supported interface of the object.</span>
+	<span class='doccomment'>///</span>
+	<span class='doccomment'>/// # Examples</span>
+	<span class='doccomment'>/// ```ignore</span>
+	<span class='doccomment'>/// let output = {</span>
+	<span class='doccomment'>///     let mut output_ptr = ptr::null_mut();</span>
+	<span class='doccomment'>///     adapter.EnumOutputs(i, &amp;mut output_ptr);</span>
+	<span class='doccomment'>///     UniqueCOMPtr::new(output)</span>
+	<span class='doccomment'>/// };</span>
+	<span class='doccomment'>/// let output1: UniqueCOMPtr&lt;IDXGIOutput1&gt; = output.query_interface(&amp;IID_IDXGIOutput1).unwrap();</span>
+	<span class='doccomment'>/// ```</span>
+	<span class='doccomment'>///</span>
+	<span class='doccomment'>/// # Safety</span>
+	<span class='doccomment'>/// This method is unsafe, as coerced type may differ from the one</span>
+	<span class='doccomment'>/// requested by IID in query_interface. At the moment, following is legal:</span>
+	<span class='doccomment'>///</span>
+	<span class='doccomment'>/// ```ignore</span>
+	<span class='doccomment'>/// let factory1: UniqueCOMPtr&lt;IDXGIFactory1&gt; = output.query_interface(&amp;IID_IDXGIOutput1).unwrap();</span>
+	<span class='doccomment'>/// ```</span>
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>query_interface</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>U</span><span class='op'>&gt;</span>, <span class='ident'>HRESULT</span><span class='op'>&gt;</span>
+		<span class='kw'>where</span> <span class='ident'>U</span>: <span class='ident'>COMInterface</span> <span class='op'>+</span> <span class='ident'>QueryIID</span>
 	{
 		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>interface</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
-		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>QueryInterface</span>(<span class='ident'>interface_identifier</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>interface</span>);
+		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='self'>self</span>.<span class='ident'>i_unknown_mut</span>().<span class='ident'>QueryInterface</span>(<span class='kw-2'>&amp;</span><span class='ident'>U</span>::<span class='ident'>iid</span>(), <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>interface</span>) };
 		<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 			<span class='prelude-val'>Err</span>(<span class='ident'>hr</span>)
 		} <span class='kw'>else</span> {
-			<span class='prelude-val'>Ok</span>(<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>interface</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>U</span>))
+			<span class='prelude-val'>Ok</span>(<span class='kw'>unsafe</span> { <span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>interface</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>U</span>) })
 		}
 	}
 }
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IUnknownT</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>Deref</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>Deref</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 	<span class='kw'>type</span> <span class='ident'>Target</span> <span class='op'>=</span> <span class='ident'>T</span>;
 
 	<span class='kw'>fn</span> <span class='ident'>deref</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>T</span> {
 		<span class='kw'>unsafe</span> { <span class='kw-2'>&amp;</span><span class='op'>*</span><span class='self'>self</span>.<span class='ident'>ptr</span> }
 	}
 }
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IUnknownT</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>DerefMut</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>DerefMut</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 	<span class='kw'>fn</span> <span class='ident'>deref_mut</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>T</span> {
 		<span class='kw'>unsafe</span> { <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='self'>self</span>.<span class='ident'>ptr</span> }
 	}
 }
-<span class='attribute'>#[<span class='ident'>unsafe_destructor</span>]</span>
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IUnknownT</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>Drop</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> <span class='ident'>std</span>::<span class='ident'>ops</span>::<span class='ident'>Drop</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
 	<span class='kw'>fn</span> <span class='ident'>drop</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
-		<span class='self'>self</span>.<span class='ident'>Release</span>();
+		<span class='kw'>unsafe</span> { <span class='self'>self</span>.<span class='ident'>i_unknown_mut</span>().<span class='ident'>Release</span>() };
 	}
 }
-<span class='doccomment'>/// This is not actually necessarily thread safe.</span>
-<span class='doccomment'>/// It&#39;s up to the user to guarantee that all pointers are uniquely owned.</span>
-<span class='kw'>unsafe</span> <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> <span class='ident'>Send</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> { }
+<span class='kw'>unsafe</span> <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>COMInterface</span><span class='op'>&gt;</span> <span class='ident'>Send</span> <span class='kw'>for</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> { }
 
 <span class='doccomment'>/// Possible errors when capturing</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>CaptureError</span> {
-	<span class='comment'>// Could not duplicate output, access denied. Might be in protected fullscreen.</span>
+	<span class='doccomment'>/// Could not duplicate output, access denied. Might be in protected fullscreen.</span>
 	<span class='ident'>AccessDenied</span>,
-	<span class='comment'>// Access to the duplicated output was lost. Likely, mode was changed e.g. window =&gt; full</span>
+	<span class='doccomment'>/// Access to the duplicated output was lost. Likely, mode was changed e.g. window =&gt; full</span>
 	<span class='ident'>AccessLost</span>,
-	<span class='comment'>// Error when trying to refresh outputs after some failure.</span>
+	<span class='doccomment'>/// Error when trying to refresh outputs after some failure.</span>
 	<span class='ident'>RefreshFailure</span>,
-	<span class='comment'>// AcquireNextFrame timed out.</span>
+	<span class='doccomment'>/// AcquireNextFrame timed out.</span>
 	<span class='ident'>Timeout</span>,
-	<span class='comment'>// General/Unexpected failure</span>
+	<span class='doccomment'>/// General/Unexpected failure</span>
 	<span class='ident'>Fail</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span>),
 }
 
+<span class='doccomment'>/// Check whether the HRESULT represents a failure</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>: <span class='ident'>HRESULT</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> { <span class='ident'>hr</span> <span class='op'>&lt;</span> <span class='number'>0</span> }
-
-<span class='kw'>fn</span> <span class='ident'>c_utf16_to_string</span>(<span class='ident'>chars</span>: <span class='kw-2'>&amp;</span>[<span class='ident'>u16</span>]) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-	<span class='ident'>String</span>::<span class='ident'>from_utf16_lossy</span>(
-		<span class='kw-2'>&amp;</span><span class='ident'>chars</span>.<span class='ident'>iter</span>().<span class='ident'>cloned</span>().<span class='ident'>take_while</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span><span class='ident'>b</span><span class='op'>|</span> <span class='ident'>b</span> <span class='op'>!=</span> <span class='number'>0</span>).<span class='ident'>collect</span>::<span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span>_<span class='op'>&gt;&gt;</span>()[..])
-}
-
-<span class='kw'>fn</span> <span class='ident'>max</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>PartialOrd</span><span class='op'>&gt;</span>(<span class='ident'>a</span>: <span class='ident'>T</span>, <span class='ident'>b</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>T</span> { <span class='kw'>if</span> <span class='ident'>a</span> <span class='op'>&gt;</span> <span class='ident'>b</span> { <span class='ident'>a</span> } <span class='kw'>else</span> { <span class='ident'>b</span> } }
 
 <span class='kw'>fn</span> <span class='ident'>create_dxgi_factory_1</span>() <span class='op'>-&gt;</span> <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIFactory1</span><span class='op'>&gt;</span> {
 	<span class='kw'>unsafe</span> {
@@ -657,18 +708,18 @@
 		<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 			<span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Failed to create DXGIFactory1, {:x}&quot;</span>, <span class='ident'>hr</span>)
 		} <span class='kw'>else</span> {
-			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>factory</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IDXGIFactory1</span>)
+			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>factory</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>IDXGIFactory1</span>)
 		}
 	}
 }
 
-<span class='kw'>fn</span> <span class='ident'>d3d11_create_device</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>IDXGIAdapterT</span><span class='op'>&gt;</span>(<span class='ident'>adapter</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>T</span>)
+<span class='kw'>fn</span> <span class='ident'>d3d11_create_device</span>(<span class='ident'>adapter</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>IDXGIAdapter</span>)
 	<span class='op'>-&gt;</span> (<span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>ID3D11Device</span><span class='op'>&gt;</span>, <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>ID3D11DeviceContext</span><span class='op'>&gt;</span>)
 {
 	<span class='kw'>unsafe</span> {
 		<span class='kw'>let</span> (<span class='kw-2'>mut</span> <span class='ident'>d3d11_device</span>, <span class='kw-2'>mut</span> <span class='ident'>device_context</span>) <span class='op'>=</span> (<span class='ident'>ptr</span>::<span class='ident'>null_mut</span>(), <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>());
 
-		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='ident'>D3D11CreateDevice</span>(<span class='ident'>transmute</span>(<span class='ident'>adapter</span>),
+		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='ident'>D3D11CreateDevice</span>(<span class='ident'>adapter</span>,
 			<span class='ident'>D3D_DRIVER_TYPE</span>::<span class='ident'>UNKNOWN</span>,
 			<span class='ident'>ptr</span>::<span class='ident'>null_mut</span>(), <span class='number'>0</span>, <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>(), <span class='number'>0</span>,
 			<span class='ident'>D3D11_SDK_VERSION</span>,
@@ -678,8 +729,8 @@
 		<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 			<span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Failed to create d3d11 device and device context, {:x}&quot;</span>, <span class='ident'>hr</span>)
 		} <span class='kw'>else</span> {
-			(<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>d3d11_device</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ID3D11Device</span>),
-				<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>device_context</span>))
+			(<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>d3d11_device</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ID3D11Device</span>),
+				<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>device_context</span>))
 		}
 	}
 }
@@ -694,7 +745,7 @@
 				(<span class='op'>*</span><span class='ident'>output</span>).<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>out_desc</span>);
 
 				<span class='kw'>if</span> <span class='ident'>out_desc</span>.<span class='ident'>AttachedToDesktop</span> <span class='op'>!=</span> <span class='number'>0</span> {
-					<span class='prelude-val'>Some</span>(<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>output</span>))
+					<span class='prelude-val'>Some</span>(<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>output</span>))
 				} <span class='kw'>else</span> {
 					<span class='prelude-val'>None</span>
 				}
@@ -704,10 +755,10 @@
 		.<span class='ident'>collect</span>()
 }
 
-<span class='kw'>fn</span> <span class='ident'>output_is_primary</span>(<span class='ident'>output</span>: <span class='kw-2'>&amp;</span><span class='ident'>IDXGIOutput1</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
+<span class='kw'>fn</span> <span class='ident'>output_is_primary</span>(<span class='ident'>output</span>: <span class='kw-2'>&amp;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
 	<span class='kw'>unsafe</span> {
 		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>output_desc</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
-		<span class='ident'>transmute</span>::<span class='op'>&lt;</span>_, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>(<span class='ident'>output</span>).<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>output_desc</span>);
+		(<span class='op'>*</span><span class='ident'>output</span>.<span class='ident'>ptr</span>).<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>output_desc</span>);
 
 		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>monitor_info</span>: <span class='ident'>MONITORINFO</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
 		<span class='ident'>monitor_info</span>.<span class='ident'>cbSize</span> <span class='op'>=</span> <span class='ident'>mem</span>::<span class='ident'>size_of</span>::<span class='op'>&lt;</span><span class='ident'>MONITORINFO</span><span class='op'>&gt;</span>() <span class='kw'>as</span> <span class='ident'>u32</span>;
@@ -723,10 +774,10 @@
 	<span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span>(<span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIOutputDuplication</span><span class='op'>&gt;</span>, <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>)<span class='op'>&gt;</span>
 {
 	<span class='kw'>if</span> <span class='ident'>cs_index</span> <span class='op'>==</span> <span class='number'>0</span> {
-		<span class='ident'>output_dups</span>.<span class='ident'>into_iter</span>().<span class='ident'>find</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(_, <span class='kw-2'>ref</span> <span class='ident'>out</span>)<span class='op'>|</span> <span class='ident'>output_is_primary</span>(<span class='kw-2'>&amp;</span><span class='ident'>out</span>))
+		<span class='ident'>output_dups</span>.<span class='ident'>into_iter</span>().<span class='ident'>find</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(_, <span class='kw-2'>ref</span> <span class='ident'>out</span>)<span class='op'>|</span> <span class='ident'>output_is_primary</span>(<span class='ident'>out</span>))
 	} <span class='kw'>else</span> {
 		<span class='ident'>output_dups</span>.<span class='ident'>into_iter</span>()
-			.<span class='ident'>filter</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(_, <span class='kw-2'>ref</span> <span class='ident'>out</span>)<span class='op'>|</span> <span class='op'>!</span><span class='ident'>output_is_primary</span>(<span class='kw-2'>&amp;</span><span class='ident'>out</span>))
+			.<span class='ident'>filter</span>(<span class='op'>|</span><span class='kw-2'>&amp;</span>(_, <span class='kw-2'>ref</span> <span class='ident'>out</span>)<span class='op'>|</span> <span class='op'>!</span><span class='ident'>output_is_primary</span>(<span class='ident'>out</span>))
 			.<span class='ident'>nth</span>(<span class='ident'>cs_index</span> <span class='op'>-</span> <span class='number'>1</span>)
 	}
 }
@@ -737,21 +788,21 @@
 {
 	<span class='kw'>unsafe</span> {
 		<span class='ident'>outputs</span>.<span class='ident'>into_iter</span>()
-			.<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>out</span><span class='op'>|</span> <span class='ident'>out</span>.<span class='ident'>query_interface</span>::<span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_IDXGIOutput1</span>).<span class='ident'>unwrap</span>())
+			.<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>out</span><span class='op'>|</span> <span class='ident'>out</span>.<span class='ident'>query_interface</span>::<span class='op'>&lt;</span><span class='ident'>IDXGIOutput1</span><span class='op'>&gt;</span>().<span class='ident'>unwrap</span>())
 			.<span class='ident'>fold</span>((<span class='ident'>device</span>, <span class='ident'>Vec</span>::<span class='ident'>new</span>()), <span class='op'>|</span>(<span class='ident'>device</span>, <span class='kw-2'>mut</span> <span class='ident'>out_dups</span>), <span class='kw-2'>mut</span> <span class='ident'>output</span><span class='op'>|</span> {
-				<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dxgi_device</span> <span class='op'>=</span>
-					<span class='ident'>device</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_IDXGIDevice1</span>).<span class='ident'>unwrap</span>();
+				<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>dxgi_device</span> <span class='op'>=</span> <span class='ident'>device</span>.<span class='ident'>query_interface</span>::<span class='op'>&lt;</span><span class='ident'>IDXGIDevice1</span><span class='op'>&gt;</span>().<span class='ident'>unwrap</span>();
 
 				<span class='kw'>let</span> <span class='ident'>output_duplication</span> <span class='op'>=</span> {
 					<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>output_duplication</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
-					<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='number'>0</span>,
+					<span class='macro'>assert_eq</span><span class='macro'>!</span>(
+						<span class='number'>0</span>,
 						<span class='ident'>output</span>.<span class='ident'>DuplicateOutput</span>(
-							<span class='ident'>transmute</span>::<span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>IDXGIDevice1</span>, _<span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>dxgi_device</span>),
+							(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>dxgi_device</span> <span class='kw'>as</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>IUnknown</span>),
 							<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>output_duplication</span>));
-					<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>output_duplication</span>) };
+					<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>output_duplication</span>) };
 
 				<span class='ident'>out_dups</span>.<span class='ident'>push</span>((<span class='ident'>output_duplication</span>, <span class='ident'>output</span>));
-				(<span class='ident'>dxgi_device</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_ID3D11Device</span>).<span class='ident'>unwrap</span>(), <span class='ident'>out_dups</span>)
+				(<span class='ident'>dxgi_device</span>.<span class='ident'>query_interface</span>().<span class='ident'>unwrap</span>(), <span class='ident'>out_dups</span>)
 			})
 	}
 }
@@ -766,12 +817,14 @@
 	<span class='kw'>fn</span> <span class='ident'>get_desc</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>DXGI_OUTPUT_DESC</span> {
 		<span class='kw'>unsafe</span> {
 			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>desc</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
-			<span class='ident'>transmute</span>::<span class='op'>&lt;</span>_, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='kw'>Self</span><span class='op'>&gt;</span>(<span class='self'>self</span>).<span class='ident'>output</span>.<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>desc</span>);
+			(<span class='op'>*</span><span class='self'>self</span>.<span class='ident'>output</span>.<span class='ident'>ptr</span>).<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>desc</span>);
 			<span class='ident'>desc</span>
 		}
 	}
 
-	<span class='kw'>fn</span> <span class='ident'>get_frame</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>timeout_ms</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGISurface1</span><span class='op'>&gt;</span>, <span class='ident'>HRESULT</span><span class='op'>&gt;</span> {
+	<span class='kw'>fn</span> <span class='ident'>capture_frame_to_surface</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>timeout_ms</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span>
+		<span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGISurface1</span><span class='op'>&gt;</span>, <span class='ident'>HRESULT</span><span class='op'>&gt;</span>
+	{
 		<span class='kw'>let</span> <span class='ident'>frame_resource</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
 			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_resource</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
 			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_info</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
@@ -780,15 +833,17 @@
 			<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 				<span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>hr</span>);
 			}
-			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>frame_resource</span>)
+			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>frame_resource</span>)
 		};
 
-		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_texture</span>: <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>ID3D11Texture2D</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-			<span class='ident'>frame_resource</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_ID3D11Texture2D</span>).<span class='ident'>unwrap</span>()
-		};
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_texture</span>: <span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>ID3D11Texture2D</span><span class='op'>&gt;</span> <span class='op'>=</span>
+			<span class='ident'>frame_resource</span>.<span class='ident'>query_interface</span>().<span class='ident'>unwrap</span>();
 
-		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>texture_desc</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>zeroed</span>() };
-		<span class='ident'>frame_texture</span>.<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>texture_desc</span>);
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>texture_desc</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
+			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>texture_desc</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
+			<span class='ident'>frame_texture</span>.<span class='ident'>GetDesc</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>texture_desc</span>);
+			<span class='ident'>texture_desc</span>
+		};
 
 		<span class='comment'>// Configure the description to make the texture readable</span>
 		<span class='ident'>texture_desc</span>.<span class='ident'>Usage</span> <span class='op'>=</span> <span class='ident'>D3D11_USAGE</span>::<span class='ident'>STAGING</span>;
@@ -803,28 +858,30 @@
 			<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 				<span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>hr</span>);
 			}
-			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>readable_texture</span>)
+			<span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>readable_texture</span>)
 		};
 
 		<span class='comment'>// Lower priorities causes stuff to be needlessly copied from gpu to ram,</span>
 		<span class='comment'>// causing huge fluxuations on some systems.</span>
-		<span class='ident'>readable_texture</span>.<span class='ident'>SetEvictionPriority</span>(<span class='ident'>DXGI_RESOURCE_PRIORITY_MAXIMUM</span>);
+		<span class='kw'>unsafe</span> { <span class='ident'>readable_texture</span>.<span class='ident'>SetEvictionPriority</span>(<span class='ident'>DXGI_RESOURCE_PRIORITY_MAXIMUM</span>) };
+
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>readable_surface</span> <span class='op'>=</span> <span class='ident'>readable_texture</span>.<span class='ident'>query_interface</span>().<span class='ident'>unwrap</span>();
 
 		<span class='kw'>unsafe</span> {
-			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>readable_surface</span> <span class='op'>=</span>
-				<span class='ident'>readable_texture</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_ID3D11Resource</span>).<span class='ident'>unwrap</span>();
-
-			<span class='self'>self</span>.<span class='ident'>device_context</span>.<span class='ident'>CopyResource</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='ident'>readable_surface</span>,
-				<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='ident'>frame_texture</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_ID3D11Resource</span>).<span class='ident'>unwrap</span>());
+			<span class='self'>self</span>.<span class='ident'>device_context</span>.<span class='ident'>CopyResource</span>(
+				<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='ident'>readable_surface</span>,
+				<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='ident'>frame_texture</span>.<span class='ident'>query_interface</span>().<span class='ident'>unwrap</span>());
 
 			<span class='self'>self</span>.<span class='ident'>output_duplication</span>.<span class='ident'>ReleaseFrame</span>();
-
-			<span class='ident'>readable_surface</span>.<span class='ident'>query_interface</span>(<span class='kw-2'>&amp;</span><span class='ident'>IID_IDXGISurface1</span>)
 		}
+
+
+
+		<span class='ident'>readable_surface</span>.<span class='ident'>query_interface</span>()
 	}
 
 	<span class='kw'>fn</span> <span class='ident'>release_frame</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>HRESULT</span><span class='op'>&gt;</span> {
-		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>output_duplication</span>.<span class='ident'>ReleaseFrame</span>();
+		<span class='kw'>let</span> <span class='ident'>hr</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='self'>self</span>.<span class='ident'>output_duplication</span>.<span class='ident'>ReleaseFrame</span>() };
 		<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>hr</span>) {
 			<span class='prelude-val'>Err</span>(<span class='ident'>hr</span>)
 		} <span class='kw'>else</span> {
@@ -833,16 +890,20 @@
 	}
 }
 
+<span class='doccomment'>/// Manager of DXGI duplicated outputs</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>DXGIManager</span> {
 	<span class='ident'>duplicated_output</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>DuplicatedOutput</span><span class='op'>&gt;</span>,
 	<span class='ident'>capture_source_index</span>: <span class='ident'>usize</span>,
 	<span class='ident'>timeout_ms</span>: <span class='ident'>u32</span>,
 }
 <span class='kw'>impl</span> <span class='ident'>DXGIManager</span> {
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>timeout</span>: <span class='ident'>Duration</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>DXGIManager</span>, <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span><span class='op'>&gt;</span> {
-		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>manager</span> <span class='op'>=</span> <span class='ident'>DXGIManager</span>{ <span class='ident'>duplicated_output</span>: <span class='prelude-val'>None</span>,
+	<span class='doccomment'>/// Construct a new manager with capture timeout</span>
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>timeout_ms</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>DXGIManager</span>, <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span><span class='op'>&gt;</span> {
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>manager</span> <span class='op'>=</span> <span class='ident'>DXGIManager</span>{
+			<span class='ident'>duplicated_output</span>: <span class='prelude-val'>None</span>,
 			<span class='ident'>capture_source_index</span>: <span class='number'>0</span>,
-			<span class='ident'>timeout_ms</span>: <span class='ident'>max</span>(<span class='ident'>timeout</span>.<span class='ident'>num_milliseconds</span>(), <span class='number'>0</span>) <span class='kw'>as</span> <span class='ident'>u32</span> };
+			<span class='ident'>timeout_ms</span>: <span class='ident'>timeout_ms</span>
+		};
 
 		<span class='kw'>match</span> <span class='ident'>manager</span>.<span class='ident'>acquire_output_duplication</span>() {
 			<span class='prelude-val'>Ok</span>(_) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>manager</span>),
@@ -850,6 +911,7 @@
 		}
 	}
 
+	<span class='doccomment'>/// Set index of capture source to capture from</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_capture_source_index</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>cs</span>: <span class='ident'>usize</span>) {
 		<span class='self'>self</span>.<span class='ident'>capture_source_index</span> <span class='op'>=</span> <span class='ident'>cs</span>;
 		<span class='self'>self</span>.<span class='ident'>acquire_output_duplication</span>().<span class='ident'>unwrap</span>()
@@ -859,10 +921,12 @@
 		<span class='self'>self</span>.<span class='ident'>capture_source_index</span>
 	}
 
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_timeout</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>t</span>: <span class='ident'>Duration</span>) {
-		<span class='self'>self</span>.<span class='ident'>timeout_ms</span> <span class='op'>=</span> <span class='ident'>max</span>(<span class='ident'>t</span>.<span class='ident'>num_milliseconds</span>(), <span class='number'>0</span>) <span class='kw'>as</span> <span class='ident'>u32</span>
+	<span class='doccomment'>/// Set timeout to use when capturing</span>
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>set_timeout_ms</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>timeout_ms</span>: <span class='ident'>u32</span>) {
+		<span class='self'>self</span>.<span class='ident'>timeout_ms</span> <span class='op'>=</span> <span class='ident'>timeout_ms</span>
 	}
 
+	<span class='doccomment'>/// Duplicate and acquire output selected by `capture_source_index`</span>
 	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>acquire_output_duplication</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), ()<span class='op'>&gt;</span> {
 		<span class='self'>self</span>.<span class='ident'>duplicated_output</span> <span class='op'>=</span> <span class='prelude-val'>None</span>;
 
@@ -870,11 +934,11 @@
 
 		<span class='kw'>for</span> (<span class='ident'>outputs</span>, <span class='kw-2'>mut</span> <span class='ident'>adapter</span>) <span class='kw'>in</span> (<span class='number'>0</span>..).<span class='ident'>map</span>(<span class='op'>|</span><span class='ident'>i</span><span class='op'>|</span> {
 				<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>adapter</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
-				<span class='kw'>if</span> <span class='ident'>factory</span>.<span class='ident'>EnumAdapters1</span>(<span class='ident'>i</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>adapter</span>) <span class='op'>!=</span> <span class='ident'>DXGI_ERROR_NOT_FOUND</span> {
-					<span class='prelude-val'>Some</span>(<span class='kw'>unsafe</span> { <span class='ident'>UniqueCOMPtr</span>::<span class='ident'>from_ptr</span>(<span class='ident'>adapter</span>) })
+				<span class='kw'>unsafe</span> { <span class='kw'>if</span> <span class='ident'>factory</span>.<span class='ident'>EnumAdapters1</span>(<span class='ident'>i</span>, <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>adapter</span>) <span class='op'>!=</span> <span class='ident'>DXGI_ERROR_NOT_FOUND</span> {
+					<span class='prelude-val'>Some</span>( <span class='ident'>UniqueCOMPtr</span>::<span class='ident'>new</span>(<span class='ident'>adapter</span>))
 				} <span class='kw'>else</span> {
 					<span class='prelude-val'>None</span>
-				}
+				}}
 			})
 			.<span class='ident'>take_while</span>(<span class='prelude-ty'>Option</span>::<span class='ident'>is_some</span>).<span class='ident'>map</span>(<span class='prelude-ty'>Option</span>::<span class='ident'>unwrap</span>)
 			.<span class='ident'>map</span>(<span class='op'>|</span><span class='kw-2'>mut</span> <span class='ident'>adapter</span><span class='op'>|</span> (<span class='ident'>get_adater_outputs</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>adapter</span>), <span class='ident'>adapter</span>))
@@ -901,7 +965,7 @@
 		<span class='prelude-val'>Err</span>(())
 	}
 
-	<span class='kw'>fn</span> <span class='ident'>get_frame</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGISurface1</span><span class='op'>&gt;</span>, <span class='ident'>CaptureError</span><span class='op'>&gt;</span> {
+	<span class='kw'>fn</span> <span class='ident'>capture_frame_to_surface</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>UniqueCOMPtr</span><span class='op'>&lt;</span><span class='ident'>IDXGISurface1</span><span class='op'>&gt;</span>, <span class='ident'>CaptureError</span><span class='op'>&gt;</span> {
 		<span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>None</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>duplicated_output</span> {
 			<span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Ok</span>(_) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>acquire_output_duplication</span>() {
 				<span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>CaptureError</span>::<span class='ident'>Fail</span>(<span class='string'>&quot;No valid duplicated output&quot;</span>))
@@ -912,7 +976,7 @@
 
 		<span class='kw'>let</span> <span class='ident'>timeout_ms</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>timeout_ms</span>;
 
-		<span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>duplicated_output</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>get_frame</span>(<span class='ident'>timeout_ms</span>) {
+		<span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>duplicated_output</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>capture_frame_to_surface</span>(<span class='ident'>timeout_ms</span>) {
 			<span class='prelude-val'>Ok</span>(<span class='ident'>surface</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Ok</span>(<span class='ident'>surface</span>),
 			<span class='prelude-val'>Err</span>(<span class='ident'>DXGI_ERROR_ACCESS_LOST</span>) <span class='op'>=&gt;</span> <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Ok</span>(_) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>acquire_output_duplication</span>() {
 				<span class='prelude-val'>Err</span>(<span class='ident'>CaptureError</span>::<span class='ident'>AccessLost</span>)
@@ -928,17 +992,24 @@
 		}
 	}
 
-	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_output_data</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>BGRA8</span><span class='op'>&gt;</span>, (<span class='ident'>usize</span>, <span class='ident'>usize</span>)), <span class='ident'>CaptureError</span><span class='op'>&gt;</span> {
-		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_surface</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>get_frame</span>() {
+	<span class='doccomment'>/// Capture a frame</span>
+	<span class='doccomment'>///</span>
+	<span class='doccomment'>/// On success, return Vec with pixels, and width and height of frame.</span>
+	<span class='doccomment'>/// On failure, return CaptureError.</span>
+	<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>capture_frame</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(<span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>BGRA8</span><span class='op'>&gt;</span>, (<span class='ident'>usize</span>, <span class='ident'>usize</span>)), <span class='ident'>CaptureError</span><span class='op'>&gt;</span> {
+		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>frame_surface</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>capture_frame_to_surface</span>() {
 			<span class='prelude-val'>Ok</span>(<span class='ident'>surface</span>) <span class='op'>=&gt;</span> <span class='ident'>surface</span>,
 			<span class='prelude-val'>Err</span>(<span class='ident'>e</span>) <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>e</span>)
 		};
 
-		<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mapped_surface</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>zeroed</span>() };
-		<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>frame_surface</span>.<span class='ident'>Map</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>mapped_surface</span>, <span class='ident'>DXGI_MAP_READ</span>)) {
-			<span class='ident'>frame_surface</span>.<span class='ident'>Release</span>();
-			<span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>CaptureError</span>::<span class='ident'>Fail</span>(<span class='string'>&quot;Failed to map surface&quot;</span>));
-		}
+		<span class='kw'>let</span> <span class='ident'>mapped_surface</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
+			<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mapped_surface</span> <span class='op'>=</span> <span class='ident'>zeroed</span>();
+			<span class='kw'>if</span> <span class='ident'>hr_failed</span>(<span class='ident'>frame_surface</span>.<span class='ident'>Map</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>mapped_surface</span>, <span class='ident'>DXGI_MAP_READ</span>)) {
+				<span class='ident'>frame_surface</span>.<span class='ident'>Release</span>();
+				<span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>CaptureError</span>::<span class='ident'>Fail</span>(<span class='string'>&quot;Failed to map surface&quot;</span>));
+			}
+			<span class='ident'>mapped_surface</span>
+		};
 
 		<span class='kw'>let</span> <span class='ident'>output_desc</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>duplicated_output</span>.<span class='ident'>as_mut</span>().<span class='ident'>unwrap</span>().<span class='ident'>get_desc</span>();
 		<span class='kw'>let</span> (<span class='ident'>output_width</span>, <span class='ident'>output_height</span>) <span class='op'>=</span> {
@@ -960,10 +1031,9 @@
 				<span class='op'>|</span><span class='ident'>row</span>, <span class='ident'>col</span><span class='op'>|</span> <span class='ident'>col</span> <span class='op'>*</span> <span class='ident'>map_pitch_n_pixels</span> <span class='op'>+</span> (<span class='ident'>output_height</span><span class='op'>-</span><span class='ident'>row</span><span class='op'>-</span><span class='number'>1</span>))
 		};
 
-		<span class='kw'>let</span> <span class='ident'>mapped_pixels</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-			<span class='ident'>slice</span>::<span class='ident'>from_raw_parts</span>(<span class='ident'>transmute</span>(<span class='ident'>mapped_surface</span>.<span class='ident'>pBits</span>),
-				<span class='ident'>output_width</span> <span class='op'>*</span> <span class='ident'>output_height</span> <span class='op'>*</span> <span class='ident'>map_pitch_n_pixels</span>)
-		};
+		<span class='kw'>let</span> <span class='ident'>mapped_pixels</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>slice</span>::<span class='ident'>from_raw_parts</span>(
+			<span class='ident'>mapped_surface</span>.<span class='ident'>pBits</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>BGRA8</span>,
+			<span class='ident'>output_width</span> <span class='op'>*</span> <span class='ident'>output_height</span> <span class='op'>*</span> <span class='ident'>map_pitch_n_pixels</span>) };
 
 		<span class='kw'>for</span> <span class='ident'>row</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='ident'>output_height</span> {
 			<span class='kw'>for</span> <span class='ident'>col</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='ident'>output_width</span> {
@@ -971,7 +1041,7 @@
 			}
 		}
 
-		<span class='ident'>frame_surface</span>.<span class='ident'>Unmap</span>();
+		<span class='kw'>unsafe</span> { <span class='ident'>frame_surface</span>.<span class='ident'>Unmap</span>() };
 
 		<span class='prelude-val'>Ok</span>((<span class='ident'>pixel_buf</span>, (<span class='ident'>output_width</span>, <span class='ident'>output_height</span>)))
 	}
@@ -979,9 +1049,9 @@
 
 <span class='attribute'>#[<span class='ident'>test</span>]</span>
 <span class='kw'>fn</span> <span class='ident'>test</span>() {
-	<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>manager</span> <span class='op'>=</span> <span class='ident'>DXGIManager</span>::<span class='ident'>new</span>(<span class='ident'>Duration</span>::<span class='ident'>milliseconds</span>(<span class='number'>200</span>)).<span class='ident'>unwrap</span>();
+	<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>manager</span> <span class='op'>=</span> <span class='ident'>DXGIManager</span>::<span class='ident'>new</span>(<span class='number'>200</span>).<span class='ident'>unwrap</span>();
 	<span class='kw'>for</span> _ <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>10</span> {
-		<span class='kw'>match</span> <span class='ident'>manager</span>.<span class='ident'>get_output_data</span>() {
+		<span class='kw'>match</span> <span class='ident'>manager</span>.<span class='ident'>capture_frame</span>() {
 			<span class='prelude-val'>Ok</span>((<span class='ident'>pixels</span>, (_, _))) <span class='op'>=&gt;</span> {
 				<span class='kw'>let</span> <span class='ident'>len</span> <span class='op'>=</span> <span class='ident'>pixels</span>.<span class='ident'>len</span>() <span class='kw'>as</span> <span class='ident'>u64</span>;
 				<span class='kw'>let</span> (<span class='ident'>r</span>, <span class='ident'>g</span>, <span class='ident'>b</span>) <span class='op'>=</span> <span class='ident'>pixels</span>.<span class='ident'>into_iter</span>()
@@ -1026,6 +1096,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>

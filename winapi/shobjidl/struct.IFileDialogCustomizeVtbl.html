@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IFileDialogCustomizeVtbl` struct in crate `winapi`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IFileDialogCustomizeVtbl">
+
+    <title>winapi::shobjidl::IFileDialogCustomizeVtbl - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>winapi</a>::<wbr><a href='index.html'>shobjidl</a></p><script>window.sidebarCurrent = {name: 'IFileDialogCustomizeVtbl', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>winapi</a>::<wbr><a href='index.html'>shobjidl</a>::<wbr><a class='struct' href=''>IFileDialogCustomizeVtbl</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-45234' class='srclink' href='../../src/winapi/lib.rs.html#140-146' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IFileDialogCustomizeVtbl {
+    pub parent: <a class='struct' href='../../winapi/unknwnbase/struct.IUnknownVtbl.html' title='winapi::unknwnbase::IUnknownVtbl'>IUnknownVtbl</a>,
+    pub EnableOpenDropDown: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddMenu: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddPushButton: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddComboBox: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddRadioButtonList: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddCheckButton: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>, bChecked: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddEditBox: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszText: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddSeparator: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddText: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszText: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetControlLabel: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub GetControlState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pdwState: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../winapi/shobjidl/enum.CDCONTROLSTATEF.html' title='winapi::shobjidl::CDCONTROLSTATEF'>CDCONTROLSTATEF</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetControlState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwState: <a class='enum' href='../../winapi/shobjidl/enum.CDCONTROLSTATEF.html' title='winapi::shobjidl::CDCONTROLSTATEF'>CDCONTROLSTATEF</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub GetEditBoxText: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, ppszText: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/type.WCHAR.html' title='winapi::WCHAR'>WCHAR</a></a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetEditBoxText: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszText: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub GetCheckButtonState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pbChecked: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetCheckButtonState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, bChecked: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub AddControlItem: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub RemoveControlItem: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub RemoveAllControlItems: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub GetControlItemState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pdwState: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='../../winapi/shobjidl/enum.CDCONTROLSTATEF.html' title='winapi::shobjidl::CDCONTROLSTATEF'>CDCONTROLSTATEF</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetControlItemState: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwState: <a class='enum' href='../../winapi/shobjidl/enum.CDCONTROLSTATEF.html' title='winapi::shobjidl::CDCONTROLSTATEF'>CDCONTROLSTATEF</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub GetSelectedControlItem: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pdwIDItem: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetSelectedControlItem: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub StartVisualGroup: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub EndVisualGroup: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub MakeProminent: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+    pub SetControlItemText: unsafe  extern "system" fn(This: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../winapi/shobjidl/struct.IFileDialogCustomize.html' title='winapi::shobjidl::IFileDialogCustomize'>IFileDialogCustomize</a></a>, dwIDCtl: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, dwIDItem: <a class='type' href='../../winapi/minwindef/type.DWORD.html' title='winapi::minwindef::DWORD'>DWORD</a>, pszLabel: <a class='type' href='../../winapi/type.LPCWSTR.html' title='winapi::LPCWSTR'>LPCWSTR</a>) -&gt; <a class='type' href='../../winapi/type.HRESULT.html' title='winapi::HRESULT'>HRESULT</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr class='stab '>
+                                  <td id='structfield.parent'><code>parent</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.EnableOpenDropDown'><code>EnableOpenDropDown</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddMenu'><code>AddMenu</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddPushButton'><code>AddPushButton</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddComboBox'><code>AddComboBox</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddRadioButtonList'><code>AddRadioButtonList</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddCheckButton'><code>AddCheckButton</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddEditBox'><code>AddEditBox</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddSeparator'><code>AddSeparator</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddText'><code>AddText</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetControlLabel'><code>SetControlLabel</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetControlState'><code>GetControlState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetControlState'><code>SetControlState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetEditBoxText'><code>GetEditBoxText</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetEditBoxText'><code>SetEditBoxText</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetCheckButtonState'><code>GetCheckButtonState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetCheckButtonState'><code>SetCheckButtonState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.AddControlItem'><code>AddControlItem</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.RemoveControlItem'><code>RemoveControlItem</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.RemoveAllControlItems'><code>RemoveAllControlItems</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetControlItemState'><code>GetControlItemState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetControlItemState'><code>SetControlItemState</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.GetSelectedControlItem'><code>GetSelectedControlItem</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetSelectedControlItem'><code>SetSelectedControlItem</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.StartVisualGroup'><code>StartVisualGroup</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.EndVisualGroup'><code>EndVisualGroup</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.MakeProminent'><code>MakeProminent</code></td><td></td></tr><tr class='stab '>
+                                  <td id='structfield.SetControlItemText'><code>SetControlItemText</code></td><td></td></tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "winapi";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
