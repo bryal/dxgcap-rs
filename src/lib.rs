@@ -30,7 +30,7 @@ extern crate winapi;
 extern crate dxgi_win;
 extern crate d3d11_win;
 
-use winapi::{ HRESULT, IID, DWORD, RECT, HMONITOR, BOOL };
+use winapi::{ HRESULT, DWORD, RECT, HMONITOR, BOOL };
 use dxgi_win::constants::*;
 use dxgi_win::interfaces::*;
 use dxgi_win::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC, DXGI_MODE_ROTATION };
@@ -97,15 +97,15 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 	/// ```ignore
 	/// let factory1: UniqueCOMPtr<IDXGIFactory1> = output.query_interface(&IID_IDXGIOutput1).unwrap();
 	/// ```
-	pub unsafe fn query_interface<U>(mut self, interface_identifier: &IID)
-		-> Result<UniqueCOMPtr<U>, HRESULT> where U: IUnknownT
+	pub fn query_interface<U>(mut self)
+		-> Result<UniqueCOMPtr<U>, HRESULT> where U: IUnknownT + QueryIID
 	{
 		let mut interface = ptr::null_mut();
-		let hr = self.QueryInterface(interface_identifier, &mut interface);
+		let hr = self.QueryInterface(&U::iid(), &mut interface);
 		if hr_failed(hr) {
 			Err(hr)
 		} else {
-			Ok(UniqueCOMPtr::new(interface as *mut U))
+			Ok(unsafe { UniqueCOMPtr::new(interface as *mut U) })
 		}
 	}
 }
@@ -234,10 +234,10 @@ fn duplicate_outputs(device: UniqueCOMPtr<ID3D11Device>, outputs: Vec<UniqueCOMP
 {
 	unsafe {
 		outputs.into_iter()
-			.map(|out| out.query_interface::<IDXGIOutput1>(&IID_IDXGIOutput1).unwrap())
+			.map(|out| out.query_interface::<IDXGIOutput1>().unwrap())
 			.fold((device, Vec::new()), |(device, mut out_dups), mut output| {
 				let mut dxgi_device =
-					device.query_interface(&IID_IDXGIDevice1).unwrap();
+					device.query_interface().unwrap();
 
 				let output_duplication = {
 					let mut output_duplication = ptr::null_mut();
@@ -248,7 +248,7 @@ fn duplicate_outputs(device: UniqueCOMPtr<ID3D11Device>, outputs: Vec<UniqueCOMP
 					UniqueCOMPtr::new(output_duplication) };
 
 				out_dups.push((output_duplication, output));
-				(dxgi_device.query_interface(&IID_ID3D11Device).unwrap(), out_dups)
+				(dxgi_device.query_interface().unwrap(), out_dups)
 			})
 	}
 }
@@ -282,9 +282,8 @@ impl DuplicatedOutput {
 			UniqueCOMPtr::new(frame_resource)
 		};
 
-		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> = unsafe {
-			frame_resource.query_interface(&IID_ID3D11Texture2D).unwrap()
-		};
+		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> =
+			frame_resource.query_interface().unwrap();
 
 		let mut texture_desc = unsafe { zeroed() };
 		frame_texture.GetDesc(&mut texture_desc);
@@ -309,17 +308,15 @@ impl DuplicatedOutput {
 		// causing huge fluxuations on some systems.
 		readable_texture.SetEvictionPriority(DXGI_RESOURCE_PRIORITY_MAXIMUM);
 
-		unsafe {
-			let mut readable_surface =
-				readable_texture.query_interface(&IID_ID3D11Resource).unwrap();
+		let mut readable_surface = readable_texture.query_interface().unwrap();
 
-			self.device_context.CopyResource(&mut *readable_surface,
-				&mut *frame_texture.query_interface(&IID_ID3D11Resource).unwrap());
+		self.device_context.CopyResource(
+			&mut *readable_surface,
+			&mut *frame_texture.query_interface().unwrap());
 
-			self.output_duplication.ReleaseFrame();
+		self.output_duplication.ReleaseFrame();
 
-			readable_surface.query_interface(&IID_IDXGISurface1)
-		}
+		readable_surface.query_interface()
 	}
 
 	fn release_frame(&mut self) -> Result<(), HRESULT> {
