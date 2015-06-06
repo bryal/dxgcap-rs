@@ -39,7 +39,7 @@ use d3d11_win::interfaces::*;
 use d3d11_win::{ D3D11_USAGE, D3D11_CPU_ACCESS_FLAG, D3D_DRIVER_TYPE,
 	D3D_FEATURE_LEVEL, D3D11CreateDevice };
 use std::{ mem, slice, ptr };
-use std::mem::{ transmute, zeroed };
+use std::mem::zeroed;
 
 #[repr(C)] struct MONITORINFO {
 	cbSize: DWORD,
@@ -67,10 +67,10 @@ pub struct BGRA8 {
 /// A unique pointer to a COM object. Handles refcounting.
 ///
 /// Similar to windows [CComQIPtr](https://msdn.microsoft.com/en-us/library/wc177dxw.aspx)
-pub struct UniqueCOMPtr<T: IUnknownT> {
+pub struct UniqueCOMPtr<T: COMInterface> {
 	ptr: *mut T,
 }
-impl<T: IUnknownT> UniqueCOMPtr<T> {
+impl<T: COMInterface> UniqueCOMPtr<T> {
 	/// Construct a new unique COM pointer from a pointer to a COM interface.
 	/// It is the users responsibility to guarantee that no copies of the pointer exists beforehand
 	pub unsafe fn new(ptr: *mut T) -> UniqueCOMPtr<T> {
@@ -97,11 +97,11 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 	/// ```ignore
 	/// let factory1: UniqueCOMPtr<IDXGIFactory1> = output.query_interface(&IID_IDXGIOutput1).unwrap();
 	/// ```
-	pub fn query_interface<U>(mut self)
-		-> Result<UniqueCOMPtr<U>, HRESULT> where U: IUnknownT + QueryIID
+	pub fn query_interface<U>(mut self) -> Result<UniqueCOMPtr<U>, HRESULT>
+		where U: COMInterface + QueryIID
 	{
 		let mut interface = ptr::null_mut();
-		let hr = self.QueryInterface(&U::iid(), &mut interface);
+		let hr = unsafe { self.i_unknown_mut().QueryInterface(&U::iid(), &mut interface) };
 		if hr_failed(hr) {
 			Err(hr)
 		} else {
@@ -109,24 +109,24 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 		}
 	}
 }
-impl<T: IUnknownT> std::ops::Deref for UniqueCOMPtr<T> {
+impl<T: COMInterface> std::ops::Deref for UniqueCOMPtr<T> {
 	type Target = T;
 
 	fn deref(&self) -> &T {
 		unsafe { &*self.ptr }
 	}
 }
-impl<T: IUnknownT> std::ops::DerefMut for UniqueCOMPtr<T> {
+impl<T: COMInterface> std::ops::DerefMut for UniqueCOMPtr<T> {
 	fn deref_mut(&mut self) -> &mut T {
 		unsafe { &mut *self.ptr }
 	}
 }
-impl<T: IUnknownT> std::ops::Drop for UniqueCOMPtr<T> {
+impl<T: COMInterface> std::ops::Drop for UniqueCOMPtr<T> {
 	fn drop(&mut self) {
-		self.Release();
+		unsafe { self.i_unknown_mut().Release() };
 	}
 }
-unsafe impl<T: IUnknownT> Send for UniqueCOMPtr<T> { }
+unsafe impl<T: COMInterface> Send for UniqueCOMPtr<T> { }
 
 /// Possible errors when capturing
 #[derive(Debug)]
@@ -159,13 +159,13 @@ fn create_dxgi_factory_1() -> UniqueCOMPtr<IDXGIFactory1> {
 	}
 }
 
-fn d3d11_create_device<T: IDXGIAdapterT>(adapter: &mut T)
+fn d3d11_create_device(adapter: &mut IDXGIAdapter)
 	-> (UniqueCOMPtr<ID3D11Device>, UniqueCOMPtr<ID3D11DeviceContext>)
 {
 	unsafe {
 		let (mut d3d11_device, mut device_context) = (ptr::null_mut(), ptr::null_mut());
 
-		let hr = D3D11CreateDevice(transmute(adapter),
+		let hr = D3D11CreateDevice(adapter,
 			D3D_DRIVER_TYPE::UNKNOWN,
 			ptr::null_mut(), 0, ptr::null_mut(), 0,
 			D3D11_SDK_VERSION,
@@ -236,14 +236,14 @@ fn duplicate_outputs(device: UniqueCOMPtr<ID3D11Device>, outputs: Vec<UniqueCOMP
 		outputs.into_iter()
 			.map(|out| out.query_interface::<IDXGIOutput1>().unwrap())
 			.fold((device, Vec::new()), |(device, mut out_dups), mut output| {
-				let mut dxgi_device =
-					device.query_interface().unwrap();
+				let mut dxgi_device = device.query_interface::<IDXGIDevice1>().unwrap();
 
 				let output_duplication = {
 					let mut output_duplication = ptr::null_mut();
-					assert_eq!(0,
+					assert_eq!(
+						0,
 						output.DuplicateOutput(
-							transmute::<&mut IDXGIDevice1, _>(&mut dxgi_device),
+							(&mut dxgi_device as &mut IUnknown),
 							&mut output_duplication));
 					UniqueCOMPtr::new(output_duplication) };
 
@@ -285,8 +285,11 @@ impl DuplicatedOutput {
 		let mut frame_texture: UniqueCOMPtr<ID3D11Texture2D> =
 			frame_resource.query_interface().unwrap();
 
-		let mut texture_desc = unsafe { zeroed() };
-		frame_texture.GetDesc(&mut texture_desc);
+		let mut texture_desc = unsafe {
+			let mut texture_desc = zeroed();
+			frame_texture.GetDesc(&mut texture_desc);
+			texture_desc
+		};
 
 		// Configure the description to make the texture readable
 		texture_desc.Usage = D3D11_USAGE::STAGING;
@@ -306,21 +309,25 @@ impl DuplicatedOutput {
 
 		// Lower priorities causes stuff to be needlessly copied from gpu to ram,
 		// causing huge fluxuations on some systems.
-		readable_texture.SetEvictionPriority(DXGI_RESOURCE_PRIORITY_MAXIMUM);
+		unsafe { readable_texture.SetEvictionPriority(DXGI_RESOURCE_PRIORITY_MAXIMUM) };
 
 		let mut readable_surface = readable_texture.query_interface().unwrap();
 
-		self.device_context.CopyResource(
-			&mut *readable_surface,
-			&mut *frame_texture.query_interface().unwrap());
+		unsafe {
+			self.device_context.CopyResource(
+				&mut *readable_surface,
+				&mut *frame_texture.query_interface().unwrap());
 
-		self.output_duplication.ReleaseFrame();
+			self.output_duplication.ReleaseFrame();
+		}
+
+
 
 		readable_surface.query_interface()
 	}
 
 	fn release_frame(&mut self) -> Result<(), HRESULT> {
-		let hr = self.output_duplication.ReleaseFrame();
+		let hr = unsafe { self.output_duplication.ReleaseFrame() };
 		if hr_failed(hr) {
 			Err(hr)
 		} else {
@@ -373,11 +380,11 @@ impl DXGIManager {
 
 		for (outputs, mut adapter) in (0..).map(|i| {
 				let mut adapter = ptr::null_mut();
-				if factory.EnumAdapters1(i, &mut adapter) != DXGI_ERROR_NOT_FOUND {
-					Some(unsafe { UniqueCOMPtr::new(adapter) })
+				unsafe { if factory.EnumAdapters1(i, &mut adapter) != DXGI_ERROR_NOT_FOUND {
+					Some( UniqueCOMPtr::new(adapter))
 				} else {
 					None
-				}
+				}}
 			})
 			.take_while(Option::is_some).map(Option::unwrap)
 			.map(|mut adapter| (get_adater_outputs(&mut adapter), adapter))
@@ -441,11 +448,14 @@ impl DXGIManager {
 			Err(e) => return Err(e)
 		};
 
-		let mut mapped_surface = unsafe { zeroed() };
-		if hr_failed(frame_surface.Map(&mut mapped_surface, DXGI_MAP_READ)) {
-			frame_surface.Release();
-			return Err(CaptureError::Fail("Failed to map surface"));
-		}
+		let mapped_surface = unsafe {
+			let mut mapped_surface = zeroed();
+			if hr_failed(frame_surface.Map(&mut mapped_surface, DXGI_MAP_READ)) {
+				frame_surface.Release();
+				return Err(CaptureError::Fail("Failed to map surface"));
+			}
+			mapped_surface
+		};
 
 		let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
 		let (output_width, output_height) = {
@@ -467,10 +477,9 @@ impl DXGIManager {
 				|row, col| col * map_pitch_n_pixels + (output_height-row-1))
 		};
 
-		let mapped_pixels = unsafe {
-			slice::from_raw_parts(transmute(mapped_surface.pBits),
-				output_width * output_height * map_pitch_n_pixels)
-		};
+		let mapped_pixels = unsafe { slice::from_raw_parts(
+			mapped_surface.pBits as *mut BGRA8,
+			output_width * output_height * map_pitch_n_pixels) };
 
 		for row in 0..output_height {
 			for col in 0..output_width {
@@ -478,7 +487,7 @@ impl DXGIManager {
 			}
 		}
 
-		frame_surface.Unmap();
+		unsafe { frame_surface.Unmap() };
 
 		Ok((pixel_buf, (output_width, output_height)))
 	}
