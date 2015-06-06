@@ -77,7 +77,7 @@ impl<T: IUnknownT> UniqueCOMPtr<T> {
 		UniqueCOMPtr{ ptr: ptr }
 	}
 
-	// TODO: Maybe associated constant instead of explicit IID with `interface_identifier`
+	// TODO: Use associated constant instead of explicit IID with `interface_identifier`
 	/// Convert target interface by retrieving pointer to a supported interface of the object.
 	///
 	/// # Examples
@@ -201,10 +201,10 @@ fn get_adater_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGIOutp
 		.collect()
 }
 
-fn output_is_primary(output: &IDXGIOutput1) -> bool {
+fn output_is_primary(output: &UniqueCOMPtr<IDXGIOutput1>) -> bool {
 	unsafe {
 		let mut output_desc = zeroed();
-		transmute::<_, &mut IDXGIOutput1>(output).GetDesc(&mut output_desc);
+		(*output.ptr).GetDesc(&mut output_desc);
 
 		let mut monitor_info: MONITORINFO = zeroed();
 		monitor_info.cbSize = mem::size_of::<MONITORINFO>() as u32;
@@ -220,10 +220,10 @@ fn get_capture_source(
 	-> Option<(UniqueCOMPtr<IDXGIOutputDuplication>, UniqueCOMPtr<IDXGIOutput1>)>
 {
 	if cs_index == 0 {
-		output_dups.into_iter().find(|&(_, ref out)| output_is_primary(&out))
+		output_dups.into_iter().find(|&(_, ref out)| output_is_primary(out))
 	} else {
 		output_dups.into_iter()
-			.filter(|&(_, ref out)| !output_is_primary(&out))
+			.filter(|&(_, ref out)| !output_is_primary(out))
 			.nth(cs_index - 1)
 	}
 }
@@ -263,7 +263,7 @@ impl DuplicatedOutput {
 	fn get_desc(&self) -> DXGI_OUTPUT_DESC {
 		unsafe {
 			let mut desc = zeroed();
-			transmute::<_, &mut Self>(self).output.GetDesc(&mut desc);
+			(*self.output.ptr).GetDesc(&mut desc);
 			desc
 		}
 	}
