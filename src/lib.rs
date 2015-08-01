@@ -31,7 +31,7 @@ extern crate dxgi_win;
 extern crate d3d11_win;
 
 use user32::GetMonitorInfoW;
-use winapi::{ HRESULT, RECT, MONITORINFO };
+use winapi::{ HRESULT, RECT, MONITORINFO, E_ACCESSDENIED };
 use dxgi_win::constants::*;
 use dxgi_win::interfaces::*;
 use dxgi_win::{ CreateDXGIFactory1, DXGI_OUTPUT_DESC, DXGI_MODE_ROTATION };
@@ -169,12 +169,12 @@ fn get_adapter_outputs(adapter: &mut IDXGIAdapter1) -> Vec<UniqueCOMPtr<IDXGIOut
 	for i in 0.. {
 		unsafe {
 			let mut output = ptr::null_mut();
-			
+
 			if hr_failed(adapter.EnumOutputs(i, &mut output)) {
 				break;
 			} else {
 				let mut out_desc = zeroed();
-				
+
 				(*output).GetDesc(&mut out_desc);
 
 				if out_desc.AttachedToDesktop != 0 {
@@ -235,7 +235,7 @@ fn duplicate_outputs(
 			let mut output_duplication = ptr::null_mut();
 
 			let hr = output.DuplicateOutput(&mut dxgi_device as &mut _, &mut output_duplication);
-			
+
 			if hr_failed(hr) {
 				return Err(hr);
 			}
