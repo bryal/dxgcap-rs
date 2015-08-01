@@ -10,6 +10,7 @@ keywords = ["Windows", "DXGI", "screen", "record", "capture"]
 license = "MIT"
 
 [dependencies]
+user32-sys = "*"
 winapi = "*"
 dxgi-win = "*"
 d3d11-win = "*"
