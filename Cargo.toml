@@ -7,7 +7,7 @@ repository = "https://github.com/bryal/dxgcap-rs"
 documentation = "http://bryal.github.io/dxgcap-rs/dxgcap/"
 readme = "README.md"
 keywords = ["Windows", "DXGI", "screen", "record", "capture"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 user32-sys = "*"
