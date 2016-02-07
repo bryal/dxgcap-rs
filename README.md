@@ -2,6 +2,10 @@
 
 Screen capturing with DXGI for Windows in Rust
 
+[![Crate](https://img.shields.io/crates/v/dxgcap.svg)](https://crates.io/crates/dxgcap/)
+
+[Documentation](http://bryal.github.io/dxgcap-rs/dxgcap/)
+
 ## License
 
 Licensed under either of
