@@ -1,6 +1,6 @@
 [package]
 name = "dxgcap"
-version = "0.0.7"
+version = "0.0.8"
 authors = ["bryal <96.bryal@gmail.com>"]
 description = "Screen capturing with DXGI for Windows in Rust"
 repository = "https://github.com/bryal/dxgcap-rs"
@@ -10,7 +10,7 @@ keywords = ["Windows", "DXGI", "screen", "record", "capture"]
 license = "MIT"
 
 [dependencies]
-user32-sys = "*"
-winapi = "*"
-dxgi-win = "*"
-d3d11-win = "*"
+user32-sys = "0.1.2"
+winapi = "0.2.4"
+dxgi-win = "0.2.1"
+d3d11-win = "0.2.1"
