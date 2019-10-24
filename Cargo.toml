@@ -1,13 +1,13 @@
 [package]
 name = "dxgcap"
-version = "0.1.0"
-authors = ["bryal <96.bryal@gmail.com>"]
+version = "0.2.0"
+authors = ["bryal <jo@jo.zone>"]
 description = "Screen capturing with DXGI for Windows in Rust"
 repository = "https://github.com/bryal/dxgcap-rs"
-documentation = "http://bryal.github.io/dxgcap-rs/dxgcap/"
+documentation = "https://docs.rs/dxgcap/*/x86_64-pc-windows-msvc/dxgcap/"
 readme = "README.md"
 keywords = ["Windows", "DXGI", "screen", "record", "capture"]
-license = "MIT OR Apache-2.0"
+license = "AGPL-3.0"
 edition = "2018"
 
 [dependencies]
