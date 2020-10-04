@@ -371,7 +371,7 @@ impl DXGIManager {
         let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
         let stride = mapped_surface.Pitch as usize / mem::size_of::<BGRA8>();
         let byte_stride = byte_size(stride);
-        let (mut output_width, mut output_height) = {
+        let (output_width, output_height) = {
             let RECT {
                 left,
                 top,
@@ -382,12 +382,11 @@ impl DXGIManager {
         };
         let mut pixel_buf = Vec::with_capacity(byte_size(output_width * output_height));
         
-        match output_desc.Rotation {
-            DXGI_MODE_ROTATION_ROTATE90 | DXGI_MODE_ROTATION_ROTATE270 => {
-                mem::swap(&mut output_width, &mut output_height);
-            }
-            _ => {}
-        };
+        let scan_lines =
+            match output_desc.Rotation {
+                DXGI_MODE_ROTATION_ROTATE90 | DXGI_MODE_ROTATION_ROTATE270 => output_width,
+                _ => output_height,
+            };
         // let pixel_index: Box<dyn Fn(usize, usize) -> usize> = match output_desc.Rotation {
         //     DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => {
         //         Box::new(|row, col| row * map_pitch_n_pixels + col)
@@ -406,7 +405,7 @@ impl DXGIManager {
         let mapped_pixels = unsafe {
             slice::from_raw_parts(
                 mapped_surface.pBits as *const T,
-                byte_stride * output_height,
+                byte_stride * scan_lines,
             )
         };
         // for row in 0..output_height {
@@ -428,11 +427,11 @@ impl DXGIManager {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
-                        let stop = src.add(output_height);
+                        let stop = src.add(output_width);
                         while src != stop {
                             dst.write(*src);
                             src = src.add(1);
-                            dst = dst.add(output_width);
+                            dst = dst.add(output_height);
                         }
                     });
                     pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
@@ -472,18 +471,18 @@ impl DXGIManager {
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
                         let stop = src;
-                        src = src.add(output_height);
+                        src = src.add(output_width);
                         while src != stop {
                             src = src.sub(1);
                             dst.write(*src);
-                            dst = dst.add(output_width);
+                            dst = dst.add(output_height);
                         }
                     });
                     pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
                     mem::forget(buf);
                 }
             }
-            _ => unimplemented!(),
+            n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
         }
         dbg!(Instant::now() - now);
         unsafe { frame_surface.Unmap() };
