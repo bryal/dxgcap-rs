@@ -412,6 +412,7 @@ impl DXGIManager {
                             dst = dst.add(output_width);
                         }
                     });
+                    pixel_buf.set_len(pixel_buf.capacity());
                 }
             }
             DXGI_MODE_ROTATION_ROTATE180 => {
@@ -429,6 +430,7 @@ impl DXGIManager {
                             dst = dst.add(1);
                         }
                     });
+                    pixel_buf.set_len(pixel_buf.capacity());
                 }
             }
             DXGI_MODE_ROTATION_ROTATE270 => {
@@ -446,6 +448,7 @@ impl DXGIManager {
                             dst = dst.add(output_width);
                         }
                     });
+                    pixel_buf.set_len(pixel_buf.capacity());
                 }
             }
             n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
