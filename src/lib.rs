@@ -243,6 +243,13 @@ pub struct DXGIManager {
     capture_source_index: usize,
     timeout_ms: u32,
 }
+
+struct SharedPtr<T>(*const T);
+
+unsafe impl<T> Send for SharedPtr<T> {}
+
+unsafe impl<T> Sync for SharedPtr<T> {}
+
 impl DXGIManager {
     /// Construct a new manager with capture timeout
     pub fn new(timeout_ms: u32) -> Result<DXGIManager, &'static str> {
@@ -347,11 +354,7 @@ impl DXGIManager {
         }
     }
 
-    /// Capture a frame
-    ///
-    /// On success, return Vec with pixels and width and height of frame.
-    /// On failure, return CaptureError.
-    pub fn capture_frame(&mut self) -> Result<(Vec<BGRA8>, (usize, usize)), CaptureError> {
+    fn capture_frame_t<T: Copy + Send + Sync + Sized>(&mut self) -> Result<(Vec<T>, (usize, usize)), CaptureError> {
         let frame_surface = match self.capture_frame_to_surface() {
             Ok(surface) => surface,
             Err(e) => return Err(e),
@@ -364,7 +367,10 @@ impl DXGIManager {
             }
             mapped_surface
         };
+        let byte_size = |x| x * mem::size_of::<BGRA8>() / mem::size_of::<T>();
         let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
+        let stride = mapped_surface.Pitch as usize / mem::size_of::<BGRA8>();
+        let byte_stride = byte_size(stride);
         let (output_width, output_height) = {
             let RECT {
                 left,
@@ -374,36 +380,94 @@ impl DXGIManager {
             } = output_desc.DesktopCoordinates;
             ((right - left) as usize, (bottom - top) as usize)
         };
-        let map_pitch_n_pixels = mapped_surface.Pitch as usize / mem::size_of::<BGRA8>() as usize;
-        let mut pixel_buf = Vec::with_capacity(output_width * output_height);
-        let pixel_index: Box<dyn Fn(usize, usize) -> usize> = match output_desc.Rotation {
-            DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => {
-                Box::new(|row, col| row * map_pitch_n_pixels + col)
-            }
-            DXGI_MODE_ROTATION_ROTATE90 => {
-                Box::new(|row, col| (output_width - 1 - col) * map_pitch_n_pixels + row)
-            }
-            DXGI_MODE_ROTATION_ROTATE180 => Box::new(|row, col| {
-                (output_height - 1 - row) * map_pitch_n_pixels + (output_width - col - 1)
-            }),
-            DXGI_MODE_ROTATION_ROTATE270 => {
-                Box::new(|row, col| col * map_pitch_n_pixels + (output_height - row - 1))
-            }
-            n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
-        };
+        let mut pixel_buf = Vec::with_capacity(byte_size(output_width * output_height));
+        
+        let scan_lines =
+            match output_desc.Rotation {
+                DXGI_MODE_ROTATION_ROTATE90 | DXGI_MODE_ROTATION_ROTATE270 => output_width,
+                _ => output_height,
+            };
+
         let mapped_pixels = unsafe {
             slice::from_raw_parts(
-                mapped_surface.pBits as *mut BGRA8,
-                output_width * output_height * map_pitch_n_pixels,
+                mapped_surface.pBits as *const T,
+                byte_stride * scan_lines,
             )
         };
-        for row in 0..output_height {
-            for col in 0..output_width {
-                pixel_buf.push(mapped_pixels[pixel_index(row, col)]);
+        
+        match output_desc.Rotation {
+            DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED =>
+                pixel_buf.extend_from_slice(mapped_pixels),
+            DXGI_MODE_ROTATION_ROTATE90 => {
+                unsafe {
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
+                    mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(column, chunk)| {
+                        let mut src = chunk.as_ptr() as *const BGRA8;
+                        let mut dst = ptr.0 as *mut BGRA8;
+                        dst = dst.add(column);
+                        let stop = src.add(output_height);
+                        while src != stop {
+                            dst.write(*src);
+                            src = src.add(1);
+                            dst = dst.add(output_width);
+                        }
+                    });
+                }
             }
+            DXGI_MODE_ROTATION_ROTATE180 => {
+                unsafe {
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
+                    mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(scan_line, chunk)| {
+                        let mut src = chunk.as_ptr() as *const BGRA8;
+                        let mut dst = ptr.0 as *mut BGRA8;
+                        dst = dst.add(scan_line * output_width);
+                        let stop = src;
+                        src = src.add(output_width);
+                        while src != stop {
+                            src = src.sub(1);
+                            dst.write(*src);
+                            dst = dst.add(1);
+                        }
+                    });
+                }
+            }
+            DXGI_MODE_ROTATION_ROTATE270 => {
+                unsafe {
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
+                    mapped_pixels.chunks(byte_stride).enumerate().for_each(|(column, chunk)| {
+                        let mut src = chunk.as_ptr() as *const BGRA8;
+                        let mut dst = ptr.0 as *mut BGRA8;
+                        dst = dst.add(column);
+                        let stop = src;
+                        src = src.add(output_height);
+                        while src != stop {
+                            src = src.sub(1);
+                            dst.write(*src);
+                            dst = dst.add(output_width);
+                        }
+                    });
+                }
+            }
+            n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
         }
         unsafe { frame_surface.Unmap() };
         Ok((pixel_buf, (output_width, output_height)))
+    }
+
+    /// Capture a frame
+    ///
+    /// On success, return Vec with pixels and width and height of frame.
+    /// On failure, return CaptureError.
+    pub fn capture_frame(&mut self) -> Result<(Vec<BGRA8>, (usize, usize)), CaptureError> {
+        self.capture_frame_t()
+    }
+
+    /// Capture a frame
+    ///
+    /// On success, return Vec with pixel components and width and height of frame.
+    /// On failure, return CaptureError.
+    pub fn capture_frame_components(&mut self) -> Result<(Vec<u8>, (usize, usize)), CaptureError> {
+        self.capture_frame_t()
     }
 }
 
@@ -422,4 +486,14 @@ fn test() {
             Err(e) => println!("error: {:?}", e),
         }
     }
+}
+
+#[test]
+fn compare_frame_dims() {
+    let mut manager = DXGIManager::new(300).unwrap();
+    let (frame, (fw, fh)) = manager.capture_frame().unwrap();
+    let (frame_u8, (fu8w, fu8h)) = manager.capture_frame_components().unwrap();
+    assert_eq!(fw, fu8w);
+    assert_eq!(fh, fu8h);
+    assert_eq!(4 * frame.len(), frame_u8.len());
 }
