@@ -400,10 +400,7 @@ impl DXGIManager {
                 pixel_buf.extend_from_slice(mapped_pixels),
             DXGI_MODE_ROTATION_ROTATE90 => {
                 unsafe {
-                    let mut buf = Vec::new();
-                    mem::swap(&mut pixel_buf, &mut buf);
-                    let len = buf.capacity();
-                    let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
                     mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(column, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
@@ -415,16 +412,11 @@ impl DXGIManager {
                             dst = dst.add(output_width);
                         }
                     });
-                    pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
-                    mem::forget(buf);
                 }
             }
             DXGI_MODE_ROTATION_ROTATE180 => {
                 unsafe {
-                    let mut buf = Vec::new();
-                    mem::swap(&mut pixel_buf, &mut buf);
-                    let len = buf.capacity();
-                    let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
                     mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(scan_line, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
@@ -437,16 +429,11 @@ impl DXGIManager {
                             dst = dst.add(1);
                         }
                     });
-                    pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
-                    mem::forget(buf);
                 }
             }
             DXGI_MODE_ROTATION_ROTATE270 => {
                 unsafe {
-                    let mut buf = Vec::new();
-                    mem::swap(&mut pixel_buf, &mut buf);
-                    let len = buf.capacity();
-                    let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
+                    let ptr = SharedPtr(pixel_buf.as_ptr() as *const BGRA8);
                     mapped_pixels.chunks(byte_stride).enumerate().for_each(|(column, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
@@ -459,8 +446,6 @@ impl DXGIManager {
                             dst = dst.add(output_width);
                         }
                     });
-                    pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
-                    mem::forget(buf);
                 }
             }
             n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
