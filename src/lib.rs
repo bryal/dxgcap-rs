@@ -367,8 +367,11 @@ impl DXGIManager {
             }
             mapped_surface
         };
+        let byte_size = |x| x * mem::size_of::<BGRA8>() / mem::size_of::<T>();
         let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
-        let (output_width, output_height) = {
+        let stride = mapped_surface.Pitch as usize / mem::size_of::<BGRA8>();
+        let byte_stride = byte_size(stride);
+        let (mut output_width, mut output_height) = {
             let RECT {
                 left,
                 top,
@@ -377,7 +380,14 @@ impl DXGIManager {
             } = output_desc.DesktopCoordinates;
             ((right - left) as usize, (bottom - top) as usize)
         };
-        let mut pixel_buf = Vec::with_capacity(output_width * output_height);
+        let mut pixel_buf = Vec::with_capacity(byte_size(output_width * output_height));
+        
+        match output_desc.Rotation {
+            DXGI_MODE_ROTATION_ROTATE90 | DXGI_MODE_ROTATION_ROTATE270 => {
+                mem::swap(&mut output_width, &mut output_height);
+            }
+            _ => {}
+        };
         // let pixel_index: Box<dyn Fn(usize, usize) -> usize> = match output_desc.Rotation {
         //     DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => {
         //         Box::new(|row, col| row * map_pitch_n_pixels + col)
@@ -396,7 +406,7 @@ impl DXGIManager {
         let mapped_pixels = unsafe {
             slice::from_raw_parts(
                 mapped_surface.pBits as *const T,
-                output_width * output_height,
+                byte_stride * output_height,
             )
         };
         // for row in 0..output_height {
@@ -414,15 +424,14 @@ impl DXGIManager {
                     mem::swap(&mut pixel_buf, &mut buf);
                     let len = buf.capacity();
                     let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
-                    mapped_pixels.chunks(output_height).enumerate().for_each(|(column, chunk)| {
+                    mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(column, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
-                        let stop = src;
-                        src = src.add(output_height * (column + 1));
+                        let stop = src.add(output_height);
                         while src != stop {
-                            src = src.sub(1);
                             dst.write(*src);
+                            src = src.add(1);
                             dst = dst.add(output_width);
                         }
                     });
@@ -436,13 +445,14 @@ impl DXGIManager {
                     mem::swap(&mut pixel_buf, &mut buf);
                     let len = buf.capacity();
                     let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
-                    mapped_pixels.chunks(output_width).rev().enumerate().for_each(|(scan_line, chunk)| {
+                    mapped_pixels.chunks(byte_stride).rev().enumerate().for_each(|(scan_line, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(scan_line * output_width);
-                        let stop = src.add(output_width);
+                        let stop = src;
+                        src = src.add(output_width);
                         while src != stop {
-                            src = src.add(1);
+                            src = src.sub(1);
                             dst.write(*src);
                             dst = dst.add(1);
                         }
@@ -457,12 +467,12 @@ impl DXGIManager {
                     mem::swap(&mut pixel_buf, &mut buf);
                     let len = buf.capacity();
                     let ptr = SharedPtr(buf.as_ptr() as *const BGRA8);
-                    mapped_pixels.chunks(output_height).rev().enumerate().for_each(|(column, chunk)| {
+                    mapped_pixels.chunks(byte_stride).enumerate().for_each(|(column, chunk)| {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
                         let stop = src;
-                        src = src.add(output_height * (column + 1));
+                        src = src.add(output_height);
                         while src != stop {
                             src = src.sub(1);
                             dst.write(*src);
@@ -523,11 +533,4 @@ fn compare_frame_dims() {
     assert_eq!(fw, fu8w);
     assert_eq!(fh, fu8h);
     assert_eq!(4 * frame.len(), frame_u8.len());
-}
-
-#[test]
-fn x() {
-    let mut manager = DXGIManager::new(300).unwrap();
-    let (_, (w, h)) = manager.capture_frame().unwrap();
-    println!("{}, {}", w, h);
 }
