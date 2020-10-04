@@ -1,6 +1,6 @@
 [package]
 name = "dxgcap"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["jojo <jo@jo.zone>"]
 description = "Screen capturing with DXGI for Windows in Rust"
 repository = "https://github.com/bryal/dxgcap-rs"
