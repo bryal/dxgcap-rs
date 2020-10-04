@@ -387,33 +387,14 @@ impl DXGIManager {
                 DXGI_MODE_ROTATION_ROTATE90 | DXGI_MODE_ROTATION_ROTATE270 => output_width,
                 _ => output_height,
             };
-        // let pixel_index: Box<dyn Fn(usize, usize) -> usize> = match output_desc.Rotation {
-        //     DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED => {
-        //         Box::new(|row, col| row * map_pitch_n_pixels + col)
-        //     }
-        //     DXGI_MODE_ROTATION_ROTATE90 => {
-        //         Box::new(|row, col| (output_width - 1 - col) * map_pitch_n_pixels + row)
-        //     }
-        //     DXGI_MODE_ROTATION_ROTATE180 => Box::new(|row, col| {
-        //         (output_height - 1 - row) * map_pitch_n_pixels + (output_width - col - 1)
-        //     }),
-        //     DXGI_MODE_ROTATION_ROTATE270 => {
-        //         Box::new(|row, col| col * map_pitch_n_pixels + (output_height - row - 1))
-        //     }
-        //     n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
-        // };
+
         let mapped_pixels = unsafe {
             slice::from_raw_parts(
                 mapped_surface.pBits as *const T,
                 byte_stride * scan_lines,
             )
         };
-        // for row in 0..output_height {
-        //     for col in 0..output_width {
-        //         pixel_buf.push(mapped_pixels[row * map_pitch_n_pixels + col]);
-        //     }
-        // }
-        let now = Instant::now();
+        
         match output_desc.Rotation {
             DXGI_MODE_ROTATION_IDENTITY | DXGI_MODE_ROTATION_UNSPECIFIED =>
                 pixel_buf.extend_from_slice(mapped_pixels),
@@ -484,7 +465,6 @@ impl DXGIManager {
             }
             n => unreachable!("Undefined DXGI_MODE_ROTATION: {}", n),
         }
-        dbg!(Instant::now() - now);
         unsafe { frame_surface.Unmap() };
         Ok((pixel_buf, (output_width, output_height)))
     }
@@ -506,7 +486,6 @@ impl DXGIManager {
     }
 }
 
-use std::time::Instant;
 #[test]
 fn test() {
     let mut manager = DXGIManager::new(300).unwrap();
