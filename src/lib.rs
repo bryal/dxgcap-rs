@@ -427,11 +427,11 @@ impl DXGIManager {
                         let mut src = chunk.as_ptr() as *const BGRA8;
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
-                        let stop = src.add(output_width);
+                        let stop = src.add(output_height);
                         while src != stop {
                             dst.write(*src);
                             src = src.add(1);
-                            dst = dst.add(output_height);
+                            dst = dst.add(output_width);
                         }
                     });
                     pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
@@ -471,11 +471,11 @@ impl DXGIManager {
                         let mut dst = ptr.0 as *mut BGRA8;
                         dst = dst.add(column);
                         let stop = src;
-                        src = src.add(output_width);
+                        src = src.add(output_height);
                         while src != stop {
                             src = src.sub(1);
                             dst.write(*src);
-                            dst = dst.add(output_height);
+                            dst = dst.add(output_width);
                         }
                     });
                     pixel_buf = Vec::from_raw_parts(buf.as_mut_ptr(), len, len);
