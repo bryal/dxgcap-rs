@@ -265,6 +265,19 @@ impl DXGIManager {
         }
     }
 
+    pub fn geometry(&mut self) -> (usize, usize) {
+        let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
+        {
+            let RECT {
+                left,
+                top,
+                right,
+                bottom,
+            } = output_desc.DesktopCoordinates;
+            ((right - left) as usize, (bottom - top) as usize)
+        }
+    }
+
     /// Set index of capture source to capture from
     pub fn set_capture_source_index(&mut self, cs: usize) {
         self.capture_source_index = cs;
