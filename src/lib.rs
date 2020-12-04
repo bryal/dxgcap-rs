@@ -265,8 +265,8 @@ impl DXGIManager {
         }
     }
 
-    pub fn geometry(&mut self) -> (usize, usize) {
-        let output_desc = self.duplicated_output.as_mut().unwrap().get_desc();
+    pub fn geometry(&self) -> (usize, usize) {
+        let output_desc = self.duplicated_output.as_ref().unwrap().get_desc();
         let RECT {
             left,
             top,
