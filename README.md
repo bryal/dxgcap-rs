@@ -6,6 +6,11 @@ Screen capturing for Windows using the DXGI Desktop Duplication API.
 
 [Documentation](https://docs.rs/dxgcap/*/x86_64-pc-windows-msvc/dxgcap/)
 
+## ARCHIVED
+
+I don't have or use Windows anywhere anymore, so I can't maintain this.
+Feel free to fork it if you have any improvements you'd like to add.
+
 ## License
 
 AGPLv3
